@@ -1,7 +1,6 @@
 <?php
-
-// Kết nối CSDL qua PDO
-function connectDB() {
+function connectDB()
+{
     // Kết nối CSDL
     $host = DB_HOST;
     $port = DB_PORT;
@@ -15,9 +14,33 @@ function connectDB() {
 
         // cài đặt chế độ trả dữ liệu
         $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-    
+
         return $conn;
+        // var_dump('ket noi thnah cong');die();
     } catch (PDOException $e) {
         echo ("Connection failed: " . $e->getMessage());
     }
+}
+
+function query_all_data($sql, $params = [])
+{
+    $conn = connectDB();
+    $stmt = $conn->prepare($sql);
+    $stmt->execute($params);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function query_one_data($sql, $params = [])
+{
+    $conn = connectDB();
+    $stmt = $conn->prepare($sql);
+    $stmt->execute($params);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+function execute($sql, $params = [])
+{
+    $conn = connectDB();
+    $stmt = $conn->prepare($sql);
+    return $stmt->execute($params);
 }
