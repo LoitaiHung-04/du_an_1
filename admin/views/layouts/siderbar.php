@@ -55,10 +55,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarDanhMuc" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
+                    <a class="nav-link menu-link" href="#danhmuc" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="danhmuc">
                         <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Danh mục sản phẩm</span>
                     </a>
-                    <div class="collapse menu-dropdown" id="sidebarDanhMuc">
+                    <div class="collapse menu-dropdown" id="danhmuc">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="?act=danh-mucs" class="nav-link" data-key="t-sweet-alerts">
@@ -67,6 +67,25 @@
                             </li>
                             <li class="nav-item">
                                 <a href="?act=form-them-danh-muc" class="nav-link" data-key="t-nestable-list">
+                                    Thêm mới
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#baiviet" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="baiviet">
+                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Bài Viết</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="baiviet">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="?act=bai-viets" class="nav-link" data-key="t-sweet-alerts">
+                                    Danh sách
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="?act=form-them-bai-viet" class="nav-link" data-key="t-nestable-list">
                                     Thêm mới
                                 </a>
                             </li>
