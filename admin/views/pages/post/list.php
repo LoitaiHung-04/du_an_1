@@ -122,11 +122,13 @@
                                                         <td>
                                                             <div class="hstack gap-3 flex-wrap">
                                                                 <a href="?act=form-sua-bai-viet&id=<?=$row['id']?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
-                                                                   <form action="?act=xoa-bai-viet" method="POST" onsubmit="return confirm('are u sure')">
+                                                                   <!-- <form action="?act=xoa-bai-viet" method="POST" onsubmit="return confirm('are u sure')">
                                                                     <input type="hidden" name="bai_viet_id" value="<?= $row['id']?>">
                                                                     <button type="submit" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></button>
                                                                     
-                                                                   </form> 
+                                                                   </form>  -->
+                                                                   <a href="?act=xoa-bai-viet&id=<?= $row['id']?>" class="btn btn-danger" onclick="return confirm('bạn muốn xóa không ?')">Xóa</a>
+
                                                             </div>
                                                         </td>
                                                     </tr>

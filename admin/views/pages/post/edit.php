@@ -65,7 +65,7 @@
 
                                     <div class="card-body">
                                         <div class="live-preview">
-                                            <form action="?act=sua-bai-viet" method="POST">
+                                            <form action="?act=sua-viet" method="POST">
                                                 <input type="hidden" name="id" value="<?=$baiViet['id']?>">
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -91,21 +91,13 @@
                                                     <div class="col-md-12">
                                                         <div class="mb-3">
                                                             <label for="address1ControlTextarea" class="form-label">Date</label>
-                                                            <input type="text" class="form-control" placeholder="Nhập content" name="content" value="<?=$baiViet['ngay_dang']?>" >
+                                                            <input type="text" class="form-control" placeholder="Nhập content" name="ngay_dang" value="<?=$baiViet['ngay_dang']?>" >
                                                             <span class="text-danger">
                                                                 <?= !empty($_SESSION['error']['ngay_dang']) ? $_SESSION['error']['ngay_dang'] : '' ?>
                                                             </span>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-12">
-                                                        <div class="mb-3">
-                                                            <label for="address1ControlTextarea" class="form-label">Author</label>
-                                                            <input type="text" class="form-control" placeholder="Nhập content" name="content" value="<?=$baiViet['nguoi_dang']?>" >
-                                                            <span class="text-danger">
-                                                                <?= !empty($_SESSION['error']['nguoi_dang']) ? $_SESSION['error']['nguoi_dang'] : '' ?>
-                                                            </span>
-                                                        </div>
-                                                    </div>
+                                                
                                                     <!-- end col -->
                                                     <div class="col-md-6">
                                                         <div class="mb-3">

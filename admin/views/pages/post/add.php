@@ -90,21 +90,13 @@
                                                     <div class="col-md-12">
                                                         <div class="mb-3">
                                                             <label for="address1ControlTextarea" class="form-label">Date</label>
-                                                            <input type="date" class="form-control" placeholder="Nhập content" name="date">
+                                                            <input type="date" class="form-control" placeholder="Nhập content" name="ngay_dang">
                                                             <span class="text-danger">
                                                                 <?= !empty($_SESSION['error']['ngay_dang']) ? $_SESSION['error']['ngay_dang'] : '' ?>
                                                             </span>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-12">
-                                                        <div class="mb-3">
-                                                            <label for="address1ControlTextarea" class="form-label">Author</label>
-                                                            <input type="textarea" class="form-control" placeholder="Nhập content" name="date">
-                                                            <span class="text-danger">
-                                                                <?= !empty($_SESSION['error']['nguoi_dang']) ? $_SESSION['error']['nguoi_dang'] : '' ?>
-                                                            </span>
-                                                        </div>
-                                                    </div>
+                                                   
                                                     
                                                     
                                                     <!-- end col -->
