@@ -11,9 +11,7 @@ require_once 'controllers/BannerController.php';
 require_once 'controllers/DanhMucController.php';
 require_once 'controllers/BaiVietController.php';
 
-// Require toàn bộ file Models
-require_once 'models/DanhMuc.php';
-require_once 'models/BaiViet.php';
+
 
 // Route
 $act = $_GET['act'] ?? '/';

@@ -1,5 +1,5 @@
 <?php
-
+include './models/DanhMuc.php';
 class DanhMucController
 {
     //kết nối đến file model
