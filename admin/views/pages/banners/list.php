@@ -71,12 +71,12 @@
                                                 <div class="flex-shrink-0 me-2">
                                                     <img src="<?= "/du_an_1/uploads/" . $value['image'] ?>" alt="" class="avatar-xs rounded-circle material-shadow" />
                                                 </div>
-                                                <div class="flex-grow-1"><?= $value['title'] ?></div>
+                                                <div class="flex-grow-1"></div>
                                             </div>
                                         </td>
                                         <td>
-                                            <a href="?act=delete-banner&id=<?= $value['id']?>" class="btn btn-danger" onclick="return confirm('bạn muốn xóa không ?')">Xóa</a>
-                                            <a href="?act=edit-banner&id=<?= $value['id']?>" class="btn btn-warning">Sửa</a>
+                                            <a href="?act=delete-banner&id=<?= $value['id']?>" class="link-danger fs-15" onclick="return confirm('bạn muốn xóa không ?')"><i class="ri-delete-bin-line"></i></a>
+                                            <a href="?act=edit-banner&id=<?= $value['id']?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
 
                                         </td>
                                     </tr>
