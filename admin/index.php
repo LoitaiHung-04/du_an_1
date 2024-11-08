@@ -10,10 +10,12 @@ require_once 'controllers/DashboardController.php';
 require_once 'controllers/BannerController.php';
 require_once 'controllers/DanhMucController.php';
 require_once 'controllers/BaiVietController.php';
+require_once 'controllers/TaiKhoanController.php';
 
 // Require toàn bộ file Models
 require_once 'models/DanhMuc.php';
 require_once 'models/BaiViet.php';
+include_once 'models/TaiKhoan.php';
 
 // Route
 $act = $_GET['act'] ?? '/';
@@ -41,4 +43,10 @@ match ($act) {
     'form-sua-bai-viet'     => (new BaiVietController())->edit(),
     'sua-viet'              => (new BaiVietController())->update(),
     'xoa-bai-viet'          => (new BaiVietController())->destroy(),
+    'tai-khoans'             => (new TaiKhoanController())->index(),
+    'form-them-tai-khoan'    => (new TaiKhoanController())->create(),
+    'them-tai-khoan'         => (new TaiKhoanController())->store(),
+    'form-sua-tai-khoan'     => (new TaiKhoanController())->edit(),
+    'sua-tai-khoan'              => (new TaiKhoanController())->update(),
+    'xoa-tai-khoan'          => (new TaiKhoanController())->destroy(),
 };

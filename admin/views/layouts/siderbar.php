@@ -111,6 +111,25 @@
                         </ul>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#taikhoan" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="taikhoan">
+                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Tài Khoản</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="taikhoan">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="?act=tai-khoans" class="nav-link" data-key="t-sweet-alerts">
+                                    Danh sách
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="?act=form-them-tai-khoan" class="nav-link" data-key="t-nestable-list">
+                                    Thêm mới
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
                 <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-pages">Bán hàng</span></li>
 

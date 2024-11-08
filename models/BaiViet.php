@@ -31,6 +31,7 @@ class BaiViet
     
         return execute($sql, $params);
     }
+    
     public function delete($id){
         $sql="DELETE FROM tin_tucs WHERE id=?";
         $params = [$id];
