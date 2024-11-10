@@ -10,6 +10,9 @@ require_once 'controllers/DashboardController.php';
 require_once 'controllers/BannerController.php';
 require_once 'controllers/DanhMucController.php';
 require_once 'controllers/BaiVietController.php';
+require_once 'controllers/ProductController.php';
+
+
 
 
 
@@ -39,4 +42,12 @@ match ($act) {
     'form-sua-bai-viet'     => (new BaiVietController())->edit(),
     'sua-viet'              => (new BaiVietController())->update(),
     'xoa-bai-viet'          => (new BaiVietController())->destroy(),
+    'list-product'                 => (new ProductController())->index(),
+    'form-add-product'                 => (new ProductController())->create(),
+    'add-product'                 => (new ProductController())->store(),
+    'form-sua-product'     => (new ProductController())->edit(),
+    'update-product'     => (new ProductController())->update(),
+    'delete-product'     => (new ProductController())->destroy(),
+    'delete-image'     => (new ProductController())->destroyImage(),
+
 };

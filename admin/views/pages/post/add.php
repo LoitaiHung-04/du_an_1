@@ -81,7 +81,7 @@
                                                     <div class="col-md-12">
                                                         <div class="mb-3">
                                                             <label for="address1ControlTextarea" class="form-label">Content</label>
-                                                            <input type="textarea" class="form-control" placeholder="Nhập content" name="content">
+                                                            <textarea name="content" id="editor"></textarea>
                                                             <span class="text-danger">
                                                                 <?= !empty($_SESSION['error']['content']) ? $_SESSION['error']['content'] : '' ?>
                                                             </span>
@@ -182,6 +182,9 @@
     <?php
     require_once "views/layouts/libs_js.php";
     ?>
+      <script type="module" >
+        CKEDITOR.replace('editor');
+     </script>
 </body>
 
 </html>

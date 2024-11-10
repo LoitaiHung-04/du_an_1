@@ -127,7 +127,7 @@
                                                                     <button type="submit" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></button>
                                                                     
                                                                    </form>  -->
-                                                                   <a href="?act=xoa-bai-viet&id=<?= $row['id']?>" class="btn btn-danger" onclick="return confirm('bạn muốn xóa không ?')">Xóa</a>
+                                                                   <a href="?act=xoa-bai-viet&id=<?= $row['id']?>" class="link-danger fs-15" onclick="return confirm('bạn muốn xóa không ?')"><i class="ri-delete-bin-line"></i></a>
 
                                                             </div>
                                                         </td>

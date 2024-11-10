@@ -44,3 +44,19 @@ function execute($sql, $params = [])
     $stmt = $conn->prepare($sql);
     return $stmt->execute($params);
 }
+function addGetLateId($sql, $params = [])
+{
+    
+    $conn = connectDB();
+    $stmt = $conn->prepare($sql);
+
+    $stmt->execute($params);
+
+    $lastInsertId = $conn->lastInsertId();
+
+    $conn = null;
+
+    return $lastInsertId;
+}
+
+
