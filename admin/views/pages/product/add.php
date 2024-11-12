@@ -28,8 +28,80 @@
 
         /* Styling cho các nút tab */
         .tab-btn.active {
-            background-color: #f0f0f0;
+            background-color: black;
+            color: white;
             font-weight: bold;
+        }
+
+        .attribute-color {
+            display: flex;
+            gap: 5px;
+        }
+
+        .attribute-capacity {
+            display: flex;
+            gap: 5px;
+        }
+
+        .color-attribute {
+            padding: 5px 15px 5px 15px;
+            border: 2px solid lightblue;
+            border-radius: 5px;
+        }
+
+        .capacity-attribute {
+            padding: 5px 15px 5px 15px;
+            border: 2px solid lightblue;
+            border-radius: 5px;
+        }
+
+        .color-container {
+            display: flex;
+        }
+
+        .capacity-container {
+            display: flex;
+        }
+
+        .title-capacity {
+            min-width: 200px;
+        }
+
+        .title-color {
+            min-width: 200px;
+        }
+
+        .capacity {
+            position: relative;
+            display: inline-block;
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .capacity-attribute {
+            display: inline-block;
+            padding: 5px 10px;
+        }
+
+        .capacity input:checked+.capacity-attribute {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .capacity-option:checked+label::before {
+            content: "✔";
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #e74c3c;
+            color: white;
+            padding: 5px;
+            border-radius: 50%;
+            font-size: 10px;
         }
     </style>
 </head>
@@ -61,8 +133,8 @@
                     <div class="row">
                         <div class="col-3">
                             <div class="tabs">
-                                <button class="tab-btn active" onclick="openTab(event, 'general')">Cơ Bản</button>
-                                <button class="tab-btn" onclick="openTab(event, 'variant')">Biến Thể</button>
+                                <button class="tab-btn active btn btn-primary" onclick="openTab(event, 'general')">Cơ Bản</button>
+                                <button class="tab-btn btn btn-warning" onclick="openTab(event, 'variant')">Biến Thể</button>
 
                             </div>
                         </div>
@@ -150,12 +222,14 @@
                                     <div id="variant" class="content-section">
                                         <h1>Thông tin biến thể ( Nếu có )</h1>
                                         <div class="color-container">
-                                            <div class="title-color">Color</div>
+                                            <div class="title-color">
+                                                <h4 style="font-weight: bold;">Color</h4>
+                                            </div>
                                             <div class="attribute-color">
                                                 <?php foreach ($color as $items): ?>
                                                     <div class="color">
-                                                        <label for="color-<?= $items['id'] ?>"><?= $items['name'] ?></label>
-                                                        <input type="checkbox" value="<?= $items['name'] ?>" id="color-<?= $items['id'] ?>" class="color-option">
+                                                        <label for="color-<?= $items['id'] ?>" class="color-attribute" style="background-color:<?= $items['name'] ?>; cursor: pointer; "><?= $items['name'] ?></label>
+                                                        <input hidden type="checkbox" value="<?= $items['name'] ?>" id="color-<?= $items['id'] ?>" class="color-option">
                                                     </div>
                                                 <?php endforeach ?>
                                             </div>
@@ -163,31 +237,36 @@
 
 
                                         <div class="capacity-container">
-                                            <div class="title-capacity">Capacity</div>
+                                            <div class="title-capacity">
+                                                <h4 style="font-weight: bold;">Capacity</h4>
+                                            </div>
                                             <div class="attribute-capacity">
                                                 <?php foreach ($capacity as $items): ?>
                                                     <div class="capacity">
-                                                        <label for="capacity-<?= $items['id'] ?>"><?= $items['name'] ?></label>
-                                                        <input type="checkbox" value="<?= $items['name'] ?>" id="capacity-<?= $items['id'] ?>" class="capacity-option">
+                                                        <input type="checkbox" value="<?= $items['name'] ?>" id="capacity-<?= $items['id'] ?>" class="capacity-option" hidden>
+                                                        <label class="capacity-attribute" for="capacity-<?= $items['id'] ?>" style="cursor: pointer;">
+                                                            <?= $items['name'] ?>
+                                                        </label>
                                                     </div>
                                                 <?php endforeach ?>
+
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- <button type="button" onclick="generateVariants()">Tạo biến thể</button> -->
+                                    <button type="button" onclick="generateVariants()" class="btn btn-success">Tạo biến thể</button>
 
                                     <!-- Bảng hiện thị biến thể -->
                                     <div id="variants-table-container" style="display: none;">
-                                        <table border="1" id="variants-table">
+                                        <table id="variants-table" class="table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th>Variant</th>
                                                     <th>Variant</th>
                                                     <th> Price</th>
                                                     <th>SKU</th>
                                                     <th>Quantity</th>
-                                                    <th>Photo</th>
+                                                    <th>Action</th>
+
                                                 </tr>
                                             </thead>
                                             <tbody></tbody>
@@ -207,7 +286,18 @@
     </div>
     <!-- END layout-wrapper -->
 
-
+    <script>
+        document.querySelectorAll('.capacity-option').forEach(option => {
+            option.addEventListener('change', function() {
+                const label = this.nextElementSibling;
+                if (this.checked) {
+                    label.classList.add('active');
+                } else {
+                    label.classList.remove('active');
+                }
+            });
+        });
+    </script>
     <script>
         function generateVariants() {
 
@@ -231,15 +321,17 @@
 
                     // Các cột nhập liệu khác
                     row.innerHTML = `
-                <td><input type="hidden" name="variants[][color]" value="${color}">${color}</td>
-                <td><input type="hidden" name="variants[][capacity]" value="${capacity}">${capacity}</td>
+                    <input type="hidden" name="variants[][color]" value="${color}">
+                    <input type="hidden" name="variants[][capacity]" value="${capacity}">
+                <td>${color}-${capacity}</td>
+                
                 <td><input type="text" name="variants[][variant_price]" value="0"></td>
                 <td><input type="text" name="variants[][sku]"></td>
                 <td><input type="number" name="variants[][quantity]" value="10"></td>
-                <td><input type="file" name="variants[][photo]"></td>
+                <td><button class="btn btn-danger"><i class='bx bx-trash'></i></button></td>
             `;
                     tableBody.appendChild(row);
-                  
+
                 });
             });
 
