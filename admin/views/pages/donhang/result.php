@@ -11,8 +11,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
-    <script src="https://unpkg.com/feather-icons"></script>
-
 
     <!-- CSS -->
     <?php
@@ -48,13 +46,12 @@
                      <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                                <h4 class="mb-sm-0">quản lí bài viết</h4>
-                                <a href="?act=form-them-bai-viet" class="btn btn-soft-success material-shadow-none"><i class="ri-add-circle-line align-middle me-1"></i> thêm bài viết</>
+                                <h4 class="mb-sm-0">Tìm kiếm đơn hàng</h4>
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                        <li class="breadcrumb-item active">danh mục bài viết</li>
+                                        <li class="breadcrumb-item active">danh mục đơn hàng</li>
                                     </ol>
                                 </div>
 
@@ -64,12 +61,13 @@
                     <!-- end page title -->
 
                     <div class="row">
+                    
                         <div class="col">
 
                             <div class="h-100">
                             <div class="card">
                                 <div class="card-header align-items-center d-flex">
-                                    <h4 class="card-title mb-0 flex-grow-1">bài viết</h4>
+                                    <h4 class="card-title mb-0 flex-grow-1">đơn hàng</h4>
 
                                     </div>
                                 </div><!-- end card header -->
@@ -88,55 +86,82 @@
                                                                 <label class="form-check-label" for="cardtableCheck"></label>
                                                             </div>
                                                         </th>
-                                                        <th scope="col">ID</th>
-                                                        <th scope="col">title</th>
-                                                        <th scope="col">content</th>   
-                                                        <th scope="col">ngày đăng</th>     
-                                                        <th scope="col">người đăng</th>  
-                                                        <th scope="col">trạng thái</th>  
+                                                        <th scope="col">STT</th>
+                                                        <th scope="col">Mã Đơn Hàng</th>
+                                                        <th scope="col">Tên người nhận</th>
+                                                         <th scope="col">SĐT</th>
+                                                         <th scope="col">Ngày đặt</th>
+                                                         <th scope="col"> Tổng Tiền</th>
+                                                         <th scope="col">Trạng thái</th>
                                                      
                                                         <th scope="col" style="width: 150px;">Action</th>
                                                     </tr>
                                                 </thead>
-                                                <?php foreach ($baiViets as $index => $row) : ?>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="" id="cardtableCheck01">
-                                                                <label class="form-check-label" for="cardtableCheck01"></label>
-                                                            </div>
-                                                        </td>
-                                                        <td><a href="#" class="fw-medium"><?= $index + 1 ?></a></td>
-                                                        <td><?= $row['title'] ?></td>
-                                                        <td><?= $row['content'] ?></td>
-                                                        <td><?= $row['ngay_dang'] ?></td>
-                                                        <td><?= $row['nguoi_dang'] ?></td>
-                                                       
-                               
-                                            
+    <?php
+    // Kiểm tra biến $listDonHang có được khởi tạo không
+    if (!isset($listDonHang)) {
+        $listDonHang = []; 
+    }
 
-                                                        <?php if ($row['trang_thai'] == 1) { ?>
-                                                            <td><span class="badge bg-success">hiển thị</span></td>
-                                                        <?php } else { ?>
-                                                            <td><span class="badge bg-danger">k hiển thị</span></td>
-                                                        <?php } ?>
-                                                        
-                                                        <td>
-                                                            <div class="hstack gap-3 flex-wrap">
-                                                                <a href="?act=form-sua-bai-viet&id=<?=$row['id']?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
-                                                                   <!-- <form action="?act=xoa-bai-viet" method="POST" onsubmit="return confirm('are u sure')">
-                                                                    <input type="hidden" name="bai_viet_id" value="<?= $row['id']?>">
-                                                                    <button type="submit" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></button>
-                                                                    
-                                                                   </form>  -->
-                                                                   <a href="?act=xoa-bai-viet&id=<?= $row['id']?>" class="btn btn-danger" onclick="return confirm('bạn muốn xóa không ?')">Xóa</a>
+    // Kiểm tra nếu có kết quả tìm kiếm
+    if (isset($resultSearchOrder) && !empty($resultSearchOrder)) {
+        $dataToDisplay = $resultSearchOrder; // Sử dụng kết quả tìm kiếm
+    } else {
+        $dataToDisplay = $listDonHang; // Sử dụng danh sách đơn hàng mặc định
+    }
 
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            <?php endforeach; ?>
+    // Kiểm tra xem $dataToDisplay có phải là mảng và có dữ liệu không
+    if (is_array($dataToDisplay) && count($dataToDisplay) > 0) { ?>
+        <?php foreach ($dataToDisplay as $index => $row): ?>
+            <tr>
+                <td>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value=""
+                            id="cardtableCheck<?= $index ?>">
+                        <label class="form-check-label" for="cardtableCheck<?= $index ?>"></label>
+                    </div>
+                </td>
+                <td><a href="#" class="fw-medium"><?= $index + 1 ?></a></td>
+                <td><?= htmlspecialchars($row['ma_don_hang']) ?></td>
+                <td><?= htmlspecialchars($row['ten_nguoi_nhan']) ?></td>
+                <td><?= htmlspecialchars($row['sdt_nguoi_nhan']) ?></td>
+                <td><?= htmlspecialchars($row['ngay_dat']) ?></td>
+                <td><?= htmlspecialchars($row['tong_tien']) ?></td>
+                <td><?= htmlspecialchars($row['ten_trang_thai_id']) ?></td>
+                <td>
+                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                        <a href="?act=chi-tiet-don-hang&id=<?= $row['id'] ?>">
+                            <i data-feather="eye" class="text-primary"></i> <!-- Biểu tượng mắt -->
+                        </a>
+                    </div>
+                </td>
+                <td>
+                    <div class="hstack gap-3 flex-wrap">
+                        <form action="?act=xoa-don-hang" method="POST" onsubmit="return confirm('Bạn có chắc chắn muốn xóa?')">
+                            <input type="hidden" name="don-hang-id" value="<?= $row['id'] ?>">
+                            <button type="submit" class="link-danger fs-15">
+                                <i class="ri-delete-bin-line"></i>
+                            </button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    <?php } else { ?>
+        <tr>
+            <td colspan="10" class="text-center">Không có kết quả nào được tìm thấy.</td>
+        </tr>
+    <?php } ?>
+</tbody>
+
+<!-- Thẻ <script> cho Feather Icons chỉ cần ở ngoài vòng lặp -->
+<script src="https://unpkg.com/feather-icons"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        feather.replace();
+    });
+</script>
 
                                                    
                                                 </tbody>
@@ -150,6 +175,7 @@
 
                         </div> <!-- end col -->
                     </div>
+                    
 
                 </div>
                 <!-- container-fluid -->

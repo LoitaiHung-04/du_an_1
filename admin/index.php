@@ -11,11 +11,11 @@ require_once 'controllers/BannerController.php';
 require_once 'controllers/DanhMucController.php';
 require_once 'controllers/BaiVietController.php';
 require_once 'controllers/TaiKhoanController.php';
+require_once 'controllers/DonHangController.php';
+require_once 'controllers/TrangThaiDonHangController.php';
 
-// Require toàn bộ file Models
-require_once 'models/DanhMuc.php';
-require_once 'models/BaiViet.php';
-include_once 'models/TaiKhoan.php';
+
+
 
 // Route
 $act = $_GET['act'] ?? '/';
@@ -37,16 +37,36 @@ match ($act) {
     'form-sua-danh-muc' => (new DanhMucController())->edit(),
     'sua-danh-muc' => (new DanhMucController())->update(),
     'xoa-danh-muc' => (new DanhMucController())->destroy(),
+    //
     'bai-viets'             => (new BaiVietController())->index(),
     'form-them-bai-viet'    => (new BaiVietController())->create(),
     'them-bai-viet'         => (new BaiVietController())->store(),
     'form-sua-bai-viet'     => (new BaiVietController())->edit(),
     'sua-viet'              => (new BaiVietController())->update(),
     'xoa-bai-viet'          => (new BaiVietController())->destroy(),
+    //
     'tai-khoans'             => (new TaiKhoanController())->index(),
-    'form-them-tai-khoan'    => (new TaiKhoanController())->create(),
+    'tim-kiem'                  => (new TaiKhoanController())->timkiem(),
+    'chi-tiet'             => (new TaiKhoanController())->chitiet(),
     'them-tai-khoan'         => (new TaiKhoanController())->store(),
-    'form-sua-tai-khoan'     => (new TaiKhoanController())->edit(),
-    'sua-tai-khoan'              => (new TaiKhoanController())->update(),
+    'sua-chi-tiet'              => (new TaiKhoanController())->update2(),
     'xoa-tai-khoan'          => (new TaiKhoanController())->destroy(),
+    // don hang
+    'don-hangs'          => (new DonHangController())->danhSachDonHang(),
+    'form-sua-don-hang'          => (new DonHangController())->formEditDonHang(),
+    'sua-don-hang'          => (new DonHangController())->postEditDonHang(),
+    'chi-tiet-don-hang'          => (new DonHangController())->detailDonHang(),
+    'tim-kiem-don-hang'                  => (new DonHangController())->timkiemDonHang(),
+    //
+    'trang-thai-don-hangs'             => (new TrangThaiDonHangController())->index(),
+    'form-them-trang-thai-don-hangs'    => (new TrangThaiDonHangController())->create(),
+    'them-trang-thai-don-hangs'         => (new TrangThaiDonHangController())->store(),
+    'form-sua-trang-thai-don-hangs'     => (new TrangThaiDonHangController())->edit(),
+    'sua-trang-thai-don-hangs'              => (new TrangThaiDonHangController())->update(),
+    'xoa-trang-thai-don-hangs'          => (new TrangThaiDonHangController())->destroy(),
+
+
+
+
+    
 };

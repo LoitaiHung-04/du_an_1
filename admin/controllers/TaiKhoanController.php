@@ -1,31 +1,32 @@
 <?php
-include '../models/TaiKhoan.php'; // include model TaiKhoan
+include '../models/TaiKhoan.php'; 
 
 class TaiKhoanController
 {
-    public $modelTaiKhoan; // thêm đối tượng modelTaiKhoan
+    public $modelTaiKhoan; 
 
     public function __construct()
     {
-        $this->modelTaiKhoan = new TaiKhoan(); // khởi tạo đối tượng modelTaiKhoan
+        $this->modelTaiKhoan = new TaiKhoan(); 
     }
     public function index()
     {
         $TaiKhoan = $this->modelTaiKhoan->getAll();
         include './views/pages/taikhoan/list.php';
     }
-    public function create()
-    {
-        include './views/pages/taikhoan/add.php';
-    }
-    public function edit()
+    public function chitiet()
     {
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
-            $TaiKhoan = $this->modelTaiKhoan->getOne($id);
-            include './views/pages/taikhoan/edit.php';
+            $TaiKhoan2 = $this->modelTaiKhoan->getOne($id);
         }
+
+        include './views/pages/taikhoan/profile.php';
+        
     }
+    
+
+    
     public function destroy()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -52,16 +53,14 @@ class TaiKhoanController
         $trang_thai = $_POST['trang_thai'];
 
         $error = [];
-        $anh_dai_dien = ''; // Đặt giá trị mặc định là rỗng.
+        $anh_dai_dien = '';
 
-        // Kiểm tra nếu có ảnh đại diện được tải lên
         if (isset($_FILES['anh_dai_dien']) && $_FILES['anh_dai_dien']['error'] == 0) {
             $tmp_name = $_FILES['anh_dai_dien']['tmp_name'];
             $file_name = $_FILES['anh_dai_dien']['name'];
             $file_size = $_FILES['anh_dai_dien']['size'];
             $file_type = $_FILES['anh_dai_dien']['type'];
 
-            // Kiểm tra loại file (chỉ cho phép ảnh JPEG, PNG, GIF)
             $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
             if (!in_array($file_type, $allowed_types)) {
                 $error['anh_dai_dien'] = 'Chỉ cho phép upload file ảnh (JPEG, PNG, GIF)';
@@ -86,7 +85,6 @@ class TaiKhoanController
             $error['anh_dai_dien'] = 'Vui lòng chọn ảnh đại diện';
         }
 
-        // Kiểm tra các trường khác
         if (empty($ho_ten)) {
             $error['ten_tai_khoan'] = 'Vui lòng nhập';
         }
@@ -112,21 +110,17 @@ class TaiKhoanController
             $error['trang_thai'] = 'Vui lòng nhập';
         }
 
-        // Kiểm tra email đã tồn tại chưa trong cơ sở dữ liệu
         if ($this->modelTaiKhoan->checkEmail($email)) {
             $error['email'] = 'Email này đã được sử dụng';
         }
 
-        // Nếu không có lỗi, lưu thông tin vào database
         if (empty($error)) {
-            // Lưu tài khoản vào cơ sở dữ liệu
             $this->modelTaiKhoan->formTaiKhoan($ho_ten, $anh_dai_dien, $ngay_sinh, $email, $so_dien_thoai, $gioi_tinh, $dia_chi, $mat_khau, $trang_thai);
             unset($_SESSION['error']);
             header('Location: ?act=tai-khoans');
             exit();
         } else {
             
-            // Lưu lỗi vào session và chuyển hướng lại trang form
             $_SESSION['error'] = $error;
             header('Location: ?act=form-them-tai-khoan');
             exit();
@@ -135,8 +129,7 @@ class TaiKhoanController
     }
 }
 
-
-public function update()
+public function update2()
 {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $id = $_POST['id'];
@@ -150,10 +143,9 @@ public function update()
         $trang_thai = $_POST['trang_thai'];
 
         $error = [];
-        $anh_dai_dien = ''; // Giá trị mặc định
+        $anh_dai_dien = ''; 
         
 
-        // Kiểm tra nếu có ảnh đại diện mới được tải lên
         if (isset($_FILES['anh_dai_dien']) && $_FILES['anh_dai_dien']['error'] == 0) {
             $tmp_name = $_FILES['anh_dai_dien']['tmp_name'];
             $file_name = $_FILES['anh_dai_dien']['name'];
@@ -166,29 +158,25 @@ public function update()
                 $error['anh_dai_dien'] = 'Chỉ cho phép upload file ảnh (JPEG, PNG, GIF)';
             }
 
-            // Kiểm tra kích thước file (tối đa 2MB)
             if ($file_size > 2 * 1024 * 1024) {
                 $error['anh_dai_dien'] = 'Kích thước ảnh không được vượt quá 2MB';
             }
 
-            // Di chuyển file vào thư mục uploads
             if (empty($error)) {
                 
 
-                $anh_dai_dien = time() . '_' . basename($file_name); // Tạo tên file duy nhất
-                $upload_path =   $anh_dai_dien;
+                $anh_dai_dien = time() . '_' . basename($file_name); 
+                $upload_path =   'uploads/'.$anh_dai_dien;
 
                 if (!move_uploaded_file($tmp_name, $upload_path)) {
                     $error['anh_dai_dien'] = 'Không thể tải ảnh lên';
                 }
             }
         } else {
-            // Nếu không có ảnh mới, giữ nguyên ảnh cũ
             $existing_data = $this->modelTaiKhoan->getOne($id);
             $anh_dai_dien = $existing_data['anh_dai_dien'];
         }
 
-        // Kiểm tra các trường khác
         if (empty($ho_ten)) {
             $error['ten_tai_khoan'] = 'Vui lòng nhập';
         }
@@ -214,9 +202,7 @@ public function update()
             $error['trang_thai'] = 'Vui lòng nhập';
         }
 
-        // Kiểm tra email đã tồn tại chưa
         
-        // Nếu không có lỗi, cập nhật thông tin vào database
         if (empty($error)) {
             $this->modelTaiKhoan->formTaiKhoan($ho_ten, $anh_dai_dien, $ngay_sinh, $email, $so_dien_thoai, $gioi_tinh, $dia_chi, $mat_khau, $trang_thai, $id);
             unset($_SESSION['error']);
@@ -229,6 +215,19 @@ public function update()
         }
     }
 }
+        public function timkiem(){
+            $key = $_POST['key'];
+            $resultSearch = [];
+            if(isset($key)){
+            $resultSearch = $this->modelTaiKhoan->search($key);           
+            
+            include './views/pages/taikhoan/list.php';
+
+            }
+            return true ;
+        }
+        
+
 
 }
 ?>

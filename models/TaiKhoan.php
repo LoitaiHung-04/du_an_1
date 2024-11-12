@@ -13,39 +13,56 @@ class TaiKhoan
     public function getAll()
     {
         $sql = 'SELECT * FROM tai_khoans';
-        return query_all_data($sql); // Bạn cần chắc chắn là hàm này tồn tại và hoạt động tốt
+        return query_all_data($sql); 
     }
 
     public function getOne($id)
     {
         $sql = "SELECT * FROM tai_khoans WHERE id = ?";
-        return query_one_data($sql, [$id]); // Truyền mảng tham số để tránh SQL Injection
+        return query_one_data($sql, [$id]); 
     }
 
     public function formTaiKhoan($ho_ten, $anh_dai_dien, $ngay_sinh, $email, $so_dien_thoai, $gioi_tinh, $dia_chi, $mat_khau, $trang_thai, $id = "")
     {
         if ($id != "") {
-            // Cập nhật tài khoản
             $sql = "UPDATE tai_khoans SET ho_ten = ?, anh_dai_dien = ?, ngay_sinh = ?, email = ?, so_dien_thoai = ?, gioi_tinh = ?, dia_chi = ?, mat_khau = ?, trang_thai = ? WHERE id = ?";
             $params = [$ho_ten, $anh_dai_dien, $ngay_sinh, $email, $so_dien_thoai, $gioi_tinh, $dia_chi, $mat_khau, $trang_thai, $id];
         } else {
-            // Thêm tài khoản mới
             $sql = "INSERT INTO tai_khoans (ho_ten, anh_dai_dien, ngay_sinh, email, so_dien_thoai, gioi_tinh, dia_chi, mat_khau, trang_thai)
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $params = [$ho_ten, $anh_dai_dien, $ngay_sinh, $email, $so_dien_thoai, $gioi_tinh, $dia_chi, $mat_khau, $trang_thai];
         }
 
-        // Gọi hàm execute để thực thi câu lệnh SQL
         return execute($sql, $params);
     }
-    // Trong modelTaiKhoan.php
-public function checkEmail($email) {
-    // Giả sử bạn đang dùng PDO để truy vấn cơ sở dữ liệu
-    $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM tai_khoans WHERE email = :email");
-    $stmt->execute(['email' => $email]);
-    $count = $stmt->fetchColumn();
-    return $count > 0;
-}
+    public function checkEmail($email) {
+        $sql = "SELECT COUNT(*) AS count FROM tai_khoans WHERE email = ?";
+        
+        $result = $this->query_one_data($sql, [$email]);
+        
+        return $result['count'] > 0;
+    }
+    public function search($key) {
+        $sql = "SELECT * FROM tai_khoans WHERE ho_ten LIKE ? OR
+                                                email LIKE ? OR
+                                                so_dien_thoai LIKE ? OR
+                                                dia_chi LIKE ? OR
+                                                trang_thai LIKE ? OR
+                                                gioi_tinh LIKE ?";
+        
+        $param = [
+            "%$key%", // ho ten
+            "%$key%", // email
+            "%$key%", // so dien thoai
+            "%$key%", // dia chi
+            "%$key%", // trang thai
+            "%$key%"  // gioi tinh
+        ];
+        
+        return query_all_data($sql, $param);
+    }
+
+
 
 
   
@@ -54,6 +71,6 @@ public function checkEmail($email) {
     {
         $sql = "DELETE FROM tai_khoans WHERE id = ?";
         $params = [$id];
-        return execute($sql, $params); // Gọi hàm execute để thực thi câu lệnh SQL
+        return execute($sql, $params); 
     }
 }
