@@ -59,44 +59,25 @@ class ProductController
                     }
                 }
             }
+            $variants = []; // Mảng để lưu các biến thể đã nhóm lại
+
+            foreach ($_POST['variants'] as $key => $value) {
+                $index = floor($key / 5);
+
+                if (!isset($variants[$index])) {
+                    $variants[$index] = [];
+                }
+
+                // Thêm giá trị vào mảng con
+                $variants[$index][key($value)] = current($value);
+            }
+            // var_dump($variants);die();
+            foreach ($variants as $key => $value) {
+                   $this->product->addVariant($value['color'],$value['capacity'],$value['variant_price'],$value['sku'],$value['quantity'],$idLate);
+            }
+ 
+
             header('location:?act=list-product');
-        //     $variants = []; // Mảng để lưu các biến thể đã nhóm lại
-
-        //     foreach ($_POST['variants'] as $key => $value) {
-        //         $index = floor($key / 5);
-
-        //         if (!isset($variants[$index])) {
-        //             $variants[$index] = [];
-        //         }
-
-        //         // Thêm giá trị vào mảng con
-        //         $variants[$index][key($value)] = current($value);
-        //     }
-        //    var_dump($_FILES['variants']);die();
-        //     // Xử lý ảnh upload
-        //     if (isset($_FILES['variants']) && isset($_FILES['variants']['photo'])) {
-        //         foreach ($_FILES['variants']['photo'] as $key => $filename) {
-        //             $index = floor($key / 5); 
-
-                 
-        //             if ($filename) {
-        //                 // Đặt tên mới cho ảnh (có thể thêm thời gian hoặc một số ngẫu nhiên để tránh trùng lặp)
-        //                 $uploadDir = $_SERVER['DOCUMENT_ROOT'] . "/du_an_1/uploads/variants/"; // Thư mục nơi ảnh sẽ được lưu
-        //                 $uploadFile = $uploadDir . $filename;
-
-        //                 // Di chuyển ảnh từ tạm đến thư mục lưu trữ
-        //                 if (move_uploaded_file($_FILES['variants']['photo']['tmp_name'][$key], $uploadFile)) {
-        //                     // Thêm đường dẫn ảnh vào mảng variants
-        //                     $variants[$index]['photo'] = $uploadFile; // Hoặc có thể thêm vào một mảng ảnh riêng nếu cần
-        //                 } else {
-        //                     // Xử lý lỗi nếu upload không thành công
-        //                     $variants[$index]['photo_error'] = 'Error uploading file';
-        //                 }
-        //             }
-        //         }
-        //     }
-
-        //     var_dump($variants); 
 
         }
     }

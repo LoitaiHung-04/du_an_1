@@ -98,4 +98,9 @@ class Product
         $sql = "SELECT * FROM dung_luong";
         return query_all_data($sql);
     }
+    public function addVariant($color,$capacity,$price,$sku,$quantity,$proid){
+        $sql="INSERT INTO `bien_the`(`product_id`, `mau_sac`, `dung_luong`, `price`, `quantity`, `sku`) VALUES (?,?,?,?,?,?)";
+        $params =[$proid,$color,$capacity,$price,$quantity,$sku];
+        return execute($sql,$params);
+    }
 }
