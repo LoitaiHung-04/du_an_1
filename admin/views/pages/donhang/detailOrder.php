@@ -154,8 +154,7 @@
                                                             <tr class="table-active">
                                                                 <th scope="col" style="width: 50px;">STT</th>
                                                                 <th scope="col" >Sản Phẩm</th>
-                                                                <th scope="col" >Màu Sắc</th>
-                                                                <th scope="col" >Dung lượng</th>
+                                                                
                                                                 <th scope="col" >Đơn giá</th>
                                                                 <th scope="col" >Số Lượng</th>
                                                                 <th scope="col" class="text-end">Thành Tiền</th>
@@ -169,16 +168,7 @@
                                                                             <?= $row['ten_san_pham'] ?>
                                                                         </p>
                                                                     </td>
-                                                                    <td class="text-center">
-                                                                        <p class="text-muted mb-0">
-                                                                            <?= $row['mau'] ?>
-                                                                        </p>
-                                                                    </td>
-                                                                    <td class="text-center">
-                                                                        <p class="text-muted mb-0">
-                                                                            <?= $row['dung_luong'] ?>
-                                                                        </p>
-                                                                    </td>
+                                                                   
                                                                     <td><?= number_format($row['don_gia'], 0, ',', '.') ?> đ</td> <!-- Đơn giá -->
                                                                     <td><?= $row['so_luong'] ?></td> <!-- Số lượng -->
                                                                     <td class="text-end">
@@ -295,3 +285,4 @@
 </body>
 
 </html>
+

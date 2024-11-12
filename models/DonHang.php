@@ -56,17 +56,15 @@ include_once '../commons/function.php';
     }
     
     public function getListSpDonHang($id_don_hang) {
-        $sql = 'SELECT chi_tiet_don_hangs.*, san_phams.ten_san_pham , mau_sac.name AS mau, dung_luong.name AS dung_luong
+        $sql = 'SELECT chi_tiet_don_hangs.*, san_phams.ten_san_pham 
         FROM chi_tiet_don_hangs
         INNER JOIN san_phams ON chi_tiet_don_hangs.san_pham_id = san_phams.id
-        INNER JOIN mau_sac ON chi_tiet_don_hangs.mau_sac_id = mau_sac.id
-        INNER JOIN dung_luong on chi_tiet_don_hangs.dung_luong_id = dung_luong.id
         WHERE chi_tiet_don_hangs.don_hang_id = ?';
         $param = [$id_don_hang];
     
         
         return query_all_data($sql, $param);
-    }
+    } 
     public function getAllTrangThaiDonHang() {
         $sql = 'SELECT * FROM trang_thai_don_hangs'; 
         $param = [];   

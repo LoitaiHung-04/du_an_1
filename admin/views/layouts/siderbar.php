@@ -99,7 +99,7 @@
                     <a class="nav-link menu-link" href="#danhmuc" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="danhmuc">
                         <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Danh mục sản phẩm</span>
                     </a>
-                    <div class="collapse menu-dropdown" id="#danhmuc">
+                    <div class="collapse menu-dropdown" id="danhmuc">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="?act=danh-mucs" class="nav-link" data-key="t-sweet-alerts">
