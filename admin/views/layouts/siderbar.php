@@ -99,7 +99,7 @@
                     <a class="nav-link menu-link" href="#danhmuc" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="danhmuc">
                         <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Danh mục sản phẩm</span>
                     </a>
-                    <div class="collapse menu-dropdown" id="#danhmuc">
+                    <div class="collapse menu-dropdown" id="danhmuc">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="?act=danh-mucs" class="nav-link" data-key="t-sweet-alerts">
@@ -223,7 +223,21 @@
                         </ul>
                     </div>
                 </li>
-                
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#lienhe" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="banner">
+                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Liên hệ</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="lienhe">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="?act=lien-he" class="nav-link" data-key="t-sweet-alerts">
+                                    Danh sách
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
 
                 <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-pages">Bán hàng</span></li>
 

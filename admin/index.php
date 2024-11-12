@@ -14,6 +14,8 @@ require_once 'controllers/TaiKhoanController.php';
 require_once 'controllers/DonHangController.php';
 require_once 'controllers/TrangThaiDonHangController.php';
 require_once 'controllers/ProductController.php';
+require_once 'controllers/LienHeController.php';
+
 
 
 
@@ -75,4 +77,7 @@ match ($act) {
     'delete-product'     => (new ProductController())->destroy(),
     'delete-image'     => (new ProductController())->destroyImage(),
 
+    'lien-he'               => (new ContactController())->index(),
+    'chi-tiet-lien-he' => (new ContactController())->show($_GET['id']),
+    'xoa-lien-he' => (new ContactController())->destroy($_GET['id'] ?? null),
 };

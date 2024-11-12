@@ -26,7 +26,38 @@ class DanhMucController
     }
 
     //hàm xử lý thêm CSDL
-   
+    public function store()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Lấy dữ liệu
+            $ten_danh_muc = $_POST['ten_danh_muc'];
+            $trang_thai = $_POST['trang_thai'];
+
+            // Validate
+            $errors = [];
+            if (empty($ten_danh_muc)) {
+                $errors['ten_danh_muc'] = 'Vui lòng nhập tên danh mục';
+            }
+            if (empty($trang_thai)) {
+                $errors['trang_thai'] = 'Vui lòng chọn trạng thái';
+            }
+
+            // Thêm dữ liệu
+            if (empty($errors)) {
+                if ($this->modelDanhMuc->postData($ten_danh_muc, $trang_thai)) {
+                    unset($_SESSION['errors']);
+                    header('Location: ?act=danh-mucs');
+                    exit();
+                } else {
+                    $_SESSION['errors']['database'] = 'Lỗi thêm dữ liệu vào cơ sở dữ liệu';
+                }
+            } else {
+                $_SESSION['errors'] = $errors;
+                header('Location: ?act=form-them-danh-muc');
+                exit();
+            }
+        }
+    }
 
     //hàm hiển thị form sửa
     public function edit()
