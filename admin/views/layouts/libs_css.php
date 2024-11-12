@@ -6,7 +6,7 @@
 
 <!--Swiper slider css-->
 <link href="assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
-
+<script src="https:////cdn.ckeditor.com/4.8.0/full-all/ckeditor.js"></script>
 <!-- Layout config Js -->
 <script src="assets/js/layout.js"></script>
 <!-- Bootstrap Css -->
@@ -17,3 +17,4 @@
 <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
 <!-- custom Css-->
 <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>

@@ -115,6 +115,25 @@
                     </div>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sanpham" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sanpham">
+                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Sản phẩm</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="sanpham">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="?act=list-product" class="nav-link" data-key="t-sweet-alerts">
+                                    Danh sách
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="?act=form-add-product" class="nav-link" data-key="t-nestable-list">
+                                    Thêm mới
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link menu-link" href="#baiviet" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="baiviet">
                         <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Bài Viết</span>
                     </a>
@@ -133,6 +152,7 @@
                         </ul>
                     </div>
                 </li>
+                
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarbanner" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarbanner">
                         <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Quản lý banner</span>
