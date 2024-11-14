@@ -11,10 +11,12 @@ class Product
         p.hinh_anh,
         p.trang_thai,
         p.id,
-        c.ten_danh_muc as namedm 
+        c.ten_danh_muc as namedm
+      
         from san_phams as p 
         inner join danh_mucs as c 
         on p.danh_muc_id = c.id 
+     
         order by p.id desc';
 
         return query_all_data($sql);
@@ -98,9 +100,26 @@ class Product
         $sql = "SELECT * FROM dung_luong";
         return query_all_data($sql);
     }
-    public function addVariant($color,$capacity,$price,$sku,$quantity,$proid){
-        $sql="INSERT INTO `bien_the`(`product_id`, `mau_sac`, `dung_luong`, `price`, `quantity`, `sku`) VALUES (?,?,?,?,?,?)";
-        $params =[$proid,$color,$capacity,$price,$quantity,$sku];
+    public function addVariant($color, $capacity, $price, $sku, $quantity, $proid)
+    {
+        $sql = "INSERT INTO `bien_thes`(`product_id`, `mau_sac`, `dung_luong`, `price`, `quantity`, `sku`) VALUES (?,?,?,?,?,?)";
+        $params = [$proid, $color, $capacity, $price, $quantity, $sku];
+        return execute($sql, $params);
+    }
+    public function getVariant($id)
+    {
+        $sql = "SELECT * FROM bien_thes WHERE product_id =?";
+        $params =[$id];
+        return query_all_data($sql,$params);
+    }
+    public function updateVariant($id, $color, $capacity, $price, $sku, $quantity,$id_variant){
+        $sql = "UPDATE `bien_thes` SET `product_id`=?,`mau_sac`=?,`dung_luong`=?,`price`=?,`quantity`=?,`sku`=? WHERE id=?";
+        $params = [$id,$color,$capacity,$price,$quantity,$sku,$id_variant];
+        return execute($sql,$params);   
+    }
+    public function deleteVariant($id){
+        $sql = "DELETE FROM bien_thes WHERE id=?";
+        $params = [$id];
         return execute($sql,$params);
     }
 }

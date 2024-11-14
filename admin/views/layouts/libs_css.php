@@ -3,6 +3,7 @@
 
 <!-- jsvectormap css -->
 <link href="assets/libs/jsvectormap/jsvectormap.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
 <!--Swiper slider css-->
 <link href="assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />

@@ -150,7 +150,7 @@
                                                                                 onsubmit="return confirm('Bạn có chắc chắn muốn xóa?')">
                                                                                 <input type="hidden" name="don-hang-id"
                                                                                     value="<?= $row['id'] ?>">
-                                                                                <button type="submit" class="link-danger fs-15">
+                                                                                <button type="submit" class="link-danger fs-15" style="border: none;" >
                                                                                     <i class="ri-delete-bin-line"></i>
                                                                                 </button>
                                                                             </form>

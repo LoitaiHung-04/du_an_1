@@ -204,6 +204,34 @@
                     </div>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link menu-link" href="#danhgia" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="danhgia">
+                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Quản lí đánh giá</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="danhgia">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="?act=danh-gia" class="nav-link" data-key="t-sweet-alerts">
+                                    Danh sách
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#binhluan" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="binhluan">
+                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Quản lí bình luận</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="binhluan">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="?act=binh-luan" class="nav-link" data-key="t-sweet-alerts">
+                                    Danh sách
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link menu-link" href="#trangthaidonhang" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="trangthaidonhang">
                         <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Quản lí trạng thái đơn hàng</span>
                     </a>

@@ -46,12 +46,12 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                                <h4 class="mb-sm-0">Quản lý danh sách Banner</h4>
+                                <h4 class="mb-sm-0">Quản lý danh mục sản phẩm</h4>
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                        <li class="breadcrumb-item active">Danh sách Banner</li>
+                                        <li class="breadcrumb-item active">Danh sách bình luận </li>
                                     </ol>
                                 </div>
 
@@ -65,8 +65,7 @@
                             <div class="h-100">
                                 <div class="card">
                                     <div class="card-header align-items-center d-flex">
-                                        <h4 class="card-title mb-0 flex-grow-1">Danh sách Banner</h4>
-                                        <a href="?act=form-add-product" class="btn btn-soft-success material-shadow-none"><i class="ri-add-circle-line align-middle me-1"></i> Thêm sản phẩm</a>
+                                        <h4 class="card-title mb-0 flex-grow-1">Danh sách bình luận</h4>
                                     </div><!-- end card header -->
 
                                     <div class="card-body">
@@ -75,44 +74,46 @@
                                                 <table class="table table-striped table-nowrap align-middle mb-0">
                                                     <thead>
                                                         <tr>
-                                                            <th scope="col">#</th>
-                                                            <th scope="col">Title</th>
-                                                            <th scope="col">Content</th>
-                                                            <th scope="col">Image</th>
-                                                            <th scope="col">Action</th>
+                                                            <th scope="col">STT</th>
+                                                            <th scope="col">Nội Dung</th>
+
+                                                            <th scope="col">User</th>
+                                                            <th>Sản Phẩm</th>
+                                                            <th>Ngày đăng</th>
+                                                            <th>Trạng thái</th>
+
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+
                                                         <?php foreach ($data as $key => $value) : ?>
                                                             <tr>
                                                                 <td>
-                                                                    <a href="apps-ecommerce-order-details.html" class="fw-medium link-primary">#<?= $key ?></a>
+                                                                    <?= $key ?>
                                                                 </td>
                                                                 <td>
-                                                                    <?= $value['title'] ?>
-                                                                </td>
-                                                                <td><?= $value['content'] ?></td>
-
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <div class="flex-shrink-0 me-2">
-                                                                            <img src="<?= "/du_an_1/uploads/" . $value['image'] ?>" alt="" class="avatar-xs rounded-circle material-shadow" />
-                                                                        </div>
-                                                                        <div class="flex-grow-1"></div>
-                                                                    </div>
+                                                                    <?= $value['noi_dung'] ?>
                                                                 </td>
                                                                 <td>
-                                                                    <a href="?act=delete-banner&id=<?= $value['id'] ?>" class="link-danger fs-15" onclick="return confirm('bạn muốn xóa không ?')"><i class="ri-delete-bin-line"></i></a>
-                                                                    <a href="?act=edit-banner&id=<?= $value['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
-
-
-
+                                                                    <?= $value['hoten'] ?>
                                                                 </td>
+                                                                <td>
+                                                                    <?= $value['nameSP'] ?>
+                                                                </td>
+                                                                <td>
+                                                                    <?= $value['ngay_dang'] ?>
+                                                                </td>
+                                                                <td>
+                                                                    <?php if ($value['trang_thai'] == 1) : ?>
+                                                                        <span class="badge bg-success">Hiển thị</span>
+                                                                    <?php else : ?>
+                                                                        <span class="badge bg-danger">Không hiển thị</span>
+                                                                    <?php endif; ?>
+                                                                </td>
+
                                                             </tr>
                                                         <?php endforeach ?>
-
-
-                                                    </tbody><!-- end tbody -->
+                                                    </tbody>
 
                                                 </table>
                                             </div>

@@ -17,9 +17,11 @@ require_once 'controllers/TrangThaiDonHangController.php';
 require_once 'controllers/ProductController.php';
 require_once 'controllers/LienHeController.php';
 require_once 'controllers/KhuyenMaiController.php';
+require_once 'controllers/DanhGiaController.php';
+require_once 'controllers/BinhLuanController.php';
 
 
-define('BASE_URL_ADMIN', 'http://localhost:85/du_an_1/admin');
+define('BASE_URL_ADMIN', 'http://localhost:80/du_an_1/admin');
 
 function checkLogin() {
     if (!isset($_SESSION['user_admin'])) {
@@ -103,4 +105,9 @@ match ($act) {
     'form-sua-khuyen-mai' => (new KhuyenMaiController())->edit(),
     'sua-khuyen-mai' => (new KhuyenMaiController())->update(),
     'xoa-khuyen-mai' => (new KhuyenMaiController())->destroy(),
+    // danh gia
+    'danh-gia' => (new DanhGiaController())->index(),
+       // binhluan
+    'binh-luan' => (new BinhLuanController())->index(),
+ 
 };
