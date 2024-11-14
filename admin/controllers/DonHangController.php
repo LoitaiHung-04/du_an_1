@@ -30,16 +30,18 @@ class DonHangController
 public function detailDonHang()
 {
     if (isset($_GET['id'])) {
-        $id = $_GET['id']; // Sửa từ 'id_don_hang' thành 'id'
+        $id = $_GET['id']; // ID đơn hàng
 
+        // Tiến hành lấy thông tin chi tiết
         $donHang = $this->modelDonHang->getDetailDonHang($id);
+        
         $sanPhamDonHang = $this->modelDonHang->getListSpDonHang($id);
         $khuyenMai = $this->modelDonHang->getKhuyenMai($id);
         $listTrangThaiDonHang = $this->modelDonHang->getAllTrangThaiDonHang();
 
         include './views/pages/donhang/detailOrder.php';
     } else {
-        header(header: "Location: ?act=don-hangs");
+        header("Location: ?act=don-hangs");
         exit();
     }
 }
@@ -104,6 +106,7 @@ public function postEditDonHang()
             }
         }
     }
+   
 
 }
 

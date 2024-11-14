@@ -23,9 +23,6 @@
         <?php
         require_once "views/layouts/header.php";
         require_once "views/layouts/siderbar.php";
-    require_once "views/layouts/libs_js.php";
-    
-        
         ?>
 
         <!-- Left Sidebar End -->
@@ -42,15 +39,13 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                                <h4 class="mb-sm-0">Quản lí bài viết</h4>
-                                <a href="?act=form-them-bai-viet" class="btn btn-soft-success material-shadow-none">
-                                    <i class="ri-add-circle-line align-middle me-1"></i> Thêm bài viết
-                                </a>
+                                <h4 class="mb-sm-0">Quản lí khuyến mãi</h4>
+                               
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                        <li class="breadcrumb-item active">Danh mục bài viết</li>
+                                        <li class="breadcrumb-item active">khuyến mãi</li>
                                     </ol>
                                 </div>
                             </div>
@@ -63,59 +58,74 @@
                             <div class="h-100">
                                 <div class="card">
                                     <div class="card-header align-items-center d-flex">
-                                        <h4 class="card-title mb-0 flex-grow-1">Thêm bài viết</h4>
+                                        <h4 class="card-title mb-0 flex-grow-1">Thêm mã giảm giá</h4>
                                     </div><!-- end card header -->
 
                                     <div class="card-body">
                                         <div class="live-preview">
-                                            <form action="?act=them-bai-viet" method="POST">
+                                            <form action="?act=them-khuyen-mai" method="POST">
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="mb-3">
-                                                            <label for="emailidInput" class="form-label">Title</label>
-                                                            <input type="textarea" class="form-control" placeholder="Nhập title" name="title" value="">
+                                                            <label for="emailidInput" class="form-label">Tên khuyến mãi</label>
+                                                            <input type="text" class="form-control" placeholder="Nhập khuyến mãi " name="ten_khuyen_mai" value="">
 
                                                             <span class="text-danger">
-                                                                <?= !empty($_SESSION['error']['title']) ? $_SESSION['error']['title'] : '' ?>
+                                                                <?= !empty($_SESSION['error']['ten_khuyen_mai']) ? $_SESSION['error']['ten_khuyen_mai'] : '' ?>
                                                             </span>
                                                         </div>
-                                                    </div>
-                                                    <!-- end col -->
-                                                    <div class="col-md-12">
                                                         <div class="mb-3">
-                                                            <label for="address1ControlTextarea" class="form-label">Content</label>
-                                                            <textarea name="content" id="editor"></textarea>
+                                                            <label for="emailidInput" class="form-label">Mô tả</label>
+                                                            <input type="textarea" class="form-control" placeholder="Nhập mô tả " name="mo_ta" value="">
+
                                                             <span class="text-danger">
-                                                                <?= !empty($_SESSION['error']['content']) ? $_SESSION['error']['content'] : '' ?>
+                                                                <?= !empty($_SESSION['error']['mo_ta']) ? $_SESSION['error']['mo_ta'] : '' ?>
                                                             </span>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-12">
                                                         <div class="mb-3">
-                                                            <label for="address1ControlTextarea" class="form-label">Date</label>
-                                                            <input type="date" class="form-control" placeholder="Nhập content" name="ngay_dang">
+                                                            <label for="emailidInput" class="form-label">Giảm giá </label>
+                                                            <input type="number" class="form-control" placeholder="Nhập Giảm giá " name="giam_gia" value="">
+
                                                             <span class="text-danger">
-                                                                <?= !empty($_SESSION['error']['ngay_dang']) ? $_SESSION['error']['ngay_dang'] : '' ?>
+                                                                <?= !empty($_SESSION['error']['giam_gia']) ? $_SESSION['error']['giam_gia'] : '' ?>
                                                             </span>
                                                         </div>
-                                                    </div>
-                                                   
-                                                    
-                                                    
-                                                    <!-- end col -->
-                                                    <div class="col-md-6">
+
                                                         <div class="mb-3">
-                                                            <label for="ForminputState" class="form-label" name="trang_thai">Trạng thái</label>
-                                                            <select id="ForminputState" class="form-select" name="trang_thai">
-                                                                <option selected disabled>Chọn trạng thái</option>
-                                                                <option value="1">Hiển thị</option>
-                                                                <option value="2">Không hiển thị</option>
-                                                            </select>
+                                                            <label for="emailidInput" class="form-label">Ngày bắt đầu</label>
+                                                            <input type="date" class="form-control" placeholder="Nhập ngày bắt đầu " name="ngay_bat_dau" value="">
+
+                                                            <span class="text-danger">
+                                                                <?= !empty($_SESSION['error']['ngay_bat_dau']) ? $_SESSION['error']['ngay_bat_dau'] : '' ?>
+                                                            </span>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="emailidInput" class="form-label">Ngày kết thúc</label>
+                                                            <input type="date" class="form-control" placeholder="Nhập ngày kết thúc " name="ngay_ket_thuc" value="">
+
+                                                            <span class="text-danger">
+                                                                <?= !empty($_SESSION['error']['ngay_ket_thuc']) ? $_SESSION['error']['ngay_ket_thuc'] : '' ?>
+                                                            </span>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="emailidInput" class="form-label">Trạng thái </label>
+                                                            <input type="textarea" class="form-control" placeholder="Nhập trạng thái " name="trang_thai" value="">
+
                                                             <span class="text-danger">
                                                                 <?= !empty($_SESSION['error']['trang_thai']) ? $_SESSION['error']['trang_thai'] : '' ?>
                                                             </span>
                                                         </div>
+                                                        <div class="mb-3">
+                                                            <label for="emailidInput" class="form-label">Số lượng</label>
+                                                            <input type="number" class="form-control" placeholder="Nhập số lượng " name="so_luong" value="">
+
+                                                            <span class="text-danger">
+                                                                <?= !empty($_SESSION['error']['so_luong']) ? $_SESSION['error']['so_luong'] : '' ?>
+                                                            </span>
+                                                        </div>
                                                     </div>
+                                                    <!-- end col -->
+                                                    
                                                     <!-- end col -->
                                                     <div class="col-lg-12">
                                                         <div class="text-end">
@@ -182,10 +192,9 @@
     </div>
 
     <!-- JAVASCRIPT -->
-    
-      <script type="module" >
-        CKEDITOR.replace('editor');
-     </script>
+    <?php
+    require_once "views/layouts/libs_js.php";
+    ?>
 </body>
 
 </html>

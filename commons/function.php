@@ -57,6 +57,16 @@ function addGetLateId($sql, $params = [])
     $conn = null;
 
     return $lastInsertId;
+
 }
+function checkLoginAdmin() {
+    
+    if (empty($_SESSION['user_admin'])) {
+        require_once './views/pages/login/login.php';
+        exit();
+        
+    }
+}
+
 
 

@@ -1,5 +1,7 @@
 <?php
 include '../models/BaiViet.php';
+
+
 class BaivietController
 {
     // hàm hiển thị danh sách

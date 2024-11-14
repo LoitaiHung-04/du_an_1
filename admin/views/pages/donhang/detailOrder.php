@@ -80,32 +80,25 @@
                                                         }                                                
                                                         ?>
                                                         <div class="alert alert-<?= $colorElerts ?>" role="alert">
+                                                            Trạng thái đơn hàng : 
                                                             <?= $donHang['ten_trang_thai_id']; ?>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-3 col-6">
-                                                        <p class="text-muted mb-2 text-uppercase fw-semibold">Date</p>
+                                                        <p class="text-muted mb-2 text-uppercase fw-semibold">Ngày đặt hàng</p>
                                                         <h5 class="fs-14 mb-0"><span
                                                                 id="invoice-date"><?= $donHang['ngay_dat'] ?></span>
                                                         </h5>
                                                     </div>
                                                     <div class="col-lg-3 col-6">
-                                                        <p class="text-muted mb-2 text-uppercase fw-semibold">Payment
+                                                        <p class="text-muted mb-2 text-uppercase fw-semibold">Trạng thái thanh toán
                                                             Status
                                                         </p>
                                                         <span class="badge bg-success-subtle text-success fs-11"
                                                             id="payment-status"><?= $donHang['ten_trang_thai_thanh_toan'] ?></span>
                                                     </div>
-                                                    <?php foreach ($sanPhamDonHang as $index => $row): ?>
 
-                                                    <div class="col-lg-3 col-6">
-                                                        <p class="text-muted mb-2 text-uppercase fw-semibold">Total
-                                                            Amount
-                                                        </p>
-                                                        <h5 class="fs-14 mb-0"><span
-                                                                id="total-amount"><?= number_format($row['don_gia'] * $row['so_luong'] + $row['van_chuyen'] - $khuyenMai['giam_gia'], 0, ',', '.') ?>đ</span>
-                                                        </h5>
-                                                    </div>
+                                                   
                                                 </div>
                                             </div>
                                         </div>
@@ -113,8 +106,8 @@
                                             <div class="card-body p-4 border-top border-top-dashed">
                                                 <div class="row g-3">
                                                     <div class="col-6">
-                                                        <h6 class="text-muted text-uppercase fw-semibold mb-3">Thông tin
-                                                            người đặt
+                                                        <h6 class="text-muted text-uppercase fw-semibold mb-3">Thông tin tài khoản 
+                                                            đặt hàng
                                                         </h6>
                                                         <p class="fw-medium mb-2" id="billing-name">
                                                             <?= $donHang['ho_ten'] ?>
@@ -141,6 +134,9 @@
                                                         <p class="text-muted mb-0"><span>Ghi chú : </span><span
                                                                 id="billing-tax-no"><?= $donHang['ghi_chu'] ?></span>
                                                         </p>
+                                                        <p class="text-muted mb-0"><span>Email người nhận : </span><span
+                                                                id="billing-tax-no"><?= $donHang['email'] ?></span>
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -154,14 +150,19 @@
                                                             <tr class="table-active">
                                                                 <th scope="col" style="width: 50px;">STT</th>
                                                                 <th scope="col" >Sản Phẩm</th>
-                                                                <th scope="col" >Màu Sắc</th>
-                                                                <th scope="col" >Dung lượng</th>
                                                                 <th scope="col" >Đơn giá</th>
                                                                 <th scope="col" >Số Lượng</th>
                                                                 <th scope="col" class="text-end">Thành Tiền</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody id="products-list">
+                                                            <?php $thanhtien = 0; ?>
+                                                            <?php $tongTienSanPham = 0 ?>
+                                                        <?php foreach ($sanPhamDonHang as $index => $row): ?>
+                                                        <?php    $thanhtien = $row['don_gia'] * $row['so_luong'];  // Tính thành tiền cho từng sản phẩm
+                                                            $tongTienSanPham += $thanhtien;   ?>
+                                                            
+
                                                                 <tr>
                                                                     <th scope="row"><?= $index + 1 ?></th>
                                                                     <td class="text-center">
@@ -169,20 +170,11 @@
                                                                             <?= $row['ten_san_pham'] ?>
                                                                         </p>
                                                                     </td>
-                                                                    <td class="text-center">
-                                                                        <p class="text-muted mb-0">
-                                                                            <?= $row['mau'] ?>
-                                                                        </p>
-                                                                    </td>
-                                                                    <td class="text-center">
-                                                                        <p class="text-muted mb-0">
-                                                                            <?= $row['dung_luong'] ?>
-                                                                        </p>
-                                                                    </td>
+                                                                   
                                                                     <td><?= number_format($row['don_gia'], 0, ',', '.') ?> đ</td> <!-- Đơn giá -->
                                                                     <td><?= $row['so_luong'] ?></td> <!-- Số lượng -->
                                                                     <td class="text-end">
-                                                                        <?= number_format($thanhtien = $row['don_gia'] * $row['so_luong'], 0, ',', '.') ?> đ
+                                                                        <?= number_format($row['don_gia']* $row['so_luong'], 0, ',', '.') ?> đ
                                                                     </td> <!-- Thành tiền -->
                                                                 </tr>
                                                             <?php endforeach; ?>
@@ -198,16 +190,16 @@
                                                                 <td>Discount <small
                                                                         class="text-muted"><?= $khuyenMai['ten_khuyen_mai'] ?></small>
                                                                 </td>
-                                                                <td class="text-end"><?= number_format($khuyenMai['giam_gia'], 0, ',', '.') ?> đ</td>
+                                                                <td class="text-end"> - <?= number_format($khuyenMai['giam_gia'], 0, ',', '.') ?> đ</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Shipping Charge</td>
-                                                                <td class="text-end"><?= number_format($row['van_chuyen'], 0, ',', '.') ?> đ</td>
+                                                                <td class="text-end"> + <?= number_format($row['van_chuyen'], 0, ',', '.') ?> đ</td>
                                                             </tr>
                                                             <tr class="border-top border-top-dashed fs-15">
                                                                 <th scope="row">Total Amount</th>
                                                                 <th class="text-end">
-                                                                    <?= number_format($tongTien = $thanhtien + $row['van_chuyen'] - $khuyenMai['giam_gia'], 0, ',', '.') ?> đ
+                                                                    <?= number_format($tongTien = $tongTienSanPham - $khuyenMai['giam_gia']+$row['van_chuyen'], 0, ',', '.') ?> đ
                                                                 </th>
                                                             </tr>
                                                         </tbody>

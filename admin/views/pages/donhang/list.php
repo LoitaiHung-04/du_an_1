@@ -51,40 +51,29 @@
                     <!-- end page title -->
 
                     <div class="row">
-                        <div class="col-xl-4">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title mb-0">Tìm kiếm đơn hàng</h4>
-                                </div>
-                                <div class="card-body">
-                                    <form action="?act=tim-kiem-don-hang" method="POST">
-                                        <div class="row mb-1">
-                                            <div class="col">
-                                                <div>
-                                                    <input name="key" class="search form-control"
-                                                        placeholder="Search" />
-                                                </div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <button type="submit" class="btn btn-light sort" data-sort="name">
-                                                    Tìm kiếm
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <div data-simplebar style="height: 242px;" class="mx-n3">
-                                        <ul class="list list-group list-group-flush mb-0"></ul>
-                                    </div>
-                                </div><!-- end card body -->
-                            </div><!-- end card -->
-                        </div>
+
 
                         <div class="col">
                             <div class="h-100">
-                                <div class="card">
-                                    <div class="card-header align-items-center d-flex">
-                                        <h4 class="card-title mb-0 flex-grow-1">Đơn hàng</h4>
+                                <div class="row mb-4">
+                                    <form action="?act=tim-kiem-don-hang" method="POST" class="d-flex align-items-center">
+                                        <div class="col-auto">
+                                            <input name="key" class="search form-control form-control-sm me-2"
+                                                placeholder="Search" style="width: 200px;"
+                                                value="<?= isset($_POST['key']) ? htmlspecialchars($_POST['key']) : '' ?>" />
+                                        </div>
+                                        <div class="col-auto">
+                                            <button type="submit" class="btn btn-primary btn-sm" data-sort="name">
+                                                Tìm kiếm
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <div class="card">
+
+
                                     </div>
+
+
 
                                     <div class="card-body">
                                         <div class="live-preview">
@@ -119,9 +108,9 @@
                                                         }
 
                                                         if (isset($resultSearchOrder) && !empty($resultSearchOrder)) {
-                                                            $dataToDisplay = $resultSearchOrder; 
+                                                            $dataToDisplay = $resultSearchOrder;
                                                         } else {
-                                                            $dataToDisplay = $listDonHang; 
+                                                            $dataToDisplay = $listDonHang;
                                                         }
 
                                                         if (is_array($dataToDisplay) && count($dataToDisplay) > 0) { ?>
@@ -143,6 +132,7 @@
                                                                     <td><?= htmlspecialchars($row['ten_trang_thai_id']) ?></td>
                                                                     <td>
                                                                         <div class="col-xl-3 col-lg-4 col-sm-6">
+
                                                                             <a
                                                                                 href="?act=chi-tiet-don-hang&id=<?= $row['id'] ?>">
                                                                                 <i data-feather="eye" class="text-primary"></i>
@@ -152,7 +142,9 @@
                                                                     </td>
                                                                     <td>
                                                                         <div class="hstack gap-3 flex-wrap">
-                                                                        <a href="?act=form-sua-don-hang&id=<?=$row['id']?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
+                                                                            <a href="?act=form-sua-don-hang&id=<?= $row['id'] ?>"
+                                                                                class="link-success fs-15"><i
+                                                                                    class="ri-edit-2-line"></i></a>
 
                                                                             <form action="?act=xoa-don-hang" method="POST"
                                                                                 onsubmit="return confirm('Bạn có chắc chắn muốn xóa?')">
@@ -220,6 +212,12 @@
     <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
         <i class="ri-arrow-up-line"></i>
     </button>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            feather.replace();
+        });
+    </script>
     <!--end back-to-top-->
 
     <!--preloader-->
