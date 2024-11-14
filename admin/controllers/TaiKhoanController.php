@@ -166,7 +166,7 @@ public function update2()
                 
 
                 $anh_dai_dien = time() . '_' . basename($file_name); 
-                $upload_path =   'uploads/'.$anh_dai_dien;
+                $upload_path = $_SERVER['DOCUMENT_ROOT'] .   '/du_an_1/uploads/users/'.$anh_dai_dien;
 
                 if (!move_uploaded_file($tmp_name, $upload_path)) {
                     $error['anh_dai_dien'] = 'Không thể tải ảnh lên';

@@ -27,7 +27,6 @@ class DanhMucController
 
     //hàm xử lý thêm CSDL
    
-
     //hàm hiển thị form sửa
     public function edit()
     {

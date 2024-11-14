@@ -176,7 +176,7 @@
                                                                 <td><a href="#" class="fw-medium"><?= $index + 1 ?></a></td>
                                                                 <td><?= $row['ho_ten'] ?></td>
                                                                 <td>
-                                                                    <img src="<?= 'uploads/'.$row['anh_dai_dien'] ?>" alt="Avatar"
+                                                                    <img src="<?= '/du_an_1/uploads/users/'.$row['anh_dai_dien'] ?>" alt="Avatar"
                                                                         style="width: 100px; height: 100px; border-radius: 50%;">
                                                                 </td>
                                                                 <td><?= $row['email'] ?></td>
