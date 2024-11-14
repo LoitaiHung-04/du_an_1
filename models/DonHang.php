@@ -35,10 +35,14 @@ include_once '../commons/function.php';
         return query_all_data($sql, $param);
     }
     public function getDetailDonHang($id) {
-        $sql = 'SELECT don_hangs.*, trang_thai_don_hangs.ten_trang_thai_id,
-         tai_khoans.ho_ten, tai_khoans.email, tai_khoans.so_dien_thoai,
-         trang_thai_thanh_toans.ten_trang_thai_thanh_toan,
-         phuong_thuc_thanh_toans.ten_phuong_thuc
+        $sql = 'SELECT don_hangs.*, 
+                     trang_thai_don_hangs.ten_trang_thai_id,
+                     tai_khoans.ho_ten, 
+                     tai_khoans.email, 
+                     tai_khoans.so_dien_thoai,
+                     trang_thai_thanh_toans.ten_trang_thai_thanh_toan,
+                     phuong_thuc_thanh_toans.ten_phuong_thuc,
+                     chi_tiet_don_hangs.don_hang_id
                 FROM don_hangs
                 INNER JOIN trang_thai_don_hangs 
                 ON don_hangs.trang_thai_id = trang_thai_don_hangs.id
@@ -47,13 +51,17 @@ include_once '../commons/function.php';
                 INNER JOIN trang_thai_thanh_toans
                 ON don_hangs.trang_thai_thanh_toan_id = trang_thai_thanh_toans.id
                 INNER JOIN phuong_thuc_thanh_toans
-                On don_hangs.phuong_thuc_thanh_toan_id = phuong_thuc_thanh_toans.id
-                WHERE don_hangs.id = ?'; 
-    
-        $param = [$id];
-    
-        return query_one_data($sql, $param);
-    }
+                ON don_hangs.phuong_thuc_thanh_toan_id = phuong_thuc_thanh_toans.id
+                INNER JOIN chi_tiet_don_hangs 
+                ON don_hangs.id = chi_tiet_don_hangs.don_hang_id
+                WHERE don_hangs.id = ?';  // Điều kiện WHERE cho ID của bảng don_hangs
+                
+                
+        $param = [$id];  // ID của đơn hàng
+        
+        return query_one_data($sql, $param);  // Gọi hàm truy vấn với các tham số
+    } 
+     
     
     public function getListSpDonHang($id_don_hang) {
         $sql = 'SELECT chi_tiet_don_hangs.*, san_phams.ten_san_pham 

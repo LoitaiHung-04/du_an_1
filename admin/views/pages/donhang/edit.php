@@ -75,7 +75,7 @@
 
                                     <div class="card-body">
                                         <div class="live-preview">
-                                            <form action="?act=sua-don-hang" method="POST">
+                                            <form action="?act=sua-danh-muc" method="POST">
                                                 <input type="hidden" name="id" value="<?= $donHang['id'] ?>">
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -142,12 +142,18 @@
                                                         <select id="ForminputState" class="form-select"
                                                             name="trang_thai_id">
                                                             <?php foreach ($listTrangThaiDonHang as $trangThai): ?>
-                                                                <option value="<?= $trangThai['id'] ?>"
-                                                                    <?= ($donHang['trang_thai_id'] > $trangThai['id'] || in_array($donHang['trang_thai_id'], [9, 10, 11])) ? 'disabled' : '' ?>
-                                                                    <?= $trangThai['id'] == $donHang['trang_thai_id'] ? 'selected' : '' ?>>
+                                                                <option value="<?= $trangThai['id'] ?>" <?php
+                                                                  if ($donHang['trang_thai_id'] > $trangThai['id']) {
+                                                                      echo 'disabled';
+                                                                  } elseif (in_array($donHang['trang_thai_id'], [9, 10, 11])) {
+                                                                      echo 'disabled'; 
+                                                                  }
+                                                                  ?>
+                                              <?= $trangThai['id'] == $donHang['trang_thai_id'] ? 'selected' : '' ?>>
                                                                     <?= $trangThai['ten_trang_thai_id']; ?>
                                                                 </option>
                                                             <?php endforeach; ?>
+
                                                         </select>
                                                         <span class="text-danger">
                                                             <?= !empty($_SESSION['error']['trang_thai_id']) ? $_SESSION['error']['trang_thai_id'] : '' ?>

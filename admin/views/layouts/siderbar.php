@@ -5,6 +5,7 @@
 <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
 <script src="assets/js/plugins.js"></script>
 
+
 <!-- apexcharts -->
 <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
 
@@ -28,7 +29,7 @@
 
 <!--Swiper slider css-->
 <link href="assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
-
+<script src="https:////cdn.ckeditor.com/4.8.0/full-all/ckeditor.js"></script>
 <!-- Layout config Js -->
 <script src="assets/js/layout.js"></script>
 <!-- Bootstrap Css -->
@@ -39,6 +40,8 @@
 <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
 <!-- custom Css-->
 <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 <div class="app-menu navbar-menu">
     <!-- LOGO -->
     <div class="navbar-brand-box">
@@ -70,11 +73,12 @@
             <span class="d-flex align-items-center gap-2">
                 <img class="rounded header-profile-user" src="assets/images/users/avatar-1.jpg" alt="Header Avatar">
                 <span class="text-start">
-                    <span class="d-block fw-medium sidebar-user-name-text">Anna Adame</span>
+                    <span class="d-block fw-medium sidebar-user-name-text"><?php echo $_SESSION['user_admin']['ho_ten']; ?></span>
                     <span class="d-block fs-14 sidebar-user-name-sub-text"><i class="ri ri-circle-fill fs-10 text-success align-baseline"></i> <span class="align-middle">Online</span></span>
                 </span>
             </span>
         </button>
+        
         <div class="dropdown-menu dropdown-menu-end">
             <!-- item-->
             <h6 class="dropdown-header">Welcome Anna!</h6>
@@ -82,10 +86,9 @@
             <a class="dropdown-item" href="auth-logout-basic.html"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></a>
         </div>
     </div>
+
     <div id="scrollbar">
         <div class="container-fluid">
-
-
             <div id="two-column-menu">
             </div>
             <ul class="navbar-nav" id="navbar-nav">
@@ -183,7 +186,6 @@
                                     Danh sách
                                 </a>
                             </li>
-                            
                         </ul>
                     </div>
                 </li>
@@ -198,7 +200,6 @@
                                     Danh sách
                                 </a>
                             </li>
-                            
                         </ul>
                     </div>
                 </li>
@@ -212,14 +213,12 @@
                                 <a href="?act=trang-thai-don-hangs" class="nav-link" data-key="t-sweet-alerts">
                                     Danh sách
                                 </a>
-                                
                             </li>
                             <li class="nav-item">
                                 <a href="?act=them-trang-thai-don-hangs" class="nav-link" data-key="t-nestable-list">
                                     Thêm mới
                                 </a>
                             </li>
-                            
                         </ul>
                     </div>
                 </li>
@@ -237,9 +236,31 @@
                         </ul>
                     </div>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#khuyenmai" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="banner">
+                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Quản lí khuyến mãi</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="khuyenmai">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="?act=khuyen-mais" class="nav-link" data-key="t-sweet-alerts">
+                                    Danh sách
+                                </a>
+                                <a href="?act=form-them-khuyen-mai" class="nav-link" data-key="t-sweet-alerts">
+                                    Thêm mới
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
                 <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-pages">Bán hàng</span></li>
+
+                <!-- Thêm nút Đăng xuất -->
+                
+
+
+
 
             </ul>
         </div>

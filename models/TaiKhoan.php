@@ -12,7 +12,7 @@ class TaiKhoan
 
     public function getAll()
     {
-        $sql = 'SELECT * FROM tai_khoans';
+        $sql = 'SELECT * FROM tai_khoans WHERE chuc_vu_id = 2';
         return query_all_data($sql); 
     }
 
