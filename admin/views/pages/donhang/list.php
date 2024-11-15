@@ -52,7 +52,6 @@
 
                     <div class="row">
 
-
                         <div class="col">
                             <div class="h-100">
                                 <div class="row mb-4">

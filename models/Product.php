@@ -1,5 +1,6 @@
 <?php
 include_once '../commons/function.php';
+
 class Product
 {
     public function getAll()
@@ -109,17 +110,19 @@ class Product
     public function getVariant($id)
     {
         $sql = "SELECT * FROM bien_thes WHERE product_id =?";
-        $params =[$id];
-        return query_all_data($sql,$params);
+        $params = [$id];
+        return query_all_data($sql, $params);
     }
-    public function updateVariant($id, $color, $capacity, $price, $sku, $quantity,$id_variant){
+    public function updateVariant($id, $color, $capacity, $price, $sku, $quantity, $id_variant)
+    {
         $sql = "UPDATE `bien_thes` SET `product_id`=?,`mau_sac`=?,`dung_luong`=?,`price`=?,`quantity`=?,`sku`=? WHERE id=?";
-        $params = [$id,$color,$capacity,$price,$quantity,$sku,$id_variant];
-        return execute($sql,$params);   
+        $params = [$id, $color, $capacity, $price, $quantity, $sku, $id_variant];
+        return execute($sql, $params);
     }
-    public function deleteVariant($id){
+    public function deleteVariant($id)
+    {
         $sql = "DELETE FROM bien_thes WHERE id=?";
         $params = [$id];
-        return execute($sql,$params);
+        return execute($sql, $params);
     }
 }
