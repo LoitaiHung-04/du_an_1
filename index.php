@@ -5,8 +5,8 @@ require_once './commons/env.php'; // Khai báo biến môi trường
 require_once './commons/function.php'; // Hàm hỗ trợ
 
 // Require toàn bộ file Controllers
-require_once './controllers/HomeController.php';
-
+include_once 'controller/DashBoardController.php';
+include_once  './views/layous/header.php';
 // Require toàn bộ file Models
 
 // Route
@@ -16,5 +16,8 @@ $act = $_GET['act'] ?? '/';
 
 match ($act) {
     // Trang chủ
-    '/'                 => (new HomeController())->index(),
+    '/'                 => (new DashBoardController())->index(),
+    'chi-tiet-san-pham'                 => (new DashBoardController())->show(),
 };
+
+include_once './views/layous/footer.php';

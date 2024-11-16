@@ -9,4 +9,5 @@ class DanhGia
        
         return query_all_data($sql);
     }
+    
 }

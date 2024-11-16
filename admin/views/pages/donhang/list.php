@@ -51,9 +51,6 @@
 
                     <div class="row">
 
-                        <!-- Card Thông tin đơn hàng -->
-                      
-                        <!-- Search form and order table -->
                         <div class="col">
                             <div class="h-100">
                                 <div class="row mb-4">
