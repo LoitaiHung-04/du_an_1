@@ -16,6 +16,22 @@
     <?php
     include "views/layouts/libs_css.php";
     ?>
+    <style>
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        /* Styling cho các nút tab */
+        .tab-btn.active {
+            background-color: black;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
 
 </head>
 
@@ -43,90 +59,146 @@
             <div class="container" style="margin-top: 100px;">
 
                 <div class="container">
-                    <form action="?act=update-product&id=<?= $data['id'] ?>" method="POST" enctype="multipart/form-data">
-                        <h1>Update Product</h1>
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="tabs">
+                                <button class="tab-btn active btn btn-primary" onclick="openTab(event, 'general')">Cơ Bản</button>
+                                <button class="tab-btn btn btn-warning" onclick="openTab(event, 'variant')">Biến Thể</button>
 
-                        <div class="form-group">
-                            <label for="" class="form-label">Tên sản phẩm</label>
-                            <input type="text" class="form-control" name="name" placeholder="Nhập tên.." value="<?= $data['ten_san_pham'] ?>">
-                            <p class="text-danger"><?= !empty($_SESSION['error']['title']) ? $_SESSION['error']['title'] : '' ?></p>
+                            </div>
                         </div>
+                        <div class="col-9">
+                            <form action="?act=update-product&id=<?= $data['id'] ?>" method="POST" enctype="multipart/form-data">
+                                <div class="content">
 
-                        <div class="form-group">
-                            <label for="" class="form-label">Giá sản phẩm</label>
-                            <input type="text" class="form-control" name="giasanpham" placeholder="Nhập giá..." value="<?= $data['gia_san_pham'] ?>">
-                            <p class="text-danger"><?= !empty($_SESSION['error']['content']) ? $_SESSION['error']['content'] : '' ?></p>
-                        </div>
+                                    <div id="general" class="content-section active">
 
-                        <div class="form-group">
-                            <label for="" class="form-label">Ngày Nhập</label>
-                            <input type="date" class="form-control" name="ngay_nhap" value="<?= $data['ngay_nhap'] ?>">
-                            <p class="text-danger"><?= !empty($_SESSION['error']['content']) ? $_SESSION['error']['content'] : '' ?></p>
-                        </div>
+                                        <h1>Update Product</h1>
 
-                        <div class="form-group">
-                            <label for="" class="form-label">Số lượng</label>
-                            <input type="text" class="form-control" name="soluong" placeholder="Số lượng" value="<?= $data['so_luong'] ?>">
-                            <p class="text-danger"><?= !empty($_SESSION['error']['content']) ? $_SESSION['error']['content'] : '' ?></p>
-                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="form-label">Tên sản phẩm</label>
+                                            <input type="text" class="form-control" name="name" placeholder="Nhập tên.." value="<?= $data['ten_san_pham'] ?>">
+                                            <p class="text-danger"><?= !empty($_SESSION['error']['title']) ? $_SESSION['error']['title'] : '' ?></p>
+                                        </div>
 
-                        <div class="form-group">
-                            <label for="" class="form-label">Danh Mục</label>
-                            <select name="danhmuc" class="form-control">
-                                <option selected>Chọn danh mục</option>
-                                <?php foreach ($danhmuc as $item): ?>
-                                    <option value="<?= $item['id'] ?>" <?= $item['id'] == $data['danh_muc_id'] ? 'selected' : '' ?>>
-                                        <?= $item['ten_danh_muc'] ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
-                            <p class="text-danger"><?= !empty($_SESSION['error']['content']) ? $_SESSION['error']['content'] : '' ?></p>
-                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="form-label">Giá sản phẩm</label>
+                                            <input type="text" class="form-control" name="giasanpham" placeholder="Nhập giá..." value="<?= $data['gia_san_pham'] ?>">
+                                            <p class="text-danger"><?= !empty($_SESSION['error']['content']) ? $_SESSION['error']['content'] : '' ?></p>
+                                        </div>
 
-                        <div class="form-group">
-                            <label for="" class="form-label">Trạng thái</label>
-                            <select name="trangthai" class="form-control">
-                                <option value="">Chọn trạng thái</option>
-                                <option value="1" <?= $data['trang_thai'] == 1 ? 'selected' : '' ?>>Hiển Thị</option>
-                                <option value="2" <?= $data['trang_thai'] == 2 ? 'selected' : '' ?>>Không Hiển Thị</option>
-                            </select>
-                            <p class="text-danger"><?= !empty($_SESSION['error']['content']) ? $_SESSION['error']['content'] : '' ?></p>
-                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="form-label">Ngày Nhập</label>
+                                            <input type="date" class="form-control" name="ngay_nhap" value="<?= $data['ngay_nhap'] ?>">
+                                            <p class="text-danger"><?= !empty($_SESSION['error']['content']) ? $_SESSION['error']['content'] : '' ?></p>
+                                        </div>
 
-                        <div class="form-group">
-                            <label for="" class="form-label">Mô tả</label>
-                            <textarea name="mo_ta" id="editor"><?= $data['mo_ta'] ?></textarea>
-                        </div>
-                        <?php if (!empty($data['hinh_anh'])): ?>
-                            <img src="/du_an_1/uploads/products/<?= $data['hinh_anh'] ?>" alt="Product Image" width="100" class="mt-2">
-                        <?php endif; ?>
-                        <div class="form-group">
-                            <label for="" class="form-label">Ảnh chính</label>
-                            <input type="file" class="form-control" name="image">
+                                        <div class="form-group">
+                                            <label for="" class="form-label">Số lượng</label>
+                                            <input type="text" class="form-control" name="soluong" placeholder="Số lượng" value="<?= $data['so_luong'] ?>">
+                                            <p class="text-danger"><?= !empty($_SESSION['error']['content']) ? $_SESSION['error']['content'] : '' ?></p>
+                                        </div>
 
-                            <p class="text-danger"><?= !empty($_SESSION['error']['image']) ? $_SESSION['error']['image'] : '' ?></p>
-                        </div>
-                     <input type="hidden" name="name_image" value="<?= $data['hinh_anh'] ?>">
-                        <div class="list-image" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr;">
-                            <?php if (!empty($image)) : ?>
+                                        <div class="form-group">
+                                            <label for="" class="form-label">Danh Mục</label>
+                                            <select name="danhmuc" class="form-control">
+                                                <option selected>Chọn danh mục</option>
+                                                <?php foreach ($danhmuc as $item): ?>
+                                                    <option value="<?= $item['id'] ?>" <?= $item['id'] == $data['danh_muc_id'] ? 'selected' : '' ?>>
+                                                        <?= $item['ten_danh_muc'] ?>
+                                                    </option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                            <p class="text-danger"><?= !empty($_SESSION['error']['content']) ? $_SESSION['error']['content'] : '' ?></p>
+                                        </div>
 
-                                <?php foreach ($image as $items) : ?>
-                                    <div class="images">
-                                        <img src="/du_an_1/uploads/products/<?= $items['link_hinh_anh'] ?>" width="100px" alt="">
-                                             <a href="?act=delete-image&id=<?=$items['id'] ?>&id-product=<?=$data['id']?>" onclick="return confirm('Bạn muốn xóa ?')"><i class='bx bx-x-circle'></i></a>
+                                        <div class="form-group">
+                                            <label for="" class="form-label">Trạng thái</label>
+                                            <select name="trangthai" class="form-control">
+                                                <option value="">Chọn trạng thái</option>
+                                                <option value="1" <?= $data['trang_thai'] == 1 ? 'selected' : '' ?>>Hiển Thị</option>
+                                                <option value="2" <?= $data['trang_thai'] == 2 ? 'selected' : '' ?>>Không Hiển Thị</option>
+                                            </select>
+                                            <p class="text-danger"><?= !empty($_SESSION['error']['content']) ? $_SESSION['error']['content'] : '' ?></p>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="" class="form-label">Mô tả</label>
+                                            <textarea name="mo_ta" id="editor"><?= $data['mo_ta'] ?></textarea>
+                                        </div>
+                                        <?php if (!empty($data['hinh_anh'])): ?>
+                                            <img src="/du_an_1/uploads/products/<?= $data['hinh_anh'] ?>" alt="Product Image" width="100" class="mt-2">
+                                        <?php endif; ?>
+                                        <div class="form-group">
+                                            <label for="" class="form-label">Ảnh chính</label>
+                                            <input type="file" class="form-control" name="image">
+
+                                            <p class="text-danger"><?= !empty($_SESSION['error']['image']) ? $_SESSION['error']['image'] : '' ?></p>
+                                        </div>
+                                        <input type="hidden" name="name_image" value="<?= $data['hinh_anh'] ?>">
+                                        <div class="list-image" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr;">
+                                            <?php if (!empty($image)) : ?>
+
+                                                <?php foreach ($image as $items) : ?>
+                                                    <div class="images">
+                                                        <img src="/du_an_1/uploads/products/<?= $items['link_hinh_anh'] ?>" width="100px" alt="">
+                                                        <a href="?act=delete-image&id=<?= $items['id'] ?>&id-product=<?= $data['id'] ?>" onclick="return confirm('Bạn muốn xóa ?')"><i class='bx bx-x-circle'></i></a>
+                                                    </div>
+                                                <?php endforeach ?>
+                                            <?php endif ?>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="" class="form-label">Ảnh phụ (Thêm nhiều ảnh)</label>
+                                            <input type="file" class="form-control" name="images[]" multiple>
+                                            <p class="text-danger"><?= !empty($_SESSION['error']['image']) ? $_SESSION['error']['image'] : '' ?></p>
+                                        </div>
+
+
+
                                     </div>
-                                <?php endforeach ?>
-                            <?php endif ?>
-                        </div>
+                                    <div id="variant" class="content-section">
+                                        <h1>Thông tin biến thể ( Nếu có )</h1>
+                                        <div id="variants-table-container">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Variant</th>
+                                                        <th>Price</th>
+                                                        <th>SKU</th>
+                                                        <th>Quantity</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php foreach ($variant as $index => $value): ?>
+                                                        <tr>
+                                                            <input type="hidden" name="variants[<?= $index ?>][id]" value="<?= $value['id'] ?>">
+                                                            <input type="hidden" name="variants[<?= $index ?>][color]" value="<?= $value['mau_sac'] ?>">
+                                                            <input type="hidden" name="variants[<?= $index ?>][capacity]" value="<?= $value['dung_luong'] ?>">
+                                                            <td><?= $value['mau_sac'] . '-' . $value['dung_luong'] ?></td>
 
-                        <div class="form-group">
-                            <label for="" class="form-label">Ảnh phụ (Thêm nhiều ảnh)</label>
-                            <input type="file" class="form-control" name="images[]" multiple>
-                            <p class="text-danger"><?= !empty($_SESSION['error']['image']) ? $_SESSION['error']['image'] : '' ?></p>
-                        </div>
+                                                            <td><input type="text" name="variants[<?= $index ?>][variant_price]" value="<?= $value['price'] ?>"></td>
+                                                            <td><input type="text" name="variants[<?= $index ?>][sku]" value="<?= $value['sku'] ?>"></td>
+                                                            <td><input type="number" name="variants[<?= $index ?>][quantity]" value="<?= $value['quantity'] ?>"></td>
+                                                            <td><button class="btn btn-danger"><i class='bx bx-trash'></i></button></td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
 
-                        <button class="btn btn-primary mt-3">Submit</button>
-                    </form>
+                                    </div>
+
+
+
+                                    <!-- Bảng hiện thị biến thể -->
+
+                                </div>
+                                <button class="btn btn-primary mt-3">Submit</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -164,6 +236,21 @@
     <?php
     require_once "views/layouts/libs_js.php";
     ?>
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("content-section");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
     <script type="module">
         CKEDITOR.replace('editor');
     </script>

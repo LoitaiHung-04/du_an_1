@@ -94,7 +94,7 @@
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span data-key="t-menu">Quản lý</span></li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#">
+                    <a class="nav-link menu-link" href="/du_an_1/admin/">
                         <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
                     </a>
                 </li>
@@ -197,6 +197,34 @@
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="?act=don-hangs" class="nav-link" data-key="t-sweet-alerts">
+                                    Danh sách
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#danhgia" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="danhgia">
+                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Quản lí đánh giá</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="danhgia">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="?act=danh-gia" class="nav-link" data-key="t-sweet-alerts">
+                                    Danh sách
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#binhluan" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="binhluan">
+                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Quản lí bình luận</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="binhluan">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="?act=binh-luan" class="nav-link" data-key="t-sweet-alerts">
                                     Danh sách
                                 </a>
                             </li>

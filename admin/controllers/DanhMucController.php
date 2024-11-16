@@ -26,6 +26,20 @@ class DanhMucController
     }
 
     //hàm xử lý thêm CSDL
+   
+    //hàm hiển thị form sửa
+    public function edit()
+    {
+        // Lấy id
+        $id = $_GET['danh_muc_id'];
+        //Lấy thông tin chi tiết của danh mục
+        $danhMucs = $this->modelDanhMuc->getDetailData($id);
+
+        //đổ dữ liệu ra form
+        require_once './views/pages/category/edit.php';
+    }
+
+    //hàm xử lý cập nhật vào CSDL
     public function store()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -58,20 +72,6 @@ class DanhMucController
             }
         }
     }
-
-    //hàm hiển thị form sửa
-    public function edit()
-    {
-        // Lấy id
-        $id = $_GET['danh_muc_id'];
-        //Lấy thông tin chi tiết của danh mục
-        $danhMucs = $this->modelDanhMuc->getDetailData($id);
-
-        //đổ dữ liệu ra form
-        require_once './views/pages/category/edit.php';
-    }
-
-    //hàm xử lý cập nhật vào CSDL
     public function update()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {

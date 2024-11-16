@@ -36,6 +36,7 @@
         .attribute-color {
             display: flex;
             gap: 5px;
+
         }
 
         .attribute-capacity {
@@ -44,13 +45,15 @@
         }
 
         .color-attribute {
-            padding: 5px 15px 5px 15px;
+
+            padding: 10px 15px 10px 15px;
             border: 2px solid lightblue;
             border-radius: 5px;
+
         }
 
         .capacity-attribute {
-            padding: 5px 15px 5px 15px;
+            padding: 10px 15px 10px 15px;
             border: 2px solid lightblue;
             border-radius: 5px;
         }
@@ -71,20 +74,45 @@
             min-width: 200px;
         }
 
-        .capacity {
-            position: relative;
+        .color-attribute {
             display: inline-block;
-            border: 1px solid black;
+            position: relative;
+            padding: 10px 15px;
+            border: 2px solid lightblue;
             border-radius: 5px;
-            padding: 10px;
-            margin: 5px;
-            text-align: center;
-            cursor: pointer;
+            font-weight: normal;
+            color: black;
         }
+
+        .color input:checked+.color-attribute {
+            color: aqua;
+            font-weight: bold;
+        }
+
+        .color-option:checked+label::before {
+            content: "✔";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: black;
+            color: white;
+            padding: 2px 5px;
+            border-radius: 0 3px 0 90%;
+            font-size: 10px;
+        }
+
+        /* Ẩn input nhưng vẫn giữ chọn được */
+        .color-option {
+            position: absolute;
+            opacity: 0;
+        }
+
+
 
         .capacity-attribute {
             display: inline-block;
-            padding: 5px 10px;
+            position: relative;
+
         }
 
         .capacity input:checked+.capacity-attribute {
@@ -95,12 +123,12 @@
         .capacity-option:checked+label::before {
             content: "✔";
             position: absolute;
-            top: -10px;
-            right: -10px;
+            top: 0;
+            right: 0;
             background: #e74c3c;
             color: white;
-            padding: 5px;
-            border-radius: 50%;
+            padding: 2px 5px;
+            border-radius: 0 3px 0 90%;
             font-size: 10px;
         }
     </style>
@@ -228,11 +256,12 @@
                                             <div class="attribute-color">
                                                 <?php foreach ($color as $items): ?>
                                                     <div class="color">
+                                                        <input type="checkbox" class="color-option" value="<?= $items['name'] ?>" id="color-<?= $items['id'] ?>">
                                                         <label for="color-<?= $items['id'] ?>" class="color-attribute" style="background-color:<?= $items['name'] ?>; cursor: pointer; "><?= $items['name'] ?></label>
-                                                        <input hidden type="checkbox" value="<?= $items['name'] ?>" id="color-<?= $items['id'] ?>" class="color-option">
                                                     </div>
                                                 <?php endforeach ?>
                                             </div>
+
                                         </div>
 
 
@@ -252,27 +281,28 @@
 
                                             </div>
                                         </div>
-                                    </div>
+                                        <button type="button" onclick="generateVariants()" class="btn btn-success">Tạo biến thể</button>
 
-                                    <button type="button" onclick="generateVariants()" class="btn btn-success">Tạo biến thể</button>
+                                        <!-- Bảng hiện thị biến thể -->
+                                        <div id="variants-table-container" style="display: none;">
+                                            <table id="variants-table" class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Variant</th>
+                                                        <th> Price</th> 
+                                                        <th>SKU</th>
+                                                        <th>Quantity</th>
+                                                        <th>Action</th>
 
-                                    <!-- Bảng hiện thị biến thể -->
-                                    <div id="variants-table-container" style="display: none;">
-                                        <table id="variants-table" class="table table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th>Variant</th>
-                                                    <th> Price</th>
-                                                    <th>SKU</th>
-                                                    <th>Quantity</th>
-                                                    <th>Action</th>
-
-                                                </tr>
-                                            </thead>
-                                            <tbody></tbody>
-                                        </table>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
+
+
                                 <button class="btn btn-primary mt-3">Submit</button>
                             </form>
                         </div>

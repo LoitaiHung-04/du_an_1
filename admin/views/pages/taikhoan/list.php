@@ -39,11 +39,11 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                                <h4 class="mb-sm-0">quản lí người dùng</h4>
+                                <h4 class="mb-sm-0">Quản lí người dùng</h4>
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                        <li class="breadcrumb-item active">quản lí người dùng</li>
+                                        <li class="breadcrumb-item active">Quản lí người dùng</li>
                                     </ol>
                                 </div>
                             </div>
@@ -52,25 +52,28 @@
                     <!-- end page title -->
 
                     <div class="row">
-                        
                         <div class="col">
                             <div class="h-100">
-                                
+                                <!-- Tìm kiếm -->
                                 <div class="row mb-4">
-                                        <form action="?act=tim-kiem" method="POST" class="d-flex align-items-center">
-                                            <div class="col-auto">
-                                                <input name="key" class="search form-control form-control-sm me-2" placeholder="Search" style="width: 200px;" />
-                                            </div>
-                                            <div class="col-auto">
-                                                <button type="submit" class="btn btn-primary btn-sm" data-sort="name">
-                                                    Tìm kiếm
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
+                                    <form action="?act=tim-kiem" method="POST" class="d-flex align-items-center">
+                                        <div class="col-auto">
+                                            <input name="key" class="search form-control form-control-sm me-2" placeholder="Search" style="width: 200px;" />
+                                        </div>
+                                        <div class="col-auto">
+                                            <button type="submit" class="btn btn-primary btn-sm" data-sort="name">
+                                                Tìm kiếm
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
 
-                                <div class="card-body">
-                                    <div class="live-preview">
+                                <!-- Card Body cho bảng người dùng -->
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="card-title mb-0">Danh sách người dùng</h5>
+                                    </div>
+                                    <div class="card-body">
                                         <div class="table-responsive table-card">
                                             <table class="table align-middle table-nowrap table-striped-columns mb-0">
                                                 <thead class="table-light">
@@ -94,20 +97,20 @@
                                                 <tbody>
                                                     <?php
                                                     if (!isset($TaiKhoan)) {
-                                                        $TaiKhoan = []; 
+                                                        $TaiKhoan = [];
                                                     }
 
                                                     // Kiểm tra nếu có kết quả tìm kiếm
                                                     if (isset($resultSearch) && !empty($resultSearch)) {
                                                         $dataToDisplay = $resultSearch;
                                                     } else {
-                                                        $dataToDisplay = $TaiKhoan; 
+                                                        $dataToDisplay = $TaiKhoan;
                                                     }
 
                                                     // Kiểm tra xem $dataToDisplay có phải là mảng và có dữ liệu không
                                                     if (is_array($dataToDisplay) && count($dataToDisplay) > 0) {
                                                         foreach ($dataToDisplay as $index => $row) {
-                                                            ?>
+                                                    ?>
                                                             <tr>
                                                                 <td>
                                                                     <div class="form-check">
@@ -120,7 +123,7 @@
                                                                 <td><a href="#" class="fw-medium"><?= $index + 1 ?></a></td>
                                                                 <td><?= $row['ho_ten'] ?></td>
                                                                 <td>
-                                                                    <img src="<?= "/du_an_1/uploads/users/".$row['anh_dai_dien'] ?>" alt="Avatar"
+                                                                    <img src="<?= '/du_an_1/uploads/users/' . $row['anh_dai_dien'] ?>" alt="Avatar"
                                                                         style="width: 100px; height: 100px; border-radius: 50%;">
                                                                 </td>
                                                                 <td><?= $row['email'] ?></td>
@@ -134,14 +137,14 @@
                                                                     </div>
                                                                 </td>
                                                             </tr>
-                                                            <?php
+                                                        <?php
                                                         }
                                                     } else {
                                                         ?>
                                                         <tr>
                                                             <td colspan="7" class="text-center">Không tìm thấy kết quả nào.</td>
                                                         </tr>
-                                                        <?php
+                                                    <?php
                                                     }
                                                     ?>
                                                 </tbody>
@@ -174,35 +177,20 @@
         </footer>
     </div>
     <!-- end main content-->
-</div>
-<!-- END layout-wrapper -->
-
-<!--start back-to-top-->
-<button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
-    <i class="ri-arrow-up-line"></i>
-</button>
-<!--end back-to-top-->
-
-<!--preloader-->
-<div id="preloader">
-    <div id="status">
-        <div class="spinner-border text-primary avatar-sm" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
     </div>
-</div>
+    <!-- END layout-wrapper -->
 
-<div class="customizer-setting d-none d-md-block">
-    <div class="btn-info rounded-pill shadow-lg btn btn-icon btn-lg p-2" data-bs-toggle="offcanvas"
-        data-bs-target="#theme-settings-offcanvas" aria-controls="theme-settings-offcanvas">
-        <i class='mdi mdi-spin mdi-cog-outline fs-22'></i>
-    </div>
-</div>
+    <!--start back-to-top-->
+    <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
+        <i class="ri-arrow-up-line"></i>
+    </button>
+    <!--end back-to-top-->
 
-<!-- JAVASCRIPT -->
-<?php
-require_once "views/layouts/libs_js.php";
-?>
+
+    <!-- JAVASCRIPT -->
+    <?php
+    require_once "views/layouts/libs_js.php";
+    ?>
 
 </body>
 

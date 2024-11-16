@@ -75,7 +75,7 @@
 
                                     <div class="card-body">
                                         <div class="live-preview">
-                                            <form action="?act=sua-danh-muc" method="POST">
+                                            <form action="?act=sua-don-hang" method="POST">
                                                 <input type="hidden" name="id" value="<?= $donHang['id'] ?>">
                                                 <div class="row">
                                                     <div class="col-md-6">

@@ -13,6 +13,7 @@ class ProductController
     public function index()
     {
         $data = $this->product->getAll();
+        // var_dump($data[0]);die();
         include './views/pages/product/list.php';
     }
     public function create()
@@ -73,17 +74,22 @@ class ProductController
             }
             // var_dump($variants);die();
             foreach ($variants as $key => $value) {
-                   $this->product->addVariant($value['color'],$value['capacity'],$value['variant_price'],$value['sku'],$value['quantity'],$idLate);
+                $this->product->addVariant($value['color'], $value['capacity'], $value['variant_price'], $value['sku'], $value['quantity'], $idLate);
             }
- 
+
 
             header('location:?act=list-product');
-
         }
     }
     public function edit()
     {
+
+
+        $color = $this->product->getAllColor();
+        $capacity = $this->product->getAllCapacity();
         $id = $_GET['id'];
+        $variant = $this->product->getVariant($id);
+
         $data = $this->product->getOne($id);
         $danhmuc = $this->category->getAll();
         $image = $this->product->getImage($id);
@@ -135,6 +141,20 @@ class ProductController
                     }
                 }
             }
+            if (isset($_POST['variants'])) {
+
+                foreach ($_POST['variants'] as $variant) {
+                    $id_variant = $variant['id']; // ID của biến thể
+                    $color = $variant['color'];
+                    $capacity = $variant['capacity'];
+                    $price = $variant['variant_price'];
+                    $sku = $variant['sku'];
+                    $quantity = $variant['quantity'];
+
+                    // Gọi hàm updateVariant để cập nhật biến thể trong cơ sở dữ liệu
+                    $this->product->updateVariant($id, $color, $capacity, $price, $sku, $quantity, $id_variant);
+                }
+            }
             header('location:?act=list-product');
         }
     }
@@ -158,6 +178,11 @@ class ProductController
                         unlink($_SERVER['DOCUMENT_ROOT'] . "/du_an_1/uploads/products/" . $imagePath);
                     }
                     $this->product->deleteImage($item['id']);
+                }
+                $variant = $this->product->getVariant($id);
+                foreach ($variant as $item) {
+
+                    $this->product->deleteVariant($item['id']);
                 }
                 $this->product->deleteProduct($id);
                 header('Location: ?act=list-product');

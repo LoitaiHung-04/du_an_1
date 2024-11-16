@@ -1,8 +1,6 @@
 <?php
 include '../models/TaiKhoan.php'; 
 
-
-
 class TaiKhoanController
 {
     public $modelTaiKhoan; 
@@ -10,7 +8,6 @@ class TaiKhoanController
     public function __construct()
     {
         $this->modelTaiKhoan = new TaiKhoan(); 
-
     }
     public function index()
     {
@@ -78,7 +75,7 @@ class TaiKhoanController
                
 
                 $anh_dai_dien = time() . '_' . basename($file_name); // Tạo tên file duy nhất
-                $upload_path = $_SERVER['DOCUMENT_ROOT'] . "/du_an_1/uploads/user". $anh_dai_dien;
+                $upload_path =  '/du_an_1/uploads/users/'.$anh_dai_dien;
 
                 if (!move_uploaded_file($tmp_name, $upload_path)) {
                     $error['anh_dai_dien'] = 'Không thể tải ảnh lên';
@@ -169,8 +166,7 @@ public function update2()
                 
 
                 $anh_dai_dien = time() . '_' . basename($file_name); 
-                $upload_path =     $upload_path = $_SERVER['DOCUMENT_ROOT'] . "/du_an_1/uploads/users/". $anh_dai_dien;
-                
+                $upload_path = $_SERVER['DOCUMENT_ROOT'] .   '/du_an_1/uploads/users/'.$anh_dai_dien;
 
                 if (!move_uploaded_file($tmp_name, $upload_path)) {
                     $error['anh_dai_dien'] = 'Không thể tải ảnh lên';
@@ -214,7 +210,7 @@ public function update2()
             exit();
         } else {
             $_SESSION['error'] = $error;
-            header('Location: ?act=sua-chi-tiet');
+            header('Location: ?act=form-sua-tai-khoan');
             exit();
         }
     }
@@ -230,18 +226,6 @@ public function update2()
             }
             return true ;
         }
-        public function formLogin(){
-            include './views/pages/login/login.php';
-        }
-
-        public function login(){
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                $email = $_POST['email'];
-                $password = $_POST['password'];
-                var_dump($email); die();
-            }
-        }
-
         
 
 

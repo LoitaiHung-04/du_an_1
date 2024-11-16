@@ -17,6 +17,10 @@ require_once 'controllers/TrangThaiDonHangController.php';
 require_once 'controllers/ProductController.php';
 require_once 'controllers/LienHeController.php';
 require_once 'controllers/KhuyenMaiController.php';
+require_once 'controllers/DanhGiaController.php';
+require_once 'controllers/BinhLuanController.php';
+require_once 'controllers/ThongKeController.php';
+
 
 
 define('BASE_URL_ADMIN', 'http://localhost:85/du_an_1/admin');
@@ -38,7 +42,7 @@ if ($act !== 'login-admin' && $act !== 'check-login-admin') {
 // Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match
 match ($act) {
     // Dashboards
-    '/' => (new DashboardController())->index(),
+    '/' => (new ThongKeController())->index(),
     'list-banner' => (new BannerController())->index(),
     'add-banner' => (new BannerController())->create(),
     'store-banner' => (new BannerController())->store(),
@@ -65,14 +69,14 @@ match ($act) {
     'them-tai-khoan' => (new TaiKhoanController())->store(),
 
     'sua-chi-tiet' => (new TaiKhoanController())->update2(),
-    'xoa-tai-khoan' => (new TaiKhoanController())->destroy(),
+    // 'xoa-tai-khoan' => (new TaiKhoanController())->destroy(),
     // don hang
     'don-hangs' => (new DonHangController())->danhSachDonHang(),
     'form-sua-don-hang' => (new DonHangController())->formEditDonHang(),
     'sua-don-hang' => (new DonHangController())->postEditDonHang(),
     'chi-tiet-don-hang' => (new DonHangController())->detailDonHang(),
     'tim-kiem-don-hang' => (new DonHangController())->timkiemDonHang(),
-    'xoa-don-hang' => (new DonHangController())->destroy(),
+    // 'xoa-don-hang' => (new DonHangController())->destroy(),
     //
     'trang-thai-don-hangs' => (new TrangThaiDonHangController())->index(),
     'form-them-trang-thai-don-hangs' => (new TrangThaiDonHangController())->create(),
@@ -103,4 +107,10 @@ match ($act) {
     'form-sua-khuyen-mai' => (new KhuyenMaiController())->edit(),
     'sua-khuyen-mai' => (new KhuyenMaiController())->update(),
     'xoa-khuyen-mai' => (new KhuyenMaiController())->destroy(),
+    // danh gia
+    'danh-gia' => (new DanhGiaController())->index(),
+       // binhluan
+    'binh-luan' => (new BinhLuanController())->index(),
+ //
+
 };
