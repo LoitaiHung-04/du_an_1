@@ -39,6 +39,7 @@ class DashBoard
     }
 
 
+
     public function getAllColor()
     {
         $sql = "SELECT * FROM mau_sac";
@@ -67,6 +68,18 @@ class DashBoard
     {
         $sql = "SELECT * FROM danh_gias WHERE san_pham_id = ?";
 
+        $params = [$id];
+        return query_all_data($sql, $params);
+    }
+    public function getOneVariant($id)
+    {
+        $sql = "select * from bien_thes where id=?";
+        $params = [$id];
+        return query_one_data($sql, $params);
+    }
+    public function getCart($id)
+    {
+        $sql = "SELECT g.id,g.san_pham_id,g.so_luong,g.gia_san_pham,g.ten_san_pham,g.tong_tien,g.bien_the_id,g.image,g.user_id,v.mau_sac as mausac , v.dung_luong as dungluong FROM gio_hangs as g INNER JOIN bien_thes as v ON g.bien_the_id = v.id WHERE g.user_id =?";
         $params = [$id];
         return query_all_data($sql, $params);
     }

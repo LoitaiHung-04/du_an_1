@@ -125,4 +125,5 @@ class Product
         $params = [$id];
         return execute($sql, $params);
     }
+  
 }

@@ -88,15 +88,15 @@
                                                 <span class="pro-ratting">
                                                     <?php
                                                     $totalRating = $total_rating;
-                                                    $fullStars = intval($totalRating); 
-                                                    $halfStar = ($totalRating - $fullStars) >= 0.5; 
-                                                   
-                                                    
+                                                    $fullStars = intval($totalRating);
+                                                    $halfStar = ($totalRating - $fullStars) >= 0.5;
+
+
                                                     for ($i = 0; $i < $fullStars; $i++): ?>
                                                         <i class="fas fa-star"></i>
                                                     <?php endfor; ?>
 
-                                                
+
                                                     <?php if ($halfStar): ?>
                                                         <i class="fas fa-star-half-alt"></i>
                                                     <?php endif; ?>
@@ -156,8 +156,8 @@
 
 
                                                                         <div class="swatch-element">
-                                                                            <input type="radio" data-price="<?= $value['price'] ?>" data-quantity="<?= $value['quantity'] ?>" name="option" value="<?= $value['id'] ?>" <?= ($key == 0) ? 'checked' : '' ?>>
-                                                                            <label><?= $value['mau_sac'] . '-' . $value['dung_luong'] ?></label>
+                                                                            <input type="radio" class="variant-checked" id="checked-<?= $value['id'] ?>" data-price="<?= $value['price'] ?>" data-id="<?= $value['id'] ?>" data-quantity="<?= $value['quantity'] ?>" data-sku="<?= $value['sku'] ?>" name="option" value="<?= $value['id'] ?>">
+                                                                            <label for="checked-<?= $value['id'] ?>"><?= $value['mau_sac'] . '-' . $value['dung_luong'] ?></label>
                                                                         </div>
 
                                                                     <?php endforeach ?>
@@ -176,9 +176,9 @@
                                                 <h6>Quantity:</h6>
                                                 <div class="product-quantity">
                                                     <div class="cart-plus-minus">
-                                                        <button class="dec qtybutton minus"><i class="fa-solid fa-minus"></i></button>
-                                                        <input type="text" name="quantity" value="1">
-                                                        <button class="inc qtybutton plus"><i class="fa-solid fa-plus"></i></button>
+                                                        <button type="button" id="minus" class=" qtybutton minus "><i class="fa-solid fa-minus"></i></button>
+                                                        <input type="text" min="0" id="quantity-value" name="quantity" value="1" max="<?= $data['gia_san_pham'] ?>">
+                                                        <button type="button" id="plus" class="qtybutton plus  "><i class="fa-solid fa-plus"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -186,125 +186,33 @@
                                     </div>
                                     <div class="product-info">
                                         <div class="product-actions">
-                                            <!-- pro-deatail button start -->
+
                                             <div class="pro-detail-button">
-                                                <button type="button" onclick="location. href='cart-page.html'" class="btn add-to-cart ajax-spin-cart">
+                                                <button type="button" id="add-to-cart" class="btn add-to-cart ajax-spin-cart">
                                                     <span class="cart-title">Add to cart</span>
                                                 </button>
-                                                <a href="cart-empty.html" class="btn btn-cart btn-theme">
-                                                    <span>Buy now</span>
-                                                </a>
+
                                             </div>
-                                            <!-- pro-deatail button start -->
-                                            <!-- pro-deatail wishlist start -->
-                                            <div class="pro-aff-che">
-                                                <a href="wishlist-product.html" class="wishlist">
-                                                    <span class="wishlist-icon action-wishlist tile-actions--btn wishlist-btn">
-                                                        <span class="add-wishlist"><i class="bi bi-heart"></i></span>
-                                                    </span>
-                                                    <span class="wishlist-text">Wishlist</span>
-                                                </a>
-                                            </div>
-                                            <!-- pro-deatail wishlist end -->
+
+
                                         </div>
                                     </div>
-                                    <div class="product-info">
-                                        <div class="form-group">
-                                            <a href="#deliver-modal" data-bs-toggle="modal">Delivery &amp; return</a>
-                                            <a href="#que-modal" data-bs-toggle="modal">Ask a question</a>
-                                        </div>
+
+                                    <div class="group-cart">
+                                        <input type="hidden" value="<?= $data['ten_san_pham'] ?>" id="name-product">
+                                        <input type="hidden" value="<?= $data['id'] ?>" id="id-product">
+                                        <input type="hidden" id="quantity-cart" value="1">
+                                        <input type="hidden" id="price-cart">
+                                        <input type="hidden" id="image-cart" value="<?= $data['hinh_anh'] ?>">
+                                        <input type="hidden" id="variant-id-cart">
                                     </div>
-                                    <div class="modal fade deliver-modal" id="deliver-modal" tabindex="-1" style="display: none;"
-                                        aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-body">
-                                                    <button type="button" class="pop-close" data-bs-dismiss="modal" aria-label="Close"><i
-                                                            class="feather-x"></i></button>
-                                                    <div class="delivery-block">
-                                                        <div class="space-block">
-                                                            <h4>Delivery</h4>
-                                                            <p>All orders shipped with UPS Express.</p>
-                                                            <p>Always free shipping for orders over US $250.</p>
-                                                            <p>All orders are shipped with a UPS tracking number.</p>
-                                                        </div>
-                                                        <div class="space-block">
-                                                            <h4>Returns</h4>
-                                                            <p>Items returned within 14 days of their original shipment date in same as new
-                                                                condition will be eligible for a full refund or store credit.</p>
-                                                            <p>Refunds will be charged back to the original form of payment used for purchase.</p>
-                                                            <p>Customer is responsible for shipping charges when making returns and
-                                                                shipping/handling fees of original purchase is non-refundable.</p>
-                                                            <p>All sale items are final purchases.</p>
-                                                        </div>
-                                                        <div class="space-block">
-                                                            <h4>Help</h4>
-                                                            <p>Give us a shout if you have any other questions and/or concerns.</p>
-                                                            <p>Email:<a href="mailto:contact@domain.com">demo@gmail.com</a></p>
-                                                            <p>Phone:<a href="tel:+1(23)456789">+1 (23) 456 789</a></p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- que-modal stat -->
-                                    <div class="modal fade que-modal" id="que-modal" aria-modal="true" tabindex="-1" role="dialog">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-body">
-                                                    <button type="button" class="pop-close" data-bs-dismiss="modal" aria-label="Close"><i
-                                                            class="feather-x"></i></button>
-                                                    <div class="product-form-list">
-                                                        <div class="single-product-wrap">
-                                                            <div class="product-image">
-                                                                <a class="pro-img" href="collection.html">
-                                                                    <img class="img-fluid img1 resp-img1" src="img/product/home1-pro-12.jpg"
-                                                                        alt="p-1">
-                                                                    <img class="img-fluid img2 resp-img2" src="img/product/home1-pro-13.jpg"
-                                                                        alt="p-2">
-                                                                </a>
-                                                            </div>
-                                                            <div class="product-content">
-                                                                <div class="pro-title-price">
-                                                                    <h6><a href="product-template.html">Portable speaker</a></h6>
-                                                                    <div class="product-price">
-                                                                        <div class="price-box">
-                                                                            <span class="new-price">$44.00</span>
-                                                                            <span class="old-price">$49.00</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="ask-form">
-                                                        <h6>Ask a question</h6>
-                                                        <form method="post" class="contact-form">
-                                                            <input type="hidden" name="contact[product url]" value="">
-                                                            <div class="form-grp">
-                                                                <input type="text" name="contact[name]" required="" placeholder="Your name*">
-                                                                <input type="text" name="contact[phone]" placeholder="Your phone number">
-                                                                <input type="email" name="contact[email]" required="" placeholder="Your email*">
-                                                                <textarea name="contact[question]" rows="4" required=""
-                                                                    placeholder="Your message*"></textarea>
-                                                                <p>* Required fields</p>
-                                                                <button type="submit" class="btn-style2">Submit Now</button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- que-modal end -->
                                     <div class="product-info">
                                         <p><span>🚚</span> Item will be delivered on or before <span id="ten-days-ahead">Mar 3 2024</span></p>
                                     </div>
                                     <div class="product-info">
                                         <div class="product-sku">
                                             <h6>SKU:</h6>
-                                            <span class="variant-sku">abccd-13</span>
+                                            <span class="variant-sku">?</span>
                                         </div>
                                     </div>
                                     <div class="product-info">
@@ -496,5 +404,127 @@
             </div>
         </div>
     </section>
-    <!-- product-tranding end -->
+    <script>
+        function statusAlert(type, title, message) {
+            Swal.fire({
+                icon: `${type}`,
+                title: `${title}`,
+                text: `${message}`,
+
+            });
+        }
+
+        function formatCurrency(amount) {
+            // Chuyển đổi thành số nếu đầu vào là chuỗi
+            amount = Number(amount);
+            return amount.toLocaleString('vi-VN').replace(/,/g, '.') + ' VNĐ';
+        }
+
+        let variant_input = document.querySelectorAll('.variant-checked');
+        var max = 0;
+        for (const btn of variant_input) {
+            btn.addEventListener('click', () => {
+                let price = btn.dataset.price;
+                let quantity = btn.dataset.quantity;
+                let sku = btn.dataset.sku;
+                let id = btn.dataset.id;
+                max = quantity;
+
+
+                document.querySelector('.new-price').innerHTML = formatCurrency(price);
+                document.querySelector('#price-cart').value = price;
+                document.querySelector('#variant-id-cart').value = id;
+                document.querySelector('.available-stock').innerHTML = quantity;
+                document.querySelector('.variant-sku').innerHTML = sku;
+            });
+        }
+        let quantity_value = document.querySelector('#quantity-value');
+        let plus = document.querySelector('#plus');
+        let minus = document.querySelector('#minus');
+        plus.addEventListener('click', () => {
+
+            let currentQuantity = parseInt(quantity_value.value) || 0;
+            let maxQuantity = parseInt(max) || 0;
+
+            if (maxQuantity === 0) {
+               
+                statusAlert('error','Lỗi','Bạn chưa chọn phân loại !');
+                quantity_value.value = 1;
+
+                return;
+            }
+
+            if (currentQuantity >= maxQuantity) {
+             
+                statusAlert('error','Lỗi','Số lượng không đủ!');
+
+                quantity_value.value = maxQuantity;
+
+                return;
+            }
+
+
+            quantity_value.value = currentQuantity + 1;
+            document.querySelector('#quantity-cart').value = quantity_value.value;
+
+        });
+
+        minus.addEventListener('click', () => {
+
+            let currentQuantity = parseInt(quantity_value.value) || 0;
+
+            if (currentQuantity <= 1) {
+             
+                statusAlert('error','Lỗi','Số lượng không thể nhỏ hơn 1 !');
+
+                quantity_value.value = 1;
+                return;
+            }
+
+
+            quantity_value.value = currentQuantity - 1;
+            document.querySelector('#quantity-cart').value = quantity_value.value;
+
+        });
+    </script>
+    <script type="module">
+        document.querySelector('#add-to-cart').addEventListener('click', () => {
+            if (max == 0) {
+               
+                statusAlert('error','Lỗi','Bạn chưa chọn phân loại !');
+
+            } else {
+
+                let tensp = document.querySelector('#name-product').value;
+                let id_product = document.querySelector('#id-product').value;
+                let quantity_cart = document.querySelector('#quantity-cart').value;
+                let price_cart = document.querySelector('#price-cart').value;
+                let image_cart = document.querySelector('#image-cart').value;
+                let id_variant = document.querySelector('#variant-id-cart').value;
+
+                $.ajax({
+                    url: "index.php?act=add-to-cart",
+                    method: "GET",
+                    data: {
+                        tensp,
+                        id_product,
+                        quantity_cart,
+                        price_cart,
+                        image_cart,
+                        id_variant
+                    },
+                    success: function(response) {
+                      
+                        statusAlert(response.status,response.title,response.message);
+
+                    }
+
+                });
+
+
+
+
+            }
+        })
+    </script>
 </main>
