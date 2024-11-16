@@ -2,12 +2,14 @@
             <!-- slider-area start-->
             <section class="slider-content">
                 <div class="home-slider owl-carousel owl-theme" id="home-slider">
-                    <div class="item">
+                    <?php foreach($banner as $item):?>
+
+                        <div class="item">
                         <div class="slider-image-info">
                             <!-- slider-text start -->
                             <div class="slider-image">
-                                <img src="assets/slider/home1-slider1.jpg" class="img-fluid desk-img" alt="slider1">
-                                <img src="assets/slider/home1-mobile-slider1.jpg" class="img-fluid mobile-img" alt="mobile-slider1">
+                                <img src="/du_an_1/uploads/<?=$item['image'] ?>" class="img-fluid desk-img" alt="slider1" >
+                                <img src="/du_an_1/uploads/<?=$item['image'] ?>" class="img-fluid mobile-img" alt="mobile-slider1" >
                             </div>
                             <!-- slider-img end -->
                             <div class="container slider-info-content">
@@ -18,12 +20,12 @@
                                             <div class="slider-info-text">
                                                 <div class="slider-text-info">
                                                     <span class="sub-title">Get up to discount 80% off</span>
-                                                    <h2><span>DSLR 360 CAMERA</span></h2>
+                                                    <h2><span><?= $item['title']?></span></h2>
                                                     <div class="slider-text">
-                                                        <span>100% trusted</span>
-                                                        <span> electronics gadget</span>
+                                                        <span><?= $item['content'] ?></span>
+                                                    
                                                     </div>
-                                                    <a href="collection.html" class="btn btn-style">ONLINE COLLECTION</a>
+                                                    <a href="" class="btn btn-style">ONLINE COLLECTION</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -33,68 +35,9 @@
                             <!-- slider-text end -->
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="slider-image-info">
-                            <!-- slider-text start -->
-                            <div class="slider-image">
-                                <img src="assets/slider/home1-slider2.jpg" class="img-fluid desk-img" alt="slider1">
-                                <img src="assets/slider/home1-mobile-slider2.jpg" class="img-fluid mobile-img" alt="mobile-slider1">
-                            </div>
-                            <!-- slider-img end -->
-                            <div class="container slider-info-content">
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="slider-info-wrap slider-content-left slider-text-left">
-                                            <!-- slider-text start -->
-                                            <div class="slider-info-text">
-                                                <div class="slider-text-info">
-                                                    <span class="sub-title">Get up to discount 80% off</span>
-                                                    <h2><span>Wireless earbuds</span></h2>
-                                                    <div class="slider-text">
-                                                        <span>100% trusted</span>
-                                                        <span> electronics gadget</span>
-                                                    </div>
-                                                    <a href="collection.html" class="btn btn-style">ONLINE COLLECTION</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- slider-text end -->
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="slider-image-info">
-                            <!-- slider-text start -->
-                            <div class="slider-image">
-                                <img src="assets/slider/home1-slider3.jpg" class="img-fluid desk-img" alt="slider1">
-                                <img src="assets/slider/home1-mobile-slider3.jpg" class="img-fluid mobile-img" alt="mobile-slider1">
-                            </div>
-                            <!-- slider-img end -->
-                            <div class="container slider-info-content">
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="slider-info-wrap slider-content-left slider-text-left">
-                                            <!-- slider-text start -->
-                                            <div class="slider-info-text">
-                                                <div class="slider-text-info">
-                                                    <span class="sub-title">Get up to discount 80% off</span>
-                                                    <h2><span>Wireless handset</span></h2>
-                                                    <div class="slider-text">
-                                                        <span>100% trusted</span>
-                                                        <span> electronics gadget</span>
-                                                    </div>
-                                                    <a href="collection.html" class="btn btn-style">ONLINE COLLECTION</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- slider-text end -->
-                        </div>
-                    </div>
+
+                        <?php endforeach ?>
+                  
                 </div>
             </section>
       

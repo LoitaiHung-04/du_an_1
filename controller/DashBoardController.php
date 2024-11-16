@@ -18,6 +18,7 @@ class DashBoardController
     {
         $product = $this->dashboard->getAll();
         $category = $this->category->getAll();
+        $banner = $this->dashboard->getBanner();
         include_once './views/home/dashboard.php';
     }
     public function show()

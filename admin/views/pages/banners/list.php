@@ -96,7 +96,7 @@
                                                                 <td>
                                                                     <div class="d-flex align-items-center">
                                                                         <div class="flex-shrink-0 me-2">
-                                                                            <img src="<?= "/du_an_1/uploads/" . $value['image'] ?>" alt="" class="avatar-xs rounded-circle material-shadow" />
+                                                                            <img src="<?= "/du_an_1/uploads/" . $value['image'] ?>" alt="" class="" style="width: 100px;" />
                                                                         </div>
                                                                         <div class="flex-grow-1"></div>
                                                                     </div>

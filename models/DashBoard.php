@@ -83,4 +83,8 @@ class DashBoard
         $params = [$id];
         return query_all_data($sql, $params);
     }
+    public function getBanner(){
+        $sql="SELECT * FROM banner";
+        return query_all_data($sql);
+    }
 }
