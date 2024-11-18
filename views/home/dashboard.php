@@ -8,8 +8,8 @@
                         <div class="slider-image-info">
                             <!-- slider-text start -->
                             <div class="slider-image">
-                                <img src="/du_an_1/uploads/<?=$item['image'] ?>" class="img-fluid desk-img" alt="slider1" >
-                                <img src="/du_an_1/uploads/<?=$item['image'] ?>" class="img-fluid mobile-img" alt="mobile-slider1" >
+                                <img src="/du_an_1/uploads/<?=$item['image'] ?>"  class="img-fluid desk-img" alt="slider1" >
+                                <img src="/du_an_1/uploads/<?=$item['image'] ?>"  class="img-fluid mobile-img" alt="mobile-slider1" >
                             </div>
                             <!-- slider-img end -->
                             <div class="container slider-info-content">

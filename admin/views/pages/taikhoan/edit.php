@@ -83,7 +83,6 @@
                                                 <div class="mb-3">
                                                     <label for="address1ControlTextarea" class="form-label">Ảnh đại diện</label>
                                                     <input type="file" class="form-control" placeholder="Nhập ảnh" name="anh_dai_dien">
-                                                    <img src="<?=$TaiKhoan['anh_dai_dien']?>" alt="" style="width: 20px;">
                                                     <span class="text-danger">
                                                         <?= !empty($_SESSION['error']['anh_dai_dien']) ? $_SESSION['error']['anh_dai_dien'] : '' ?>
                                                     </span>
@@ -110,7 +109,7 @@
                                             <div class="col-md-12">
                                                 <div class="mb-3">
                                                     <label for="address1ControlTextarea" class="form-label">Số điện thoại</label>
-                                                    <input type="number" class="form-control" placeholder="Nhập số điện thoại" name="so_dien_thoai" value="<?=$TaiKhoan['so_dien_thoai']?>">
+                                                    <input type="text" class="form-control" placeholder="Nhập số điện thoại" name="so_dien_thoai" value="<?=$TaiKhoan['so_dien_thoai']?>">
                                                     <span class="text-danger">
                                                         <?= !empty($_SESSION['error']['so_dien_thoai']) ? $_SESSION['error']['so_dien_thoai'] : '' ?>
                                                     </span>

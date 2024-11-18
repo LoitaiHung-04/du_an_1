@@ -39,11 +39,11 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                                <h4 class="mb-sm-0">quản lí người dùng</h4>
+                                <h4 class="mb-sm-0">Quản lí người dùng</h4>
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                        <li class="breadcrumb-item active">quản lí người dùng</li>
+                                        <li class="breadcrumb-item active">Quản lí người dùng</li>
                                     </ol>
                                 </div>
                             </div>
@@ -52,10 +52,9 @@
                     <!-- end page title -->
 
                     <div class="row">
-
                         <div class="col">
                             <div class="h-100">
-
+                                <!-- Tìm kiếm -->
                                 <div class="row mb-4">
                                     <form action="?act=tim-kiem" method="POST" class="d-flex align-items-center">
                                         <div class="col-auto">
@@ -69,8 +68,12 @@
                                     </form>
                                 </div>
 
-                                <div class="card-body">
-                                    <div class="live-preview">
+                                <!-- Card Body cho bảng người dùng -->
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="card-title mb-0">Danh sách người dùng</h5>
+                                    </div>
+                                    <div class="card-body">
                                         <div class="table-responsive table-card">
                                             <table class="table align-middle table-nowrap table-striped-columns mb-0">
                                                 <thead class="table-light">
@@ -121,8 +124,6 @@
                                                                 <td><?= $row['ho_ten'] ?></td>
                                                                 <td>
                                                                     <img src="<?= '/du_an_1/uploads/users/' . $row['anh_dai_dien'] ?>" alt="Avatar"
-
-
                                                                         style="width: 100px; height: 100px; border-radius: 50%;">
                                                                 </td>
                                                                 <td><?= $row['email'] ?></td>
@@ -185,21 +186,6 @@
     </button>
     <!--end back-to-top-->
 
-    <!--preloader-->
-    <div id="preloader">
-        <div id="status">
-            <div class="spinner-border text-primary avatar-sm" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="customizer-setting d-none d-md-block">
-        <div class="btn-info rounded-pill shadow-lg btn btn-icon btn-lg p-2" data-bs-toggle="offcanvas"
-            data-bs-target="#theme-settings-offcanvas" aria-controls="theme-settings-offcanvas">
-            <i class='mdi mdi-spin mdi-cog-outline fs-22'></i>
-        </div>
-    </div>
 
     <!-- JAVASCRIPT -->
     <?php

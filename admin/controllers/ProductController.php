@@ -13,7 +13,10 @@ class ProductController
     public function index()
     {
         $data = $this->product->getAll();
-        // var_dump($data[0]);die();
+        $path = $_SERVER['DOCUMENT_ROOT'] . "/du_an_1/public/";
+        $fileName = "compare.json";
+        file_put_contents($path . $fileName, json_encode($data, JSON_PRETTY_PRINT));
+        
         include './views/pages/product/list.php';
     }
     public function create()

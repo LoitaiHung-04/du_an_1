@@ -17,8 +17,8 @@ class DashBoardController
     public function index()
     {
         $product = $this->dashboard->getAll();
-        $category = $this->category->getAll();
         $banner = $this->dashboard->getBanner();
+        
         include_once './views/home/dashboard.php';
     }
     public function show()
@@ -29,12 +29,20 @@ class DashBoardController
         $data = $this->dashboard->getOne($id);
         $rating = $this->dashboard->getRating($id);
         $count = $this->dashboard->getCountRating($id);
-        $total_rating = intval($rating[0]['total_rating']) / count($count);
+        $productDetail = $this->dashboard->productDetail($id);
+        // var_dump($rating['total_rating']);die();
+        if($rating[0]['total_rating'] != null){
+            $total_rating = intval($rating[0]['total_rating']) / count($count);
+        }else{
+            $total_rating =0;
+        }
+        // var_dump($total_rating);die();
 
         include_once './views/home/detail-product.php';
     }
     public function cart()
     {
+        
         $cart = $this->dashboard->getCart(1);
         include_once './views/home/cart.php';
     }
@@ -88,14 +96,35 @@ class DashBoardController
 
     public function checkout()
     {
+        
         include_once './views/home/checkout.php';
     }
     public function blog()
     {
+        
         include_once './views/home/blog.php';
     }
     public function profile() 
     {
+        
         include_once './views/home/profile.php';
     }
+    public function product() 
+{
+    $category = isset($_POST['category']) ? $_POST['category'] : [];
+    $priceMin = isset($_POST['price_min']) ? (int)$_POST['price_min'] : 0;
+    $priceMax = isset($_POST['price_max']) ? (int)$_POST['price_max'] : 0;
+    $orderBy = isset($_POST['order_by']) ? $_POST['order_by'] : '';
+  
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        // var_dump($priceMin,$priceMax);die();
+        $data = $this->dashboard->filterProduct($category, $priceMin, $priceMax, $orderBy);
+    } else {
+        $data = $this->dashboard->filterProduct();
+    }
+
+    $categories = $this->dashboard->getAllCategory();
+    include_once './views/home/product.php';
+}
+
 }

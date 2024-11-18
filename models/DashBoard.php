@@ -83,8 +83,81 @@ class DashBoard
         $params = [$id];
         return query_all_data($sql, $params);
     }
-    public function getBanner(){
-        $sql="SELECT * FROM banner";
+    public function getBanner()
+    {
+        $sql = "SELECT * FROM banner";
         return query_all_data($sql);
+    }
+    public function getAllCategory()
+    {
+        $sql = "SELECT * FROM danh_mucs";
+        return query_all_data($sql);
+    }
+    /**
+     * Lọc sản phẩm theo danh mục, giá, và sắp xếp
+     * 
+     * @param array $category       Mảng ID danh mục (có thể rỗng)
+     * @param int $priceMin         Giá tối thiểu (mặc định = 0)
+     * @param int $priceMax         Giá tối đa (mặc định = 0)
+     * @param string $orderBy       Kiểu sắp xếp: 'ASC' hoặc 'DESC' (mặc định '')
+     * @return array                Danh sách sản phẩm lọc
+     */
+    public function filterProduct($category = [], $priceMin = 0, $priceMax = 0, $orderBy = '')
+    {
+        $sql = 'SELECT 
+                    p.ten_san_pham,
+                    p.gia_san_pham,
+                    p.so_luong,
+                    p.hinh_anh,
+                    p.trang_thai,
+                    p.id,
+                    c.ten_danh_muc AS namedm
+                FROM san_phams AS p 
+                INNER JOIN danh_mucs AS c 
+                ON p.danh_muc_id = c.id';
+
+        $params = [];
+        $hasCondition = false;
+
+        // Lọc theo danh mục
+        if (!empty($category)) {
+            $placeholders = implode(',', array_fill(0, count($category), '?'));
+            $sql .= ($hasCondition ? ' AND' : ' WHERE') . " p.danh_muc_id IN ($placeholders)";
+            $params = array_merge($params, $category);
+            $hasCondition = true;
+        }
+
+        // Lọc theo giá
+        if ($priceMin >= 0 && $priceMax > 0) {
+            $sql .= ($hasCondition ? ' AND' : ' WHERE') . ' p.gia_san_pham BETWEEN ? AND ?';
+            $params = array_merge($params, [$priceMin, $priceMax]);
+            $hasCondition = true;
+        }
+
+        // Sắp xếp
+        if ($orderBy === 'ASC' || $orderBy === 'DESC') {
+            $sql .= ' ORDER BY p.gia_san_pham ' . $orderBy;
+        }
+
+        return query_all_data($sql, $params);
+    }
+    public function productDetail($id)
+    {
+        $sql = "select 
+        p.ten_san_pham,
+        p.gia_san_pham,
+        p.so_luong,
+        p.hinh_anh,
+        p.trang_thai,
+        p.id,
+        c.ten_danh_muc as namedm
+      
+        from san_phams as p 
+        inner join danh_mucs as c 
+        on p.danh_muc_id = c.id 
+     
+       where p.id <> ? limit 4";
+        $params = [$id];
+        return query_all_data($sql, $params);
     }
 }

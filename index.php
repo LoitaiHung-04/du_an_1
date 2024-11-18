@@ -28,6 +28,7 @@ match ($act) {
     'checkout'                 => (new DashBoardController())->checkout(),
     'profile'                 => (new DashBoardController())->profile(),
     'blog'                 => (new DashBoardController())->blog(),
+    'product'                 => (new DashBoardController())->product(),
 };
 
 if (!$isAjax) {

@@ -117,6 +117,8 @@
                                                                 <td>
                                                                     <a href="?act=delete-product&id=<?= $value['id'] ?>" class="link-danger fs-15" onclick="return confirm('bạn muốn xóa không ?')"><i class="ri-delete-bin-line"></i></a>
                                                                     <a href="?act=form-sua-product&id=<?= $value['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
+                                                                    <a href="?act=danh-gia-sp&id=<?= $value['id'] ?>" class="link-infor fs-15"><i class='bx bx-star'></i></a>
+                                                                    <a href="?act=binh-luan-sp&id=<?= $value['id'] ?>" class="link-secondary fs-15"><i class='bx bx-message-dots' ></i></a>
                                                                 </td>
                                                             </tr>
                                                         <?php endforeach ?>

@@ -45,6 +45,8 @@
     <!-- product-page css -->
     <link rel="stylesheet" type="text/css" href="assets/css/product-page.css">
     <!-- style css -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -102,7 +104,7 @@
     </div>
     <!-- notification-bar end -->
     <!-- header start -->
-    <header class="main-header" id="stickyheader">
+    <header class="main-header" id="stickyheader" style="position: relative;">
         <div class="header-top-area">
             <div class="container-fluid">
                 <div class="row">
@@ -128,7 +130,7 @@
                             <div class="header-element header-logo">
                                 <div class="header-theme-logo">
                                     <a href="index.html" class="theme-logo">
-                                        <img src="img/logo/logo.png" class="img-fluid" alt="logo">
+                                        <img src="/du_an_1/assets/images/logo/logo.png" class="img-fluid" alt="logo">
                                     </a>
                                 </div>
                             </div>
@@ -136,16 +138,19 @@
                                 <div class="search-crap">
                                     <div class="search-content">
                                         <div class="search-box">
-                                            <form action="https://spacingtech.com/html/electon/electon/search.html" method="get" class="search-bar">
+                                            <form action="?act=search" method="post" class="search-bar">
                                                 <div class="form-search">
-                                                    <input type="search" name="q" placeholder="Find our search" class="search-input">
-                                                    <button type="submit" class="search-btn"><i class="feather-search"></i></button>
+                                                    <input id="timkiem" type="search" name="q" placeholder="Find our search" class="search-input">
+                                                    <button disabled type="button" class="search-btn"><i class="feather-search"></i></button>
                                                 </div>
                                             </form>
+                                            <ul style="position: absolute; z-index: 100;"  id="result"></ul>
                                         </div>
                                     </div>
                                 </div>
+                                
                             </div>
+                           
                             <div class="header-element header-icon">
                                 <div class="header-icon-block">
                                     <ul class="shop-element">
@@ -211,14 +216,23 @@
                                     <div class="vegawrap collapse" id="vega-collapse">
                                         <ul class="vega-menu">
 
-                                            <li class="menu-link">
-                                                <a href="collection.html" class="link-title">
-                                                    <span class="menu-img-icon">
+                                            <?php
+
+                                            include_once './models/DashBoard.php';
+                                            $dashboard = new DashBoard();
+                                            $categories = $dashboard->getAllCategory();
+                                            foreach ($categories as $item): ?>
+
+                                                <li class="menu-link">
+                                                    <a href="?act=danh_muc_sp&id=<?= $item['id'] ?>" class="link-title">
+                                                        <!-- <span class="menu-img-icon">
                                                         <img src="img/menu/cate-menu7.jpg" class="img-fluid" alt="cate-menu7">
-                                                    </span>
-                                                    <span class="sp-link-title">Wireless mouse</span>
-                                                </a>
-                                            </li>
+                                                    </span> -->
+                                                        <span class="sp-link-title"><?= $item['ten_danh_muc'] ?></span>
+                                                    </a>
+                                                </li>
+
+                                            <?php endforeach ?>
                                         </ul>
                                     </div>
                                 </div>
@@ -233,15 +247,9 @@
                                                 </a>
 
                                             </li>
-                                            <li class="menu-link">
-                                                <a href="collection.html" class="link-title">
-                                                    <span class="sp-link-title">Shop</span>
-                                                    <span class="menu-arrow"><i class="fa fa-angle-down"></i></span>
-                                                </a>
 
-                                            </li>
                                             <li class="menu-link">
-                                                <a href="collection.html" class="link-title">
+                                                <a href="?act=product" class="link-title">
                                                     <span class="sp-link-title">Product<span class="header-sale-lable">Sale</span></span>
                                                     <span class="menu-arrow"><i class="fa fa-angle-down"></i></span>
                                                 </a>
@@ -252,40 +260,7 @@
                                                     <span class="sp-link-title">Blogs</span>
                                                     <span class="menu-arrow"><i class="fa fa-angle-down"></i></span>
                                                 </a>
-                                                <div class="menu-dropdown menu-single collapse" id="blogs">
-                                                    <ul class="ul">
-                                                        <li class="menusingle-li">
-                                                            <a href="blog-grid-without.html" class="menusingle-title">
-                                                                <span class="sp-link-title">Blog grid</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="menusingle-li">
-                                                            <a href="blog-grid.html" class="menusingle-title">
-                                                                <span class="sp-link-title">Blog grid left</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="menusingle-li">
-                                                            <a href="blog-grid-right.html" class="menusingle-title">
-                                                                <span class="sp-link-title">Blog grid right</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="menusingle-li">
-                                                            <a href="article-post-without.html" class="menusingle-title">
-                                                                <span class="sp-link-title">Article post</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="menusingle-li">
-                                                            <a href="article-post.html" class="menusingle-title">
-                                                                <span class="sp-link-title">Article post left</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="menusingle-li">
-                                                            <a href="article-post-right.html" class="menusingle-title">
-                                                                <span class="sp-link-title">Article post right</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+
                                             </li>
                                             <li class="menu-link">
                                                 <a href="contact-us.html" class="link-title">
@@ -293,207 +268,8 @@
                                                     <span class="menu-arrow"><i class="fa fa-angle-down"></i></span>
                                                 </a>
                                             </li>
-                                            <li class="menu-link">
-                                                <a href="about-us.html" class="link-title">
-                                                    <span class="sp-link-title">Pages</span>
-                                                    <span class="menu-arrow"><i class="fa fa-angle-down"></i></span>
-                                                </a>
-                                                <div class="menu-dropdown menu-sub collapse" id="page">
-                                                    <ul class="ul">
-                                                        <li class="menusub-li">
-                                                            <a href="about-us.html" class="menusub-title">
-                                                                <span class="sp-link-title">About us</span>
-                                                                <span class="menu-arrow"><i class="fa-solid fa-angle-right"></i></span>
-                                                            </a>
-                                                            <div class="menusup-dropdown collapse" id="About">
-                                                                <ul class="menusup-ul">
-                                                                    <li class="menusup-li">
-                                                                        <a href="about-us.html" class="menusup-title">
-                                                                            <span class="sp-link-title">About us</span>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="menusup-li">
-                                                                        <a href="about-us-2.html" class="menusup-title">
-                                                                            <span class="sp-link-title">About us 2</span>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="menusup-li">
-                                                                        <a href="about-us-3.html" class="menusup-title">
-                                                                            <span class="sp-link-title">About us 3</span>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </li>
-                                                        <li class="menusub-li">
-                                                            <a href="login-account.html" class="menusub-title">
-                                                                <span class="sp-link-title">My account</span>
-                                                                <span class="menu-arrow"><i class="fa-solid fa-angle-right"></i></span>
-                                                            </a>
-                                                            <div class="menusup-dropdown collapse">
-                                                                <ul class="menusup-ul">
-                                                                    <li class="menusup-li">
-                                                                        <a href="order-history.html" class="menusup-title">
-                                                                            <span class="sp-link-title">Order</span>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="menusup-li">
-                                                                        <a href="profile.html" class="menusup-title">
-                                                                            <span class="sp-link-title">Profile</span>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="menusup-li">
-                                                                        <a href="pro-address.html" class="menusup-title">
-                                                                            <span class="sp-link-title">Address</span>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="menusup-li">
-                                                                        <a href="pro-wishlist.html" class="menusup-title">
-                                                                            <span class="sp-link-title">Wishlist</span>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="menusup-li">
-                                                                        <a href="pro-tickets.html" class="menusup-title">
-                                                                            <span class="sp-link-title">My tickets</span>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="menusup-li">
-                                                                        <a href="billing-info.html" class="menusup-title">
-                                                                            <span class="sp-link-title">Billing info</span>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="menusup-li">
-                                                                        <a href="track-page.html" class="menusup-title">
-                                                                            <span class="sp-link-title">Track page</span>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="menusup-li">
-                                                                        <a href="order-complete.html" class="menusup-title">
-                                                                            <span class="sp-link-title">Order complete</span>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </li>
-                                                        <li class="menusub-li">
-                                                            <a href="contact-us.html" class="menusub-title">
-                                                                <span class="sp-link-title">Contact us</span>
-                                                                <span class="menu-arrow"><i class="fa-solid fa-angle-right"></i></span>
-                                                            </a>
-                                                            <div class="menusup-dropdown collapse">
-                                                                <ul class="menusup-ul">
-                                                                    <li class="menusup-li">
-                                                                        <a href="contact-us.html" class="menusup-title">
-                                                                            <span class="sp-link-title">Contact us</span>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="menusup-li">
-                                                                        <a href="contact-us-2.html" class="menusup-title">
-                                                                            <span class="sp-link-title">Contact us 2</span>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </li>
-                                                        <li class="menusub-li">
-                                                            <a href="checkout-style1.html" class="menusub-title">
-                                                                <span class="sp-link-title">Checkout</span>
-                                                                <span class="menu-arrow"><i class="fa-solid fa-angle-right"></i></span>
-                                                            </a>
-                                                            <div class="menusup-dropdown collapse">
-                                                                <ul class="menusup-ul">
-                                                                    <li class="menusup-li">
-                                                                        <a href="checkout-style1.html" class="menusup-title">
-                                                                            <span class="sp-link-title">Checkout style 1</span>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="menusup-li">
-                                                                        <a href="checkout-style2.html" class="menusup-title">
-                                                                            <span class="sp-link-title">Checkout style 2</span>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="menusup-li">
-                                                                        <a href="checkout-style3.html" class="menusup-title">
-                                                                            <span class="sp-link-title">Checkout style 3</span>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </li>
-                                                        <li class="menusub-li">
-                                                            <a href="javascript:void(0)" class="menusub-title">
-                                                                <span class="sp-link-title">Features</span>
-                                                                <span class="menu-arrow"><i class="fa-solid fa-angle-right"></i></span>
-                                                            </a>
-                                                            <div class="menusup-dropdown collapse">
-                                                                <ul class="menusup-ul">
-                                                                    <li class="menusup-li">
-                                                                        <a href="cancellation.html" class="menusup-title">
-                                                                            <span class="sp-link-title">Cancellation</span>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="menusup-li">
-                                                                        <a href="cart-page.html" class="menusup-title">
-                                                                            <span class="sp-link-title">Cart page</span>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="menusup-li">
-                                                                        <a href="wishlist-product.html" class="menusup-title">
-                                                                            <span class="sp-link-title">Wishlist product</span>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="menusup-li">
-                                                                        <a href="sitemap.html" class="menusup-title">
-                                                                            <span class="sp-link-title">Sitemap</span>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </li>
-                                                        <li class="menusub-li">
-                                                            <a href="faq.html" class="menusub-title">
-                                                                <span class="sp-link-title">Faq's</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="menusub-li">
-                                                            <a href="privacy-policy.html" class="menusub-title">
-                                                                <span class="sp-link-title">Privacy policy</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="menusub-li">
-                                                            <a href="payment-policy.html" class="menusub-title">
-                                                                <span class="sp-link-title">Payment policy</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="menusub-li">
-                                                            <a href="terms-condition.html" class="menusub-title">
-                                                                <span class="sp-link-title">Terms &amp; condition</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="menusub-li">
-                                                            <a href="return-policy.html" class="menusub-title">
-                                                                <span class="sp-link-title">Return policy</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="menusub-li">
-                                                            <a href="404.html" class="menusub-title">
-                                                                <span class="sp-link-title">404</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="menusub-li">
-                                                            <a href="coming-soon.html" class="menusub-title">
-                                                                <span class="sp-link-title">Coming soon</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-                                            <li class="menu-link">
-                                                <a href="https://themeforest.net/user/spacingtech_webify/portfolio" class="link-title">
-                                                    <span class="sp-link-title">Buy electon</span>
-                                                    <span class="menu-arrow"><i class="fa fa-angle-down"></i></span>
-                                                </a>
-                                            </li>
+
+
                                         </ul>
                                     </div>
                                 </div>

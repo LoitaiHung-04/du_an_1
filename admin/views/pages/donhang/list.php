@@ -35,9 +35,8 @@
                 <div class="container-fluid">
                     <!-- start page title -->
                     <div class="row">
-                        <div class="col-12">
-                            <div
-                                class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
+                        <div class="col-12">    
+                            <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
                                 <h4 class="mb-sm-0">Quản lý đơn hàng</h4>
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
@@ -67,18 +66,14 @@
                                             </button>
                                         </div>
                                     </form>
-                                    <div class="card">
+                                </div>
 
-
-                                    </div>
-
-
-
+                                <!-- Card for Orders Table -->
+                                <div class="card">
                                     <div class="card-body">
                                         <div class="live-preview">
                                             <div class="table-responsive table-card">
-                                                <table
-                                                    class="table align-middle table-nowrap table-striped-columns mb-0">
+                                                <table class="table align-middle table-nowrap table-striped-columns mb-0">
                                                     <thead class="table-light">
                                                         <tr>
                                                             <th scope="col" style="width: 46px;">
@@ -94,8 +89,11 @@
                                                             <th scope="col">Tên người nhận</th>
                                                             <th scope="col">SĐT</th>
                                                             <th scope="col">Ngày đặt</th>
-                                                            <th scope="col">Trạng thái</th>
+                                                            <th scope="col">Trạng thái đơn hàng</th>
+                                                            <th scope="col">Trạng thái thanh toán</th>
                                                             <th scope="col">Chi tiết</th>
+
+
                                                             <th scope="col" style="width: 150px;">Action</th>
                                                         </tr>
                                                     </thead>
@@ -109,6 +107,7 @@
                                                         if (isset($resultSearchOrder) && !empty($resultSearchOrder)) {
                                                             $dataToDisplay = $resultSearchOrder;
                                                         } else {
+                                                            
                                                             $dataToDisplay = $listDonHang;
                                                         }
 
@@ -129,9 +128,22 @@
                                                                     <td><?= htmlspecialchars($row['sdt_nguoi_nhan']) ?></td>
                                                                     <td><?= htmlspecialchars($row['ngay_dat']) ?></td>
                                                                     <td><?= htmlspecialchars($row['ten_trang_thai_id']) ?></td>
+                                                                    <td><?php if($row['trang_thai_thanh_toan_id']==1){
+                                                                                    echo 'Đã thanh toán';
+                                                                             }elseif($row['trang_thai_thanh_toan_id']==2){
+                                                                                    echo 'Chưa thanh toán';
+                                                                             }elseif($row['trang_thai_thanh_toan_id']==3){
+                                                                                     echo "Đang xử lí";
+                                                                             }
+                                                                                                             
+                                                                        ?>
+                                                                    </td>
+                                                                    
+                                                                    
+                                                                    
+
                                                                     <td>
                                                                         <div class="col-xl-3 col-lg-4 col-sm-6">
-
                                                                             <a
                                                                                 href="?act=chi-tiet-don-hang&id=<?= $row['id'] ?>">
                                                                                 <i data-feather="eye" class="text-primary"></i>
@@ -165,16 +177,6 @@
                                                         <?php } ?>
                                                     </tbody>
 
-                                                    <!-- Thẻ <script> cho Feather Icons chỉ cần ở ngoài vòng lặp -->
-                                                    <script src="https://unpkg.com/feather-icons"></script>
-                                                    <script>
-                                                        document.addEventListener("DOMContentLoaded", function () {
-                                                            feather.replace();
-                                                        });
-                                                    </script>
-
-
-                                                    </tbody>
                                                 </table>
                                             </div>
                                         </div>

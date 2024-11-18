@@ -54,7 +54,7 @@ include_once '../commons/function.php';
                 ON don_hangs.phuong_thuc_thanh_toan_id = phuong_thuc_thanh_toans.id
                 INNER JOIN chi_tiet_don_hangs 
                 ON don_hangs.id = chi_tiet_don_hangs.don_hang_id
-                WHERE don_hangs.id = ?';  // Điều kiện WHERE cho ID của bảng don_hangs
+                WHERE don_hangs.id = ?';
                 
                 
         $param = [$id];  // ID của đơn hàng
@@ -64,13 +64,12 @@ include_once '../commons/function.php';
      
     
     public function getListSpDonHang($id_don_hang) {
-        $sql = 'SELECT chi_tiet_don_hangs.*, san_phams.ten_san_pham 
+        $sql = 'SELECT chi_tiet_don_hangs.*, san_phams.ten_san_pham , don_hangs.trang_thai_thanh_toan_id
         FROM chi_tiet_don_hangs
         INNER JOIN san_phams ON chi_tiet_don_hangs.san_pham_id = san_phams.id
+        INNER JOIN don_hangs ON  chi_tiet_don_hangs.don_hang_id = don_hangs.id
         WHERE chi_tiet_don_hangs.don_hang_id = ?';
         $param = [$id_don_hang];
-    
-        
         return query_all_data($sql, $param);
     } 
     public function getAllTrangThaiDonHang() {

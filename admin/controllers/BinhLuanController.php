@@ -16,4 +16,10 @@ class BinhLuanController
         $data = $this->binhluan->getAll();
         include_once './views/pages/binh_luan/list.php';
     }
+    public function show()
+    {
+        $id = $_GET['id'];
+        $data = $this->binhluan->getByID($id);
+        include_once './views/pages/binh_luan/list.php';
+    }
 }

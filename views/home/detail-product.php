@@ -82,7 +82,6 @@
                                 <div class="pro-nprist">
                                     <div class="product-info">
                                         <!--  product-ratting start -->
-                                        <?= ($rating[0]['total_rating'] == 0) && "Chưa có đánh giá !" ?>
                                         <?php if ($total_rating > 0) : ?>
                                             <div class="product-ratting">
                                                 <span class="pro-ratting">
@@ -104,7 +103,10 @@
                                                 <span class="spr-badge-caption"><?= count($count) ?> Đánh giá</span>
                                             </div>
 
+                                        <?php else: ?>
+                                            <p>Chưa có đánh giá</p>
                                         <?php endif ?>
+
                                     </div>
                                     <div class="product-info">
                                         <!-- product-title start -->
@@ -301,8 +303,8 @@
                     <div class="col">
                         <div class="section-capture">
                             <div class="section-title">
-                                <span class="sub-title" data-animate="animate__fadeInUp">Browse collection</span>
-                                <h2><span data-animate="animate__fadeInUp">Trending product</span></h2>
+                                <!-- <span class="sub-title" data-animate="animate__fadeInUp">Browse collection</span> -->
+                                <h2><span data-animate="animate__fadeInUp">Sản phẩm liên quan</span></h2>
                             </div>
                         </div>
                     </div>
@@ -314,75 +316,68 @@
                         <div class="collection-wrap">
                             <div class="collection-slider swiper" id="Trending-product">
                                 <div class="swiper-wrapper">
-                                    <div class="swiper-slide" data-animate="animate__fadeInUp">
-                                        <div class="single-product-wrap">
-                                            <div class="product-image">
-                                                <a href="product-template.html" class="pro-img">
-                                                    <img src="img/product/home1-pro-1.jpg" class="img-fluid img1 mobile-img1" alt="p1">
-                                                    <img src="img/product/home1-pro-2.jpg" class="img-fluid img2 mobile-img2" alt="p2">
-                                                </a>
-                                                <div class="product-action">
-                                                    <a href="#quickview" class="quickview" data-bs-toggle="modal" data-bs-target="#quickview">
-                                                        <span class="tooltip-text">Quickview</span>
-                                                        <span class="pro-action-icon"><i class="feather-eye"></i></span>
+                                    <?php foreach ($productDetail as $item): ?>
+
+
+
+                                        <div class="swiper-slide" data-animate="animate__fadeInUp">
+                                            <div class="single-product-wrap">
+                                                <div class="product-image">
+                                                    <a href="?act=chi-tiet-san-pham&id=<?= $item['id'] ?>" class="pro-img">
+                                                        <img src="/du_an_1/uploads/products/<?= $item['hinh_anh'] ?>" class="img-fluid img1 mobile-img1" alt="p1">
+                                                        <img src="/du_an_1/uploads/products/<?= $item['hinh_anh'] ?>" class="img-fluid img2 mobile-img2" alt="p2">
                                                     </a>
-                                                    <a href="#add-to-cart" class="add-to-cart" data-bs-toggle="modal" data-bs-target="#add-to-cart">
-                                                        <span class="tooltip-text">Add to cart</span>
-                                                        <span class="pro-action-icon"><i class="feather-shopping-bag"></i></span>
-                                                    </a>
-                                                    <a href="wishlist-product.html" class="wishlist">
-                                                        <span class="tooltip-text">Wishlist</span>
-                                                        <span class="pro-action-icon"><i class="feather-heart"></i></span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="product-sub-title">
-                                                    <span>Wireless device</span>
-                                                </div>
-                                                <div class="product-title">
-                                                    <h6><a href="product-template.html">Wireless headphones</a></h6>
-                                                </div>
-                                                <div class="product-price">
-                                                    <div class="pro-price-box">
-                                                        <span class="new-price">$21.00</span>
-                                                        <span class="old-price">$25.00</span>
+                                                    <div class="product-action">
+                                                        <a href="#quickview" class="quickview" data-bs-toggle="modal" data-bs-target="#quickview">
+                                                            <span class="tooltip-text">Quickview</span>
+                                                            <span class="pro-action-icon"><i class="feather-eye"></i></span>
+                                                        </a>
+                                                        <a href="#add-to-cart" class="add-to-cart" data-bs-toggle="modal" data-bs-target="#add-to-cart">
+                                                            <span class="tooltip-text">Add to cart</span>
+                                                            <span class="pro-action-icon"><i class="feather-shopping-bag"></i></span>
+                                                        </a>
+                                                        <a href="wishlist-product.html" class="wishlist">
+                                                            <span class="tooltip-text">Wishlist</span>
+                                                            <span class="pro-action-icon"><i class="feather-heart"></i></span>
+                                                        </a>
                                                     </div>
                                                 </div>
-                                                <div class="product-description">
-                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                                <div class="product-content">
+                                                    <div class="product-sub-title">
+                                                        <span><?= $item['namedm']?></span>
+                                                    </div>
+                                                    <div class="product-title">
+                                                        <h6><a href="?act=chi-tiet-san-pham&id=<?= $item['id'] ?>"><?= $item['ten_san_pham'] ?></a></h6>
+                                                    </div>
+                                                    <div class="product-price">
+                                                        <div style="color: red;">
+                                                            <span class="new-price"><?= number_format($item['gia_san_pham'],0,',','.') ?> VNĐ</span>
+                                                        
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-description">
+                                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                                    </div>
+                                                    
                                                 </div>
-                                                <div class="product-action">
-                                                    <a href="#quickview" class="quickview" data-bs-toggle="modal" data-bs-target="#quickview">
-                                                        <span class="tooltip-text">Quickview</span>
-                                                        <span class="pro-action-icon"><i class="feather-eye"></i></span>
-                                                    </a>
-                                                    <a href="#add-to-cart" class="add-to-cart" data-bs-toggle="modal" data-bs-target="#add-to-cart">
-                                                        <span class="tooltip-text">Add to cart</span>
-                                                        <span class="pro-action-icon"><i class="feather-shopping-bag"></i></span>
-                                                    </a>
-                                                    <a href="wishlist-product.html" class="wishlist">
-                                                        <span class="tooltip-text">Wishlist</span>
-                                                        <span class="pro-action-icon"><i class="feather-heart"></i></span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="pro-label-retting">
-                                                <div class="product-ratting">
-                                                    <span class="pro-ratting">
-                                                        <i class="fa-solid fa-star"></i>
-                                                        <i class="fa-solid fa-star"></i>
-                                                        <i class="fa-solid fa-star"></i>
-                                                        <i class="fa-solid fa-star"></i>
-                                                        <i class="fa-solid fa-star"></i>
-                                                    </span>
-                                                </div>
-                                                <div class="product-label pro-new-sale">
-                                                    <span class="product-label-title">Sale<span>20%</span></span>
+                                                <div class="pro-label-retting">
+                                                    <div class="product-ratting">
+                                                        <span class="pro-ratting">
+                                                            <i class="fa-solid fa-star"></i>
+                                                            <i class="fa-solid fa-star"></i>
+                                                            <i class="fa-solid fa-star"></i>
+                                                            <i class="fa-solid fa-star"></i>
+                                                            <i class="fa-solid fa-star"></i>
+                                                        </span>
+                                                    </div>
+                                                    <div class="product-label pro-new-sale">
+                                                        <span class="product-label-title">Sale<span>20%</span></span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+
+                                    <?php endforeach ?>
 
                                 </div>
                                 <div class="collection-button">
@@ -447,16 +442,16 @@
             let maxQuantity = parseInt(max) || 0;
 
             if (maxQuantity === 0) {
-               
-                statusAlert('error','Lỗi','Bạn chưa chọn phân loại !');
+
+                statusAlert('error', 'Lỗi', 'Bạn chưa chọn phân loại !');
                 quantity_value.value = 1;
 
                 return;
             }
 
             if (currentQuantity >= maxQuantity) {
-             
-                statusAlert('error','Lỗi','Số lượng không đủ!');
+
+                statusAlert('error', 'Lỗi', 'Số lượng không đủ!');
 
                 quantity_value.value = maxQuantity;
 
@@ -474,8 +469,8 @@
             let currentQuantity = parseInt(quantity_value.value) || 0;
 
             if (currentQuantity <= 1) {
-             
-                statusAlert('error','Lỗi','Số lượng không thể nhỏ hơn 1 !');
+
+                statusAlert('error', 'Lỗi', 'Số lượng không thể nhỏ hơn 1 !');
 
                 quantity_value.value = 1;
                 return;
@@ -490,8 +485,8 @@
     <script type="module">
         document.querySelector('#add-to-cart').addEventListener('click', () => {
             if (max == 0) {
-               
-                statusAlert('error','Lỗi','Bạn chưa chọn phân loại !');
+
+                statusAlert('error', 'Lỗi', 'Bạn chưa chọn phân loại !');
 
             } else {
 
@@ -514,8 +509,8 @@
                         id_variant
                     },
                     success: function(response) {
-                      
-                        statusAlert(response.status,response.title,response.message);
+
+                        statusAlert(response.status, response.title, response.message);
 
                     }
 

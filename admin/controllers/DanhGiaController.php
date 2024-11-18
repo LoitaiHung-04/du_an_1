@@ -16,4 +16,10 @@ class DanhGiaController
         $data = $this->danhgia->getAll();
         include_once './views/pages/danh_gia/list.php';
     }
+    public function show()
+    {
+        $id = $_GET['id'];
+        $data = $this->danhgia->getById($id);
+        include_once './views/pages/danh_gia/list.php';
+    }
 }

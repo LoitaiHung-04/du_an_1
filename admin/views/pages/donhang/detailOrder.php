@@ -122,7 +122,7 @@
                                                         <h6 class="text-muted text-uppercase fw-semibold mb-3">
                                                             Thông tin người nhận </h6>
                                                         <p class="fw-medium mb-2" id="shipping-name">
-                                                            <?= $donHang['ho_ten'] ?>
+                                                            <?= $donHang['ten_nguoi_nhan'] ?>
                                                         </p>
                                                         <p class="text-muted mb-1"><span>Số điện thoại người
                                                                 nhận : </span><span
@@ -135,7 +135,7 @@
                                                                 id="billing-tax-no"><?= $donHang['ghi_chu'] ?></span>
                                                         </p>
                                                         <p class="text-muted mb-0"><span>Email người nhận : </span><span
-                                                                id="billing-tax-no"><?= $donHang['email'] ?></span>
+                                                                id="billing-tax-no"><?= $donHang['email_nguoi_nhan'] ?></span>
                                                         </p>
                                                     </div>
                                                 </div>
