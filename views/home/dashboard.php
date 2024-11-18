@@ -1,3 +1,5 @@
+<?php include_once './views/layous/header.php'; // Đảm bảo đường dẫn tới header.php chính xác?>
+
 <main id="main-content">
             <!-- slider-area start-->
             <section class="slider-content">
@@ -602,3 +604,4 @@
             </div> -->
             
         </main>
+       <?php include_once './views/layous/footer.php'; // Đảm bảo đường dẫn footer.php chính xác?>

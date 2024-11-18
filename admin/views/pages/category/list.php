@@ -109,7 +109,7 @@
                                                             <?php endforeach; ?>
                                                         <?php else : ?>
                                                             <tr>
-                                                                <td colspan="4" class="text-center">Không có danh mục nào.</td>
+                                                                <td colspan="4" class="text-center">Không có liên hệ nào.</td>
                                                             </tr>
                                                         <?php endif; ?>
                                                     </tbody>

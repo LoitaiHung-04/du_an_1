@@ -1,23 +1,37 @@
-<?php 
+<?php
+ob_start();
+session_start();
 
-// Require file Common
-require_once './commons/env.php'; // Khai báo biến môi trường
-require_once './commons/function.php'; // Hàm hỗ trợ
+// Require các tệp cấu hình và các hàm cần thiết
+require_once './commons/env.php';
+require_once './commons/function.php';
 
-// Require toàn bộ file Controllers
-include_once 'controller/DashBoardController.php';
-include_once  './views/layous/header.php';
-// Require toàn bộ file Models
+// Require các Controllers cần thiết
+include_once './controller/DashBoardController.php';
+include_once './controller/AuthController.php';
+define('BASE_URL_ADMIN', 'http://localhost:85/du_an_1/admin');
+define('BASE_URL_CLIENT', 'http://localhost:85/du_an_1/');
 
-// Route
-$act = $_GET['act'] ?? '/';
+// Route xử lý các hành động
+$act = $_GET['act'] ?? '/';  // Default route nếu không có action
 
-// Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match
 
+
+
+// Sử dụng match để xử lý route
 match ($act) {
-    // Trang chủ
-    '/'                 => (new DashBoardController())->index(),
-    'chi-tiet-san-pham'                 => (new DashBoardController())->show(),
-};
+    '/' => (new DashBoardController())->index(),
+    'check-login-admin' => (new AuthController())->login(),
+    'login' => include './admin/views/pages/login/login.php',
+    'register' => (new AuthController())->checkRegisterClient(),
+    'form-register' => (new AuthController())->formregister(),
 
-include_once './views/layous/footer.php';
+
+    
+
+
+    'logout' => (new AuthController())->logout(), // Đăng xuất
+    default => (new DashBoardController())->index(), // Dùng mặc định nếu không tìm thấy
+};
+ob_end_flush();
+?>
