@@ -25,6 +25,7 @@ include_once '../commons/function.php';
             ';
             return query_all_data($sql);
         }
+
      public function soLuongTaiKhoan()
 {
     $sql = "SELECT COUNT(*) AS so_luong_tai_khoan_client FROM tai_khoans WHERE chuc_vu_id = 2";
@@ -77,7 +78,6 @@ public function getDoanhThuHangNgay()
                 ngay DESC";
     return query_all_data($sql);
 }
-
 
 
 

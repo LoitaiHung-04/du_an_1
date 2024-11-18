@@ -1,18 +1,13 @@
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default">
 
-
-<!-- Mirrored from themesbrand.com/velzon/html/master/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 29 Oct 2024 07:29:52 GMT -->
-
 <head>
-
     <meta charset="utf-8" />
     <title>Dashboard | NN Shop</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <script src="https://unpkg.com/feather-icons"></script>
-
 
     <!-- CSS -->
     <?php
@@ -29,7 +24,6 @@
         <!-- HEADER -->
         <?php
         require_once "views/layouts/header.php";
-
         require_once "views/layouts/siderbar.php";
         ?>
         
@@ -48,13 +42,13 @@
                      <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                                <h4 class="mb-sm-0">quản lí bài viết</h4>
-                                <a href="?act=form-them-bai-viet" class="btn btn-soft-success material-shadow-none"><i class="ri-add-circle-line align-middle me-1"></i> thêm bài viết</>
+                                <h4 class="mb-sm-0">Quản lý bài viết</h4>
+                                <a href="?act=form-them-bai-viet" class="btn btn-soft-success material-shadow-none"><i class="ri-add-circle-line align-middle me-1"></i> Thêm bài viết</a>
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                        <li class="breadcrumb-item active">danh mục bài viết</li>
+                                        <li class="breadcrumb-item active">Danh mục bài viết</li>
                                     </ol>
                                 </div>
 
@@ -69,13 +63,10 @@
                             <div class="h-100">
                             <div class="card">
                                 <div class="card-header align-items-center d-flex">
-                                    <h4 class="card-title mb-0 flex-grow-1">bài viết</h4>
-
-                                    </div>
+                                    <h4 class="card-title mb-0 flex-grow-1">Bài viết</h4>
                                 </div><!-- end card header -->
 
-                                <div class="card-body">
-
+                                <div class="card-body"> <!-- Card body start -->
 
                                     <div class="live-preview">
                                         <div class="table-responsive table-card">
@@ -89,15 +80,16 @@
                                                             </div>
                                                         </th>
                                                         <th scope="col">ID</th>
-                                                        <th scope="col">title</th>
-                                                        <th scope="col">content</th>   
-                                                        <th scope="col">ngày đăng</th>     
-                                                        <th scope="col">người đăng</th>  
-                                                        <th scope="col">trạng thái</th>  
+                                                        <th scope="col">Tiêu đề</th>
+                                                        <th scope="col">Nội dung</th>   
+                                                        <th scope="col">Ngày đăng</th>     
+                                                        <th scope="col">Người đăng</th>  
+                                                        <th scope="col">Trạng thái</th>  
                                                      
                                                         <th scope="col" style="width: 150px;">Action</th>
                                                     </tr>
                                                 </thead>
+                                                
                                                 <?php foreach ($baiViets as $index => $row) : ?>
                                                 <tbody>
                                                     <tr>
@@ -113,37 +105,27 @@
                                                         <td><?= $row['ngay_dang'] ?></td>
                                                         <td><?= $row['nguoi_dang'] ?></td>
                                                        
-                               
-                                            
-
                                                         <?php if ($row['trang_thai'] == 1) { ?>
-                                                            <td><span class="badge bg-success">hiển thị</span></td>
+                                                            <td><span class="badge bg-success">Hiển thị</span></td>
                                                         <?php } else { ?>
-                                                            <td><span class="badge bg-danger">k hiển thị</span></td>
+                                                            <td><span class="badge bg-danger">Không hiển thị</span></td>
                                                         <?php } ?>
                                                         
+
                                                         <td>
                                                             <div class="hstack gap-3 flex-wrap">
                                                                 <a href="?act=form-sua-bai-viet&id=<?=$row['id']?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
-                                                                   <!-- <form action="?act=xoa-bai-viet" method="POST" onsubmit="return confirm('are u sure')">
-                                                                    <input type="hidden" name="bai_viet_id" value="<?= $row['id']?>">
-                                                                    <button type="submit" class="link-danger fs-15"><i class="ri-delete-bin-line"></i></button>
-                                                                    
-                                                                   </form>  -->
-                                                                   <a href="?act=xoa-bai-viet&id=<?= $row['id']?>" class="link-danger fs-15" onclick="return confirm('bạn muốn xóa không ?')"><i class="ri-delete-bin-line"></i></a>
-
+                                                                <a href="?act=xoa-bai-viet&id=<?= $row['id']?>" class="link-danger fs-15" onclick="return confirm('Bạn muốn xóa không?')"><i class="ri-delete-bin-line"></i></a>
                                                             </div>
                                                         </td>
                                                     </tr>
                                                 </tbody>
                                             <?php endforeach; ?>
 
-                                                   
-                                                </tbody>
                                             </table>
                                         </div>
-                                    </div>
-                                    
+                                    </div><!-- end table-responsive -->
+
                                 </div><!-- end card-body -->
                             </div><!-- end card -->
                             </div> <!-- end .h-100-->
@@ -178,8 +160,6 @@
     </div>
     <!-- END layout-wrapper -->
 
-
-
     <!--start back-to-top-->
     <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
         <i class="ri-arrow-up-line"></i>
@@ -203,7 +183,7 @@
 
     <!-- JAVASCRIPT -->
     <?php
-    require_once "views/layouts/libs_css.php";
+    require_once "views/layouts/libs_js.php";
     ?>
 
 </body>

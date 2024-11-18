@@ -34,7 +34,6 @@ public function detailDonHang()
 
         // Tiến hành lấy thông tin chi tiết
         $donHang = $this->modelDonHang->getDetailDonHang($id);
-        
         $sanPhamDonHang = $this->modelDonHang->getListSpDonHang($id);
         $khuyenMai = $this->modelDonHang->getKhuyenMai($id);
         $listTrangThaiDonHang = $this->modelDonHang->getAllTrangThaiDonHang();

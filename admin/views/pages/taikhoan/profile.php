@@ -66,7 +66,11 @@
                     <div class="card-body p-4">
                         <div class="text-center">
                             <div class="profile-user position-relative d-inline-block mx-auto  mb-4">
+<<<<<<< HEAD
                                 <img src="<?="/du_an_1/uploads/users/".$TaiKhoan2['anh_dai_dien']?>" class="rounded-circle avatar-xl img-thumbnail user-profile-image" >
+=======
+                                <img src="<?='/du_an_1/uploads/users/'.$TaiKhoan2['anh_dai_dien']?>" class="rounded-circle avatar-xl img-thumbnail user-profile-image" >
+>>>>>>> tuan
                                 <div class="avatar-xs p-0 rounded-circle profile-photo-edit">
                                 <input type="hidden" name="id" value="<?=$TaiKhoan2['id']?>">
 
@@ -78,7 +82,6 @@
                                 
                             </div>
                             <h5 class="fs-16 mb-1"><?=$TaiKhoan2['ho_ten']?></h5>
-                            <p class="text-muted mb-0">User</p>
                         </div>
                     </div>
                 </div>

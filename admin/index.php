@@ -24,8 +24,12 @@ require_once 'controllers/ThongKeController.php';
 
 
 
+
 define('BASE_URL_ADMIN', 'http://localhost:85/du_an_1/admin');
 define('BASE_URL_CLIENT', 'http://localhost:85/du_an_1/');
+
+define('BASE_URL_ADMIN', 'http://localhost:85/du_an_1/admin');
+
 
 function checkLogin() {
     if (!isset($_SESSION['user_admin'])) {
@@ -113,5 +117,6 @@ match ($act) {
     'danh-gia' => (new DanhGiaController())->index(),
        // binhluan
     'binh-luan' => (new BinhLuanController())->index(),
- 
+ //
+
 };

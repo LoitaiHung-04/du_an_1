@@ -75,7 +75,10 @@ class TaiKhoanController
                
 
                 $anh_dai_dien = time() . '_' . basename($file_name); // Tạo tên file duy nhất
+
                 $upload_path = "/du_an_1/uploads/users/". $anh_dai_dien;
+
+
 
                 if (!move_uploaded_file($tmp_name, $upload_path)) {
                     $error['anh_dai_dien'] = 'Không thể tải ảnh lên';
