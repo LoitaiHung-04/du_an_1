@@ -23,7 +23,17 @@ require_once 'controllers/ThongKeController.php';
 
 
 
+
 define('BASE_URL_ADMIN', 'http://localhost:80/du_an_1/admin');
+
+
+
+
+define('BASE_URL_CLIENT', 'http://localhost:80/du_an_1/');
+
+
+
+
 
 function checkLogin() {
     if (!isset($_SESSION['user_admin'])) {
@@ -97,7 +107,7 @@ match ($act) {
     'chi-tiet-lien-he' => (new ContactController())->show($_GET['id']),
     'xoa-lien-he' => (new ContactController())->destroy($_GET['id'] ?? null),
     // ROUTE AUTH
-    'login-admin' => (new TaiKhoanAdminController())->formLogin(),
+'login-admin' =>   include './views/pages/login/login.php',
     'check-login-admin' => (new TaiKhoanAdminController())->login(), 
     'logout-admin' => (new TaiKhoanAdminController())->logout(),
     //

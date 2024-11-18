@@ -19,8 +19,16 @@ class ThongKeController
         $doanhThu = $this->modelThongKe->thongKeDoanhThu();
         $donHangHienCo = $this->modelThongKe->AllDonHang();
         $donHangTheoTrangThai = $this->modelThongKe->thongKeDonHangTheoTrangThai();
+
+        $soLuongTaiKhoan = $this->modelThongKe->soLuongTaiKhoan();
+        $topSanPham = $this->modelThongKe->getTopSanPhamBanChay();
+        $doanhThuHangNgay = $this->modelThongKe->getDoanhThuHangNgay();// Lấy top 5 sản phẩm
+
+    
+
     
         // Gọi view
+
         require_once '../admin/views/dashboard.php';
     }
 }

@@ -1,3 +1,15 @@
+<?php
+// Kiểm tra xem session đã được khởi động chưa, nếu chưa thì gọi session_start()
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Kiểm tra xem người dùng đã đăng nhập chưa và gán giá trị cho biến $userName
+$userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -178,6 +190,7 @@
                                                 </div>
                                             </div>
                                         </li>
+                                        
                                         <li class="info-wrap info-Login">
                                             <div class="info-wrapper">
                                                 <a href="index.html" class="icon"><i class="feather-user"></i></a>
@@ -187,6 +200,37 @@
                                                 </div>
                                             </div>
                                         </li>
+                                        <div class="user-wrapper">
+        <?php if ($userName): ?>
+            <!-- Nếu đã đăng nhập, hiển thị tên người dùng -->
+            <span class="user-title">Welcome, <?php echo htmlspecialchars($_SESSION['user_client']['ho_ten']); ?></span>
+
+            <!-- Nút đăng xuất với biểu tượng -->
+            <form action="?act=logout" method="POST" class="mt-2">
+                <button type="submit" class="btn btn-outline-danger w-100">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </form>
+
+        <?php else: ?>
+            <!-- Nếu chưa đăng nhập, hiển thị nút đăng nhập và đăng ký -->
+            <a href="#store-account" class="collapsed" data-bs-toggle="collapse" aria-expanded="false">
+                <span class="user-icon">
+                    <i class="fas fa-user-circle fa-lg"></i> <!-- Biểu tượng người dùng -->
+                </span>
+            </a>
+            <div class="user-drawer collapse" id="store-account">
+                <!-- Nút đăng nhập với biểu tượng -->
+                <a href="?act=login" class="btn btn-outline-primary w-100 mb-2">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+                <!-- Nút đăng ký với biểu tượng -->
+                <a href="?act=form-register" class="btn btn-outline-success w-100">
+                    <i class="fas fa-user-plus"></i> SignUp
+                </a>
+            </div>
+        <?php endif; ?>
+    </div>
                                     </ul>
                                 </div>
                             </div>
