@@ -24,7 +24,7 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
     <meta name="author" content="spacingtech_webify">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- title -->
-    <title>Electon - The Electronics eCommerce Bootstrap Template</title>
+    <title>SellsPhone- Store</title>
     <!-- favicon -->
     <link rel="icon" type="image/x-icon" href="img/favicon/favicon.png">
     <!-- bootstrap css -->
@@ -75,7 +75,7 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
                         <li class="noti-wrap noti-email-wrap">
                             <div class="noti-email">
                                 <div class="emailtext">
-                                    <p><a href="Email:Electondemo@gmail.com" title="Email:Electondemo@gmail.com">Email : Electondemo@gmail.com</a></p>
+                                    <p><a href="Email:Electondemo@gmail.com" title="Email:Electondemo@gmail.com">Email :Sellsphonestore@gmail.com</a></p>
                                 </div>
                             </div>
                         </li>
@@ -141,7 +141,7 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
                             </div>
                             <div class="header-element header-logo">
                                 <div class="header-theme-logo">
-                                    <a href="index.html" class="theme-logo">
+                                    <a href="?" class="theme-logo">
                                         <img src="/du_an_1/assets/images/logo/logo.png" class="img-fluid" alt="logo">
                                     </a>
                                 </div>
@@ -152,7 +152,7 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
                                         <div class="search-box">
                                             <form action="?act=search" method="post" class="search-bar">
                                                 <div class="form-search">
-                                                    <input id="timkiem" type="search" name="q" placeholder="Find our search" class="search-input">
+                                                    <input id="timkiem" type="search" name="q" placeholder="Tìm kiếm" class="search-input">
                                                     <button disabled type="button" class="search-btn"><i class="feather-search"></i></button>
                                                 </div>
                                             </form>
@@ -185,7 +185,7 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
                                             <div class="info-wrapper">
                                                 <a href="index.html" class="icon"><i class="feather-headphones"></i></a>
                                                 <div class="info-text">
-                                                    <span class="label">Hotline number</span>
+                                                    <span class="label"> Đường dây nóng</span>
                                                     <a href="tel:+260005002600" class="info-link">+2600 0500 2600</a>
                                                 </div>
                                             </div>
@@ -195,8 +195,8 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
                                             <div class="info-wrapper">
                                                 <a href="index.html" class="icon"><i class="feather-user"></i></a>
                                                 <div class="info-text">
-                                                    <span class="label">My account</span>
-                                                    <a href="login-account.html" class="info-link">Login & Register</a>
+                                                    <span class="label">Tài khoản</span>
+                                                    <a href="login-account.html" class="info-link">Đăng nhập & Đăng Ký</a>
                                                 </div>
                                             </div>
                                         </li>
@@ -208,7 +208,7 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
             <!-- Nút đăng xuất với biểu tượng -->
             <form action="?act=logout" method="POST" class="mt-2">
                 <button type="submit" class="btn btn-outline-danger w-100">
-                    <i class="fas fa-sign-out-alt"></i> Logout
+                    <i class="fas fa-sign-out-alt"></i> Đăng xuất
                 </button>
             </form>
 
@@ -222,11 +222,11 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
             <div class="user-drawer collapse" id="store-account">
                 <!-- Nút đăng nhập với biểu tượng -->
                 <a href="?act=login" class="btn btn-outline-primary w-100 mb-2">
-                    <i class="fas fa-sign-in-alt"></i> Login
+                    <i class="fas fa-sign-in-alt"></i> Đăng nhập
                 </a>
                 <!-- Nút đăng ký với biểu tượng -->
                 <a href="?act=form-register" class="btn btn-outline-success w-100">
-                    <i class="fas fa-user-plus"></i> SignUp
+                    <i class="fas fa-user-plus"></i> Đăng ký 
                 </a>
             </div>
         <?php endif; ?>
@@ -249,12 +249,12 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
                                 <div class="vega-menu-area">
                                     <a href="#vega-collapse" class="browse-cat" data-bs-toggle="collapse" aria-expanded="false">
                                         <span class="menu-icon"><i class="feather-menu"></i></span>
-                                        <span class="menu-title">Trending category</span>
+                                        <span class="menu-title">Danh mục sản phẩm</span>
                                         <span class="menu-arrow"><i class="fa fa-angle-down"></i></span>
                                     </a>
                                     <a href="#vega-collapse" class="browse-cat browse-cat-lg" data-bs-toggle="collapse" aria-expanded="false">
                                         <span class="menu-icon"><i class="feather-menu"></i></span>
-                                        <span class="menu-title">Trending category</span>
+                                        <span class="menu-title">Danh mục sản phẩm</span>
                                         <span class="menu-arrow"><i class="fa fa-angle-down"></i></span>
                                     </a>
                                     <div class="vegawrap collapse" id="vega-collapse">
@@ -287,28 +287,28 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
                                         <ul class="main-menu">
                                             <li class="menu-link">
                                                 <a href="?" class="link-title">
-                                                    <span class="sp-link-title">Home</span>
+                                                    <span class="sp-link-title">Trang chủ</span>
                                                 </a>
 
                                             </li>
 
                                             <li class="menu-link">
                                                 <a href="?act=product" class="link-title">
-                                                    <span class="sp-link-title">Product<span class="header-sale-lable">Sale</span></span>
+                                                    <span class="sp-link-title">Sản phẩm<span class="header-sale-lable">Sale</span></span>
                                                     <span class="menu-arrow"><i class="fa fa-angle-down"></i></span>
                                                 </a>
 
                                             </li>
                                             <li class="menu-link">
                                                 <a href="blog-grid.html" class="link-title">
-                                                    <span class="sp-link-title">Blogs</span>
+                                                    <span class="sp-link-title">Bài viết</span>
                                                     <span class="menu-arrow"><i class="fa fa-angle-down"></i></span>
                                                 </a>
 
                                             </li>
                                             <li class="menu-link">
                                                 <a href="contact-us.html" class="link-title">
-                                                    <span class="sp-link-title">Contact us</span>
+                                                    <span class="sp-link-title">Liên hệ </span>
                                                     <span class="menu-arrow"><i class="fa fa-angle-down"></i></span>
                                                 </a>
                                             </li>
@@ -363,7 +363,7 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
                                                                 <path fill="currentColor" d="M12.001 4.529a5.998 5.998 0 0 1 8.242.228a6 6 0 0 1 .236 8.236l-8.48 8.492l-8.478-8.492a6 6 0 0 1 8.48-8.464m6.826 1.641a3.998 3.998 0 0 0-5.49-.153l-1.335 1.198l-1.336-1.197a4 4 0 0 0-5.686 5.605L12 18.654l7.02-7.03a4 4 0 0 0-.193-5.454"></path>
                                                             </svg></span>
                                                     </span>
-                                                    <span class="wishlist-title">My wishlist</span>
+                                                    <span class="wishlist-title">Sản phẩm yêu thích</span>
                                                 </a>
                                             </div>
                                         </li>
@@ -374,7 +374,7 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
                                                         <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
                                                                 <path fill="currentColor" d="M6.505 2h11a1 1 0 0 1 .8.4l2.7 3.6v15a1 1 0 0 1-1 1h-16a1 1 0 0 1-1-1V6l2.7-3.6a1 1 0 0 1 .8-.4m12.5 6h-14v12h14zm-.5-2l-1.5-2h-10l-1.5 2zm-9.5 4v2a3 3 0 1 0 6 0v-2h2v2a5 5 0 0 1-10 0v-2z"></path>
                                                             </svg></span>
-                                                        <span class="cart-title text">My cart</span>
+                                                        <span class="cart-title text">Giỏ hàng</span>
                                                         <span class="bigcounter">04</span>
                                                     </a>
                                                 </div>
