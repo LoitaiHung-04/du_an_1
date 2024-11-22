@@ -3,16 +3,20 @@ include './models/DashBoard.php';
 include './models/GioHang.php';
 include './admin/models/DanhMuc.php';
 
+include './models/BinhLuanClient.php';
 class DashBoardController
 {
     public $dashboard;
     public $category;
     public $cart;
+    public $binh_luan;
+
     public function __construct()
     {
         $this->dashboard = new DashBoard();
         $this->category = new DanhMuc();
         $this->cart = new GioHang();
+        $this->binh_luan = new BinhLuanClient(); 
     }
     public function index()
     {
@@ -24,6 +28,9 @@ class DashBoardController
     public function show()
     {
         $id = $_GET['id'];
+        
+        $binhluan = $this->binh_luan->getComments($id);
+
         $variant = $this->dashboard->getVariant($id);
         $image = $this->dashboard->getImage($id);
         $data = $this->dashboard->getOne($id);
@@ -127,4 +134,29 @@ class DashBoardController
     include_once './views/home/product.php';
 }
 
+    public function comment() {
+        if (!isset($_SESSION['user_client'])) {
+            echo "Bạn cần đăng nhập để bình luận.";
+            return;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $san_pham_id = $_POST['san_pham_id'];
+            $tai_khoan_id =$_SESSION['user_client']['id'];
+            $noi_dung = $_POST['noi_dung'];
+            $ngay_dang = date('Y-m-d H:i:s'); // Tự động lấy ngày hiện tại
+            $trang_thai = 1;
+
+            if ($this->binh_luan->create($san_pham_id, $tai_khoan_id, $noi_dung, $ngay_dang, $trang_thai)) {
+                header('Location: http://localhost:85/du_an_1/?act=chi-tiet-san-pham&id=' . $san_pham_id);
+            } else {
+                echo "Đã có lỗi xảy ra. Vui lòng thử lại.";
+            }
+        }
+    }
 }
+
+
+
+
+
