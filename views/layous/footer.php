@@ -1419,7 +1419,7 @@
                             found = true;
                             $('#result').css('display', 'inherit');
                             $('#result').append(
-                                '<li style="cursor:pointer; display: flex; height:auto; width:660px;" class="list-group-item link-class"><a href="?act=chi-tiet-san-pham&id='+value.id+'"><img src="/du_an_1/uploads/products/' +
+                                '<li style="cursor:pointer; display: flex; height:auto; width:660px;" class="list-group-item link-class"><a href="?act=chi-tiet-san-pham&id=' + value.id + '"><img src="/du_an_1/uploads/products/' +
                                 value.hinh_anh +
                                 '" width="100" class="" /></a><div style="flex-direction: column; margin-left: 2px;"><h4 width="100%">' +
                                 value.ten_san_pham +
@@ -1445,6 +1445,17 @@
 
 
     });
+
+    const btn_null = document.querySelector('#cart-null');
+    btn_null.addEventListener('click', () => {
+        Swal.fire({
+            icon: `error`,
+            title: `Lỗi`,
+            text: `Bạn chưa đăng nhập !`,
+            footer: '<a href="?act=login">Nhấn để đăng nhập</a>'
+
+        });
+    })
 </script>
 </body>
 

@@ -2,18 +2,13 @@
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg"
     data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default">
 
-
-
-<!-- Mirrored from themesbrand.com/velzon/html/master/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 29 Oct 2024 07:29:52 GMT -->
-
-
 <head>
     <meta charset="utf-8" />
     <title>Dashboard | NN Shop</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
-    
+
     <!-- CSS -->
     <?php require_once "layouts/libs_css.php"; ?>
 </head>
@@ -30,16 +25,16 @@
         <!-- Left Sidebar End -->
         <!-- Vertical Overlay-->
         <div class="vertical-overlay"></div>
-
+        
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
         <div class="main-content">
             <div class="page-content">
                 <div class="container-fluid">
-                <h5>Welcome! I particularly like  <?=$_SESSION['user_admin']['ho_ten']?></h5> 
-                    
-               
+                    <h5>Welcome! I particularly like <?= $_SESSION['user_admin']['ho_ten'] ?></h5>
+
+
 
 
                     <div class="row">
@@ -238,14 +233,14 @@
                                                             <tbody>
                                                                 <?php
                                                                 foreach ($doanhThuHangNgay as $doanhThu) {
-                                                                    ?>
+                                                                ?>
                                                                     <tr>
                                                                         <td><?php echo date('d M Y', strtotime($doanhThu['ngay'])); ?>
                                                                         </td>
                                                                         <td><?php echo number_format($doanhThu['doanh_thu'], 0, ',', '.'); ?>
                                                                             VND</td>
                                                                     </tr>
-                                                                    <?php
+                                                                <?php
                                                                 }
                                                                 ?>
                                                             </tbody>
@@ -299,7 +294,7 @@
                                                             <tbody>
                                                                 <?php
                                                                 foreach ($topSanPham as $sanPham) {
-                                                                    ?>
+                                                                ?>
                                                                     <tr>
                                                                         <td>
                                                                             <div class="d-flex align-items-center">
@@ -345,7 +340,7 @@
                                                                             <span class="text-muted">Doanh thu</span>
                                                                         </td>
                                                                     </tr>
-                                                                    <?php
+                                                                <?php
                                                                 }
                                                                 ?>
                                                             </tbody>
@@ -432,32 +427,32 @@
     <!-- END layout-wrapper -->
 
 
-                    <!-- Đặt các cột phía trên và giữa -->
-   
+    <!-- Đặt các cột phía trên và giữa -->
 
-                    <!-- Cột thống kê đơn hàng theo trạng thái ở giữa -->
-               
 
-                </div><!-- container-fluid -->
-            </div><!-- .page-content -->
-        </div><!-- end main content -->
+    <!-- Cột thống kê đơn hàng theo trạng thái ở giữa -->
 
-        <footer class="footer">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <script>
-                            document.write(new Date().getFullYear())
-                        </script> © Velzon.
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="text-sm-end d-none d-sm-block">
-                            Design & Develop by Themesbrand
-                        </div>
+
+    </div><!-- container-fluid -->
+    </div><!-- .page-content -->
+    </div><!-- end main content -->
+
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script> © Velzon.
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-sm-end d-none d-sm-block">
+                        Design & Develop by Themesbrand
                     </div>
                 </div>
             </div>
-        </footer>
+        </div>
+    </footer>
     </div><!-- end layout-wrapper -->
 
 
@@ -475,18 +470,18 @@
         </div>
     </div>
 
-<<<<<<< HEAD
-    <div class="customizer-setting d-none d-md-block">
+    <<<<<<< HEAD
+        <div class="customizer-setting d-none d-md-block">
         <div class="btn-info rounded-pill shadow-lg btn btn-icon btn-lg p-2" data-bs-toggle="offcanvas"
             data-bs-target="#theme-settings-offcanvas" aria-controls="theme-settings-offcanvas">
             <i class='mdi mdi-spin mdi-cog-outline fs-22'></i>
         </div>
-    </div>
+        </div>
 
-=======
->>>>>>> tuan
-    <!-- JAVASCRIPT -->
-    <?php require_once "layouts/libs_js.php"; ?>
+        =======
+        >>>>>>> tuan
+        <!-- JAVASCRIPT -->
+        <?php require_once "layouts/libs_js.php"; ?>
 </body>
 
 </html>

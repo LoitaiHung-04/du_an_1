@@ -9,9 +9,11 @@ session_start();
 require_once './commons/env.php';
 require_once './commons/function.php';
 
-
 // Require toàn bộ file Controllers
 require_once './controller/DashBoardController.php';
+require_once './controller/PromotionController.php';
+require_once './controller/ProfileController.php';
+
 $isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest';
 
 if (!$isAjax) {
@@ -21,7 +23,7 @@ if (!$isAjax) {
 
 require_once './controller/AuthController.php';
 define('BASE_URL_ADMIN', 'http://localhost:80/du_an_1/admin');
-define('BASE_URL_CLIENT', 'http://localhost:80/du_an_1/');
+define('BASE_URL_CLIENT', 'http://localhost:80/du_an_1/?');
 
 
 // Route xử lý các hành động
@@ -36,6 +38,8 @@ match ($act) {
     // Trang chủ
     '/'                 => (new DashBoardController())->index(),
     'chi-tiet-san-pham'                 => (new DashBoardController())->show(),
+    'binh-luan'                 => (new DashBoardController())->comment(),
+
     'cart'                 => (new DashBoardController())->cart(),
     'add-to-cart'                 => (new DashBoardController())->addToCart(),
     'checkout'                 => (new DashBoardController())->checkout(),
@@ -46,8 +50,17 @@ match ($act) {
     'login' => include './admin/views/pages/login/login.php',
     'register' => (new AuthController())->checkRegisterClient(),
     'form-register' => (new AuthController())->formregister(),
-    
     'logout' => (new AuthController())->logout(), // Đăng xuất
+//
+    'khuyen-mai' => (new PromotionController())->index(), // Đăng xuất
+//
+    'tai-khoan' => (new ProfileController())->index(), // Đăng xuất
+    'check-tai-khoan' => (new ProfileController())->updateTaiKhoan(), // Đăng xuất
+    'remove-cart' => (new DashBoardController())->removeCart(), 
+    'update-quantity-cart' => (new DashBoardController())->updateCart(), 
+
+
+
     default => (new DashBoardController())->index(), // Dùng mặc định nếu không tìm thấy
 };
 

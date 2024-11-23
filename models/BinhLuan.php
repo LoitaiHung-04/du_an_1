@@ -15,4 +15,13 @@ class BinhLuan
        $params=[$id];
         return query_all_data($sql,$params);
     }
+    
+    
+
+
+
+
+
+
+
 }
