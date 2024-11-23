@@ -31,46 +31,37 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <div class="about-content">
-                        <!-- about title start -->
-                        <div class="section-capture">
-                            <div class="section-title">
-                                <h2 data-animate="animate__fadeInUp"><span>Khuyến mãi hot </span></h2>
-                            </div>
-                        </div>
-                        <!-- about title end -->
-                        <!-- contact-detail start -->
-                        <?php $idCounter = 1; foreach($KhuyenMaiClient as $row){ ?>
-                        <div class="get-info contact-detail">
-                            <h3 id="tenkhuyenmai-<?php echo $idCounter; ?>"><?php echo $row['ten_khuyen_mai']?></h3>
-                            <ul class="get-info-ul">
-                                <li class="get-info-li" data-animate="animate__fadeInUp">
-                                    <span class="get-icon"><i class="bi bi-info-circle"></i></span>
-                                    <span class="get-add contact-block">
-                                        <span><?php echo $row['mo_ta']?></span>
-                                    </span>
-                                </li>
-                                <li class="get-info-li" data-animate="animate__fadeInUp">
-                                    <span class="get-icon"><i class="bi bi-tags"></i></span>
-                                    <span class="get-add contact-block">
-                                        <span> -<?php echo $row['giam_gia']?>đ</span>
-                                    </span>
-                                </li>
-                                <li class="get-info-li" data-animate="animate__fadeInUp">
-                                    <span class="get-icon"><i class="bi bi-calendar"></i></span>
-                                    <span class="get-add contact-block">
-                                        <span> Kết thúc vào :<?php echo $row['ngay_ket_thuc']?></span>
-                                    </span>
-                                </li>
-                            </ul>
-                            <button onclick="copyText('tenkhuyenmai-<?php echo $idCounter; ?>')" style="background-color: #800080; border: none; color: white; padding: 5px 10px; text-align: center; text-decoration: none; display: inline-block; font-size: 14px; margin-top: 10px; cursor: pointer; border-radius: 5px;">
-                                Copy
-                            </button>
-                        </div>
-                        <hr>
-                        <?php $idCounter++; } ?>
-                        <!-- contact-detail end -->
-                    </div>
+                <div class="about-content">
+    <!-- about title start -->
+    <div class="section-capture">
+        <div class="section-title">
+            <h2 data-animate="animate__fadeInUp"><span>Khuyến mãi hot </span></h2>
+        </div>
+    </div>
+    <!-- about title end -->
+
+    <!-- contact-detail start -->
+    <?php $idCounter = 1; foreach($KhuyenMaiClient as $row): ?>
+    <div class="get-info contact-detail">
+        <ul class="get-info-ul">
+            <li class="get-info-li" data-animate="animate__fadeInUp">
+                <span>        <h3 id="tenkhuyenmai-<?php echo $idCounter; ?>"><?php echo $row['ten_khuyen_mai']; ?></h3>
+                </span>
+                <span class="get-icon"><i class="bi bi-info-circle"></i></span>
+                <span class="get-add contact-block">
+                    <span><?php echo $row['mo_ta']; ?> - <?php echo $row['giam_gia']; ?>đ - Kết thúc vào: <?php echo $row['ngay_ket_thuc']; ?></span>
+                </span>
+                <button onclick="copyText('tenkhuyenmai-<?php echo $idCounter; ?>')" style="background-color: #800080; border: none; color: white; padding: 5px 10px; text-align: center; text-decoration: none; display: inline-block; font-size: 14px; margin-top: 10px; cursor: pointer; border-radius: 5px;">
+            Copy
+        </button>
+            </li>
+        </ul>
+
+    </div>
+    <hr>
+    <?php $idCounter++; endforeach; ?>
+    <!-- contact-detail end -->
+</div>
                 </div>
             </div>
         </div>

@@ -220,7 +220,9 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
                                             <?php else: ?>
                                                 <li class="info-wrap info-Login">
                                                     <div class="info-wrapper">
-                                                        <a href="?act=login" class="info-link">Đăng nhập & Đăng kí</a>
+                                                        <a href="?act=login" class="info-link">Đăng nhập </a>  =>
+                                                        <a href="?act=form-register" class="info-link">Đăng kí</a>
+
                                                     </div>
                                                 </li>
                                             <?php endif; ?>

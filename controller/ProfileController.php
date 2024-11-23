@@ -27,11 +27,18 @@ class ProfileController
             $ho_ten = !empty($_POST['ho_ten']) ? $_POST['ho_ten'] : $user['ho_ten'];
             $email = !empty($_POST['email']) ? $_POST['email'] : $user['email'];
             $so_dien_thoai = !empty($_POST['so_dien_thoai']) ? $_POST['so_dien_thoai'] : $user['so_dien_thoai'];
+            if (strlen($so_dien_thoai) > 15) {
+                die("Số điện thoại quá dài. Vui lòng nhập số hợp lệ.");
+            }
+            
             $gioi_tinh = !empty($_POST['gioi_tinh']) ? $_POST['gioi_tinh'] : $user['gioi_tinh'];
             $dia_chi = !empty($_POST['dia_chi']) ? $_POST['dia_chi'] : $user['dia_chi'];
             $ngay_sinh = !empty($_POST['ngay_sinh']) ? $_POST['ngay_sinh'] : $user['ngay_sinh'];
             $mat_khau_cu = $_POST['mat_khau_cu'];
             $mat_khau_moi = $_POST['mat_khau_moi'];
+
+
+
     
             if (!empty($mat_khau_moi)) {
                 if ($mat_khau_cu !== $user['mat_khau']) {
