@@ -103,6 +103,9 @@ class DashBoardController
     public function checkout()
     {
 
+        $id = $_GET['id'];
+        $cart = $this->dashboard->getCart($id);
+        $total = $this->cart->getTotal($id);
         include_once './views/home/checkout.php';
     }
     public function blog()
@@ -171,13 +174,13 @@ class DashBoardController
         $total = intval($quantity) * intval($price);
         $iduser = $_SESSION['user_client']['id'];
         $variantDB = $this->dashboard->getOneVariant($variant);
-       
+
         if ($quantity > $variantDB['quantity']) {
             $response = [
                 'status' => 'error',
                 'title' => 'Đã có lỗi xảy ra',
                 'message' => 'Không đủ số lượng sản phẩm !'
-       
+
             ];
         } else {
             $this->cart->updateCart($id, $total, $quantity);
@@ -187,10 +190,71 @@ class DashBoardController
                 'status' => 'success',
                 'title' => 'Thành công',
                 'message' => 'Cập nhật thành công giỏ hàng !',
-                'total'=>$total_cart[0]['total_sl'],
+                'total' => $total_cart[0]['total_sl'],
             ];
         }
         header('Content-Type: application/json');
         echo json_encode($response);
+    }
+    public function createPayment(){
+        $payment_method = $_POST['payment_method'];
+        $id =$_SESSION['user_client']['id'];
+        $total = $this->cart->getTotal($id);
+       
+        if($payment_method == 'vnpay'){
+            $vnp_TmnCode = "5RWJ4H0U";
+            $vnp_HashSecret = "USPLQVHYKRYZBLWMZQEKXHXNLVNNSQZB";
+            $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+            $vnp_TxnRef = time();
+            $vnp_OrderInfo = "Thanh toán đơn hàng";
+            $vnp_OrderType = "billpayment";
+            $vnp_Amount = $total[0]['total_quantity'] * 100;
+            $vnp_Locale = 'vn';
+            $vnp_BankCode ='NCB';
+            $vnp_ReturnUrl = "http://localhost/du_an_1/";
+           
+    
+            $inputData = [
+                "vnp_Version" => "2.1.0",
+                "vnp_TmnCode" => $vnp_TmnCode,
+                "vnp_Amount" => $vnp_Amount,
+                "vnp_Command" => "pay",
+                "vnp_CreateDate" => date('YmdHis'),
+                "vnp_CurrCode" => "VND",
+                "vnp_IpAddr" => $_SERVER['REMOTE_ADDR'],
+                "vnp_Locale" => $vnp_Locale,
+                "vnp_OrderInfo" => $vnp_OrderInfo,
+                "vnp_OrderType" => $vnp_OrderType,
+                "vnp_ReturnUrl" => $vnp_ReturnUrl,
+                "vnp_TxnRef" => $vnp_TxnRef,
+            ];
+    
+            if (!empty($vnp_BankCode)) {
+                $inputData['vnp_BankCode'] = $vnp_BankCode;
+            }
+    
+            ksort($inputData);
+            $query = "";
+            $i = 0;
+    
+            foreach ($inputData as $key => $value) {
+                if ($i == 1) {
+                    $query .= '&' . urlencode($key) . "=" . urlencode($value);
+                } else {
+                    $query .= urlencode($key) . "=" . urlencode($value);
+                    $i = 1;
+                }
+            }
+    
+            $hashdata = http_build_query($inputData);
+            $vnp_Url .= "?" . $query;
+    
+            if (isset($vnp_HashSecret)) {
+                $vnpSecureHash = hash_hmac('sha512', $hashdata, $vnp_HashSecret);
+                $vnp_Url .= '&vnp_SecureHash=' . $vnpSecureHash;
+            }
+    
+            return header('location:'.$vnp_Url);
+        }
     }
 }

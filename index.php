@@ -58,6 +58,7 @@ match ($act) {
     'check-tai-khoan' => (new ProfileController())->updateTaiKhoan(), // Đăng xuất
     'remove-cart' => (new DashBoardController())->removeCart(), 
     'update-quantity-cart' => (new DashBoardController())->updateCart(), 
+    'create-payment' => (new DashBoardController())->createPayment(), 
 
 
 

@@ -1,4 +1,7 @@
 <main>
+<?php
+$userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
+?>
     <!-- breadcrumb start -->
     <section class="breadcrumb-area">
         <div class="container">
@@ -111,11 +114,9 @@
                                             <h6 class="total-title">Tổng tiền</h6>
                                             <span class="amount total-price"><?= number_format($total[0]['total_quantity'], 0, ',', '.') ?> VNĐ</span>
                                         </div>
-                                        <div class="proceed-to-discount" data-animate="animate__fadeInUp">
-                                            <input type="text" name="discount" placeholder="Discount code">
-                                        </div>
+                                      
                                         <div class="proceed-to-checkout" data-animate="animate__fadeInUp">
-                                            <a href="checkout-style1.html" class="btn btn-style2">Checkout</a>
+                                            <a href="?act=checkout&id=<?= $userName['id'] ?>" class="btn btn-style2">Checkout</a>
                                         </div>
 
                                     </div>
