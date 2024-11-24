@@ -151,7 +151,7 @@
                                                     <li class="blog-comment">
                                                         <span class="comment-count">2 comments</span>
                                                     </li>
-                                                    <!-- blog-comment end -->
+                                                    <!-- blog-comment end, -->
                                                 </ul>
                                             </div>
                                         </div>
