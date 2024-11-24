@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default">
+
+<head>
+    <meta charset="utf-8" />
+    <title>cập nhật bài viết | NN Shop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesbrand" name="author" />
+
+    <!-- CSS -->
+    <?php
+    require_once "views/layouts/libs_css.php";
+    ?>
+</head>
+
+<body>
+
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+
+        <!-- HEADER -->
+        <?php
+        require_once "views/layouts/header.php";
+        require_once "views/layouts/siderbar.php";
+        ?>
+
+        <!-- Left Sidebar End -->
+        <!-- Vertical Overlay-->
+        <div class="vertical-overlay"></div>
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+            <div class="page-content">
+                <div class="container-fluid">
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
+                                <h4 class="mb-sm-0">Quản lí bài viết</h4>
+                                <a href="?act=form-them-bai-viet" class="btn btn-soft-success material-shadow-none">
+                                    <i class="ri-add-circle-line align-middle me-1"></i> Thêm bài viết
+                                </a>
+
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
+                                        <li class="breadcrumb-item active">Danh mục bài viết</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="h-100">
+                                <div class="card">
+                                    <div class="card-header align-items-center d-flex">
+                                        <h4 class="card-title mb-0 flex-grow-1">cập nhật bài viết</h4>
+                                    </div><!-- end card header -->
+
+                                    <div class="card-body">
+                                        <div class="live-preview">
+                                            <form action="?act=sua-viet" method="POST" enctype="multipart/form-data">
+                                                <input type="hidden" name="id" value="<?= $baiViet['id'] ?>">
+
+                                                <!-- Tiêu đề -->
+                                                <div class="mb-3">
+                                                    <label for="titleInput" class="form-label">Tiêu đề</label>
+                                                    <input type="text" class="form-control" name="title" value="<?= $baiViet['title'] ?>" placeholder="Nhập tiêu đề">
+                                                    <span class="text-danger">
+                                                        <?= !empty($_SESSION['error']['title']) ? $_SESSION['error']['title'] : '' ?>
+                                                    </span>
+                                                </div>
+
+                                                <!-- Nội dung -->
+                                                <div class="mb-3">
+                                                    <label for="contentInput" class="form-label">Nội dung</label>
+                                                    <textarea name="content" id="editor"><?= $baiViet['content'] ?></textarea>
+                                                    <span class="text-danger">
+                                                        <?= !empty($_SESSION['error']['content']) ? $_SESSION['error']['content'] : '' ?>
+                                                    </span>
+                                                </div>
+
+                                                <!-- Ngày đăng -->
+                                                <div class="mb-3">
+                                                    <label for="dateInput" class="form-label">Ngày đăng</label>
+                                                    <input type="date" class="form-control" name="ngay_dang" value="<?= $baiViet['ngay_dang'] ?>">
+                                                    <span class="text-danger">
+                                                        <?= !empty($_SESSION['error']['ngay_dang']) ? $_SESSION['error']['ngay_dang'] : '' ?>
+                                                    </span>
+                                                </div>
+
+                                                <!-- Trạng thái -->
+                                                <div class="mb-3">
+                                                    <label for="statusInput" class="form-label">Trạng thái</label>
+                                                    <select class="form-select" name="trang_thai">
+                                                        <option value="1" <?= $baiViet['trang_thai'] == 1 ? 'selected' : '' ?>>Hiển thị</option>
+                                                        <option value="2" <?= $baiViet['trang_thai'] == 2 ? 'selected' : '' ?>>Không hiển thị</option>
+                                                    </select>
+                                                    <span class="text-danger">
+                                                        <?= !empty($_SESSION['error']['trang_thai']) ? $_SESSION['error']['trang_thai'] : '' ?>
+                                                    </span>
+                                                </div>
+
+                                                <!-- Ảnh đại diện -->
+                                                <div class="mb-3">
+                                                    <label for="imageInput" class="form-label">Ảnh đại diện</label>
+                                                    <input type="file" class="form-control" name="image">
+                                                    <?php if (!empty($baiViet['image'])): ?>
+                                                        <img src="<?= $baiViet['image'] ?>" alt="Ảnh đại diện" style="width: 100px; height: auto; object-fit: cover;">
+                                                    <?php endif; ?>
+                                                    <span class="text-danger">
+                                                        <?= !empty($_SESSION['error']['image']) ? $_SESSION['error']['image'] : '' ?>
+                                                    </span>
+                                                </div>
+
+                                                <!-- Submit -->
+                                                <div class="text-end">
+                                                    <button type="submit" class="btn btn-primary">Cập nhật bài viết</button>
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- end card -->
+                        </div> <!-- end .h-100-->
+                    </div> <!-- end col -->
+                </div>
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <script>
+                            document.write(new Date().getFullYear())
+                        </script> © Velzon.
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="text-sm-end d-none d-sm-block">
+                            Design & Develop by Themesbrand
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- end main content-->
+
+    </div>
+    <!-- END layout-wrapper -->
+
+    <!--start back-to-top-->
+    <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
+        <i class="ri-arrow-up-line"></i>
+    </button>
+    <!--end back-to-top-->
+
+    <!--preloader-->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner-border text-primary avatar-sm" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="customizer-setting d-none d-md-block">
+        <div class="btn-info rounded-pill shadow-lg btn btn-icon btn-lg p-2" data-bs-toggle="offcanvas" data-bs-target="#theme-settings-offcanvas" aria-controls="theme-settings-offcanvas">
+            <i class='mdi mdi-spin mdi-cog-outline fs-22'></i>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <?php
+    require_once "views/layouts/libs_js.php";
+    ?>
+</body>
+
+</html>
