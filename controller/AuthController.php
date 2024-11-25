@@ -92,8 +92,7 @@ class AuthController
         if(isset($_SESSION['user_client'])){
         unset($_SESSION['user_client']);
         
-        // Có thể xóa thêm các session khác nếu cần
-        // unset($_SESSION['other_data']);
+        unset($_SESSION['other_data']);
         
         // Chuyển hướng về trang đăng nhập hoặc trang chủ
         header('Location: ' . BASE_URL_CLIENT);
