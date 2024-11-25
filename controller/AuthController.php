@@ -90,6 +90,8 @@ class AuthController
 
     public function logout() {
         if(isset($_SESSION['user_client'])){
+
+            // vcommit
         unset($_SESSION['user_client']);
         
         unset($_SESSION['other_data']);
