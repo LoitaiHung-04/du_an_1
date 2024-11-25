@@ -75,14 +75,8 @@ if (!$isAjax) {
     include_once './views/layous/footer.php';
 }
 
-  
-    
-
-
-    
-
-
 
 ob_end_flush();
 ?>
+
 

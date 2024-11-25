@@ -470,7 +470,6 @@
         </div>
     </div>
 
-    <<<<<<< HEAD
         <div class="customizer-setting d-none d-md-block">
         <div class="btn-info rounded-pill shadow-lg btn btn-icon btn-lg p-2" data-bs-toggle="offcanvas"
             data-bs-target="#theme-settings-offcanvas" aria-controls="theme-settings-offcanvas">
@@ -478,8 +477,6 @@
         </div>
         </div>
 
-        =======
-        >>>>>>> tuan
         <!-- JAVASCRIPT -->
         <?php require_once "layouts/libs_js.php"; ?>
 </body>

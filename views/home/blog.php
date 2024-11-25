@@ -15,6 +15,7 @@
                                                     <a href="?act=chi-tiet-bai-viet&id=<?= $item['id'] ?>" class="banner-img">
                                                         <!-- Hiển thị ảnh bài viết từ thư mục public/uploads -->
                                                         <img src="<?= '/uploads' . $item['image'] ?>" class="img-fluid" alt="imagê">
+                                                        <img src="<?= '/uploads/' . $item['image'] ?>" class="img-fluid" alt="imagê">
                                                     </a>
                                                 </div>
                                                 <div class="blog-content">
