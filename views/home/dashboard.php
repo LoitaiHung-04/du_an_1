@@ -22,13 +22,14 @@
                                         <!-- slider-text start -->
                                         <div class="slider-info-text">
                                             <div class="slider-text-info">
-                                                <span class="sub-title">Get up to discount 80% off</span>
+                                                <span class="sub-title">
+                                                    Nhận ngay ưu đãi giảm giá 80%</span>
                                                 <h2><span><?= $item['title'] ?></span></h2>
                                                 <div class="slider-text">
                                                     <span><?= $item['content'] ?></span>
 
                                                 </div>
-                                                <a href="" class="btn btn-style">ONLINE COLLECTION</a>
+                                                <a href="?" class="btn btn-style">BỘ SƯU TẬP TRỰC TUYẾN</a>
                                             </div>
                                         </div>
                                     </div>
@@ -44,7 +45,7 @@
         </div>
     </section>
 
-    <section class="home-banner-grid section-pt">
+    <!-- <section class="home-banner-grid section-pt">
         <div class="container-fluid">
             <div class="row">
                 <div class="col">
@@ -97,7 +98,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <section class="our-service-area section-ptb">
         <div class="container">
@@ -112,8 +113,8 @@
                                         <span></span>
                                     </span>
                                     <div class="service-text">
-                                        <h6>Worldwide shipping</h6>
-                                        <p>The generated is there was !</p>
+                                        <h6>Vận chuyển trên toàn quốc</h6>
+
                                     </div>
                                 </a>
                             </div>
@@ -126,8 +127,8 @@
                                         <span></span>
                                     </span>
                                     <div class="service-text">
-                                        <h6>Secure payment</h6>
-                                        <p>The generated is there was !</p>
+                                        <h6>Thanh toán an toàn</h6>
+
                                     </div>
                                 </a>
                             </div>
@@ -140,8 +141,8 @@
                                         <span></span>
                                     </span>
                                     <div class="service-text">
-                                        <h6>Return method</h6>
-                                        <p>The generated is there was !</p>
+                                        <h6>Hoàn hàng nhanh chóng!</h6>
+
                                     </div>
                                 </a>
                             </div>
@@ -154,8 +155,8 @@
                                         <span></span>
                                     </span>
                                     <div class="service-text">
-                                        <h6>Best gift voucher</h6>
-                                        <p>The generated is there was !</p>
+                                        <h6>Áp dụng nhiều mã giảm giá hot</h6>
+
                                     </div>
                                 </a>
                             </div>
@@ -224,10 +225,10 @@
 
                                                         </div>
                                                     </div>
-                                                    <div class="product-description">
+                                                    <!-- <div class="product-description">
                                                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                                                    </div>
-                                                    <div class="product-action">
+                                                    </div> -->
+                                                    <!-- <div class="product-action">
                                                         <a href="#quickview" class="quickview" data-bs-toggle="modal" data-bs-target="#quickview">
                                                             <span class="tooltip-text">Quickview</span>
                                                             <span class="pro-action-icon"><i class="feather-eye"></i></span>
@@ -240,9 +241,9 @@
                                                             <span class="tooltip-text">Wishlist</span>
                                                             <span class="pro-action-icon"><i class="feather-heart"></i></span>
                                                         </a>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
-                                                <div class="pro-label-retting">
+                                                <!-- <div class="pro-label-retting">
                                                     <div class="product-ratting">
                                                         <span class="pro-ratting">
                                                             <i class="fa-solid fa-star"></i>
@@ -255,14 +256,14 @@
                                                     <div class="product-label pro-new-sale">
                                                         <span class="product-label-title">Sale<span>20%</span></span>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                     <?php endforeach ?>
 
                                 </div>
                                 <div class="collection-button" data-animate="animate__fadeInUp">
-                                    <a href="collection.html" class="btn btn-style2" data-animate="animate__fadeInUp">View all item</a>
+                                    <!-- <a href="collection.html" class="btn btn-style2" data-animate="animate__fadeInUp">View all item</a> -->
                                 </div>
                             </div>
                             <div class="swiper-buttons" data-animate="animate__fadeInUp">
@@ -291,8 +292,8 @@
                             <div class="deal-block" style="background-image: url('assets/deal/deal-bg.jpg');">
                                 <div class="section-capture">
                                     <div class="section-title">
-                                        <span data-animate="animate__fadeInUp" class="sub-title">Every day shopping</span>
-                                        <h2 data-animate="animate__fadeInUp"><span>Deal of the days</span></h2>
+                                        <span data-animate="animate__fadeInUp" class="sub-title">Mua sắm hàng ngày</span>
+                                        <h2 data-animate="animate__fadeInUp"><span>Giảm giá trong ngày</span></h2>
                                     </div>
                                 </div>
                                 <div class="timer-section1" id="the-24h-countdown" data-animate="animate__fadeInUp">
@@ -313,8 +314,9 @@
                     <div class="col">
                         <div class="section-capture">
                             <div class="section-title">
-                                <span class="sub-title" data-animate="animate__fadeInUp">Featured collection</span>
-                                <h2 data-animate="animate__fadeInUp"><span>Weekly bestseller</span></h2>
+                                <span class="sub-title" data-animate="animate__fadeInUp">
+                                    Bộ sưu tập nổi bật</span>
+                                <h2 data-animate="animate__fadeInUp"><span>Sản phẩm khuyến mãi hôm nay </span></h2>
                             </div>
                         </div>
                     </div>
@@ -355,7 +357,7 @@
                                                         <span><?= $value['namedm'] ?></span>
                                                     </div>
                                                     <div class="product-title">
-                                                        <h6><a href="p?act=chi-tiet-san-pham&id=<?= $value['id'] ?>">Wireless headphones</a></h6>
+                                                        <h6><a href="p?act=chi-tiet-san-pham&id=<?= $value['id'] ?>"><?= $value['ten_san_pham'] ?></a></h6>
                                                     </div>
                                                     <div class="product-price">
                                                         <div style="color: red;">
@@ -363,10 +365,10 @@
 
                                                         </div>
                                                     </div>
-                                                    <div class="product-description">
+                                                    <!-- <div class="product-description">
                                                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                                                    </div>
-                                                    <div class="product-action">
+                                                    </div> -->
+                                                    <!-- <div class="product-action">
                                                         <a href="#quickview" class="quickview" data-bs-toggle="modal" data-bs-target="#quickview">
                                                             <span class="tooltip-text">Quickview</span>
                                                             <span class="pro-action-icon"><i class="feather-eye"></i></span>
@@ -379,9 +381,9 @@
                                                             <span class="tooltip-text">Wishlist</span>
                                                             <span class="pro-action-icon"><i class="feather-heart"></i></span>
                                                         </a>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
-                                                <div class="pro-label-retting">
+                                                <!-- <div class="pro-label-retting">
                                                     <div class="product-ratting">
                                                         <span class="pro-ratting">
                                                             <i class="fa-solid fa-star"></i>
@@ -394,7 +396,7 @@
                                                     <div class="product-label pro-new-sale">
                                                         <span class="product-label-title">Sale<span>20%</span></span>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
 
@@ -402,7 +404,7 @@
 
                                 </div>
                                 <div class="collection-button" data-animate="animate__fadeInUp">
-                                    <a href="collection.html" class="btn btn-style2">View all item</a>
+                                    <!-- <a href="collection.html" class="btn btn-style2">View all item</a> -->
                                 </div>
                             </div>
                             <div class="swiper-buttons">

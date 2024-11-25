@@ -34,7 +34,7 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
                             <div class="cart-wrap-info">
                                 <div class="cart-item-wrap">
                                     <div class="cart-title">
-                                        <h6 data-animate="animate__fadeInUp">My cart:</h6>
+                                        <h6 data-animate="animate__fadeInUp">Giỏ hàng của tôi:</h6>
                                         <span class="cart-count" data-animate="animate__fadeInUp">
                                             <span class="cart-counter"><?= $total[0]['total_sl'] ?> </span>
                                             <span class="cart-item-title"> Sản phẩm</span>
@@ -116,7 +116,7 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
                                         </div>
                                       
                                         <div class="proceed-to-checkout" data-animate="animate__fadeInUp">
-                                            <a href="?act=checkout&id=<?= $userName['id'] ?>" class="btn btn-style2">Checkout</a>
+                                            <a href="?act=checkout&id=<?= $userName['id'] ?>" class="btn btn-style2">Thanh toán</a>
                                         </div>
 
                                     </div>
@@ -131,7 +131,7 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
     <!-- cart-page end -->
     <!-- product-tranding start -->
     <section class="Trending-product bg-color section-ptb">
-        <div class="collection-category">
+        <!-- <div class="collection-category">
             <div class="container">
                 <div class="row">
                     <div class="col">
@@ -238,7 +238,7 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </section>
     <script>
         function statusAlert(type, title, message) {

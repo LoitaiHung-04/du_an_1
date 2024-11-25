@@ -10,9 +10,6 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
 
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Mirrored from spacingtech.com/html/electon/electon/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Nov 2024 15:54:32 GMT -->
-<!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 
 <head>
@@ -85,8 +82,10 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
                         </li>
                         <li class="noti-wrap noti-text-wrap">
                             <p>
-                                <span>Free worldwide & Free return for above uk</span>
-                                <span class="code-text">Shop now!</span>
+                                <span>
+                                Miễn phí trên toàn thế giới & Hoàn trả miễn phí cho các đơn hàng ở trên Việt Nam</span>
+                                <span class="code-text">
+                                Mua sắm ngay bây giờ!</span>
                             </p>
                         </li>
                         <li class="noti-wrap noti-social">
@@ -209,6 +208,7 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
                                                 </div>
                                             </div>
                                         </li>
+
 
                                         <?php if ($userName): ?>
                                             <li class="info-wrap info-Login">

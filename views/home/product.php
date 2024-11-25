@@ -50,7 +50,7 @@
                                     <!-- shop-item-filter-list end -->
                                 </div>
                                 <!-- product-short start -->
-                                <div class="product-short">
+                                <!-- <div class="product-short">
                                     <label for="SortBy">Sort by:</label>
                                     <select class="nice-select" name="sortby" id="SortBy">
                                         <option value="manual">Featured</option>
@@ -70,7 +70,7 @@
                                         <li class="pro-li selected"><a href="javascript:void(0)">Best Selling</a></li>
 
                                     </ul>
-                                </div>
+                                </div> -->
                                 <!-- product-short end -->
                             </div>
                             <!-- shop-top-bar end -->
@@ -110,7 +110,7 @@
 
 
                                                                         </div>
-                                                                        <div class="pro-label-retting">
+                                                                        <!-- <div class="pro-label-retting">
                                                                             <div class="product-ratting">
                                                                                 <span class="pro-ratting">
                                                                                     <i class="fa-solid fa-star"></i>
@@ -123,7 +123,7 @@
                                                                             <div class="product-label pro-new-sale">
                                                                                 <span class="product-label-title">Sale<span>22%</span></span>
                                                                             </div>
-                                                                        </div>
+                                                                        </div> -->
                                                                     </div>
                                                                 </div>
                                                             </li>

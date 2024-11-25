@@ -35,9 +35,9 @@
                         <!-- order profile start -->
                         <div class="profile-info">
                             <div class="account-profile">
-                                <div class="pro-img">
+                                <div class="">
                                     <a href="javascript:void(0)">
-                                        <img src="/du_an_1/uploads/users/<?=$_SESSION['user_client']['anh_dai_dien']?>" class="img-fluid" alt="Avatar">
+                                        <img src="/du_an_1/uploads/users/<?=$_SESSION['user_client']['anh_dai_dien']?>" width="100px" height="100px" style="border-radius: 50%; border:5px solid black"  alt="Avatar">
                                     </a>
                                 </div>
                                 <div class="profile-text">
@@ -75,7 +75,9 @@
                                             </li>
                                             <li class="billing-li">
                                                 <label>Số điện thoại</label>
-                                                <input type="text"   name="so_dien_thoai" placeholder="Số điện thoại" value="<?=$_SESSION['user_client']['so_dien_thoai']?>">
+                                                <input type="number"  pattern="^0[3|5|7|8|9][0-9]{8}$"
+                                                name="so_dien_thoai" placeholder="Số điện thoại" value="<?=$_SESSION['user_client']['so_dien_thoai']?>">
+
                                             </li>
                                             <li class="billing-li">
                                                 <label>Giới tính</label>
@@ -90,7 +92,9 @@
                                             </li>
                                             <li class="billing-li">
                                                 <label>Ngày sinh</label>
-                                                <input type="date" name="ngay_sinh" value="<?=$_SESSION['user_client']['ngay_sinh']?>" disabled>
+
+                                                <input type="date" disabled name="ngay_sinh" value="<?=$_SESSION['user_client']['ngay_sinh']?>">
+
                                             </li>
                                             <li class="billing-li">
                                                 <label>Ảnh đại diện</label>

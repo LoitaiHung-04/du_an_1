@@ -70,21 +70,23 @@
                                     <h2 data-animate="animate__fadeInUp">2. Delivery Address</h2>
 
                                     <ul>
+                                       
                                         <li data-animate="animate__fadeInUp">
-                                            <label>First name</label>
-                                            <input type="text" name="f-name" placeholder="First name">
+                                            <label class="form-label">Tên người nhận</label>
+                                            <input type="text" name="name" class="form-control" placeholder="Tên người nhận">
                                         </li>
                                         <li data-animate="animate__fadeInUp">
-                                            <label>Last name</label>
-                                            <input type="text" name="l-name" placeholder="Last name">
+                                            <label class="form-label">Số điện thoại</label>
+                                            <input type="text" class="form-control" name="phone" placeholder="Số điện thoại">
                                         </li>
                                         <li data-animate="animate__fadeInUp">
-                                            <label>Mobile number</label>
-                                            <input type="text" name="number" placeholder="Enter your number">
+                                            <label class="form-label">Địa chỉ</label>
+                                            <input type="text" class="form-control" name="address" placeholder="Địa chỉ">
+
                                         </li>
                                         <li data-animate="animate__fadeInUp">
-                                            <label>Delivery address</label>
-                                            <input type="text" name="add" placeholder="Enter your address">
+                                            <label class="form-label">Ghi chú</label>
+                                            <input type="text" class="form-control" name="note" placeholder="Ghi chú">
 
                                         </li>
 
@@ -96,21 +98,21 @@
                             <li class="check-3-li ck-pay">
                                 <div class="pay-method">
                                     <!-- p-method title start -->
-                                    <h2 data-animate="animate__fadeInUp">3. Select payment method</h2>
+                                    <h2 data-animate="animate__fadeInUp">3. Chọn phương thức thanh toán</h2>
                                     <!-- p-method title end -->
                                     <!-- p-method start --> 
                                     <div class="pay-pro">
                                         <select name="payment_method" id="" class="form-control">
                                             <option selected>Chọn phương thức thanh toán</option>
                                             <option value="vnpay">Thanh toán bằng VNPAY</option>
-                                            <option value="momo">Thanh toán bằng MOMO</option>
+                                            <option value="cod">Thanh toán khi nhận hàng</option>
                                          
                                         </select>
                                     </div>
                                     <!-- p-method end -->
                                     <!-- order-summary start -->
                                     <div class="order-summary">
-                                        <h2 data-animate="animate__fadeInUp">Order summary</h2>
+                                        <h2 data-animate="animate__fadeInUp">Tóm tắt đơn hàng</h2>
                                         <ul>
                                             <li data-animate="animate__fadeInUp">
                                                 <span class="p-name">Tổng tiền:</span>
@@ -119,10 +121,10 @@
                                           
                                         </ul>
                                         <div class="check-btn" data-animate="animate__fadeInUp">
-                                            <button class="btn-style2">Complete order</button>
+                                            <button class="btn-style2">Thanh toán</button>
                                         </div>
                                     </div>
-                                    <!-- order-summary end -->
+                                    
                                 </div>
                             </li>
                         </ul>

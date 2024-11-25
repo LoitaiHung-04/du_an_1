@@ -21,7 +21,7 @@ require_once 'controllers/DanhGiaController.php';
 require_once 'controllers/BinhLuanController.php';
 require_once 'controllers/ThongKeController.php';
 
-
+$isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest';
 
 
 define('BASE_URL_ADMIN', 'http://localhost:80/du_an_1/admin');
@@ -86,6 +86,7 @@ match ($act) {
     'sua-don-hang' => (new DonHangController())->postEditDonHang(),
     'chi-tiet-don-hang' => (new DonHangController())->detailDonHang(),
     'tim-kiem-don-hang' => (new DonHangController())->timkiemDonHang(),
+    'update-order' => (new DonHangController())->updateOrder(),
     // 'xoa-don-hang' => (new DonHangController())->destroy(),
     //
     'trang-thai-don-hangs' => (new TrangThaiDonHangController())->index(),

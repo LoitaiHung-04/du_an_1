@@ -1,8 +1,9 @@
 <?php
 include './models/DashBoard.php';
 include './models/GioHang.php';
+include './models/DonHang.php';
 include './admin/models/DanhMuc.php';
-
+include 'VNPayController.php';
 include './models/BinhLuanClient.php';
 class DashBoardController
 {
@@ -10,6 +11,8 @@ class DashBoardController
     public $category;
     public $cart;
     public $binh_luan;
+    public $vnpaySanbox;
+    public $order;
 
     public function __construct()
     {
@@ -17,6 +20,8 @@ class DashBoardController
         $this->category = new DanhMuc();
         $this->cart = new GioHang();
         $this->binh_luan = new BinhLuanClient();
+        $this->vnpaySanbox = new VNPayController();
+        $this->order = new DonHang();
     }
     public function index()
     {
@@ -196,65 +201,43 @@ class DashBoardController
         header('Content-Type: application/json');
         echo json_encode($response);
     }
-    public function createPayment(){
-        $payment_method = $_POST['payment_method'];
-        $id =$_SESSION['user_client']['id'];
-        $total = $this->cart->getTotal($id);
-       
-        if($payment_method == 'vnpay'){
-            $vnp_TmnCode = "5RWJ4H0U";
-            $vnp_HashSecret = "USPLQVHYKRYZBLWMZQEKXHXNLVNNSQZB";
-            $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-            $vnp_TxnRef = time();
-            $vnp_OrderInfo = "Thanh toán đơn hàng";
-            $vnp_OrderType = "billpayment";
-            $vnp_Amount = $total[0]['total_quantity'] * 100;
-            $vnp_Locale = 'vn';
-            $vnp_BankCode ='NCB';
-            $vnp_ReturnUrl = "http://localhost/du_an_1/";
-           
-    
-            $inputData = [
-                "vnp_Version" => "2.1.0",
-                "vnp_TmnCode" => $vnp_TmnCode,
-                "vnp_Amount" => $vnp_Amount,
-                "vnp_Command" => "pay",
-                "vnp_CreateDate" => date('YmdHis'),
-                "vnp_CurrCode" => "VND",
-                "vnp_IpAddr" => $_SERVER['REMOTE_ADDR'],
-                "vnp_Locale" => $vnp_Locale,
-                "vnp_OrderInfo" => $vnp_OrderInfo,
-                "vnp_OrderType" => $vnp_OrderType,
-                "vnp_ReturnUrl" => $vnp_ReturnUrl,
-                "vnp_TxnRef" => $vnp_TxnRef,
-            ];
-    
-            if (!empty($vnp_BankCode)) {
-                $inputData['vnp_BankCode'] = $vnp_BankCode;
-            }
-    
-            ksort($inputData);
-            $query = "";
-            $i = 0;
-    
-            foreach ($inputData as $key => $value) {
-                if ($i == 1) {
-                    $query .= '&' . urlencode($key) . "=" . urlencode($value);
-                } else {
-                    $query .= urlencode($key) . "=" . urlencode($value);
-                    $i = 1;
-                }
-            }
-    
-            $hashdata = http_build_query($inputData);
-            $vnp_Url .= "?" . $query;
-    
-            if (isset($vnp_HashSecret)) {
-                $vnpSecureHash = hash_hmac('sha512', $hashdata, $vnp_HashSecret);
-                $vnp_Url .= '&vnp_SecureHash=' . $vnpSecureHash;
-            }
-    
-            return header('location:'.$vnp_Url);
+    public function addOrderDetail($id_order)
+    {
+        $id = $_SESSION['user_client']['id'];
+        $cart = $this->cart->getAllCart($id);
+        // var_dump($cart);die();
+        foreach ($cart as $item) {
+            $this->order->addDetail($id_order, $item['san_pham_id'], $item['gia_san_pham'], $item['so_luong'], $item['tong_tien'], $item['bien_the_id'], $item['ten_san_pham']);
         }
+    }
+    public function createPayment()
+    {
+        $payment_method = $_POST['payment_method'];
+        $id = $_SESSION['user_client']['id'];
+        $email = $_SESSION['user_client']['email'];
+        $total = $this->cart->getTotal($id);
+        $name = $_POST['name'];
+        $phone = $_POST['phone'];
+        $address = $_POST['address'];
+        $note = $_POST['note'];
+        $code = rand(1, 100000);
+        $date = date('Y-m-d');
+
+
+        if ($payment_method == 'vnpay') {
+            $id_order = $this->order->createOrder($code, $id, $name, $email, $phone, $address, $date, $total[0]['total_quantity'], $note);
+            $this->addOrderDetail($id_order);
+            $this->vnpaySanbox->createSanboxVnpay($total[0]['total_quantity']);
+           
+        } else {
+            $id_order = $this->order->createOrder($code, $id, $name, $email, $phone, $address, $date, $total[0]['total_quantity'], $note);
+            $this->addOrderDetail($id_order);
+
+            header('location:?act=payment-complete');
+        }
+    }
+    public function orderComplete()
+    {
+        include './views/home/order-complete.php';
     }
 }

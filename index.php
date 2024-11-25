@@ -59,6 +59,7 @@ match ($act) {
     'remove-cart' => (new DashBoardController())->removeCart(), 
     'update-quantity-cart' => (new DashBoardController())->updateCart(), 
     'create-payment' => (new DashBoardController())->createPayment(), 
+    'payment-complete' => (new DashBoardController())->orderComplete(), 
 
 
 

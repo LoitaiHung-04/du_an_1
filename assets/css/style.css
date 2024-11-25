@@ -644,6 +644,7 @@ textarea:active {
     display: flex;
     justify-content: center;
 } 
+
 @media (max-width: 1399px) {
     .header-bottom-area .main-block .header-support {
         width: 22%;

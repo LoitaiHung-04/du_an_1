@@ -17,6 +17,9 @@
     include "views/layouts/libs_css.php";
     ?>
     <style>
+        #price_km{
+            display: none;
+        }
         /* Ẩn tất cả các tab nội dung trừ tab đang được chọn */
         .content-section {
             display: none;
@@ -131,6 +134,48 @@
             border-radius: 0 3px 0 90%;
             font-size: 10px;
         }
+
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 25px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-label {
+            position: absolute;
+            cursor: pointer;
+            background-color: #ccc;
+            border-radius: 25px;
+            width: 100%;
+            height: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .toggle-label::after {
+            content: "";
+            position: absolute;
+            width: 23px;
+            height: 23px;
+            border-radius: 50%;
+            background-color: white;
+            top: 1px;
+            left: 1px;
+            transition: transform 0.3s;
+        }
+
+        .toggle-switch input:checked+.toggle-label {
+            background-color: #4caf50;
+        }
+
+        .toggle-switch input:checked+.toggle-label::after {
+            transform: translateX(25px);
+        }
     </style>
 </head>
 
@@ -215,7 +260,6 @@
                                             <p class="text-danger">
                                                 <?= !empty($_SESSION['error']['content'])  ? $_SESSION['error']['content'] : ''    ?>
                                             </p>
-
                                         </div>
                                         <div class="form-group">
                                             <label for="" class="form-label">Trạng thái </label>
@@ -227,6 +271,40 @@
                                             <p class="text-danger">
                                                 <?= !empty($_SESSION['error']['content'])  ? $_SESSION['error']['content'] : ''    ?>
                                             </p>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="form-label">Sản phẩm nổi bật</label>
+                                            <div class="toggle-switch">
+                                                <input
+                                                    type="checkbox"
+                                                    id="swich"
+                                                    name="status" />
+                                                <label
+                                                    for="swich"
+                                                    class="toggle-label"></label>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="form-label">Sản phẩm khuyến mại hôm nay</label>
+                                            <div class="toggle-switch">
+                                                <input
+                                                    type="checkbox"
+                                                    id="swich-deal"
+                                                    name="status" />
+                                                <label
+                                                    for="swich-deal"
+                                                    class="toggle-label"></label>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="form-group" id="price_km">
+                                            <label for="" class="form-label">Giá sản phẩm khuyến mãi</label>
+                                            <input type="text" class="form-control" name="giasanpham_km" placeholder="nhập giá...">
+                                           
 
                                         </div>
                                         <div class="form-group">
@@ -289,7 +367,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Variant</th>
-                                                        <th> Price</th> 
+                                                        <th> Price</th>
                                                         <th>SKU</th>
                                                         <th>Quantity</th>
                                                         <th>Action</th>
@@ -411,6 +489,17 @@
     </script>
     <script type="module">
         CKEDITOR.replace('editor');
+    </script>
+    <script>
+        document.getElementById('swich-deal').addEventListener('click', () => {
+            const checkbox = document.getElementById('swich-deal');
+            if (checkbox.checked) {
+                document.querySelector('#price_km').style.display = "block";
+            } else {
+                document.querySelector('#price_km').style.display = "none";
+
+            }
+        });
     </script>
 </body>
 

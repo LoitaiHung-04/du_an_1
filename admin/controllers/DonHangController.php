@@ -1,5 +1,5 @@
 <?php
-include '../models/DonHang.php';
+include 'models/DonHang.php';
 
 class DonHangController
 {
@@ -11,6 +11,7 @@ class DonHangController
     }
     public function danhSachDonHang()
     {
+        $trangthai= $this->modelDonHang->status();
         $listDonHang = $this->modelDonHang->getAll();
         include_once './views/pages/donhang/list.php';
     }
@@ -26,6 +27,12 @@ class DonHangController
     }
     
     return true;
+}
+public function updateOrder(){
+    $status= $_GET['value'];
+    $id = $_GET['id'];
+    $this->modelDonHang->updateOrrderStatus($id,$status);
+    
 }
 public function detailDonHang()
 {

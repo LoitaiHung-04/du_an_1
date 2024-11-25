@@ -1,6 +1,6 @@
 <?php
 include_once 'commons/function.php';
-class  GioHang
+class GioHang
 {
     public function checkCart($id_user, $variant_id, $product_id)
     {
@@ -35,6 +35,12 @@ class  GioHang
         $sql = "SELECT SUM(tong_tien) AS total_quantity , SUM(so_luong) AS total_sl
         FROM gio_hangs
         WHERE user_id = ?";
+        $params = [$id];
+        return query_all_data($sql, $params);
+    }
+    public function getAllCart($id)
+    {
+        $sql = "select * from gio_hangs where user_id = ?";
         $params = [$id];
         return query_all_data($sql, $params);
     }
