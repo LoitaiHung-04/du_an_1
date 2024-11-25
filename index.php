@@ -13,6 +13,9 @@ require_once './commons/function.php';
 require_once './controller/DashBoardController.php';
 require_once './controller/PromotionController.php';
 require_once './controller/ProfileController.php';
+require_once './controller/BaiVietController.php';
+require_once './controller/LienHeController.php';
+
 
 $isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest';
 
@@ -60,7 +63,9 @@ match ($act) {
     'update-quantity-cart' => (new DashBoardController())->updateCart(), 
     'create-payment' => (new DashBoardController())->createPayment(), 
     'payment-complete' => (new DashBoardController())->orderComplete(), 
-
+    'bai-viet'          => (new BaivietClientController())->index(),
+    'chi-tiet-bai-viet' => (new BaiVietClientController())->detail($_GET['id']),
+    'lien-he' => (new ContactClientController())->contactForm(),
 
 
     default => (new DashBoardController())->index(), // Dùng mặc định nếu không tìm thấy

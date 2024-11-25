@@ -321,14 +321,14 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
 
                                             </li>
                                             <li class="menu-link">
-                                                <a href="blog-grid.html" class="link-title">
+                                                <a href="?act=bai-viet" class="link-title">
                                                     <span class="sp-link-title">Bài viết</span>
                                                     <span class="menu-arrow"><i class="fa fa-angle-down"></i></span>
                                                 </a>
 
                                             </li>
                                             <li class="menu-link">
-                                                <a href="contact-us.html" class="link-title">
+                                                <a href="?act=lien-he" class="link-title">
 
                                                     <span class="sp-link-title">Liên hệ </span>
 
