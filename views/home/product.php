@@ -1,3 +1,4 @@
+
 <main>
     <!-- breadcrumb start -->
     <section class="breadcrumb-area">
@@ -8,10 +9,10 @@
                         <!-- breadcrumb-list start -->
                         <ul class="breadcrumb-ul">
                             <li class="breadcrumb-li">
-                                <a class="breadcrumb-link" href="index.html">Home</a>
+                                <a class="breadcrumb-link" href="index.html">Trang chủ</a>
                             </li>
                             <li class="breadcrumb-li">
-                                <span class="breadcrumb-text">Collection left</span>
+                                <span class="breadcrumb-text">Bộ sưu tập</span>
                             </li>
                         </ul>
                         <!-- breadcrumb-list end -->
@@ -29,7 +30,7 @@
                     <div class="pro-grli-wrapper left-side-wrap">
                         <div class="pro-grli-wrap product-grid">
                             <div class="collection-img-wrap">
-                                <h6 data-animate="animate__fadeInUp" class="st-title">Collection left (23)</h6>
+                                <h6 data-animate="animate__fadeInUp" class="st-title">Bộ sưu tập (23)</h6>
                                 <!-- collection info start -->
                                 <div class="collection-info">
                                     <div class="collection-image" data-animate="animate__fadeInUp">
@@ -50,7 +51,7 @@
                                     <!-- shop-item-filter-list end -->
                                 </div>
                                 <!-- product-short start -->
-                                <div class="product-short">
+                                <!-- <div class="product-short">
                                     <label for="SortBy">Sort by:</label>
                                     <select class="nice-select" name="sortby" id="SortBy">
                                         <option value="manual">Featured</option>
@@ -70,7 +71,7 @@
                                         <li class="pro-li selected"><a href="javascript:void(0)">Best Selling</a></li>
 
                                     </ul>
-                                </div>
+                                </div> -->
                                 <!-- product-short end -->
                             </div>
                             <!-- shop-top-bar end -->
@@ -110,7 +111,7 @@
 
 
                                                                         </div>
-                                                                        <div class="pro-label-retting">
+                                                                        <!-- <div class="pro-label-retting">
                                                                             <div class="product-ratting">
                                                                                 <span class="pro-ratting">
                                                                                     <i class="fa-solid fa-star"></i>
@@ -123,7 +124,7 @@
                                                                             <div class="product-label pro-new-sale">
                                                                                 <span class="product-label-title">Sale<span>22%</span></span>
                                                                             </div>
-                                                                        </div>
+                                                                        </div> -->
                                                                     </div>
                                                                 </div>
                                                             </li>
@@ -162,7 +163,7 @@
                                                 <div class="facets-wrapper">
                                                     <!-- Product-Categories start -->
                                                     <div class="shop-sidebar">
-                                                        <h6 class="shop-title" data-animate="animate__fadeInUp">Categories</h6>
+                                                        <h6 class="shop-title" data-animate="animate__fadeInUp">Danh Mục</h6>
                                                         <a href="#collapse-5" data-bs-toggle="collapse" class="shop-title shop-title-lg" data-animate="animate__fadeInUp">Categories<i class="fa fa-angle-down"></i></a>
                                                         <div class="collapse show shop-element" id="collapse-5">
                                                             <ul class="brand-ul scrollbar">
@@ -184,11 +185,11 @@
                                                     </div>
 
                                                     <div class="shop-sidebar sidebar-price">
-                                                        <h6 class="shop-title" data-animate="animate__fadeInUp">Price</h6>
+                                                        <h6 class="shop-title" data-animate="animate__fadeInUp">Giá</h6>
                                                         <a href="#collapse-3" data-bs-toggle="collapse" class="shop-title shop-title-lg" data-animate="animate__fadeInUp">Price</a>
                                                         <div class="filter-info" data-animate="animate__fadeInUp">
-                                                            <span class="shop-price">The highest price is 50.000.000 VNĐ</span>
-                                                            <facet-remove><a href="" class="reset-text">Reset</a></facet-remove>
+                                                            <span class="shop-price">Giá cao nhất: 50.000.000 VNĐ</span>
+                                                            <facet-remove><a href="" class="reset-text">Làm mới</a></facet-remove>
                                                         </div>
                                                         <!-- Product-price start -->
                                                         <div class="collapse price-wrap" id="collapse-3">
@@ -199,13 +200,13 @@
                                                                 </div>
                                                                 <div class="price-input-group group-input" data-animate="animate__fadeInUp">
                                                                     <div class="price-range-input input-price">
-                                                                        <label class="label-text">From</label>
+                                                                        <label class="label-text">Từ</label>
                                                                         <span class="price-value">VNĐ</span>
                                                                         <span id="demo1" class="price-field">0</span>
                                                                     </div>
                                                                     <span class="price-range-delimeter">-</span>
                                                                     <div class="price-range-input input-price">
-                                                                        <label class="label-text">To</label>
+                                                                        <label class="label-text">Đến</label>
 
                                                                         <span id="demo2" class="price-field">50.000.000</span>
                                                                         <span class="price-value">VNĐ</span>

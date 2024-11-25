@@ -1,3 +1,4 @@
+
 <section class="footer-area section-ptb">
     <div class="container">
         <div class="row">
@@ -12,12 +13,14 @@
                                 <ul class="ftcontact-ul">
                                     <li class="ftcontact-li">
                                         <div class="footer-desc">
-                                            <p class="desc">There are many variations of passages of lorem Ipsum available, but the majority .. </p>
+                                            <p class="desc">
+                                            Có rất nhiều biến thể của lorem Ipsum, nhưng phần lớn .. </p>
                                         </div>
                                     </li>
                                 </ul>
                                 <div class="app-code">
-                                    <h6 class="ftlist-title">Download for app</h6>
+                                    <h6 class="ftlist-title">
+                                    Tải xuống cho ứng dụng</h6>
                                     <div class="code-1">
                                         <a href="index.html" class="image">
                                             <img src="/du_an_1/assets/images/logo/home-footer1.jpg" class="img-fluid desk-img" alt="gp-icon-01">
@@ -32,26 +35,27 @@
                         <li class="footer-li" data-animate="animate__fadeInUp">
                             <ul class="ftlist-ul">
                                 <li class="ftlist-li">
-                                    <h6 class="ftlist-title">Help with</h6>
+                                    <h6 class="ftlist-title">Trợ giúp với</h6>
                                     <a href="#footer-help" class="ftlist-title" data-bs-toggle="collapse" aria-expanded="false">
-                                        <span>Help with</span>
+                                        <span>Trợ giúp với</span>
                                         <span><i class="fa-solid fa-plus"></i></span>
                                     </a>
                                     <ul class="ftlink-ul collapse" id="footer-help">
                                         <li class="ftlink-li">
-                                            <a href="contact-us.html">Contact us</a>
+                                            <a href="contact-us.html">Liên hệ</a>
                                         </li>
                                         <li class="ftlink-li">
-                                            <a href="terms-condition.html">Terms & conditions</a>
+                                            <a href="terms-condition.html">Điều khoản và điều kiện</a>
                                         </li>
                                         <li class="ftlink-li">
-                                            <a href="track-page.html">Track your order</a>
+                                            <a href="track-page.html">Theo dõi đơn hàng của bạn</a>
                                         </li>
                                         <li class="ftlink-li">
-                                            <a href="shipping-policy.html">Our guarantee </a>
+                                            <a href="shipping-policy.html">Bảo đảm của chúng tôi </a>
                                         </li>
                                         <li class="ftlink-li">
-                                            <a href="pro-tickets.html">Guide des tailles</a>
+                                            <a href="pro-tickets.html">
+                                            Hướng dẫn các đuôi</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -60,26 +64,27 @@
                         <li class="footer-li" data-animate="animate__fadeInUp">
                             <ul class="ftlist-ul">
                                 <li class="ftlist-li">
-                                    <h6 class="ftlist-title">Information</h6>
+                                    <h6 class="ftlist-title">Thông tin</h6>
                                     <a href="#footer-information" class="ftlist-title" data-bs-toggle="collapse" aria-expanded="false">
-                                        <span>Information</span>
+                                        <span>Thông tin</span>
                                         <span><i class="fa-solid fa-plus"></i></span>
                                     </a>
                                     <ul class="ftlink-ul collapse" id="footer-information">
                                         <li class="ftlink-li">
-                                            <a href="about-us.html">About story</a>
+                                            <a href="about-us.html">Câu chuyện </a>
                                         </li>
                                         <li class="ftlink-li">
-                                            <a href="Privacy-policy-2.html">Privacy policy</a>
+                                            <a href="Privacy-policy-2.html">Chính sách bảo mật</a>
                                         </li>
                                         <li class="ftlink-li">
-                                            <a href="return-policy.html">Return policy</a>
+                                            <a href="return-policy.html">Chính sách hoàn trả</a>
                                         </li>
                                         <li class="ftlink-li">
-                                            <a href="payment-policy.html">Payment policy</a>
+                                            <a href="payment-policy.html">Chính sách thanh toán</a>
                                         </li>
                                         <li class="ftlink-li">
-                                            <a href="collection.html">We our brand</a>
+                                            <a href="collection.html">
+                                            Chúng tôi thương hiệu của chúng tôi</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -88,26 +93,26 @@
                         <li class="footer-li" data-animate="animate__fadeInUp">
                             <ul class="ftlist-ul">
                                 <li class="ftlist-li">
-                                    <h6 class="ftlist-title">Top category</h6>
+                                    <h6 class="ftlist-title">Danh mục hàng đầu</h6>
                                     <a href="#footer-category" class="ftlist-title" data-bs-toggle="collapse" aria-expanded="false">
-                                        <span>Top category</span>
+                                        <span>Danh mục hàng đầu</span>
                                         <span><i class="fa-solid fa-plus"></i></span>
                                     </a>
                                     <ul class="ftlink-ul collapse" id="footer-category">
                                         <li class="ftlink-li">
-                                            <a href="product-template.html">Wireless headphone</a>
+                                            <a href="product-template.html">Iphone 12</a>
                                         </li>
                                         <li class="ftlink-li">
-                                            <a href="product-template2.html">Bluetooth speakers</a>
+                                            <a href="product-template2.html">Iphone 13</a>
                                         </li>
                                         <li class="ftlink-li">
-                                            <a href="product-template3.html">Portable devices</a>
+                                            <a href="product-template3.html">Iphone 14</a>
                                         </li>
                                         <li class="ftlink-li">
-                                            <a href="product-template4.html">Monio live camera</a>
+                                            <a href="product-template4.html">Iphone 15</a>
                                         </li>
                                         <li class="ftlink-li">
-                                            <a href="product-template5.html">Movie projector T6</a>
+                                            <a href="product-template5.html">Iphone 16</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -116,20 +121,20 @@
                         <li class="footer-li footer-contact" data-animate="animate__fadeInUp">
                             <ul class="ftlist-ul">
                                 <li class="ftlist-li">
-                                    <h6 class="ftlist-title">Contact info</h6>
+                                    <h6 class="ftlist-title">Thông tin liên hệ</h6>
                                     <a href="#footer-Contact" class="ftlist-title" data-bs-toggle="collapse" aria-expanded="false">
-                                        <span>Contact info</span>
+                                        <span>Thông tin liên hệ</span>
                                         <span><i class="fa-solid fa-plus"></i></span>
                                     </a>
                                     <ul class="ftcontact-ul collapse" id="footer-Contact">
                                         <li class="ftcontact-li">
                                             <div class="ft-contact-add">
-                                                <a href="#" class="ft-contact-address">Phone: +1 234 567 890 </a>
+                                                <a href="#" class="ft-contact-address">SĐT: 0812345679 </a>
                                             </div>
                                         </li>
                                         <li class="ftcontact-li">
                                             <div class="ft-contact-add">
-                                                <a href="Email:info@domain.com" class="ft-contact-address">Email: info@domain.com</a>
+                                                <a href="Email:info@domain.com" class="ft-contact-address">Email: sellsphone@gmail.com</a>
                                             </div>
                                         </li>
                                         <li class="ftcontact-li">
@@ -139,7 +144,7 @@
                                         </li>
                                         <li class="ftcontact-li">
                                             <div class="ft-contact-add">
-                                                <p class="ft-contact-text">orchard view, london, UK</p>
+                                                <p class="ft-contact-text">orchard view, HaNoi, VN</p>
                                             </div>
                                         </li>
                                     </ul>
@@ -187,16 +192,16 @@
                         <li class="ft-copryright-li news-letter">
                             <div class="news-block">
                                 <div class="section-title">
-                                    <h2>Subscribe newsletter</h2>
+                                    <h2>Đăng kí nhận bản tin</h2>
                                 </div>
                                 <form method="post" id="contact_form" accept-charset="UTF-8" class="contact-form">
                                     <input type="hidden" name="form_type" value="customer">
                                     <input type="hidden" name="utf8" value="✓">
                                     <input type="hidden" name="contact[tags]" value="newsletter">
                                     <div class="subscribe-block">
-                                        <input type="email" name="contact[email]" class="email mail" id="E-mail" value="" placeholder="Enter your email" autocapitalize="off">
+                                        <input type="email" name="contact[email]" class="email mail" id="E-mail" value="" placeholder="Nhập Email của bạn..." autocapitalize="off">
                                         <div class="email-submit">
-                                            <button type="submit" class="btn btn-style2">Send</button>
+                                            <button type="submit" class="btn btn-style2">Gửi</button>
                                         </div>
                                     </div>
                                 </form>
@@ -1419,7 +1424,7 @@
                             found = true;
                             $('#result').css('display', 'inherit');
                             $('#result').append(
-                                '<li style="cursor:pointer; display: flex; height:auto; width:660px;" class="list-group-item link-class"><a href="?act=chi-tiet-san-pham&id='+value.id+'"><img src="/du_an_1/uploads/products/' +
+                                '<li style="cursor:pointer; display: flex; height:auto; width:660px;" class="list-group-item link-class"><a href="?act=chi-tiet-san-pham&id=' + value.id + '"><img src="/du_an_1/uploads/products/' +
                                 value.hinh_anh +
                                 '" width="100" class="" /></a><div style="flex-direction: column; margin-left: 2px;"><h4 width="100%">' +
                                 value.ten_san_pham +
@@ -1445,6 +1450,17 @@
 
 
     });
+
+    const btn_null = document.querySelector('#cart-null');
+    btn_null.addEventListener('click', () => {
+        Swal.fire({
+            icon: `error`,
+            title: `Lỗi`,
+            text: `Bạn chưa đăng nhập !`,
+            footer: '<a href="?act=login">Nhấn để đăng nhập</a>'
+
+        });
+    })
 </script>
 </body>
 

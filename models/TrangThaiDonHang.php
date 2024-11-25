@@ -32,6 +32,7 @@ class TrangThaiDonHang
         return execute($sql, $params);
     }
     
+    
     public function delete($id){
         $sql="DELETE FROM trang_thai_don_hangs WHERE id=?";
         $params = [$id];

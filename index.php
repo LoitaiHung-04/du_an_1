@@ -22,6 +22,8 @@ if (!$isAjax) {
 require_once './controller/AuthController.php';
 require_once './controller/LienHeController.php';
 require_once './controller/BaiVietController.php';
+require_once './controller/DashBoardController.php';
+require_once './controller/ProfileController.php';
 define('BASE_URL_ADMIN', 'http://localhost:80/du_an_1/admin');
 define('BASE_URL_CLIENT', 'http://localhost:80/du_an_1/');
 

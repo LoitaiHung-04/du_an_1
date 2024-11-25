@@ -90,11 +90,10 @@ class AuthController
 
     public function logout() {
         if(isset($_SESSION['user_client'])){
-
-            // vcommit
         unset($_SESSION['user_client']);
         
-        unset($_SESSION['other_data']);
+        // Có thể xóa thêm các session khác nếu cần
+        // unset($_SESSION['other_data']);
         
         // Chuyển hướng về trang đăng nhập hoặc trang chủ
         header('Location: ' . BASE_URL_CLIENT);

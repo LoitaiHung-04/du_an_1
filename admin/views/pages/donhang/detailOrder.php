@@ -181,7 +181,7 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                <div class="border-top border-top-dashed mt-2">
+                                                <!-- <div class="border-top border-top-dashed mt-2">
                                                     <table
                                                         class="table table-borderless table-nowrap align-middle mb-0 ms-auto"
                                                         style="width:250px">
@@ -204,7 +204,7 @@
                                                             </tr>
                                                         </tbody>
                                                     </table>
-                                                </div>
+                                                </div> -->
                                                 <div class="mt-3">
                                                     <h6 class="text-muted text-uppercase fw-semibold mb-3">Payment
                                                         Details:
@@ -287,4 +287,3 @@
 </body>
 
 </html>
-

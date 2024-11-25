@@ -1,3 +1,4 @@
+
 <?php
 
 include_once '../commons/function.php';
@@ -15,4 +16,13 @@ class BinhLuan
        $params=[$id];
         return query_all_data($sql,$params);
     }
+    
+    
+
+
+
+
+
+
+
 }
