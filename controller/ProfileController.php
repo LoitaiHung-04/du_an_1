@@ -20,7 +20,7 @@ class ProfileController
     public function updateTaiKhoan()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Lấy dữ liệu từ form
+            // Lấy dữ liệu từ form.
             $id = $_POST['id'];
             $user = $this->profile->getTaiKhoanById($id);
             

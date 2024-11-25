@@ -14,7 +14,7 @@ class BaiViet
     ';
         $result = query_all_data($sql);
 
-        // Đảm bảo rằng mỗi bài viết có đường dẫn chính xác cho ảnh
+        // Đảm bảo rằng mỗi bài viết có đường dẫn chính xác cho ảnhã
         foreach ($result as &$item) {
             if (!empty($item['image'])) {
                 $item['image'] = './uploads/' . $item['image']; // Đường dẫn đến thư mục uploads
