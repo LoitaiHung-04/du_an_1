@@ -54,7 +54,11 @@ match ($act) {
 //
     'khuyen-mai' => (new PromotionController())->index(), // Đăng xuất
 //
-    'tai-khoan' => (new ProfileController())->index(), // Đăng xuất
+    'tai-khoan' => (new ProfileController())->index(),
+    'form-doi-mat-khau' => (new ProfileController())->form(), // Đăng xuất
+     // Đăng xuất
+    'doi-mat-khau' => (new ProfileController())->changePassword(), // Đăng xuất
+
     'check-tai-khoan' => (new ProfileController())->updateTaiKhoan(), // Đăng xuất
 
 
