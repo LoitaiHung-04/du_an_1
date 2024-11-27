@@ -1,8 +1,6 @@
 <?php
 // Kiểm tra xem session đã được khởi động chưa, nếu chưa thì gọi session_start()
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+
 
 // Kiểm tra xem người dùng đã đăng nhập chưa và gán giá trị cho biến $userName
 $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
@@ -12,9 +10,6 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
 
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Mirrored from spacingtech.com/html/electon/electon/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Nov 2024 15:54:32 GMT -->
-<!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 
 <head>
@@ -26,7 +21,7 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
     <meta name="author" content="spacingtech_webify">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- title -->
-    <title>Electon - The Electronics eCommerce Bootstrap Template</title>
+    <title>SellsPhone- Store</title>
     <!-- favicon -->
     <link rel="icon" type="image/x-icon" href="img/favicon/favicon.png">
     <!-- bootstrap css -->
@@ -77,15 +72,20 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
                         <li class="noti-wrap noti-email-wrap">
                             <div class="noti-email">
                                 <div class="emailtext">
-                                    <p><a href="Email:Electondemo@gmail.com" title="Email:Electondemo@gmail.com">Email :
-                                            Electondemo@gmail.com</a></p>
+
+                                    <p><a href="Email:Electondemo@gmail.com" title="Email:Electondemo@gmail.com">Email :Sellsphonestore@gmail.com</a></p>
+
+
+
                                 </div>
                             </div>
                         </li>
                         <li class="noti-wrap noti-text-wrap">
                             <p>
-                                <span>Free worldwide & Free return for above uk</span>
-                                <span class="code-text">Shop now!</span>
+                                <span>
+                                Miễn phí trên toàn thế giới & Hoàn trả miễn phí cho các đơn hàng ở trên Việt Nam</span>
+                                <span class="code-text">
+                                Mua sắm ngay bây giờ!</span>
                             </p>
                         </li>
                         <li class="noti-wrap noti-social">
@@ -153,7 +153,7 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
                             </div>
                             <div class="header-element header-logo">
                                 <div class="header-theme-logo">
-                                    <a href="index.html" class="theme-logo">
+                                    <a href="?" class="theme-logo">
                                         <img src="/du_an_1/assets/images/logo/logo.png" class="img-fluid" alt="logo">
                                     </a>
                                 </div>
@@ -164,10 +164,11 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
                                         <div class="search-box">
                                             <form action="?act=search" method="post" class="search-bar">
                                                 <div class="form-search">
-                                                    <input id="timkiem" type="search" name="q"
-                                                        placeholder="Find our search" class="search-input">
-                                                    <button disabled type="button" class="search-btn"><i
-                                                            class="feather-search"></i></button>
+
+                                                    <input id="timkiem" type="search" name="q" placeholder="Tìm kiếm" class="search-input">
+                                                    <button disabled type="button" class="search-btn"><i class="feather-search"></i></button>
+
+
                                                 </div>
                                             </form>
                                             <ul style="position: absolute; z-index: 100;" id="result"></ul>
@@ -202,39 +203,56 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
                                             <div class="info-wrapper">
                                                 <a href="index.html" class="icon"><i class="feather-headphones"></i></a>
                                                 <div class="info-text">
-                                                    <span class="label">Hotline number</span>
+                                                    <span class="label"> Đường dây nóng</span>
                                                     <a href="tel:+260005002600" class="info-link">+2600 0500 2600</a>
                                                 </div>
                                             </div>
                                         </li>
+
+
                                         <?php if ($userName): ?>
-                                                <li class="info-wrap info-Login">
-                                                    <div class="info-wrapper">
-                                                        <a href="?act=tai-khoan" class="icon"><i class="feather-user"></i></a>
-                                                        <div class="info-text">
-                                                            <span class="label"><?php echo htmlspecialchars($_SESSION['user_client']['ho_ten']); ?></span>
-                                                            <a href="?act=logout" class="info-link btn btn-sm btn-outline-secondary ms-2">Đăng xuất</a>
-                                                        </div>
+                                            <li class="info-wrap info-Login">
+                                                <div class="info-wrapper">
+                                                    <a href="?act=tai-khoan" class="icon"><i class="feather-user"></i></a>
+                                                    <div class="info-text">
+                                                        <span class="label"><?php echo htmlspecialchars($_SESSION['user_client']['ho_ten']); ?></span>
+                                                        <a href="?act=logout" class="info-link btn btn-sm btn-outline-secondary ms-2">Đăng xuất</a>
                                                     </div>
-                                                </li>
-                                            <?php else: ?>
-                                                <li class="info-wrap info-Login">
-                                                    <div class="info-wrapper">
-                                                        <a href="?act=login" class="info-link">Đăng nhập </a>  =>
+                                                </div>
+                                            </li>
+                                        <?php else: ?>
+
+                                            <li class="info-wrap info-Login">
+                                                <div class="info-wrapper">
+                                                    <a href="index.html" class="icon"><i class="feather-user"></i></a>
+                                                    <div class="info-text">
+                                                        <span class="label">Tài khoản</span>
+                                                        <a href="?act=login" class="info-link">Đăng nhập / </a>
                                                         <a href="?act=form-register" class="info-link">Đăng kí</a>
-
                                                     </div>
-                                                </li>
-                                            <?php endif; ?>
+                                                </div>
+                                            </li>
+                                        <?php endif; ?>
 
-                                                                                    
+
+
+
                                     </ul>
+
                                 </div>
                             </div>
+
+
+
+
+
+
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        </div>
         </div>
         <!-- header-bottam start -->
         <div class="header-bottom-area">
@@ -247,13 +265,13 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
                                     <a href="#vega-collapse" class="browse-cat" data-bs-toggle="collapse"
                                         aria-expanded="false">
                                         <span class="menu-icon"><i class="feather-menu"></i></span>
-                                        <span class="menu-title">Trending category</span>
+                                        <span class="menu-title">Danh mục sản phẩm</span>
                                         <span class="menu-arrow"><i class="fa fa-angle-down"></i></span>
                                     </a>
                                     <a href="#vega-collapse" class="browse-cat browse-cat-lg" data-bs-toggle="collapse"
                                         aria-expanded="false">
                                         <span class="menu-icon"><i class="feather-menu"></i></span>
-                                        <span class="menu-title">Trending category</span>
+                                        <span class="menu-title">Danh mục sản phẩm</span>
                                         <span class="menu-arrow"><i class="fa fa-angle-down"></i></span>
                                     </a>
                                     <div class="vegawrap collapse" id="vega-collapse">
@@ -293,28 +311,35 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
 
                                             <li class="menu-link">
                                                 <a href="?act=product" class="link-title">
-                                                    <span class="sp-link-title">Sản phẩm<span
-                                                            class="header-sale-lable">Sale</span></span>
+
+                                                    <span class="sp-link-title">Sản phẩm<span class="header-sale-lable">Sale</span></span>
+
+
+
                                                     <span class="menu-arrow"><i class="fa fa-angle-down"></i></span>
                                                 </a>
 
                                             </li>
                                             <li class="menu-link">
-                                                <a href="blog-grid.html" class="link-title">
+                                                <a href="?act=bai-viet" class="link-title">
                                                     <span class="sp-link-title">Bài viết</span>
                                                     <span class="menu-arrow"><i class="fa fa-angle-down"></i></span>
                                                 </a>
 
                                             </li>
                                             <li class="menu-link">
-                                                <a href="contact-us.html" class="link-title">
-                                                    <span class="sp-link-title">Liên hệ</span>
+                                                <a href="?act=lien-he" class="link-title">
+
+                                                    <span class="sp-link-title">Liên hệ </span>
+
+
                                                     <span class="menu-arrow"><i class="fa fa-angle-down"></i></span>
                                                 </a>
                                             </li>
                                             <li class="menu-link">
                                                 <a href="?act=khuyen-mai" class="link-title">
                                                     <span class="sp-link-title">Khuyến mãi</span>
+
                                                     <span class="menu-arrow"><i class="fa fa-angle-down"></i></span>
                                                 </a>
                                             </li>
@@ -383,14 +408,16 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
                                                                 </path>
                                                             </svg></span>
                                                     </span>
-                                                    <span class="wishlist-title">My wishlist</span>
+                                                    <span class="wishlist-title">Sản phẩm yêu thích</span>
                                                 </a>
                                             </div>
                                         </li>
                                         <li class="side-wrap cart-wrap">
                                             <div class="cart-wrapper">
                                                 <div class="shopping-cart">
-                                                    <a href="?act=cart&id=1"
+                                                 
+                                                   <?php if($userName != null):?>
+                                                    <a href="?act=cart&id=<?= $userName['id'] ?>"
                                                         style="background-color: black; cursor: pointer; padding: 10px 10px; color: white; border-radius: 5px; ">
                                                         <span class="icon"><svg xmlns="http://www.w3.org/2000/svg"
                                                                 width="1em" height="1em" viewBox="0 0 24 24">
@@ -398,9 +425,24 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
                                                                     d="M6.505 2h11a1 1 0 0 1 .8.4l2.7 3.6v15a1 1 0 0 1-1 1h-16a1 1 0 0 1-1-1V6l2.7-3.6a1 1 0 0 1 .8-.4m12.5 6h-14v12h14zm-.5-2l-1.5-2h-10l-1.5 2zm-9.5 4v2a3 3 0 1 0 6 0v-2h2v2a5 5 0 0 1-10 0v-2z">
                                                                 </path>
                                                             </svg></span>
-                                                        <span class="cart-title text">My cart</span>
+                                                        <span class="cart-title text">Giỏ hàng</span>
                                                         <span class="bigcounter">04</span>
                                                     </a>
+                                                   <?php else:?>
+                                                    
+                                                        <span id="cart-null"
+                                                        style="background-color: black; cursor: pointer; padding: 10px 10px; color: white; border-radius: 5px; ">
+                                                        <span class="icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                                width="1em" height="1em" viewBox="0 0 24 24">
+                                                                <path fill="currentColor"
+                                                                    d="M6.505 2h11a1 1 0 0 1 .8.4l2.7 3.6v15a1 1 0 0 1-1 1h-16a1 1 0 0 1-1-1V6l2.7-3.6a1 1 0 0 1 .8-.4m12.5 6h-14v12h14zm-.5-2l-1.5-2h-10l-1.5 2zm-9.5 4v2a3 3 0 1 0 6 0v-2h2v2a5 5 0 0 1-10 0v-2z">
+                                                                </path>
+                                                            </svg></span>
+                                                        <span class="cart-title text">Giỏ hàng</span>
+                                                        
+                                                    </span>
+                                                    <?php endif?>
+
                                                 </div>
                                             </div>
                                         </li>
@@ -412,4 +454,5 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
                 </div>
             </div>
         </div>
+        
     </header>

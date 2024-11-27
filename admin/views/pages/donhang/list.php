@@ -35,7 +35,7 @@
                 <div class="container-fluid">
                     <!-- start page title -->
                     <div class="row">
-                        <div class="col-12">    
+                        <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
                                 <h4 class="mb-sm-0">Quản lý đơn hàng</h4>
                                 <div class="page-title-right">
@@ -107,7 +107,7 @@
                                                         if (isset($resultSearchOrder) && !empty($resultSearchOrder)) {
                                                             $dataToDisplay = $resultSearchOrder;
                                                         } else {
-                                                            
+
                                                             $dataToDisplay = $listDonHang;
                                                         }
 
@@ -127,20 +127,27 @@
                                                                     <td><?= htmlspecialchars($row['ten_nguoi_nhan']) ?></td>
                                                                     <td><?= htmlspecialchars($row['sdt_nguoi_nhan']) ?></td>
                                                                     <td><?= htmlspecialchars($row['ngay_dat']) ?></td>
-                                                                    <td><?= htmlspecialchars($row['ten_trang_thai_id']) ?></td>
-                                                                    <td><?php if($row['trang_thai_thanh_toan_id']==1){
-                                                                                    echo 'Đã thanh toán';
-                                                                             }elseif($row['trang_thai_thanh_toan_id']==2){
-                                                                                    echo 'Chưa thanh toán';
-                                                                             }elseif($row['trang_thai_thanh_toan_id']==3){
-                                                                                     echo "Đang xử lí";
-                                                                             }
-                                                                                                             
+                                                                    <td><select name="" id="trangthai" class="form-control" data-id="<?= $row['id'] ?>">
+                                                                            <?php foreach ($trangthai as $item): ?>
+
+                                                                                <option value="<?= $item['id'] ?>"><?= $item['ten_trang_thai_id'] ?></option>
+
+
+                                                                            <?php endforeach ?>
+                                                                        </select></td>
+                                                                    <td><?php if ($row['trang_thai_thanh_toan_id'] == 1) {
+                                                                            echo 'Đã thanh toán';
+                                                                        } elseif ($row['trang_thai_thanh_toan_id'] == 2) {
+                                                                            echo 'Chưa thanh toán';
+                                                                        } elseif ($row['trang_thai_thanh_toan_id'] == 3) {
+                                                                            echo "Đang xử lí";
+                                                                        }
+
                                                                         ?>
                                                                     </td>
-                                                                    
-                                                                    
-                                                                    
+
+
+
 
                                                                     <td>
                                                                         <div class="col-xl-3 col-lg-4 col-sm-6">
@@ -161,7 +168,7 @@
                                                                                 onsubmit="return confirm('Bạn có chắc chắn muốn xóa?')">
                                                                                 <input type="hidden" name="don-hang-id"
                                                                                     value="<?= $row['id'] ?>">
-                                                                                <button type="submit" class="link-danger fs-15" style="border: none;" >
+                                                                                <button type="submit" class="link-danger fs-15" style="border: none;">
                                                                                     <i class="ri-delete-bin-line"></i>
                                                                                 </button>
                                                                             </form>
@@ -215,7 +222,7 @@
     </button>
     <script src="https://unpkg.com/feather-icons"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             feather.replace();
         });
     </script>
@@ -242,9 +249,37 @@
 
     <script src="https://unpkg.com/feather-icons"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             feather.replace();
         });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <script type="module">
+          const status =document.querySelectorAll('#trangthai');
+          for (const element of status) {
+            element.addEventListener('change',(e)=>{
+                const value = e.target.value;
+                const id =element.dataset.id;
+              
+                
+                $.ajax({
+                    url: "?act=update-order",
+                    method: "GET",
+                    data: {
+                      value:value,
+                      id:id
+                    },
+                    success: function(response) {
+
+                       alert('thanh còn');
+
+                    }
+
+                });
+                
+            })
+          }
     </script>
 </body>
 

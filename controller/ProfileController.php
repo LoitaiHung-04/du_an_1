@@ -12,9 +12,7 @@ class ProfileController
     public function index()
 
     {
-        
-        
-        include_once './views/home/pro.php';
+        include_once './views/home/profile.php';
     }
     public function form(){
         include_once './views/home/form-change-password.php';
@@ -23,6 +21,7 @@ class ProfileController
     public function updateTaiKhoan()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Lấy dữ liệu từ form.
             $id = $_POST['id'];
             $user = $this->profile->getTaiKhoanById($id);
     
@@ -79,22 +78,24 @@ class ProfileController
         $user = $this->profile->getTaiKhoanById($id);
 
         if ($mat_khau_cu !== $user['mat_khau']) {
+            
             $_SESSION['error'] = "Mật khẩu cũ không đúng.";
-            header('Location: http://localhost:85/du_an_1/?act=form-doi-mat-khau');
+            header('Location: http://localhost:85/du_an_1/?act=tai-khoan');
             exit();
         }
 
         if ($mat_khau_cu === $mat_khau_moi) {
             $_SESSION['error'] = "Mật khẩu mới không được giống mật khẩu cũ.";
-            header('Location: http://localhost:85/du_an_1/?act=form-doi-mat-khau');
+            header('Location: http://localhost:85/du_an_1/?act=tai-khoan');
             exit();
         }
 
         if ($mat_khau_moi !== $xac_nhan_mat_khau) {
             $_SESSION['error'] = "Mật khẩu xác nhận không khớp.";
-            header('Location: http://localhost:85/du_an_1/?act=form-doi-mat-khau');
+            header('Location: http://localhost:85/du_an_1/?act=tai-khoan');
             exit();
         }
+
 
         $this->profile->updateMatKhau($id, $mat_khau_moi);
 
@@ -104,17 +105,10 @@ class ProfileController
 
         exit();
     }
+} 
 }
 
-    
-    
-    
 
-
-    
-    
-    
-}
 
    
     

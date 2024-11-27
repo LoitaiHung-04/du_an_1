@@ -80,39 +80,7 @@
                     <div class="password-block">
                         <!-- account profile start -->
                         <div class="profile-info">
-                        <div class="account-profile">
-                                    <div class="pro-img">
-                                        <a href="javascript:void(0)">
-                                            <img src="/du_an_1/uploads/users/<?= $_SESSION['user_client']['anh_dai_dien'] ?>"
-                                                class="img-fluid" alt="Avatar">
-                                        </a>
-                                    </div>
-                                    <div class="profile-text">
-                                        <h6><?= $_SESSION['user_client']['ho_ten'] ?></h6>
-                                    </div>
-                                </div>
-                            <div class="account-detail">
-                                <ul class="profile-ul">
-                                    <li class="profile-li" data-animate="animate__fadeInUp">
-                                        <a href="?act=tai-khoan">Profile</a>
-                                    </li>
-
-                                    <li class="profile-li" data-animate="animate__fadeInUp">
-                                        <a href="?act=form-doi-mat-khau" class="active">
-                                            <span>Change password</span>
-                                        </a>
-                                    </li>
-                                    <li class="profile-li" data-animate="animate__fadeInUp">
-                                        <a href="?act=logout">
-                                            <span>Sign out</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- account profile start -->
-                        <!-- change password start -->
-                        <div class="profile-form">
+                        
                             <div class="pro-add-title">
                                 <h6 data-animate="animate__fadeInUp">Change Password</h6>
                             </div>

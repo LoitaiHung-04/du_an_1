@@ -13,6 +13,9 @@ require_once './commons/function.php';
 require_once './controller/DashBoardController.php';
 require_once './controller/PromotionController.php';
 require_once './controller/ProfileController.php';
+require_once './controller/BaiVietController.php';
+require_once './controller/LienHeController.php';
+
 
 $isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest';
 
@@ -54,13 +57,20 @@ match ($act) {
 //
     'khuyen-mai' => (new PromotionController())->index(), // Đăng xuất
 //
-    'tai-khoan' => (new ProfileController())->index(),
-    'form-doi-mat-khau' => (new ProfileController())->form(), // Đăng xuất
+   'tai-khoan' => (new ProfileController())->index(),
      // Đăng xuất
     'doi-mat-khau' => (new ProfileController())->changePassword(), // Đăng xuất
 
     'check-tai-khoan' => (new ProfileController())->updateTaiKhoan(), // Đăng xuất
 
+
+    'remove-cart' => (new DashBoardController())->removeCart(), 
+    'update-quantity-cart' => (new DashBoardController())->updateCart(), 
+    'create-payment' => (new DashBoardController())->createPayment(), 
+    'payment-complete' => (new DashBoardController())->orderComplete(), 
+    'bai-viet'          => (new BaivietClientController())->index(),
+    'chi-tiet-bai-viet' => (new BaiVietClientController())->detail($_GET['id']),
+    'lien-he' => (new ContactClientController())->contactForm(),
 
 
     default => (new DashBoardController())->index(), // Dùng mặc định nếu không tìm thấy
@@ -70,14 +80,8 @@ if (!$isAjax) {
     include_once './views/layous/footer.php';
 }
 
-  
-    
-
-
-    
-
-
 
 ob_end_flush();
 ?>
+
 
