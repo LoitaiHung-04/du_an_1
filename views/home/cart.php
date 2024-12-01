@@ -1,7 +1,7 @@
 <main>
-<?php
-$userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
-?>
+    <?php
+    $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
+    ?>
     <!-- breadcrumb start -->
     <section class="breadcrumb-area">
         <div class="container">
@@ -112,9 +112,17 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
                                     <div class="cart-total">
                                         <div class="total-amount" data-animate="animate__fadeInUp">
                                             <h6 class="total-title">Tổng tiền</h6>
-                                            <span class="amount total-price"><?= number_format($total[0]['total_quantity'], 0, ',', '.') ?> VNĐ</span>
+                                            <span class="amount total-price">
+                                                <?php
+                                                $total_amount = isset($total[0]['total_quantity']) && is_numeric($total[0]['total_quantity'])
+                                                    ? $total[0]['total_quantity']
+                                                    : 0;
+                                                echo number_format($total_amount, 0, ',', '.') . " VNĐ";
+                                                ?>
+                                            </span>
                                         </div>
-                                      
+
+
                                         <div class="proceed-to-checkout" data-animate="animate__fadeInUp">
                                             <a href="?act=checkout&id=<?= $userName['id'] ?>" class="btn btn-style2">Thanh toán</a>
                                         </div>
@@ -253,30 +261,13 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
         const quantity_update = document.querySelectorAll('#quantity_update');
         for (const element of quantity_update) {
             element.addEventListener('change', (e) => {
-                const id = element.dataset.id; 
-                const price = parseFloat(element.dataset.price); 
-                const variant =element.dataset.variant;
-                const product =element.dataset.product;
-                const quantity = parseInt(e.target.value); 
-                const totalPriceElement = document.querySelector(`#total_price_${id}`); 
-                const totalAmountElement = document.querySelector('.total-price'); 
-
-                
-                const newTotal = price * quantity;
-
-              
-                totalPriceElement.textContent = `${newTotal.toLocaleString('vi-VN')} VNĐ`;
-
-              
-                let totalCart = 0;
-                document.querySelectorAll('.full-price').forEach(priceElement => {
-                    const itemPrice = parseFloat(priceElement.textContent.replace(/\D/g, '')) || 0;
-                    totalCart += itemPrice;
-                });
-
-                totalAmountElement.textContent = `${totalCart.toLocaleString('vi-VN')} VNĐ`;
-
-                
+                const id = element.dataset.id;
+                const price = parseFloat(element.dataset.price);
+                const variant = element.dataset.variant;
+                const product = element.dataset.product;
+                const quantity = parseInt(e.target.value);
+                const totalPriceElement = document.querySelector(`#total_price_${id}`);
+                const totalAmountElement = document.querySelector('.total-price');
                 $.ajax({
                     url: "index.php?act=update-quantity-cart",
                     method: "GET",
@@ -288,10 +279,32 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
                         product
                     },
                     success: function(response) {
-                       document.querySelector('.cart-counter').innerHTML =response.total;
+                        if (response.status == 'error') {
+                            element.value = response.quantity;
+                        } else {
+                            const newTotal = price * quantity;
+
+
+                            totalPriceElement.textContent = `${newTotal.toLocaleString('vi-VN')} VNĐ`;
+
+
+                            let totalCart = 0;
+                            document.querySelectorAll('.full-price').forEach(priceElement => {
+                                const itemPrice = parseFloat(priceElement.textContent.replace(/\D/g, '')) || 0;
+                                totalCart += itemPrice;
+                            });
+
+                            totalAmountElement.textContent = `${totalCart.toLocaleString('vi-VN')} VNĐ`;
+                        }
+                        document.querySelector('.cart-counter').innerHTML = response.total;
                         statusAlert(response.status, response.title, response.message);
                     }
                 });
+
+
+
+
+
             });
         }
     </script>

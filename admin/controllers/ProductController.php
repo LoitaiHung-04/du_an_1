@@ -16,7 +16,7 @@ class ProductController
         $path = $_SERVER['DOCUMENT_ROOT'] . "/du_an_1/public/";
         $fileName = "compare.json";
         file_put_contents($path . $fileName, json_encode($data, JSON_PRETTY_PRINT));
-        
+
         include './views/pages/product/list.php';
     }
     public function create()
@@ -29,6 +29,13 @@ class ProductController
     public function store()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $feature = (isset($_POST['feature'])) ? 1 : 0;
+            $sale = (isset($_POST['sale'])) ? 1 : 0;
+            if ($sale == 1) {
+                $price_sale = $_POST['giasanpham_km'];
+            } else {
+                $price_sale = 0;
+            }
             $name = $_POST['name'];
             $price = $_POST['giasanpham'];
             $mota = $_POST['mo_ta'];
@@ -46,7 +53,7 @@ class ProductController
                 move_uploaded_file($file['tmp_name'], $target_file);
             }
             // var_dump($name,$price,$mota,$soluong,$danhmuc,$trangthai,$name_image);die();
-            $idLate =  $this->product->form($name, $price, $mota, $soluong, $danhmuc, $trangthai, $name_image, $ngaynhap, $id = "");
+            $idLate =  $this->product->form($name, $price, $mota, $soluong, $danhmuc, $trangthai, $name_image, $ngaynhap, $price_sale, $feature, $sale, $id = "");
             if (isset($_FILES['images'])) {
                 $files = $_FILES['images'];
                 $total_files = count($files['name']);
@@ -102,6 +109,14 @@ class ProductController
     public function update()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $feature = (isset($_POST['feature'])) ? 1 : 0;
+            $sale = (isset($_POST['sale'])) ? 1 : 0;
+            if ($sale == 1) {
+                $price_sale = $_POST['giasanpham_km'];
+            } else {
+                $price_sale = 0;
+            }
             $id = $_GET['id'];
             $name = $_POST['name'];
             $price = $_POST['giasanpham'];
@@ -127,7 +142,7 @@ class ProductController
                 move_uploaded_file($file['tmp_name'], $target_file);
             }
             // var_dump($name,$price,$mota,$soluong,$danhmuc,$trangthai,$name_image);die();
-            $idLate =  $this->product->form($name, $price, $mota, $soluong, $danhmuc, $trangthai, $name_image, $ngaynhap, $id);
+            $idLate =  $this->product->form($name, $price, $mota, $soluong, $danhmuc, $trangthai, $name_image, $ngaynhap, $price_sale, $feature, $sale, $id);
             if (isset($_FILES['images'])) {
                 $files = $_FILES['images'];
                 $total_files = count($files['name']);

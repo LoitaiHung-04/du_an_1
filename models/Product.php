@@ -28,7 +28,7 @@ class Product
 
         return query_one_data($sql);
     }
-    public function form($name, $price, $mota, $soluong, $danhmuc, $trangthai, $name_image, $ngaynhap, $id = "")
+    public function form($name, $price, $mota, $soluong, $danhmuc, $trangthai, $name_image, $ngaynhap, $price_sale, $feature, $sale, $id = "")
     {
         if ($id != '') {
             // Câu lệnh SQL cho UPDATE
@@ -41,20 +41,23 @@ class Product
                 `ngay_nhap`=?,
                 `mo_ta` = ?,
                 `danh_muc_id` = ?,
+                `feature_active` = ?,
+                `today_deal_active` = ?,
                 `trang_thai` = ? 
                 WHERE id = ?";
 
             // Tham số cho câu lệnh UPDATE
-            $params = [$name, $price, 0, $name_image, $soluong, $ngaynhap, $mota, $danhmuc, $trangthai, $id];
+            $params = [$name, $price, $price_sale, $name_image, $soluong, $ngaynhap, $mota, $danhmuc, $feature, $sale, $trangthai, $id];
             execute($sql, $params);
             return $id;
         } else {
             // Câu lệnh SQL cho INSERT
-            $sql = "INSERT INTO `san_phams` (`ten_san_pham`, `gia_san_pham`, `gia_khuyen_mai`, `hinh_anh`, `so_luong`,`ngay_nhap`, `mo_ta`, `danh_muc_id`, `trang_thai`) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO `san_phams` (`ten_san_pham`, `gia_san_pham`, `gia_khuyen_mai`, `hinh_anh`, `so_luong`,`ngay_nhap`, `mo_ta`, `danh_muc_id`,`feature_active`,`today_deal_active`,
+ `trang_thai`) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)";
 
             // Tham số cho câu lệnh INSERT
-            $params = [$name, $price, '1', $name_image, $soluong, $ngaynhap, $mota, $danhmuc, $trangthai];
+            $params = [$name, $price, $price_sale, $name_image, $soluong, $ngaynhap, $mota, $danhmuc, $feature, $sale, $trangthai];
 
             return addGetLateId($sql, $params);
         }
@@ -125,5 +128,4 @@ class Product
         $params = [$id];
         return execute($sql, $params);
     }
-  
 }

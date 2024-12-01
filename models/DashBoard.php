@@ -12,13 +12,33 @@ class DashBoard
         p.hinh_anh,
         p.trang_thai,
         p.id,
+        p.gia_khuyen_mai,
         c.ten_danh_muc as namedm
       
         from san_phams as p 
         inner join danh_mucs as c 
-        on p.danh_muc_id = c.id 
+        on p.danh_muc_id = c.id where today_deal_active = 1
      
-        order by p.id desc';
+        order by p.id desc ';
+
+        return query_all_data($sql);
+    }
+    public function getAllFeature()
+    {
+        $sql = 'select 
+        p.ten_san_pham,
+        p.gia_san_pham,
+        p.so_luong,
+        p.hinh_anh,
+        p.trang_thai,
+        p.id,
+        c.ten_danh_muc as namedm
+      
+        from san_phams as p 
+        inner join danh_mucs as c 
+        on p.danh_muc_id = c.id where feature_active = 1
+     
+        order by p.id desc ';
 
         return query_all_data($sql);
     }
@@ -38,6 +58,46 @@ class DashBoard
         return query_all_data($sql, $params);
     }
 
+    public function getOneOrder($id)
+    {
+        $sql = 'SELECT don_hangs.*, 
+        trang_thai_don_hangs.ten_trang_thai_id,
+        tai_khoans.ho_ten, 
+        tai_khoans.email, 
+        tai_khoans.so_dien_thoai,
+        trang_thai_thanh_toans.ten_trang_thai_thanh_toan,
+        phuong_thuc_thanh_toans.ten_phuong_thuc,
+        chi_tiet_don_hangs.don_hang_id
+    FROM don_hangs
+    INNER JOIN trang_thai_don_hangs 
+    ON don_hangs.trang_thai_id = trang_thai_don_hangs.id
+    INNER JOIN tai_khoans 
+    ON don_hangs.tai_khoan_id = tai_khoans.id  
+    INNER JOIN trang_thai_thanh_toans
+    ON don_hangs.trang_thai_thanh_toan_id = trang_thai_thanh_toans.id
+    INNER JOIN phuong_thuc_thanh_toans
+    ON don_hangs.phuong_thuc_thanh_toan_id = phuong_thuc_thanh_toans.id
+    INNER JOIN chi_tiet_don_hangs 
+    ON don_hangs.id = chi_tiet_don_hangs.don_hang_id
+    WHERE don_hangs.id = ?';
+
+
+        $param = [$id];
+
+        return query_one_data($sql, $param);
+    }
+
+    public function getOrderDetail($id)
+    {
+        $sql = 'SELECT chi_tiet_don_hangs.*, san_phams.ten_san_pham , don_hangs.trang_thai_thanh_toan_id
+            FROM chi_tiet_don_hangs
+            INNER JOIN san_phams ON chi_tiet_don_hangs.san_pham_id = san_phams.id
+            INNER JOIN don_hangs ON  chi_tiet_don_hangs.don_hang_id = don_hangs.id
+            WHERE chi_tiet_don_hangs.don_hang_id = ?';
+
+        $params = [$id];
+        return query_all_data($sql, $params);
+    }
 
 
     public function getAllColor()
@@ -56,6 +116,13 @@ class DashBoard
         $sql = "SELECT * FROM bien_thes WHERE product_id =?";
         $params = [$id];
         return query_all_data($sql, $params);
+    }
+    public function review($content,$rating,$product,$user){
+        $sql="INSERT INTO `danh_gias`(`noi_dung`, `rating`, `san_pham_id`, `user_id`, `ngay_danh_gia`) 
+        VALUES (?,?,?,?,?)";
+        $now = date('Y-m-d');
+        $params = [$content,$rating,$product,$user,$now];
+        return execute($sql,$params);
     }
     public function getRating($id)
     {

@@ -29,11 +29,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <h2 data-animate="animate__fadeInUp" class="check-3-title">Secure checkout</h2>
+                        <h2 data-animate="animate__fadeInUp" class="check-3-title">Thanh toán an toàn</h2>
                         <ul class="check-3-ul">
                             <li class="check-3-li ck-cat">
                                 <div class="check-pro">
-                                    <h2 data-animate="animate__fadeInUp">1. In your cart (<?= $total[0]['total_sl'] ?>)</h2>
+                                    <h2 data-animate="animate__fadeInUp">1. Trong giỏ hàng của bạn(<?= $total[0]['total_sl'] ?>)</h2>
                                     <ul class="check-ul">
                                         <?php foreach ($cart as $item): ?>
 
@@ -54,6 +54,10 @@
                                                         <span class="item-type"><?= $item['dungluong'] ?></span>
                                                     </span>
                                                     <span class="item-option" data-animate="animate__fadeInUp">
+                                                        <span class="item-title">Số lượng:</span>
+                                                        <span class="item-type"><?= $item['so_luong'] ?></span>
+                                                    </span>
+                                                    <span class="item-option" data-animate="animate__fadeInUp">
                                                         <span class="item-price"><?= number_format($item['tong_tien'], 0, ',', '.') ?> VNĐ</span>
                                                     </span>
                                                 </div>
@@ -67,26 +71,26 @@
                             </li>
                             <li class="check-3-li ck-address">
                                 <div class="check-add">
-                                    <h2 data-animate="animate__fadeInUp">2. Delivery Address</h2>
+                                    <h2 data-animate="animate__fadeInUp">2. Địa chỉ giao hàng</h2>
 
                                     <ul>
                                        
                                         <li data-animate="animate__fadeInUp">
                                             <label class="form-label">Tên người nhận</label>
-                                            <input type="text" name="name" class="form-control" placeholder="Tên người nhận">
+                                            <input type="text" name="name" class="form-control" value="<?= $_SESSION['user_client']['ho_ten'] ?>" placeholder="Tên người nhận" required>
                                         </li>
                                         <li data-animate="animate__fadeInUp">
                                             <label class="form-label">Số điện thoại</label>
-                                            <input type="text" class="form-control" name="phone" placeholder="Số điện thoại">
+                                            <input type="text" class="form-control" name="phone" value="<?= $_SESSION['user_client']['so_dien_thoai'] ?>" placeholder="Số điện thoại" required>
                                         </li>
                                         <li data-animate="animate__fadeInUp">
                                             <label class="form-label">Địa chỉ</label>
-                                            <input type="text" class="form-control" name="address" placeholder="Địa chỉ">
+                                            <input type="text" class="form-control" name="address" value="<?= $_SESSION['user_client']['dia_chi'] ?>" placeholder="Địa chỉ" required>
 
                                         </li>
                                         <li data-animate="animate__fadeInUp">
                                             <label class="form-label">Ghi chú</label>
-                                            <input type="text" class="form-control" name="note" placeholder="Ghi chú">
+                                            <input type="text" class="form-control" name="note" placeholder="Ghi chú" required>
 
                                         </li>
 
@@ -102,12 +106,13 @@
                                     <!-- p-method title end -->
                                     <!-- p-method start --> 
                                     <div class="pay-pro">
-                                        <select name="payment_method" id="" class="form-control">
-                                            <option selected>Chọn phương thức thanh toán</option>
+                                        <select name="payment_method" id="" required class="form-control">
+                                            <option selected value="">Chọn phương thức thanh toán</option>
                                             <option value="vnpay">Thanh toán bằng VNPAY</option>
                                             <option value="cod">Thanh toán khi nhận hàng</option>
                                          
                                         </select>
+                                        <div style="color:red;"><?= (isset($_SESSION['error_vnpay'])) ? $_SESSION['error_vnpay'] : '' ?> </div>
                                     </div>
                                     <!-- p-method end -->
                                     <!-- order-summary start -->

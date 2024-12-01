@@ -1,4 +1,3 @@
-
 <main>
     <!-- breadcrumb start -->
     <section class="breadcrumb-area">
@@ -54,20 +53,21 @@
                                 </li>
                             </ul>
                         </div>
-                        <!-- order-price end -->
-                        <!-- order-details start -->
+                       
                         <div class="order-details">
                             <span class="text-success order-i" data-animate="animate__fadeInUp"><i class="fa fa-check-circle"></i></span>
                             <h6 data-animate="animate__fadeInUp">
                                 <?php if ($_GET['vnp_ResponseCode'] == 00): ?>
                                     Thanh toán thành công
-                                <?php else : ?>
+                                <?php elseif ($_GET['vnp_ResponseCode'] == 11): ?>
+                                    Đặt hàng thành công
+                                <?php else: ?>
                                     Thanh toán thất bại
                                 <?php endif ?>
                             </h6>
                             <span class="order-s" data-animate="animate__fadeInUp">
                                 Đơn hàng của bạn sẽ được giao trong vòng vài giờ</span>
-                            <a href="" class="tracking-link btn btn-style2" data-animate="animate__fadeInUp">Kiểm tra đơn hàng</a>
+                            <!-- <a href="" class="tracking-link btn btn-style2" data-animate="animate__fadeInUp">Kiểm tra đơn hàng</a> -->
                         </div>
                         <!-- order-details start -->
                         <!-- order-delivery start -->

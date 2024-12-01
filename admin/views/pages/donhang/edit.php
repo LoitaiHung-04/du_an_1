@@ -36,9 +36,7 @@
         <!-- Vertical Overlay-->
         <div class="vertical-overlay"></div>
 
-        <!-- ============================================================== -->
-        <!-- Start right Content here -->
-        <!-- ============================================================== -->
+
         <div class="main-content">
 
             <div class="page-content">
@@ -143,13 +141,13 @@
                                                             name="trang_thai_id">
                                                             <?php foreach ($listTrangThaiDonHang as $trangThai): ?>
                                                                 <option value="<?= $trangThai['id'] ?>" <?php
-                                                                  if ($donHang['trang_thai_id'] > $trangThai['id']) {
-                                                                      echo 'disabled';
-                                                                  } elseif (in_array($donHang['trang_thai_id'], [9, 10, 11])) {
-                                                                      echo 'disabled'; 
-                                                                  }
-                                                                  ?>
-                                              <?= $trangThai['id'] == $donHang['trang_thai_id'] ? 'selected' : '' ?>>
+                                                                                                        if ($donHang['trang_thai_id'] > $trangThai['id']) {
+                                                                                                            echo 'disabled';
+                                                                                                        } elseif (in_array($donHang['trang_thai_id'], [9, 10, 11])) {
+                                                                                                            echo 'disabled';
+                                                                                                        }
+                                                                                                        ?>
+                                                                    <?= $trangThai['id'] == $donHang['trang_thai_id'] ? 'selected' : '' ?>>
                                                                     <?= $trangThai['ten_trang_thai_id']; ?>
                                                                 </option>
                                                             <?php endforeach; ?>

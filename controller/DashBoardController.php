@@ -26,10 +26,29 @@ class DashBoardController
     public function index()
     {
         $product = $this->dashboard->getAll();
+        $productFeature = $this->dashboard->getAllFeature();
         $banner = $this->dashboard->getBanner();
 
         include_once './views/home/dashboard.php';
     }
+    public function reviewProduct()
+    {
+        $iduser = $_SESSION['user_client']['id'];
+        $product = $_GET['product'];
+        $rating = $_GET['rating'];
+        $content = $_GET['content'];
+        $this->dashboard->review($content, $rating, $product, $iduser);
+    }
+    public function orderDetail()
+    {
+        $id = $_GET['id'];
+        $donHang = $this->dashboard->getOneOrder($id);
+        $sanPhamDonHang = $this->dashboard->getOrderDetail($id);
+
+        // Truyền dữ liệu sang view
+        include_once './views/home/detail-order.php';
+    }
+
     public function show()
     {
         $id = $_GET['id'];
@@ -179,12 +198,13 @@ class DashBoardController
         $total = intval($quantity) * intval($price);
         $iduser = $_SESSION['user_client']['id'];
         $variantDB = $this->dashboard->getOneVariant($variant);
-
+        $cart = $this->cart->getOneCart($id);
         if ($quantity > $variantDB['quantity']) {
             $response = [
                 'status' => 'error',
                 'title' => 'Đã có lỗi xảy ra',
-                'message' => 'Không đủ số lượng sản phẩm !'
+                'message' => 'Không đủ số lượng sản phẩm !',
+                'quantity' => $cart['so_luong'],
 
             ];
         } else {
@@ -210,8 +230,21 @@ class DashBoardController
             $this->order->addDetail($id_order, $item['san_pham_id'], $item['gia_san_pham'], $item['so_luong'], $item['tong_tien'], $item['bien_the_id'], $item['ten_san_pham']);
         }
     }
+    private function addQuantityAndDeleteCart()
+    {
+        $id = $_SESSION['user_client']['id'];
+
+        $cart = $this->cart->getAllCart($id);
+        foreach ($cart as $item) {
+            $variantDB = $this->dashboard->getOneVariant($item['bien_the_id']);
+            $quantity = intval($variantDB['quantity']) - intval($item['so_luong']);
+            $this->cart->updateQuantityProduct($item['bien_the_id'], $quantity);
+        }
+        return $this->cart->deleteCart($id);
+    }
     public function createPayment()
     {
+        unset($_SESSION['error_vnpay']);
         $payment_method = $_POST['payment_method'];
         $id = $_SESSION['user_client']['id'];
         $email = $_SESSION['user_client']['email'];
@@ -223,21 +256,47 @@ class DashBoardController
         $code = rand(1, 100000);
         $date = date('Y-m-d');
 
-
+        // if ($payment_method == 'vnpay' && intval($total[0]['total_quantity']) > 100000000) {
+        //     $_SESSION['error_vnpay'] = 'Không thể thanh toán VNPAY với số tiền trên 100TR';
+        //     header('location:?act=checkout&id=' . $id);
+        // } else {
         if ($payment_method == 'vnpay') {
-            $id_order = $this->order->createOrder($code, $id, $name, $email, $phone, $address, $date, $total[0]['total_quantity'], $note);
+
+            $id_order = $this->order->createOrder($code, $id, $name, $email, $phone, $address, $date, $total[0]['total_quantity'], $note, $VN_PAY = true);
             $this->addOrderDetail($id_order);
             $this->vnpaySanbox->createSanboxVnpay($total[0]['total_quantity']);
-           
+            $this->addQuantityAndDeleteCart();
         } else {
             $id_order = $this->order->createOrder($code, $id, $name, $email, $phone, $address, $date, $total[0]['total_quantity'], $note);
             $this->addOrderDetail($id_order);
-
-            header('location:?act=payment-complete');
+            $vnp_amount = intval($total[0]['total_quantity']) * 100;
+            $current_time = date('YmdHis');
+            $this->addQuantityAndDeleteCart();
+            header('location:?act=payment-complete&vnp_ResponseCode=11&vnp_BankTranNo=1625381636763&vnp_Amount=' . $vnp_amount . '&vnp_PayDate=' . $current_time);
         }
+        // }
     }
     public function orderComplete()
     {
         include './views/home/order-complete.php';
+    }
+    public function getOrdersByUser()
+    {
+        if (!isset($_SESSION['user_client']['id'])) {
+            echo "Bạn cần đăng nhập để xem đơn hàng.";
+            return;
+        }
+
+        $userId = $_SESSION['user_client']['id'];
+
+
+        $orders = $this->order->getOrdersByUser($userId);
+
+
+        var_dump($orders);
+        die();
+
+
+        include './views/home/profile.php';
     }
 }

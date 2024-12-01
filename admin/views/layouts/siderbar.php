@@ -100,7 +100,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#danhmuc" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="danhmuc">
-                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Danh mục sản phẩm</span>
+                    <i class='bx bx-devices'></i> <span data-key="t-advance-ui">Danh mục sản phẩm</span>
                     </a>
                     <div class="collapse menu-dropdown" id="danhmuc">
                         <ul class="nav nav-sm flex-column">
@@ -119,7 +119,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sanpham" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sanpham">
-                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Sản phẩm</span>
+                    <i class='bx bx-mobile' ></i> <span data-key="t-advance-ui">Sản phẩm</span>
                     </a>
                     <div class="collapse menu-dropdown" id="sanpham">
                         <ul class="nav nav-sm flex-column">
@@ -138,7 +138,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#baiviet" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="baiviet">
-                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Bài Viết</span>
+                    <i class='bx bx-notepad' ></i> <span data-key="t-advance-ui">Bài Viết</span>
                     </a>
                     <div class="collapse menu-dropdown" id="baiviet">
                         <ul class="nav nav-sm flex-column">
@@ -177,7 +177,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#taikhoan" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="taikhoan">
-                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Tài Khoản</span>
+                    <i class='bx bxs-user-circle' ></i> <span data-key="t-advance-ui">Tài Khoản</span>
                     </a>
                     <div class="collapse menu-dropdown" id="taikhoan">
                         <ul class="nav nav-sm flex-column">
@@ -191,7 +191,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#donhang" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="donhang">
-                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Quản lí đơn hàng</span>
+                    <i class='bx bx-package'></i> <span data-key="t-advance-ui">Quản lí đơn hàng</span>
                     </a>
                     <div class="collapse menu-dropdown" id="donhang">
                         <ul class="nav nav-sm flex-column">

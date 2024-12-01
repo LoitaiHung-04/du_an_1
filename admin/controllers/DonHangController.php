@@ -32,6 +32,12 @@ public function updateOrder(){
     $status= $_GET['value'];
     $id = $_GET['id'];
     $this->modelDonHang->updateOrrderStatus($id,$status);
+    // var_dump($status,$id);die();
+    $data =  [
+        'status'=> $status,
+        'id'=> $id,
+    ];
+    echo json_encode($data);
     
 }
 public function detailDonHang()

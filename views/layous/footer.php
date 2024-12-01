@@ -1452,7 +1452,7 @@
     });
 
     const btn_null = document.querySelector('#cart-null');
-    btn_null.addEventListener('click', () => {
+    btn_null?.addEventListener('click', () => {
         Swal.fire({
             icon: `error`,
             title: `Lỗi`,

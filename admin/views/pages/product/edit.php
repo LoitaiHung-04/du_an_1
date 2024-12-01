@@ -173,7 +173,7 @@
                                                 <input
                                                     type="checkbox"
                                                     id="swich"
-                                                    name="status"
+                                                    name="feature"
                                                     <?= $data['feature_active'] == 1 ? 'checked' : '' ?> />
                                                 <label for="swich" class="toggle-label"></label>
                                             </div>
@@ -187,7 +187,7 @@
                                                 <input
                                                     type="checkbox"
                                                     id="swich-deal"
-                                                    name="status" />
+                                                    name="sale" />
                                                 <label
                                                     for="swich-deal"
                                                     class="toggle-label"></label>

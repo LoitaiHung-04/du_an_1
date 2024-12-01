@@ -1,12 +1,30 @@
 [
     {
-        "ten_san_pham": "Iphone",
-        "gia_san_pham": "5.00",
-        "so_luong": 5,
-        "hinh_anh": "487_post-3-mid.jpg",
+        "ten_san_pham": "Iphone 16 Promax ch\u00ednh h\u00e3ng VN\/A",
+        "gia_san_pham": "34390000.00",
+        "so_luong": 40,
+        "hinh_anh": "544_16_trang.png",
+        "trang_thai": 1,
+        "id": 56,
+        "namedm": "Iphone 16"
+    },
+    {
+        "ten_san_pham": "Iphone 12 Ch\u00ednh h\u00e3ng VN\/A",
+        "gia_san_pham": "8900000.00",
+        "so_luong": 35,
+        "hinh_anh": "872_12_xanh.jfif",
+        "trang_thai": 1,
+        "id": 55,
+        "namedm": "Iphone 12"
+    },
+    {
+        "ten_san_pham": "Iphone 11 ch\u00ednh h\u00e3ng VN\/A",
+        "gia_san_pham": "5500000.00",
+        "so_luong": 30,
+        "hinh_anh": "580_11_xanh.jfif",
         "trang_thai": 1,
         "id": 54,
-        "namedm": "IOS"
+        "namedm": "Iphone 11"
     },
     {
         "ten_san_pham": "Iphone 13 Ch\u00ednh H\u00e3ng VN.A",
@@ -15,7 +33,7 @@
         "hinh_anh": "691_red.jpg",
         "trang_thai": 1,
         "id": 50,
-        "namedm": "IOS"
+        "namedm": "Iphone 13"
     },
     {
         "ten_san_pham": "Iphone 16 Ch\u00ednh H\u00e3ng VN\/A",
@@ -24,6 +42,6 @@
         "hinh_anh": "26_iphone16xanh.jpg",
         "trang_thai": 1,
         "id": 49,
-        "namedm": "IOS"
+        "namedm": "Iphone 16"
     }
 ]

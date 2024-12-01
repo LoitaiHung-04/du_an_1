@@ -49,6 +49,8 @@ match ($act) {
     'profile'                 => (new DashBoardController())->profile(),
     'blog'                 => (new DashBoardController())->blog(),
     'product'                 => (new DashBoardController())->product(),
+    'detail-order'                 => (new DashBoardController())->orderDetail(),
+    'review-product'                 => (new DashBoardController())->reviewProduct(),
     'check-login-admin' => (new AuthController())->login(),
     'login' => include './admin/views/pages/login/login.php',
     'register' => (new AuthController())->checkRegisterClient(),

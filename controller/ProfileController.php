@@ -1,17 +1,30 @@
 <?php
 include_once 'models/TaiKhoanClient.php';
+
 class ProfileController
 {
     
     public $profile;
+    public $order;
     public function __construct()
     {
+        $this->order = new DonHang();
         $this->profile = new TaiKhoanClient();
         
     }
     public function index()
 
     {
+        if (!isset($_SESSION['user_client']['id'])) {
+            echo "Bạn cần đăng nhập để xem đơn hàng.";
+            return;
+        }
+
+        $userId = $_SESSION['user_client']['id'];
+
+
+        $orders = $this->order->getOrdersByUser($userId);
+        // print_r($orders);die();
         include_once './views/home/profile.php';
     }
     public function form(){
@@ -95,15 +108,11 @@ class ProfileController
             header('Location: http://localhost:85/du_an_1/?act=tai-khoan');
             exit();
         }
-
-
         $this->profile->updateMatKhau($id, $mat_khau_moi);
 
         $_SESSION['success'] = "Đổi mật khẩu thành công.";
         $_SESSION['user_client']['mat_khau'] = $mat_khau_moi;
         header('Location: http://localhost:85/du_an_1/?act=tai-khoan');
-
-
 
         exit();
     }

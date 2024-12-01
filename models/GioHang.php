@@ -44,4 +44,19 @@ class GioHang
         $params = [$id];
         return query_all_data($sql, $params);
     }
+    public function getOneCart($id){
+        $sql="SELECT * FROM gio_hangs WHERE id=?";
+        $params=[$id];
+        return query_one_data($sql,$params);
+    }
+    public function updateQuantityProduct($id,$quantity){
+        $sql="UPDATE `bien_thes` SET `quantity`=? WHERE id=?";
+        $params =[$quantity,$id];
+        return execute($sql,$params);
+    }
+    public function deleteCart($id){
+        $sql="DELETE FROM gio_hangs WHERE user_id=?";
+        $params=[$id];
+        return execute($sql,$params);
+    }
 }
