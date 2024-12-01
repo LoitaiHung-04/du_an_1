@@ -71,11 +71,18 @@
                                         <a href="javascript:void(0)">Đổi mật khẩu</a>
                                     </li>
                                     <?php if (isset($_SESSION['error'])): ?>
-                                        <div class="alert alert-danger">
-                                            <?= $_SESSION['error']; ?>
-                                        </div>
-                                        <?php unset($_SESSION['error']); ?>
-                                    <?php endif; ?>
+    <div class="alert alert-danger">
+        <?= htmlspecialchars($_SESSION['error']); ?>
+    </div>
+    <?php unset($_SESSION['error']); ?>
+<?php endif; ?>
+
+<?php if (isset($_SESSION['success'])): ?>
+    <div class="alert alert-success"> <!-- Thay đổi lớp thành alert-success -->
+        <?= htmlspecialchars($_SESSION['success']); ?>
+    </div>
+    <?php unset($_SESSION['success']); ?>
+<?php endif; ?>
                                 </ul>
                             </div>
                         </div>

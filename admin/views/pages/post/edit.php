@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default">
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg"
+    data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default">
 
 <head>
     <meta charset="utf-8" />
@@ -38,7 +39,8 @@
                     <!-- start page title -->
                     <div class="row">
                         <div class="col-12">
-                            <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
+                            <div
+                                class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
                                 <h4 class="mb-sm-0">Quản lí bài viết</h4>
                                 <a href="?act=form-them-bai-viet" class="btn btn-soft-success material-shadow-none">
                                     <i class="ri-add-circle-line align-middle me-1"></i> Thêm bài viết
@@ -65,64 +67,81 @@
 
                                     <div class="card-body">
                                         <div class="live-preview">
-                                            <form action="?act=sua-viet" method="POST">
-                                                <input type="hidden" name="id" value="<?=$baiViet['id']?>">
+                                            <form action="?act=sua-viet" method="POST" enctype="multipart/form-data">
+                                                <input type="hidden" name="id" value="<?= $baiViet['id'] ?>">
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="mb-3">
-                                                            <label for="emailidInput" class="form-label">Title</label>
-                                                            <input type="text" class="form-control" placeholder="Nhập title" name="title" value="<?=$baiViet['title']?>">
-                                                            <span class="text-danger">
-                                                             <?= !empty($_SESSION['error']['title']) ? $_SESSION['error']['title'] : '' ?>
-                                                            </span>
-
-                                                        </div>
-                                                    </div>
-                                                    <!-- end col -->
-                                                    <div class="col-md-12">
-                                                        <div class="mb-3">
-                                                            <label for="address1ControlTextarea" class="form-label">Content</label>
-                                                            <input type="text" class="form-control" placeholder="Nhập content" name="content" value="<?=$baiViet['content']?>" >
-                                                            <span class="text-danger">
-                                                                <?= !empty($_SESSION['error']['content']) ? $_SESSION['error']['content'] : '' ?>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <div class="mb-3">
-                                                            <label for="address1ControlTextarea" class="form-label">Date</label>
-                                                            <input type="text" class="form-control" placeholder="Nhập content" name="ngay_dang" value="<?=$baiViet['ngay_dang']?>" >
-                                                            <span class="text-danger">
-                                                                <?= !empty($_SESSION['error']['ngay_dang']) ? $_SESSION['error']['ngay_dang'] : '' ?>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                
-                                                    <!-- end col -->
-                                                    <div class="col-md-6">
-                                                        <div class="mb-3">
-                                                            <label for="ForminputState" class="form-label" name="trang_thai">Trạng thái</label>
-                                                            <select id="ForminputState" class="form-select" name="trang_thai">
-                                                                <option selected disabled>Chọn trạng thái</option>
-                                                                <option value="1" <?= $baiViet['trang_thai'] == 1 ? 'selected' : '' ?>>Hiển thị</option>
-                                                                <option value="2" <?= $baiViet['trang_thai'] == 2 ? 'selected' : '' ?>>Không hiển thị</option>
-
-                                                            </select>
+                                                            <label for="titleInput" class="form-label">Title</label>
+                                                            <input type="text" class="form-control" id="titleInput"
+                                                                placeholder="Nhập title" name="title"
+                                                                value="<?= htmlspecialchars($baiViet['title']) ?>">
                                                             <span class="text-danger">
                                                                 <?= !empty($_SESSION['error']['title']) ? $_SESSION['error']['title'] : '' ?>
                                                             </span>
                                                         </div>
                                                     </div>
                                                     <!-- end col -->
+                                                    <div class="col-md-12">
+                                                        <div class="mb-3">
+                                                            <label for="contentInput" class="form-label">Content</label>
+                                                            <textarea name="content" id="contentInput"
+                                                                class="form-control"
+                                                                placeholder="Nhập content"><?= htmlspecialchars($baiViet['content']) ?></textarea>
+                                                            <span class="text-danger">
+                                                                <?= !empty($_SESSION['error']['content']) ? $_SESSION['error']['content'] : '' ?>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end col -->
+                                                    <div class="col-md-12">
+   
+                                                    <!-- end col -->
+                                                    <div class="col-md-6">
+                                                        <div class="mb-3">
+                                                            <label for="trangThaiInput" class="form-label">Trạng
+                                                                thái</label>
+                                                            <select id="trangThaiInput" class="form-select"
+                                                                name="trang_thai">
+                                                                <option selected disabled>Chọn trạng thái</option>
+                                                                <option value="1" <?= $baiViet['trang_thai'] == 1 ? 'selected' : '' ?>>Hiển thị</option>
+                                                                <option value="2" <?= $baiViet['trang_thai'] == 2 ? 'selected' : '' ?>>Không hiển thị</option>
+                                                            </select>
+                                                            <span class="text-danger">
+                                                                <?= !empty($_SESSION['error']['trang_thai']) ? $_SESSION['error']['trang_thai'] : '' ?>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end col -->
+                                                    <div class="col-md-12">
+                                                        <div class="mb-3">
+                                                            <label for="imageInput" class="form-label">Hình ảnh (có thể
+                                                                bỏ trống nếu không thay đổi)</label>
+                                                            <input type="file" class="form-control" id="imageInput"
+                                                                name="image" accept="image/*">
+                                                            <?php if (!empty($baiViet['image'])): ?>
+                                                                <p>Hình ảnh hiện tại:</p>
+                                                                <img src="path/to/uploads/<?= $baiViet['image'] ?>"
+                                                                    alt="Hình ảnh hiện tại" style="max-width: 100px;">
+                                                            <?php endif; ?>
+                                                            <span class="text-danger">
+                                                                <?= !empty($_SESSION['error']['image']) ? $_SESSION['error']['image'] : '' ?>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end col -->
                                                     <div class="col-lg-12">
                                                         <div class="text-end">
-                                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                                            <button type="submit"
+                                                                class="btn btn-primary">Submit</button>
                                                         </div>
                                                     </div>
                                                     <!-- end col -->
                                                 </div>
                                                 <!-- end row -->
                                             </form>
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -173,7 +192,8 @@
     </div>
 
     <div class="customizer-setting d-none d-md-block">
-        <div class="btn-info rounded-pill shadow-lg btn btn-icon btn-lg p-2" data-bs-toggle="offcanvas" data-bs-target="#theme-settings-offcanvas" aria-controls="theme-settings-offcanvas">
+        <div class="btn-info rounded-pill shadow-lg btn btn-icon btn-lg p-2" data-bs-toggle="offcanvas"
+            data-bs-target="#theme-settings-offcanvas" aria-controls="theme-settings-offcanvas">
             <i class='mdi mdi-spin mdi-cog-outline fs-22'></i>
         </div>
     </div>

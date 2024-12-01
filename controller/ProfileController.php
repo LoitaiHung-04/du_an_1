@@ -99,9 +99,11 @@ class ProfileController
 
         $this->profile->updateMatKhau($id, $mat_khau_moi);
 
-        $_SESSION['user_client']['mat_khau'] = $mat_khau_moi;
-        header('http://localhost:85/du_an_1/?');
         $_SESSION['success'] = "Đổi mật khẩu thành công.";
+        $_SESSION['user_client']['mat_khau'] = $mat_khau_moi;
+        header('Location: http://localhost:85/du_an_1/?act=tai-khoan');
+
+
 
         exit();
     }

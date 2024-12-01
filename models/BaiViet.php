@@ -41,40 +41,53 @@ class BaiViet
 
     public function form($title, $content, $trang_thai, $ngay_dang, $id = "", $image = "")
     {
+        // Chuẩn bị thông tin chung cho bài viết
+        $params = [$title, $content, $trang_thai, $ngay_dang, 1];
+    
         if ($id != "") {
             // Cập nhật bài viết
             $sql = "UPDATE tin_tucs SET title = ?, content = ?, trang_thai = ?, ngay_dang = ?, nguoi_dang = ? WHERE id = ?";
-            $params = [$title, $content, $trang_thai, $ngay_dang, 1, $id];
-            execute($sql, $params);
-
-            // Cập nhật ảnh nếu có ảnh mới
+            execute($sql, array_merge($params, [$id]));
+    
+            // Xử lý hình ảnh
             if (!empty($image)) {
-                $sqlCheck = "SELECT COUNT(*) as count FROM hinh_anh_tin_tucs WHERE tintuc_id = ?";
-                $count = query_one_data($sqlCheck, [$id])['count'];
-
-                if ($count > 0) {
-                    // Cập nhật ảnh đại diện
-                    $sqlUpdateImage = "UPDATE hinh_anh_tin_tucs SET image = ? WHERE tintuc_id = ?";
-                    execute($sqlUpdateImage, [$image, $id]);
-                } else {
-                    // Thêm ảnh mới nếu chưa có
-                    $sqlInsertImage = "INSERT INTO hinh_anh_tin_tucs (image, tintuc_id) VALUES (?, ?)";
-                    execute($sqlInsertImage, [$image, $id]);
-                }
+                $this->updateOrInsertImage($id, $image);
             }
         } else {
-            // Thêm bài viết mới
+            // Thêm mới bài viết
             $sql = "INSERT INTO tin_tucs (title, content, trang_thai, ngay_dang, nguoi_dang) VALUES (?, ?, ?, ?, ?)";
-            $params = [$title, $content, $trang_thai, $ngay_dang, 1];
             $insertId = execute($sql, $params);
-
-            // Thêm ảnh đại diện cho bài viết mới
+    
+            // Thêm hình ảnh nếu có
             if (!empty($image)) {
-                $sqlInsertImage = "INSERT INTO hinh_anh_tin_tucs (image, tintuc_id) VALUES (?, ?)";
-                execute($sqlInsertImage, [$image, $insertId]);
+                $this->insertImage($insertId, $image);
             }
         }
     }
+    
+    // Hàm xử lý thêm mới hoặc cập nhật hình ảnh
+    private function updateOrInsertImage($tintuc_id, $image)
+    {
+        $sqlCheck = "SELECT COUNT(*) as count FROM hinh_anh_tin_tucs WHERE tintuc_id = ?";
+        $count = query_one_data($sqlCheck, [$tintuc_id])['count'];
+    
+        if ($count > 0) {
+            $sqlUpdateImage = "UPDATE hinh_anh_tin_tucs SET image = ? WHERE tintuc_id = ?";
+            execute($sqlUpdateImage, [$image, $tintuc_id]);
+        } else {
+            $this->insertImage($tintuc_id, $image);
+        }
+    }
+    
+    // Hàm thêm hình ảnh
+    private function insertImage($tintuc_id, $image)
+    {
+        $sqlInsertImage = "INSERT INTO hinh_anh_tin_tucs (image, tintuc_id) VALUES (?, ?)";
+        execute($sqlInsertImage, [$image, $tintuc_id]);
+    }
+    
+
+// Hàm xử lý thêm mới hoặc cập nhật hình ảnh
 
     public function delete($id)
     {

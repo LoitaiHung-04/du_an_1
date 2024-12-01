@@ -28,47 +28,52 @@
     <!-- breadcrumb end -->
     <!-- get-info-area start -->
     <section class="get-info-area section-ptb">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="about-content">
-                        <!-- about title start -->
-                        <div class="section-capture">
-                            <div class="section-title">
-                                <h2 data-animate="animate__fadeInUp"><span>Khuyến mãi hot </span></h2>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"> <!-- Dàn hàng ngang -->
+            <?php $idCounter = 1; ?>
+            <?php foreach ($KhuyenMaiClient as $row): ?>
+                <div class="col"> <!-- Mỗi khuyến mãi sẽ là một cột -->
+                    <div class="get-info contact-detail">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body">
+                                <!-- Tiêu đề khuyến mãi -->
+                                <h5 class="card-title" id="tenkhuyenmai-<?php echo $idCounter; ?>"><?php echo $row['ten_khuyen_mai']; ?></h5>
+                                
+                                <!-- Mô tả khuyến mãi -->
+                                <p class="card-text mb-2"><?php echo $row['mo_ta']; ?></p>
+                                
+                                <!-- Giảm giá -->
+                                <p class="card-text mb-2"><strong>Giảm giá: </strong><?php echo number_format($row['giam_gia']); ?>đ</p>
+                                
+                                <!-- Ngày kết thúc -->
+                                <p class="card-text mb-3"><strong>Kết thúc vào: </strong><?php echo date('d/m/Y', strtotime($row['ngay_ket_thuc'])); ?></p>
+
+                                <!-- Nút sao chép -->
+                                <button onclick="copyText('tenkhuyenmai-<?php echo $idCounter; ?>')" class="btn btn-sm btn-primary">
+                                    Sao chép
+                                </button>
                             </div>
                         </div>
-                        <!-- about title end -->
-
-                        <!-- contact-detail start -->
-                        <?php $idCounter = 1;
-                        foreach ($KhuyenMaiClient as $row): ?>
-                            <div class="get-info contact-detail">
-                                <ul class="get-info-ul">
-                                    <li class="get-info-li" data-animate="animate__fadeInUp">
-                                        <span>
-                                            <h3 id="tenkhuyenmai-<?php echo $idCounter; ?>"><?php echo $row['ten_khuyen_mai']; ?></h3>
-                                        </span>
-                                        <span class="get-icon"><i class="bi bi-info-circle"></i></span>
-                                        <span class="get-add contact-block">
-                                            <span><?php echo $row['mo_ta']; ?> - <?php echo $row['giam_gia']; ?>đ - Kết thúc vào: <?php echo $row['ngay_ket_thuc']; ?></span>
-                                        </span>
-                                        <button onclick="copyText('tenkhuyenmai-<?php echo $idCounter; ?>')" style="background-color: #800080; border: none; color: white; padding: 5px 10px; text-align: center; text-decoration: none; display: inline-block; font-size: 14px; margin-top: 10px; cursor: pointer; border-radius: 5px;">
-                                            Copy
-                                        </button>
-                                    </li>
-                                </ul>
-
-                            </div>
-                            <hr>
-                        <?php $idCounter++;
-                        endforeach; ?>
-                        <!-- contact-detail end -->
                     </div>
                 </div>
-            </div>
+                <?php $idCounter++; ?>
+            <?php endforeach; ?>
         </div>
-    </section>
+    </div>
+</section>
+
+<script>
+    function copyText(elementId) {
+        const textToCopy = document.getElementById(elementId).innerText;
+        navigator.clipboard.writeText(textToCopy)
+            .then(() => alert('Sao chép thành công: ' + textToCopy))
+            .catch(err => alert('Sao chép thất bại!'));
+    }
+</script>
+
+
+
+
     <!-- get-info-area end -->
 </main>
 <!-- main section end-->

@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default">
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg"
+    data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default">
 
 <head>
     <meta charset="utf-8" />
@@ -23,9 +24,9 @@
         <?php
         require_once "views/layouts/header.php";
         require_once "views/layouts/siderbar.php";
-    require_once "views/layouts/libs_js.php";
-    
-        
+        require_once "views/layouts/libs_js.php";
+
+
         ?>
 
         <!-- Left Sidebar End -->
@@ -41,7 +42,8 @@
                     <!-- start page title -->
                     <div class="row">
                         <div class="col-12">
-                            <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
+                            <div
+                                class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
                                 <h4 class="mb-sm-0">Quản lí bài viết</h4>
                                 <a href="?act=form-them-bai-viet" class="btn btn-soft-success material-shadow-none">
                                     <i class="ri-add-circle-line align-middle me-1"></i> Thêm bài viết
@@ -68,13 +70,14 @@
 
                                     <div class="card-body">
                                         <div class="live-preview">
-                                            <form action="?act=them-bai-viet" method="POST">
+                                            <form action="?act=them-bai-viet" method="POST"
+                                                enctype="multipart/form-data">
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="mb-3">
                                                             <label for="emailidInput" class="form-label">Title</label>
-                                                            <input type="textarea" class="form-control" placeholder="Nhập title" name="title" value="">
-
+                                                            <input type="text" class="form-control"
+                                                                placeholder="Nhập title" name="title" value="">
                                                             <span class="text-danger">
                                                                 <?= !empty($_SESSION['error']['title']) ? $_SESSION['error']['title'] : '' ?>
                                                             </span>
@@ -83,7 +86,8 @@
                                                     <!-- end col -->
                                                     <div class="col-md-12">
                                                         <div class="mb-3">
-                                                            <label for="address1ControlTextarea" class="form-label">Content</label>
+                                                            <label for="address1ControlTextarea"
+                                                                class="form-label">Content</label>
                                                             <textarea name="content" id="editor"></textarea>
                                                             <span class="text-danger">
                                                                 <?= !empty($_SESSION['error']['content']) ? $_SESSION['error']['content'] : '' ?>
@@ -92,21 +96,22 @@
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="mb-3">
-                                                            <label for="address1ControlTextarea" class="form-label">Date</label>
-                                                            <input type="date" class="form-control" placeholder="Nhập content" name="ngay_dang">
+                                                            <label for="address1ControlTextarea"
+                                                                class="form-label">Date</label>
+                                                            <input type="date" class="form-control"
+                                                                placeholder="Nhập content" name="ngay_dang">
                                                             <span class="text-danger">
                                                                 <?= !empty($_SESSION['error']['ngay_dang']) ? $_SESSION['error']['ngay_dang'] : '' ?>
                                                             </span>
                                                         </div>
                                                     </div>
-                                                   
-                                                    
-                                                    
                                                     <!-- end col -->
                                                     <div class="col-md-6">
                                                         <div class="mb-3">
-                                                            <label for="ForminputState" class="form-label" name="trang_thai">Trạng thái</label>
-                                                            <select id="ForminputState" class="form-select" name="trang_thai">
+                                                            <label for="ForminputState" class="form-label"
+                                                                name="trang_thai">Trạng thái</label>
+                                                            <select id="ForminputState" class="form-select"
+                                                                name="trang_thai">
                                                                 <option selected disabled>Chọn trạng thái</option>
                                                                 <option value="1">Hiển thị</option>
                                                                 <option value="2">Không hiển thị</option>
@@ -117,15 +122,29 @@
                                                         </div>
                                                     </div>
                                                     <!-- end col -->
+                                                    <div class="col-md-12">
+                                                        <div class="mb-3">
+                                                            <label for="imageUpload" class="form-label">Hình ảnh (có thể
+                                                                để trống)</label>
+                                                            <input type="file" class="form-control" id="imageUpload"
+                                                                name="image" accept="image/*">
+                                                            <span class="text-danger">
+                                                                <?= !empty($_SESSION['error']['image']) ? $_SESSION['error']['image'] : '' ?>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end col -->
                                                     <div class="col-lg-12">
                                                         <div class="text-end">
-                                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                                            <button type="submit"
+                                                                class="btn btn-primary">Submit</button>
                                                         </div>
                                                     </div>
                                                     <!-- end col -->
                                                 </div>
                                                 <!-- end row -->
                                             </form>
+
                                         </div>
                                     </div>
                                 </div>
@@ -176,16 +195,17 @@
     </div>
 
     <div class="customizer-setting d-none d-md-block">
-        <div class="btn-info rounded-pill shadow-lg btn btn-icon btn-lg p-2" data-bs-toggle="offcanvas" data-bs-target="#theme-settings-offcanvas" aria-controls="theme-settings-offcanvas">
+        <div class="btn-info rounded-pill shadow-lg btn btn-icon btn-lg p-2" data-bs-toggle="offcanvas"
+            data-bs-target="#theme-settings-offcanvas" aria-controls="theme-settings-offcanvas">
             <i class='mdi mdi-spin mdi-cog-outline fs-22'></i>
         </div>
     </div>
 
     <!-- JAVASCRIPT -->
-    
-      <script type="module" >
+
+    <script type="module">
         CKEDITOR.replace('editor');
-     </script>
+    </script>
 </body>
 
 </html>
