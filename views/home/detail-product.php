@@ -125,7 +125,7 @@
                                         <div class="pro-prlb pro-sale">
                                             <div style="color: red;">
                                                 <span
-                                                    class="new-price"><?= number_format($data['gia_san_pham'], 0, ',', '.') ?>
+                                                    class="new-price"><?= ($data['today_deal_active'] == 1) ? number_format($data['gia_khuyen_mai'], 0, ',', '.') : number_format($data['gia_san_pham'], 0, ',', '.') ?>
                                                     VNĐ</span>
 
                                                 <!-- <span class="percent-count">16</span> -->
@@ -135,10 +135,10 @@
                                     <div class="product-info">
                                         <div class="product-inventory">
                                             <div class="stock-inventory stock-more">
-                                                <p class="text-success">Nhanh lên! chỉ một
+                                                <p class="text-success">Nhanh lên! chỉ còn
                                                     <span
                                                         class="available-stock bg-success"><?= $data['so_luong'] ?></span>
-                                                    <span>sản phẩm còn hàng!</span>
+                                                    <span>sản phẩm !</span>
                                                 </p>
                                             </div>
                                             <!-- <div class="product-variant">
@@ -197,7 +197,7 @@
                                                     <div class="cart-plus-minus">
                                                         <button type="button" id="minus" class=" qtybutton minus "><i
                                                                 class="fa-solid fa-minus"></i></button>
-                                                        <input type="text" min="0" id="quantity-value" name="quantity"
+                                                        <input type="text" min="0" id="quantity-value" name="quantity" disabled
                                                             value="1" max="<?= $data['gia_san_pham'] ?>">
                                                         <button type="button" id="plus" class="qtybutton plus  "><i
                                                                 class="fa-solid fa-plus"></i></button>
@@ -314,7 +314,7 @@
 
                                                                 </label>
                                                                 <div class="spr-form-input">
-                                                                    <textarea class="spr-form-input spr-form-input-textarea" placeholder="Write your comments here" rows="10" name="noi_dung"></textarea>
+                                                                    <textarea class="spr-form-input spr-form-input-textarea" placeholder="Viết bình luận tại đây..." rows="10" name="noi_dung"></textarea>
                                                                 </div>
                                                             </div>
 

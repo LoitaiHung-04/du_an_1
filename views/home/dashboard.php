@@ -29,7 +29,7 @@
                                                     <span><?= $item['content'] ?></span>
 
                                                 </div>
-                                                <a href="?" class="btn btn-style">BỘ SƯU TẬP TRỰC TUYẾN</a>
+                                                <a href="?act=product" class="btn btn-style">BỘ SƯU TẬP TRỰC TUYẾN</a>
                                             </div>
                                         </div>
                                     </div>
@@ -175,7 +175,7 @@
                         <div class="section-capture">
                             <div class="section-title">
                                 <span class="sub-title" data-animate="animate__fadeInUp">Bộ Sưu tập</span>
-                                <h2><span data-animate="animate__fadeInUp">Sản phẩm nổi bật</span></h2>
+                                <h2><span data-animate="animate__fadeInUp">Sản phẩm Khuyến Mãi Hôm Nay</span></h2>
                             </div>
                         </div>
                     </div>
@@ -190,7 +190,9 @@
                                     <?php foreach ($product as $value): ?>
 
 
-                                        <div class="swiper-slide" data-animate="animate__fadeInUp">
+                                        <div class="swiper-slide" data-animate="animate__fadeInUp" style="position: relative;">
+                                            <div style="position: absolute; right:0px; top:20px; z-index: 1000;"><img width="60px" style="background-color: transparent;" src="/du_an_1/assets/images/tag_5901132.png" alt=""></div>
+
                                             <div class="single-product-wrap">
                                                 <div class="product-image">
                                                     <a href="?act=chi-tiet-san-pham&id=<?= $value['id'] ?>" class="pro-img">
@@ -220,8 +222,9 @@
                                                         <h6><a href="?act=chi-tiet-san-pham&id=<?= $value['id'] ?>"><?= $value['ten_san_pham'] ?></a></h6>
                                                     </div>
                                                     <div class="product-price">
-                                                        <div style="color: red;">
-                                                            <span class="new-price"><?= number_format($value['gia_san_pham'], 0, ',', '.') ?> VNĐ</span>
+                                                        <div>
+                                                            <span class="new-price"> <del><?= number_format($value['gia_san_pham'], 0, ',', '.') ?></del> </span> - 
+                                                            <span class="new-price" style="color: red;"> <?= number_format($value['gia_khuyen_mai'], 0, ',', '.') ?> VNĐ</span>
 
                                                         </div>
                                                     </div>
@@ -316,7 +319,7 @@
                             <div class="section-title">
                                 <span class="sub-title" data-animate="animate__fadeInUp">
                                     Bộ sưu tập nổi bật</span>
-                                <h2 data-animate="animate__fadeInUp"><span>Sản phẩm khuyến mãi hôm nay </span></h2>
+                                <h2 data-animate="animate__fadeInUp"><span>Sản phẩm Nổi Bật </span></h2>
                             </div>
                         </div>
                     </div>
@@ -328,9 +331,11 @@
                         <div class="collection-wrap">
                             <div class="collection-slider swiper" id="Featured-product">
                                 <div class="swiper-wrapper">
-                                    <?php foreach ($product as $value): ?>
+                                    <?php foreach ($productFeature as $value): ?>
 
-                                        <div class="swiper-slide" data-animate="animate__fadeInUp">
+                                        <div class="swiper-slide" data-animate="animate__fadeInUp" style="position: relative;">
+                                            <div style="position: absolute; right:0px; top:20px; z-index: 1000;"><img width="60px" style="background-color: transparent;" src="/du_an_1/assets/images/promotional_3199306.png" alt=""></div>
+
                                             <div class="single-product-wrap">
                                                 <div class="product-image">
                                                     <a href="?act=chi-tiet-san-pham&id=<?= $value['id'] ?>" class="pro-img">

@@ -7,7 +7,7 @@ class DonHang
         $sql = 'SELECT don_hangs.*, trang_thai_don_hangs.ten_trang_thai_id 
         FROM don_hangs
         INNER JOIN trang_thai_don_hangs 
-        ON don_hangs.trang_thai_id = trang_thai_don_hangs.id';
+        ON don_hangs.trang_thai_id = trang_thai_don_hangs.id ORDER BY id DESC';
 
         return query_all_data($sql);
     }
@@ -41,8 +41,8 @@ class DonHang
     }
     public function updateOrrderStatus($id,$status){
         $sql="UPDATE `don_hangs` SET `trang_thai_id`=? WHERE id=?";
-        $param =[$status,$id];
-        return execute($sql,$param);
+        $params =[$status,$id];
+        return execute($sql,$params);
     }
     public function getDetailDonHang($id)
     {

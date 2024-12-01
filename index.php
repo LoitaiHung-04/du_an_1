@@ -49,6 +49,8 @@ match ($act) {
     'profile'                 => (new DashBoardController())->profile(),
     'blog'                 => (new DashBoardController())->blog(),
     'product'                 => (new DashBoardController())->product(),
+    'detail-order'                 => (new DashBoardController())->orderDetail(),
+    'review-product'                 => (new DashBoardController())->reviewProduct(),
     'check-login-admin' => (new AuthController())->login(),
     'login' => include './admin/views/pages/login/login.php',
     'register' => (new AuthController())->checkRegisterClient(),
@@ -57,8 +59,13 @@ match ($act) {
 //
     'khuyen-mai' => (new PromotionController())->index(), // Đăng xuất
 //
-    'tai-khoan' => (new ProfileController())->index(), // Đăng xuất
+   'tai-khoan' => (new ProfileController())->index(),
+     // Đăng xuất
+    'doi-mat-khau' => (new ProfileController())->changePassword(), // Đăng xuất
+
     'check-tai-khoan' => (new ProfileController())->updateTaiKhoan(), // Đăng xuất
+
+
     'remove-cart' => (new DashBoardController())->removeCart(), 
     'update-quantity-cart' => (new DashBoardController())->updateCart(), 
     'create-payment' => (new DashBoardController())->createPayment(), 

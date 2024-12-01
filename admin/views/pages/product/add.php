@@ -195,9 +195,7 @@
         <!-- Vertical Overlay-->
         <div class="vertical-overlay"></div>
 
-        <!-- ============================================================== -->
-        <!-- Start right Content here -->
-        <!-- ============================================================== -->
+        
         <div class="main-content">
 
             <div class="container" style="margin-top: 100px;">
@@ -279,7 +277,7 @@
                                                 <input
                                                     type="checkbox"
                                                     id="swich"
-                                                    name="status" />
+                                                    name="feature" />
                                                 <label
                                                     for="swich"
                                                     class="toggle-label"></label>
@@ -293,7 +291,7 @@
                                                 <input
                                                     type="checkbox"
                                                     id="swich-deal"
-                                                    name="status" />
+                                                    name="sale" />
                                                 <label
                                                     for="swich-deal"
                                                     class="toggle-label"></label>

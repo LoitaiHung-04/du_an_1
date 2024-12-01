@@ -70,6 +70,18 @@
                                     <li class="profile-li" data-animate="animate__fadeInUp" onclick="showTab('password')">
                                         <a href="javascript:void(0)">Đổi mật khẩu</a>
                                     </li>
+                                    <?php if (isset($_SESSION['error'])): ?>
+                                        <div class="alert alert-danger">
+                                            <?= $_SESSION['error']; ?>
+                                        </div>
+                                        <?php unset($_SESSION['error']); ?>
+                                    <?php endif; ?>
+                                    <?php if (isset($_SESSION['success'])): ?>
+                                        <div class="alert alert-success">
+                                            <?= $_SESSION['success']; ?>
+                                        </div>
+                                        <?php unset($_SESSION['success']); ?>
+                                    <?php endif; ?>
                                 </ul>
                             </div>
                         </div>
@@ -85,44 +97,31 @@
                                         <th>Date purchased</th>
                                         <th>Status</th>
                                         <th>Total</th>
+                                        <th>Thao tác</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>78A643CD409</td>
-                                        <td>April 08, 2024</td>
-                                        <td class="canceled">Canceled</td>
-                                        <td>$760.50</td>
-                                    </tr>
-                                    <tr>
-                                        <td>34VB5540K83</td>
-                                        <td>April 11, 2024</td>
-                                        <td class="process">In progress</td>
-                                        <td>$540.30</td>
-                                    </tr>
-                                    <tr>
-                                        <td>78A643CD409</td>
-                                        <td>April 15, 2024</td>
-                                        <td class="delayed">Delayed</td>
-                                        <td>$412.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>78A643CD409</td>
-                                        <td>April 18, 2024</td>
-                                        <td class="delivered">Delivered</td>
-                                        <td>$805.00</td>
-                                    </tr>
-                                    <tr class="no-bottom-border">
-                                        <td>78A643CD409</td>
-                                        <td>April 21, 2024</td>
-                                        <td class="delivered">Delivered</td>
-                                        <td>$270.20</td>
-                                    </tr>
+                                    <?php if (!empty($orders)) : ?>
+                                        <?php foreach ($orders as $item): ?>
+                                            <tr>
+                                                <td>#<?= $item['ma_don_hang'] ?></td>
+                                                <td><?= $item['ngay_dat'] ?></td>
+                                                <td class="canceled"><?= $item['ten_trang_thai_id'] ?></td>
+                                                <td><?= number_format($item['tong_tien'], 0, ',', '.') ?> VND</td>
+                                                <td><a href="?act=detail-order&id=<?= $item['id'] ?>" style="font-size: 25px;"><i class='bx bx-show' ></i></a></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php else : ?>
+                                        <tr>
+                                            <td colspan="4">Bạn chưa có đơn hàng nào.</td>
+                                        </tr>
+                                    <?php endif; ?>
                                 </tbody>
                             </table>
                         </div>
                         <div class="profile-form profile-address tab-pane" id="profile" style="display: none;">
                             <div class="billing-area">
+
                                 <form method="POST" action="?act=check-tai-khoan" enctype="multipart/form-data">
                                     <input type="hidden" value="<?= $_SESSION['user_client']['id'] ?>" name="id">
 
@@ -130,12 +129,6 @@
                                         <h6>Thông tin cá nhân</h6>
                                     </div>
 
-                                    <?php if (isset($_SESSION['error'])): ?>
-                                        <div class="alert alert-danger">
-                                            <?= $_SESSION['error']; ?>
-                                        </div>
-                                        <?php unset($_SESSION['error']); ?>
-                                    <?php endif; ?>
 
                                     <div class="billing-form">
                                         <ul class="input-2">
@@ -174,14 +167,7 @@
                                                 <label>Ảnh đại diện</label>
                                                 <input type="file" name="anh_dai_dien">
                                             </li>
-                                            <li class="billing-li">
-                                                <label>Mật khẩu mới</label>
-                                                <input type="password" name="mat_khau_moi" placeholder="Mật khẩu mới">
-                                            </li>
-                                            <li class="billing-li">
-                                                <label>Xác nhận mật khẩu</label>
-                                                <input type="password" name="mat_khau_cu" placeholder="Xác nhận mật khẩu">
-                                            </li>
+
                                         </ul>
                                         <ul class="pro-submit" style="margin-top: 20px;">
                                             <div class="" style="display:flex; justify-content: space-between;">
@@ -207,12 +193,46 @@
                             <p>Your saved items go here.</p>
                         </div>
                         <div id="password" class="tab-pane" style="display: none;">
-                            <h6>Change Password</h6>
-                            <form>
-                                <label>New Password</label>
-                                <input type="password" placeholder="New Password">
-                                <!-- Other fields -->
-                            </form>
+                            <div class="profile-form">
+                                <div class="pro-add-title">
+                                    <h6 data-animate="animate__fadeInUp">Đổi mật khẩu</h6>
+                                </div>
+                                <form method="POST" action="?act=doi-mat-khau">
+
+                                    <ul class="pro-input-label mt-3" data-animate="animate__fadeInUp">
+                                        <li>
+                                            <label>Mật khẩu cũ</label>
+                                            <input type="password" name="mat_khau_cu" placeholder="Old password" required>
+                                        </li>
+                                    </ul>
+                                    <ul class="pro-input-label mt-3" data-animate="animate__fadeInUp">
+                                        <li>
+                                            <label>Mật khẩu mới</label>
+                                            <input type="password" name="mat_khau_moi" placeholder="New password" required>
+                                        </li>
+                                    </ul>
+                                    <ul class="pro-input-label mt-3" data-animate="animate__fadeInUp">
+                                        <li>
+                                            <label>Nhập lại mật khẩu</label>
+                                            <input type="password" name="xac_nhan_mat_khau"
+                                                placeholder="Confirm new password" required>
+                                        </li>
+                                    </ul>
+                                    <ul class="pro-submit mt-3" data-animate="animate__fadeInUp">
+                                        <li class="label-info">
+                                            <label class="box-area">
+                                                <span class="agree-text">Đăng ký nhận thông báo mới</span>
+                                                <input type="checkbox" class="cust-checkbox">
+                                                <span class="cust-check"></span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="submit" class="btn btn-style2 checkout" value="Cập nhật">
+                                        </li>
+                                    </ul>
+                                </form>
+
+                            </div>
                         </div>
 
                     </div>

@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- CSS -->
     <?php require_once "views/layouts/libs_css.php"; ?>
@@ -27,9 +28,7 @@
         <!-- Left Sidebar End -->
         <div class="vertical-overlay"></div>
 
-        <!-- ============================================================== -->
-        <!-- Start right Content here -->
-        <!-- ============================================================== -->
+
         <div class="main-content">
             <div class="page-content">
                 <div class="container-fluid">
@@ -130,7 +129,7 @@
                                                                     <td><select name="" id="trangthai" class="form-control" data-id="<?= $row['id'] ?>">
                                                                             <?php foreach ($trangthai as $item): ?>
 
-                                                                                <option value="<?= $item['id'] ?>"><?= $item['ten_trang_thai_id'] ?></option>
+                                                                                <option value="<?= $item['id'] ?>"  <?= ($row['trang_thai_id'] >= 6 && $item['id'] == 11) ? 'disabled' : '' ?>  <?= ($row['trang_thai_id'] == 9 && $item['id'] == 11) ? 'disabled' : '' ?> <?= (intval($row['trang_thai_id']) > intval($item['id'])) ? 'disabled' : '' ?> <?= ($row['trang_thai_id'] == $item['id']) ? "selected" : "" ?>><?= $item['ten_trang_thai_id'] ?></option>
 
 
                                                                             <?php endforeach ?>
@@ -256,30 +255,37 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <script type="module">
-          const status =document.querySelectorAll('#trangthai');
-          for (const element of status) {
-            element.addEventListener('change',(e)=>{
+        const status = document.querySelectorAll('#trangthai');
+        for (const element of status) {
+            element.addEventListener('change', (e) => {
                 const value = e.target.value;
-                const id =element.dataset.id;
-              
-                
+                const id = element.dataset.id;
+
+
                 $.ajax({
-                    url: "?act=update-order",
+                    url: "http://localhost/du_an_1/admin/?act=update-order",
                     method: "GET",
                     data: {
-                      value:value,
-                      id:id
+                        value: value,
+                        id: id
                     },
                     success: function(response) {
 
-                       alert('thanh còn');
+                        Swal.fire({
+                            title: "Thành công !",
+                            text: "Cập nhật trạng thái thành công ",
+                            icon: "success"
+                        }).then(function() {
+                            window.location.reload();
+                        });
+
 
                     }
 
                 });
-                
+
             })
-          }
+        }
     </script>
 </body>
 

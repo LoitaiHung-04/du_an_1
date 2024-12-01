@@ -86,6 +86,7 @@ match ($act) {
     'sua-don-hang' => (new DonHangController())->postEditDonHang(),
     'chi-tiet-don-hang' => (new DonHangController())->detailDonHang(),
     'tim-kiem-don-hang' => (new DonHangController())->timkiemDonHang(),
+    'update-order' => (new DonHangController())->updateOrder(),
     // 'xoa-don-hang' => (new DonHangController())->destroy(),
     //
     'trang-thai-don-hangs' => (new TrangThaiDonHangController())->index(),

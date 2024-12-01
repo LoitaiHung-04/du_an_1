@@ -42,6 +42,14 @@ class TaiKhoanClient
         
         return $result['count'] > 0;
     }
+    public function updateMatKhau($id, $mat_khau)
+{
+    $sql = "UPDATE tai_khoans SET mat_khau = ? WHERE id = ?";
+    $params = [$mat_khau, $id];
+    
+    return execute($sql, $params);
+}
+
 }
 
 
