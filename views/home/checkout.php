@@ -90,7 +90,7 @@
                                         </li>
                                         <li data-animate="animate__fadeInUp">
                                             <label class="form-label">Ghi chú</label>
-                                            <textarea class="form-control" name="note" placeholder="Ghi chú" ></textarea>
+                                            <textarea class="form-control" name="note" placeholder="Ghi chú"></textarea>
                                         </li>
 
 
@@ -114,6 +114,10 @@
                                         </select>
                                         <div style="color:red;"><?= (isset($_SESSION['error_vnpay'])) ? $_SESSION['error_vnpay'] : '' ?> </div>
                                     </div>
+                                    <div class="voucher mt-5 ms-1 w-100 mb-3">
+                                        <input type="text" id="code_voucher" class="w-75" placeholder="Nhập mã giảm giá ( nếu có )">
+                                        <button class="btn btn-primary " id="btn_voucher" type="button">Áp Mã</button>
+                                    </div>
                                     <!-- p-method end -->
                                     <!-- order-summary start -->
                                     <div class="order-summary">
@@ -121,10 +125,11 @@
                                         <ul>
                                             <li data-animate="animate__fadeInUp">
                                                 <span class="p-name">Tổng tiền:</span>
-                                                <span class="p-price"><?= number_format($total[0]['total_quantity'], 0, ',', '.') ?> VNĐ </span>
+                                                <span class="p-price" id="price_total_voucher"><?= number_format($total[0]['total_quantity'], 0, ',', '.') ?> VNĐ </span>
                                             </li>
 
                                         </ul>
+                                        <input type="hidden" name="price" id="price_payment">
                                         <div class="check-btn" data-animate="animate__fadeInUp">
                                             <button class="btn-style2">Thanh toán</button>
                                         </div>
@@ -138,6 +143,67 @@
             </div>
 
         </section>
-        <!-- checkout-area end -->
+        <script>
+            function applyDiscount(originalPrice, discountPercentage) {
+
+                const discountAmount = (originalPrice * discountPercentage) / 100;
+
+
+
+
+                return originalPrice - discountAmount;
+            }
+
+            function formatMoney(amount) {
+
+                const formattedAmount = amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+
+                return formattedAmount + " VNĐ";
+            }
+
+            function statusAlert(type, title, message) {
+                Swal.fire({
+                    icon: `${type}`,
+                    title: `${title}`,
+                    text: `${message}`,
+
+                });
+            }
+            var btn_voucher = document.querySelector('#btn_voucher');
+            var code_voucher = document.querySelector('#code_voucher');
+            btn_voucher.addEventListener('click', function() {
+                var price = <?= $total[0]['total_quantity'] ?>;
+                $.ajax({
+                    url: "index.php?act=add-voucher",
+                    method: "GET",
+                    data: {
+                        code: code_voucher.value,
+                    },
+                    success: function(response) {
+                        if (response != false) {
+
+                            if (response?.so_luong != 0) {
+                                const discount = applyDiscount(price, response?.giam_gia);
+                                let dataPrice = formatMoney(discount);
+
+                                document.querySelector('#price_total_voucher').innerHTML = `${dataPrice} <sup style="color:red;" > - ${response?.giam_gia} %</sup>`;
+                                document.querySelector('#price_payment').value = discount;
+
+                                statusAlert('success', 'Thành Công', 'Bạn đã áp mã thành công');
+
+                            } else {
+                                statusAlert('error', 'Lỗi', 'Mã giảm giá hết hạn hoặc hết lượt nhập');
+                            }
+                        } else {
+                            statusAlert('error', 'Lỗi', 'Mã giảm giá không tồn tại');
+                        }
+
+
+                    }
+
+                });
+            })
+        </script>
     </form>
 </main>

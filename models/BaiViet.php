@@ -18,7 +18,7 @@ class BaiViet
         // Đảm bảo rằng mỗi bài viết có đường dẫn chính xác cho ảnh
         foreach ($result as &$item) {
             if (!empty($item['image'])) {
-                $item['image'] = './uploads/' . $item['image']; // Đường dẫn đến thư mục uploads
+                $item['image'] = 'uploads/post/' . $item['image']; // Đường dẫn đến thư mục uploads
             } else {
                 $item['image'] = 'path/to/default-image.jpg'; // Đặt ảnh mặc định nếu không có ảnh
             }
@@ -41,8 +41,9 @@ class BaiViet
 
     public function form($title, $content, $trang_thai, $ngay_dang, $id = "", $image = "")
     {
+        $user_id = $_SESSION['user_admin']['id'];
         // Chuẩn bị thông tin chung cho bài viết
-        $params = [$title, $content, $trang_thai, $ngay_dang, 1];
+        $params = [$title, $content, $trang_thai, $ngay_dang, $user_id];
     
         if ($id != "") {
             // Cập nhật bài viết
@@ -56,8 +57,8 @@ class BaiViet
         } else {
             // Thêm mới bài viết
             $sql = "INSERT INTO tin_tucs (title, content, trang_thai, ngay_dang, nguoi_dang) VALUES (?, ?, ?, ?, ?)";
-            $insertId = execute($sql, $params);
-    
+            $insertId = addGetLateId($sql, $params);
+         
             // Thêm hình ảnh nếu có
             if (!empty($image)) {
                 $this->insertImage($insertId, $image);

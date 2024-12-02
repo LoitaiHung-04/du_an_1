@@ -84,8 +84,8 @@
                                                     <!-- end col -->
                                                     <div class="col-md-12">
                                                         <div class="mb-3">
-                                                            <label for="contentInput" class="form-label">Content</label>
-                                                            <textarea name="content" id="contentInput"
+                                                            <label for="editor" class="form-label">Content</label>
+                                                            <textarea name="content" id="editor"
                                                                 class="form-control"
                                                                 placeholder="Nhập content"><?= htmlspecialchars($baiViet['content']) ?></textarea>
                                                             <span class="text-danger">
@@ -121,7 +121,7 @@
                                                                 name="image" accept="image/*">
                                                             <?php if (!empty($baiViet['image'])): ?>
                                                                 <p>Hình ảnh hiện tại:</p>
-                                                                <img src="path/to/uploads/<?= $baiViet['image'] ?>"
+                                                                <img src="/du_an_1/uploads/post/<?= $baiViet['image'] ?>"
                                                                     alt="Hình ảnh hiện tại" style="max-width: 100px;">
                                                             <?php endif; ?>
                                                             <span class="text-danger">
@@ -197,7 +197,9 @@
             <i class='mdi mdi-spin mdi-cog-outline fs-22'></i>
         </div>
     </div>
-
+    <script type="module">
+        CKEDITOR.replace('editor');
+    </script>
     <!-- JAVASCRIPT -->
     <?php
     require_once "views/layouts/libs_js.php";

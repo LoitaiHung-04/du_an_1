@@ -75,6 +75,14 @@
                                                             </span>
                                                         </div>
                                                         <div class="mb-3">
+                                                            <label for="emailidInput" class="form-label">Mã </label>
+                                                            <input type="text" class="form-control" placeholder="Nhập mã..." name="ma" value="">
+
+                                                            <span class="text-danger">
+                                                                <?= !empty($_SESSION['error']['ma']) ? $_SESSION['error']['ma'] : '' ?>
+                                                            </span>
+                                                        </div>
+                                                        <div class="mb-3">
                                                             <label for="emailidInput" class="form-label">Mô tả</label>
                                                             <input type="textarea" class="form-control" placeholder="Nhập mô tả " name="mo_ta" value="">
 

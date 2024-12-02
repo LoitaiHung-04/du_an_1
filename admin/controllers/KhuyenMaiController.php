@@ -35,7 +35,9 @@ class KhuyenMaiController
         $ngay_bat_dau = $_POST['ngay_bat_dau'];
         $ngay_ket_thuc = $_POST['ngay_ket_thuc'];
         $trang_thai = $_POST['trang_thai'];
-        $so_luong = $_POST['so_luong'];
+        $so_luong = $_POST['so_luong'];      
+          $ma = $_POST['ma'];
+
 
 
         
@@ -56,6 +58,9 @@ class KhuyenMaiController
         if (empty($ngay_ket_thuc)) {
             $error['ngay_ket_thuc'] = 'Vui lòng chọn ngày kết thúc';
         }
+        if (empty($ma)) {
+            $error['ma'] = 'Vui lòng nhập Mã';
+        }
         
 
         if (empty($so_luong)) {
@@ -65,7 +70,7 @@ class KhuyenMaiController
         // Nếu không có lỗi thì lưu dữ liệu
         if (empty($error)) {
             // Gọi phương thức từ model để lưu dữ liệu
-            $this->modelKhuyenMai->form($ten_khuyen_mai, $mo_ta, $giam_gia, $ngay_bat_dau, $ngay_ket_thuc, $trang_thai, $so_luong);
+            $this->modelKhuyenMai->form($ten_khuyen_mai, $mo_ta, $giam_gia, $ngay_bat_dau, $ngay_ket_thuc, $trang_thai, $so_luong,$ma);
             unset($_SESSION['error']); // Xóa các lỗi trước đó
 
             // Chuyển hướng về trang danh sách khuyến mãi

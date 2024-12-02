@@ -52,6 +52,8 @@ match ($act) {
     'detail-order'                 => (new DashBoardController())->orderDetail(),
     'review-product'                 => (new DashBoardController())->reviewProduct(),
     'update-access'                 => (new DashBoardController())->access(),
+    'add-voucher'                 => (new DashBoardController())->checkVouchers(),
+
     'check-login-admin' => (new AuthController())->login(),
     'login' => include './admin/views/pages/login/login.php',
     'register' => (new AuthController())->checkRegisterClient(),

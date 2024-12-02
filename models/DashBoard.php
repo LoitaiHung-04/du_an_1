@@ -23,6 +23,15 @@ class DashBoard
 
         return query_all_data($sql);
     }
+    public function getVoucher(){
+        $sql="SELECT * FROM khuyen_mais ORDER BY id DESC";
+        return query_all_data($sql);
+    }
+    public function checkVoucher($code){
+        $sql="SELECT * FROM khuyen_mais WHERE ma=? AND ngay_bat_dau <= CURDATE() AND ngay_ket_thuc >= CURDATE() LIMIT 1";
+        $params =[$code];
+        return query_one_data($sql,$params);
+    }
     public function getAllFeature()
     {
         $sql = 'select 

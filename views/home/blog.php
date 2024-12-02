@@ -14,8 +14,8 @@
                                                 <div class="blog-img">
                                                     <a href="?act=chi-tiet-bai-viet&id=<?= $item['id'] ?>" class="banner-img">
                                                         <!-- Hiển thị ảnh bài viết từ thư mục public/uploads -->
-                                                        <img src="<?= './du_an_1/uploads/' . $item['image'] ?>" class="img-fluid" alt="imagê">
-                                                        <img src="<?= './du_an_1/uploads/' . $item['image'] ?>" class="img-fluid" alt="imagê">
+                                                        <img src="<?= '/du_an_1/' . $item['image'] ?>" class="img-fluid" alt="imagê">
+                                                        <!-- <img src="<?= '/du_an_1/' . $item['image'] ?>" class="img-fluid" alt="imagê"> -->
                                                     </a>
                                                 </div>
                                                 <div class="blog-content">

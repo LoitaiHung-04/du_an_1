@@ -1,4 +1,20 @@
 <main>
+    <style>
+        .voucher{
+            width: 150px;
+            height: 40px;
+            color: white;
+            padding: 9px 20px 5px 20px;
+            background-color: black;
+            border: none;
+            border-radius: 5px;
+        }
+        .voucher-container{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            gap: 5px;
+        }
+    </style>
     <?php
     $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
     ?>
@@ -236,15 +252,32 @@
                                         <input type="hidden" id="image-cart" value="<?= $data['hinh_anh'] ?>">
                                         <input type="hidden" id="variant-id-cart">
                                     </div>
-                                  
+
                                     <div class="product-info">
                                         <div class="product-sku">
                                             <h6>Mã hàng:</h6>
                                             <span class="variant-sku">?</span>
                                         </div>
                                     </div>
-                              
-                            
+                                    <div class="product-info">
+                                        <div >
+                                            <div><h6>Các voucher</h6> </div> <br>
+                                           <div class="voucher-container">
+                                           <?php foreach ($vouchers as $voucher): ?>
+                                                <div class="voucher">
+                                                    <input id="voucher-<?= $voucher['id'] ?>" type="radio" name="voucher" hidden value="<?php echo $voucher['ma']; ?>"
+                                                        onclick="copyToClipboard('<?php echo $voucher['ma']; ?>')">
+                                                    <label for="voucher-<?= $voucher['id'] ?>">
+                                                        Giảm giá <?php echo $voucher['giam_gia']; ?>%
+
+                                                    </label>
+                                                </div>
+                                            <?php endforeach; ?>
+                                           </div>
+                                        </div>
+                                    </div>
+
+
                                 </div>
                             </div>
                         </div>
@@ -469,6 +502,7 @@
             </div>
         </div>
     </section>
+    
     <script>
         function statusAlert(type, title, message) {
             Swal.fire({
@@ -484,7 +518,17 @@
             amount = Number(amount);
             return amount.toLocaleString('vi-VN').replace(/,/g, '.') + ' VNĐ';
         }
+        function copyToClipboard(voucherCode) {
+            var tempInput = document.createElement('input');
+            document.body.appendChild(tempInput);
+            tempInput.value = voucherCode;
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
 
+
+            statusAlert('success','Copy Thành Công',`Bạn đã copy thành công mã ${voucherCode}`);
+        } 
         let variant_input = document.querySelectorAll('.variant-checked');
         var max = 0;
         for (const btn of variant_input) {

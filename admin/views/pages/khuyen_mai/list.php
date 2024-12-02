@@ -91,7 +91,9 @@
                                                             <th scope="col">Ngày bắt đầu</th>
                                                             <th scope="col">Ngày kết thúc</th>
                                                             <th scope="col">Trạng thái</th>
-                                                            <th scope="col">Số lượng</th>
+                                                            <th scope="col">Số lượng</th> 
+                                                              <th scope="col">Giảm giá %</th>
+
                                                             <th scope="col" style="width: 150px;">Action</th>
                                                         </tr>
                                                     </thead>
@@ -117,6 +119,7 @@
                                                                 <td><?= $row['ngay_ket_thuc'] ?></td>
                                                                 <td><?= $row['trang_thai'] ?></td>
                                                                 <td><?= $row['so_luong'] ?></td>
+                                                                <td><?= $row['giam_gia'] ?> %</td>
 
                                                                 <td>
                                                                     <div class="hstack gap-3 flex-wrap">

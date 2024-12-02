@@ -65,6 +65,13 @@ class DashBoardController
         // Truyền dữ liệu sang view
         include_once './views/home/detail-order.php';
     }
+    public function checkVouchers()
+    {
+        $code = $_GET['code'];
+        $data = $this->dashboard->checkVoucher($code);
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
 
     public function show()
     {
@@ -72,6 +79,7 @@ class DashBoardController
             $id = $_GET['id'];
 
             if ($id !== null && filter_var($id, FILTER_VALIDATE_INT)) {
+                $vouchers = $this->dashboard->getVoucher();
                 $binhluan = $this->binh_luan->getComments($id);
 
                 $variant = $this->dashboard->getVariant($id);
@@ -297,6 +305,8 @@ class DashBoardController
         $name = $_POST['name'];
         $phone = $_POST['phone'];
         $address = $_POST['address'];
+        $price_payment = $_POST['price'];
+
         $note = $_POST['note'];
         $code = rand(1, 100000);
         $date = date('Y-m-d');
@@ -307,14 +317,14 @@ class DashBoardController
         // } else {
         if ($payment_method == 'vnpay') {
 
-            $id_order = $this->order->createOrder($code, $id, $name, $email, $phone, $address, $date, $total[0]['total_quantity'], $note, $VN_PAY = true);
+            $id_order = $this->order->createOrder($code, $id, $name, $email, $phone, $address, $date, $price_payment, $note, $VN_PAY = true);
             $this->addOrderDetail($id_order);
-            $this->vnpaySanbox->createSanboxVnpay($total[0]['total_quantity']);
+            $this->vnpaySanbox->createSanboxVnpay($price_payment);
             $this->addQuantityAndDeleteCart();
         } else {
-            $id_order = $this->order->createOrder($code, $id, $name, $email, $phone, $address, $date, $total[0]['total_quantity'], $note);
+            $id_order = $this->order->createOrder($code, $id, $name, $email, $phone, $address, $date, $price_payment, $note);
             $this->addOrderDetail($id_order);
-            $vnp_amount = intval($total[0]['total_quantity']) * 100;
+            $vnp_amount = $price_payment * 100;
             $current_time = date('YmdHis');
             $this->addQuantityAndDeleteCart();
             header('location:?act=payment-complete&vnp_ResponseCode=11&vnp_BankTranNo=1625381636763&vnp_Amount=' . $vnp_amount . '&vnp_PayDate=' . $current_time);

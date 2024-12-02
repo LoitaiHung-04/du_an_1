@@ -31,7 +31,7 @@ class BaivietController
             $image = "";
 
             if (!empty($_FILES['image']['name'])) {
-                $targetDir = "./uploads/";
+                $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/du_an_1/uploads/post/";
                 $imageName = time() . "_" . basename($_FILES["image"]["name"]);
                 $targetFile = $targetDir . $imageName;
 
@@ -39,6 +39,7 @@ class BaivietController
                     $image = $imageName;
                 }
             }
+            
 
             $error = [];
             if (empty($title)) $error['title'] = 'Vui lòng nhập tiêu đề';
@@ -73,20 +74,21 @@ class BaivietController
             $title = $_POST['title'];
             $content = $_POST['content'];
             $trang_thai = $_POST['trang_thai'];
-            $ngay_dang = $_POST['ngay_dang'];
+            $ngay_dang = date('Y-m-d');
             $image = "";
 
             // Xử lý ảnh mới
             if (!empty($_FILES['image']['name'])) {
-                $targetDir = "../admin/uploads/";  // Lưu ảnh vào thư mục uploads trong thư mục admin
+                $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/du_an_1/uploads/post/";  // Lưu ảnh vào thư mục uploads trong thư mục admin
                 $imageName = time() . "_" . basename($_FILES["image"]["name"]);
                 $targetFile = $targetDir . $imageName;
-            
+
                 if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
                     $image = $imageName;  // Lưu tên ảnh vào cơ sở dữ liệu
                 }
             }
-            
+            // var_dump($ngay_dang);die();
+
 
             // Kiểm tra các trường cần thiết
             $error = [];

@@ -14,7 +14,7 @@ class BaiVietClientController
     public function index()
     {
         $data = $this->model->getAll();  // Lấy tất cả bài viết
-        // var_dump($data);die()
+        // var_dump($data);die();
         include_once './views/home/blog.php';  // Gửi dữ liệu đến view blog.php
     }
 
