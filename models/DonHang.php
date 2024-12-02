@@ -136,7 +136,7 @@
             $sql = 'SELECT don_hangs.*, trang_thai_don_hangs.ten_trang_thai_id
         FROM don_hangs
         INNER JOIN trang_thai_don_hangs ON don_hangs.trang_thai_id = trang_thai_don_hangs.id
-        WHERE don_hangs.tai_khoan_id = ?';
+        WHERE don_hangs.tai_khoan_id = ? ORDER BY don_hangs.id DESC';
 
 
             $param = [$id];

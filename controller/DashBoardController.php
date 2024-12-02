@@ -39,6 +39,23 @@ class DashBoardController
         $content = $_GET['content'];
         $this->dashboard->review($content, $rating, $product, $iduser);
     }
+    public function access()
+    {
+        $id = $_GET['id'];
+        $status = $_GET['status'];
+        if ($status == 11 || $status == 10) {
+            $getDetai = $this->dashboard->orderDetail($id);
+            foreach ($getDetai as $key => $value) {
+                $product = $this->dashboard->getOne($value['san_pham_id']);
+                $variant = $this->dashboard->getOneVariant($value['bien_the_id']);
+                $quantityProduct = intval($value['so_luong']) + intval($product['so_luong']);
+                $quantityVariant = intval($value['so_luong']) + intval($variant['quantity']);
+                $this->dashboard->updateProductQuantity($value['san_pham_id'], $quantityProduct);
+                $this->dashboard->updateVariantQuantity($value['bien_the_id'], $quantityVariant);
+            }
+        }
+        $this->dashboard->accept($id, $status);
+    }
     public function orderDetail()
     {
         $id = $_GET['id'];
@@ -51,33 +68,44 @@ class DashBoardController
 
     public function show()
     {
-        $id = $_GET['id'];
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
 
-        $binhluan = $this->binh_luan->getComments($id);
+            if ($id !== null && filter_var($id, FILTER_VALIDATE_INT)) {
+                $binhluan = $this->binh_luan->getComments($id);
 
-        $variant = $this->dashboard->getVariant($id);
-        $image = $this->dashboard->getImage($id);
-        $data = $this->dashboard->getOne($id);
-        $rating = $this->dashboard->getRating($id);
-        $count = $this->dashboard->getCountRating($id);
-        $productDetail = $this->dashboard->productDetail($id);
-        // var_dump($rating['total_rating']);die();
-        if ($rating[0]['total_rating'] != null) {
-            $total_rating = intval($rating[0]['total_rating']) / count($count);
+                $variant = $this->dashboard->getVariant($id);
+                $image = $this->dashboard->getImage($id);
+                $data = $this->dashboard->getOne($id);
+                $rating = $this->dashboard->getRating($id);
+                $count = $this->dashboard->getCountRating($id);
+                $productDetail = $this->dashboard->productDetail($id);
+                // var_dump($rating['total_rating']);die();
+                if ($rating[0]['total_rating'] != null) {
+                    $total_rating = intval($rating[0]['total_rating']) / count($count);
+                } else {
+                    $total_rating = 0;
+                }
+
+                include_once './views/home/detail-product.php';
+            } else {
+                header('location:index.php');
+            }
         } else {
-            $total_rating = 0;
+            header('location:index.php');
         }
-        // var_dump($total_rating);die();
-
-        include_once './views/home/detail-product.php';
     }
     public function cart()
     {
-        $id = $_GET['id'];
-        $cart = $this->dashboard->getCart($id);
-        $total = $this->cart->getTotal($id);
-        // var_dump($total);die();
-        include_once './views/home/cart.php';
+        if (isset($_SESSION['user_client'])) {
+            $id = $_GET['id'];
+            $cart = $this->dashboard->getCart($id);
+            $total = $this->cart->getTotal($id);
+            // var_dump($total);die();
+            include_once './views/home/cart.php';
+        } else {
+            header('location:index.php');
+        }
     }
     public function addToCart()
     {
@@ -126,11 +154,14 @@ class DashBoardController
 
     public function checkout()
     {
-
-        $id = $_GET['id'];
-        $cart = $this->dashboard->getCart($id);
-        $total = $this->cart->getTotal($id);
-        include_once './views/home/checkout.php';
+        if (isset($_SESSION['user_client'])) {
+            $id = $_GET['id'];
+            $cart = $this->dashboard->getCart($id);
+            $total = $this->cart->getTotal($id);
+            include_once './views/home/checkout.php';
+        } else {
+            header('location:index.php');
+        }
     }
     public function blog()
     {
@@ -199,25 +230,36 @@ class DashBoardController
         $iduser = $_SESSION['user_client']['id'];
         $variantDB = $this->dashboard->getOneVariant($variant);
         $cart = $this->cart->getOneCart($id);
-        if ($quantity > $variantDB['quantity']) {
+        if ($quantity != 0) {
+            if ($quantity > $variantDB['quantity']) {
+                $response = [
+                    'status' => 'error',
+                    'title' => 'Đã có lỗi xảy ra',
+                    'message' => 'Không đủ số lượng sản phẩm !',
+                    'quantity' => $cart['so_luong'],
+
+                ];
+            } else {
+                $this->cart->updateCart($id, $total, $quantity);
+                $total_cart = $this->cart->getTotal($iduser);
+
+                $response = [
+                    'status' => 'success',
+                    'title' => 'Thành công',
+                    'message' => 'Cập nhật thành công giỏ hàng !',
+                    'total' => $total_cart[0]['total_sl'],
+                ];
+            }
+        } else {
             $response = [
                 'status' => 'error',
                 'title' => 'Đã có lỗi xảy ra',
-                'message' => 'Không đủ số lượng sản phẩm !',
+                'message' => 'Số lượng không thể bằng 0 !',
                 'quantity' => $cart['so_luong'],
 
             ];
-        } else {
-            $this->cart->updateCart($id, $total, $quantity);
-            $total_cart = $this->cart->getTotal($iduser);
-
-            $response = [
-                'status' => 'success',
-                'title' => 'Thành công',
-                'message' => 'Cập nhật thành công giỏ hàng !',
-                'total' => $total_cart[0]['total_sl'],
-            ];
         }
+
         header('Content-Type: application/json');
         echo json_encode($response);
     }
@@ -237,7 +279,10 @@ class DashBoardController
         $cart = $this->cart->getAllCart($id);
         foreach ($cart as $item) {
             $variantDB = $this->dashboard->getOneVariant($item['bien_the_id']);
+            $productDB = $this->dashboard->getOne($item['san_pham_id']);
             $quantity = intval($variantDB['quantity']) - intval($item['so_luong']);
+            $quantityProduct = intval($productDB['so_luong']) - intval($item['so_luong']);
+            $this->dashboard->updateProductQuantity($item['san_pham_id'], $quantityProduct);
             $this->cart->updateQuantityProduct($item['bien_the_id'], $quantity);
         }
         return $this->cart->deleteCart($id);

@@ -314,6 +314,22 @@
                                     <button style="width: 100px; background-color: gray; color:white; height:39px; margin-top:2px; border-radius:5px;" id="review-failer">Đánh giá</button>
 
                                 <?php endif ?>
+                                <?php if ((int)$donHang['trang_thai_id'] == 8): ?>
+                                    <button type="button" id="btn-submit-refund" class="btn btn-primary">Đã nhận hàng</button>
+                                <?php else: ?>
+                                    <button type="button" disabled class="btn btn-secondary">Đã nhận hàng</button>
+                                <?php endif; ?>
+
+                                <?php if ((int)$donHang['trang_thai_id'] < 6): ?>
+                                    <button type="button" id="submit-question" class="btn btn-primary">Huỷ</button>
+                                <?php else: ?>
+                                    <button type="button" disabled class="btn btn-secondary">Huỷ</button>
+                                <?php endif; ?>
+                                <?php if ((int)$donHang['trang_thai_id'] == 9): ?>
+                                    <button type="button" id="submit-return" class="btn btn-success">Hoàn Hàng</button>
+                                <?php else: ?>
+                                    <button type="button" disabled class="btn btn-secondary">Hoàn Hàng</button>
+                                <?php endif; ?>
                             </div>
 
                         </div>
@@ -444,6 +460,9 @@
                         <div class="modal-footer">
                             <button type="button" id="closse_modal" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                             <button type="button" id="btn-submit" class="btn btn-primary">Đánh giá</button>
+
+
+
                         </div>
                     </div>
                 </div>
@@ -464,6 +483,10 @@
         var rating_vote = document.querySelectorAll('.rating_vote');
         var review_content = document.querySelector('#review-content');
         var review_product = document.querySelector('#review_product');
+        var submit_question = document.querySelector('#submit-question');
+        var submit_return = document.querySelector('#submit-return');
+
+        console.log(submit_question);
 
         for (const element of rating_vote) {
             element.addEventListener('click', () => {
@@ -484,8 +507,8 @@
                                 title: "Thành công",
                                 text: "Đánh giá thành công",
                                 icon: "success"
-                            }).then(function(){
-                                   document.querySelector('#closse_modal').click();
+                            }).then(function() {
+                                document.querySelector('#closse_modal').click();
                             });
 
                         }
@@ -497,5 +520,71 @@
 
             })
         }
+
+        document.querySelector('#btn-submit-refund')?.addEventListener('click', () => {
+            $.ajax({
+                url: "index.php?act=update-access",
+                method: "GET",
+                data: {
+                    id: <?= $donHang['id'] ?>,
+                    status: 9,
+
+                },
+                success: function(response) {
+
+                    Swal.fire({
+                        title: "Thành công",
+                        text: "Cảm ơn bạn đã mua hàng",
+                        icon: "success"
+                    }).then(function() {
+                        window.location.reload();
+                    });
+
+                }
+
+            });
+
+        })
+
+        function accexpt(task, status) {
+            Swal.fire({
+                title: `Bạn muốn ${task} ?`,
+                text: `Bạn có chắc chắn muốn ${task} đơn hàng này ?`,
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Tôi đồng ý"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: `Đã ${task}!`,
+                        text: `${task} thành công`,
+                        icon: "success"
+                    }).then(function() {
+                        $.ajax({
+                            url: "index.php?act=update-access",
+                            method: "GET",
+                            data: {
+                                id: <?= $donHang['id'] ?>,
+                                status: status,
+
+                            },
+                            success: function(response) {
+                                window.location.reload();
+
+                            }
+
+                        });
+                    });
+                }
+            });
+        }
+        submit_question?.addEventListener('click', () => {
+            accexpt('Huỷ', 11);
+        })
+        submit_return?.addEventListener('click', () => {
+            accexpt('Hoàn', 10);
+        })
     </script>
 </main>

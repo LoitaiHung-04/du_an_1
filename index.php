@@ -25,8 +25,8 @@ if (!$isAjax) {
 
 
 require_once './controller/AuthController.php';
-define('BASE_URL_ADMIN', 'http://localhost:85/du_an_1/admin');
-define('BASE_URL_CLIENT', 'http://localhost:85/du_an_1/?');
+define('BASE_URL_ADMIN', 'http://localhost:80/du_an_1/admin');
+define('BASE_URL_CLIENT', 'http://localhost:80/du_an_1/?');
 
 
 // Route xử lý các hành động
@@ -51,6 +51,7 @@ match ($act) {
     'product'                 => (new DashBoardController())->product(),
     'detail-order'                 => (new DashBoardController())->orderDetail(),
     'review-product'                 => (new DashBoardController())->reviewProduct(),
+    'update-access'                 => (new DashBoardController())->access(),
     'check-login-admin' => (new AuthController())->login(),
     'login' => include './admin/views/pages/login/login.php',
     'register' => (new AuthController())->checkRegisterClient(),

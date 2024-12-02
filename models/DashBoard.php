@@ -57,6 +57,18 @@ class DashBoard
         $params = [$id];
         return query_all_data($sql, $params);
     }
+    public function accept($id, $status)
+    {
+        $sql = "UPDATE `don_hangs` SET `trang_thai_id`=? WHERE id=?";
+        $params = [$status, $id];
+        return execute($sql, $params);
+    }
+    public function orderDetail($id)
+    {
+        $sql = "SELECT * FROM chi_tiet_don_hangs WHERE don_hang_id=?";
+        $params = [$id];
+        return query_all_data($sql, $params);
+    }
 
     public function getOneOrder($id)
     {
@@ -117,12 +129,13 @@ class DashBoard
         $params = [$id];
         return query_all_data($sql, $params);
     }
-    public function review($content,$rating,$product,$user){
-        $sql="INSERT INTO `danh_gias`(`noi_dung`, `rating`, `san_pham_id`, `user_id`, `ngay_danh_gia`) 
+    public function review($content, $rating, $product, $user)
+    {
+        $sql = "INSERT INTO `danh_gias`(`noi_dung`, `rating`, `san_pham_id`, `user_id`, `ngay_danh_gia`) 
         VALUES (?,?,?,?,?)";
         $now = date('Y-m-d');
-        $params = [$content,$rating,$product,$user,$now];
-        return execute($sql,$params);
+        $params = [$content, $rating, $product, $user, $now];
+        return execute($sql, $params);
     }
     public function getRating($id)
     {
@@ -143,6 +156,18 @@ class DashBoard
         $sql = "select * from bien_thes where id=?";
         $params = [$id];
         return query_one_data($sql, $params);
+    }
+    public function updateProductQuantity($id, $quantity)
+    {
+        $sql = "UPDATE `san_phams` SET `so_luong`=? WHERE id=?";
+        $params = [$quantity, $id];
+        return execute($sql,$params);
+    }
+    public function updateVariantQuantity($id, $quantity)
+    {
+        $sql = "UPDATE `bien_thes` SET `quantity`=? WHERE id=?";
+        $params = [$quantity, $id];
+        return execute($sql,$params);
     }
     public function getCart($id)
     {

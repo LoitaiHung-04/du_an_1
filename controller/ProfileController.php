@@ -76,7 +76,7 @@ class ProfileController
                 'anh_dai_dien' => $anh_dai_dien
             ];
     
-            header('Location: http://localhost:85/du_an_1/?act=tai-khoan'); 
+            header('Location: http://localhost:80/du_an_1/?act=tai-khoan'); 
             exit();
         }
     }
@@ -93,26 +93,26 @@ class ProfileController
         if ($mat_khau_cu !== $user['mat_khau']) {
             
             $_SESSION['error'] = "Mật khẩu cũ không đúng.";
-            header('Location: http://localhost:85/du_an_1/?act=tai-khoan');
+            header('Location: http://localhost:80/du_an_1/?act=tai-khoan');
             exit();
         }
 
         if ($mat_khau_cu === $mat_khau_moi) {
             $_SESSION['error'] = "Mật khẩu mới không được giống mật khẩu cũ.";
-            header('Location: http://localhost:85/du_an_1/?act=tai-khoan');
+            header('Location: http://localhost:80/du_an_1/?act=tai-khoan');
             exit();
         }
 
         if ($mat_khau_moi !== $xac_nhan_mat_khau) {
             $_SESSION['error'] = "Mật khẩu xác nhận không khớp.";
-            header('Location: http://localhost:85/du_an_1/?act=tai-khoan');
+            header('Location: http://localhost:80/du_an_1/?act=tai-khoan');
             exit();
         }
         $this->profile->updateMatKhau($id, $mat_khau_moi);
 
         $_SESSION['success'] = "Đổi mật khẩu thành công.";
         $_SESSION['user_client']['mat_khau'] = $mat_khau_moi;
-        header('Location: http://localhost:85/du_an_1/?act=tai-khoan');
+        header('Location: http://localhost:80/du_an_1/?act=tai-khoan');
 
         exit();
     }

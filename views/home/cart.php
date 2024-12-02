@@ -40,68 +40,72 @@
                                             <span class="cart-item-title"> Sản phẩm</span>
                                         </span>
                                     </div>
-                                    <div class="item-wrap">
-                                        <?php foreach ($cart as $item): ?>
+                                    <?php if (count($cart) > 0): ?>
+                                        v= <div class="item-wrap">
+                                            <?php foreach ($cart as $item): ?>
 
-                                            <ul class="cart-wrap">
-                                                <!-- cart-info start -->
-                                                <li class="item-info">
-                                                    <!-- cart-img start -->
-                                                    <div class="item-img">
-                                                        <a href="?act=chi-tiet-san-pham&id=<?= $item['san_pham_id'] ?>" data-animate="animate__fadeInUp">
-                                                            <img src="/du_an_1/uploads/products/<?= $item['image'] ?>" class="img-fluid" alt="p-1">
-                                                        </a>
-                                                    </div>
-                                                    <!-- cart-img end -->
-                                                    <!-- cart-title start -->
-                                                    <div class="item-text">
-                                                        <a href="?act=chi-tiet-san-pham&id=<?= $item['san_pham_id'] ?>" data-animate="animate__fadeInUp"><?= $item['ten_san_pham'] ?></a>
-                                                        <span class="item-option" data-animate="animate__fadeInUp">
-                                                            <span class="item-title">Màu sắc:</span>
-                                                            <span class="item-type"><?= $item['mausac'] ?></span>
-                                                        </span>
-                                                        <span class="item-option" data-animate="animate__fadeInUp">
-                                                            <span class="item-title">Dung lượng:</span>
-                                                            <span class="item-type"><?= $item['dungluong'] ?></span>
-                                                        </span>
-                                                        <span class="item-option" data-animate="animate__fadeInUp">
-                                                            <span class="item-price"><?= number_format($item['gia_san_pham'], 0, ',', '.') ?> VNĐ</span>
-                                                        </span>
-                                                    </div>
-                                                    <!-- cart-title send -->
-                                                </li>
-                                                <!-- cart-info end -->
-                                                <!-- cart-qty start -->
-                                                <li class="item-qty">
-                                                    <div class="product-quantity-action">
-                                                        <div class="product-quantity" data-animate="animate__fadeInUp">
-                                                            <div>
+                                                <ul class="cart-wrap">
+                                                    <!-- cart-info start -->
+                                                    <li class="item-info">
+                                                        <!-- cart-img start -->
+                                                        <div class="item-img">
+                                                            <a href="?act=chi-tiet-san-pham&id=<?= $item['san_pham_id'] ?>" data-animate="animate__fadeInUp">
+                                                                <img src="/du_an_1/uploads/products/<?= $item['image'] ?>" class="img-fluid" alt="p-1">
+                                                            </a>
+                                                        </div>
+                                                        <!-- cart-img end -->
+                                                        <!-- cart-title start -->
+                                                        <div class="item-text">
+                                                            <a href="?act=chi-tiet-san-pham&id=<?= $item['san_pham_id'] ?>" data-animate="animate__fadeInUp"><?= $item['ten_san_pham'] ?></a>
+                                                            <span class="item-option" data-animate="animate__fadeInUp">
+                                                                <span class="item-title">Màu sắc:</span>
+                                                                <span class="item-type"><?= $item['mausac'] ?></span>
+                                                            </span>
+                                                            <span class="item-option" data-animate="animate__fadeInUp">
+                                                                <span class="item-title">Dung lượng:</span>
+                                                                <span class="item-type"><?= $item['dungluong'] ?></span>
+                                                            </span>
+                                                            <span class="item-option" data-animate="animate__fadeInUp">
+                                                                <span class="item-price"><?= number_format($item['gia_san_pham'], 0, ',', '.') ?> VNĐ</span>
+                                                            </span>
+                                                        </div>
+                                                        <!-- cart-title send -->
+                                                    </li>
+                                                    <!-- cart-info end -->
+                                                    <!-- cart-qty start -->
+                                                    <li class="item-qty">
+                                                        <div class="product-quantity-action">
+                                                            <div class="product-quantity" data-animate="animate__fadeInUp">
+                                                                <div>
 
-                                                                <input type="number" data-variant="<?= $item['bien_the_id'] ?>" data-product="<?= $item['san_pham_id'] ?>" id="quantity_update" data-id="<?= $item['id'] ?>" data-price="<?= $item['gia_san_pham'] ?>" value="<?= $item['so_luong'] ?>">
+                                                                    <input type="number" data-variant="<?= $item['bien_the_id'] ?>" data-product="<?= $item['san_pham_id'] ?>" id="quantity_update" data-id="<?= $item['id'] ?>" data-price="<?= $item['gia_san_pham'] ?>" value="<?= $item['so_luong'] ?>">
 
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="item-remove">
-                                                        <span class="remove-wrap" data-animate="animate__fadeInUp">
-                                                            <a href="?act=remove-cart&id=<?= $item['id'] ?>" class="text-danger"><i class='bx bxs-trash'></i></a>
+                                                        <div class="item-remove">
+                                                            <span class="remove-wrap" data-animate="animate__fadeInUp">
+                                                                <a href="?act=remove-cart&id=<?= $item['id'] ?>" class="text-danger"><i class='bx bxs-trash'></i></a>
+                                                            </span>
+                                                        </div>
+                                                    </li>
+                                                    <!-- cart-qty end -->
+                                                    <!-- cart-price start -->
+                                                    <li class="item-price" data-animate="animate__fadeInUp">
+                                                        <span class="amount full-price" id="total_price_<?= $item['id'] ?>">
+                                                            <?= number_format($item['tong_tien'], 0, ',', '.') ?> VNĐ
                                                         </span>
-                                                    </div>
-                                                </li>
-                                                <!-- cart-qty end -->
-                                                <!-- cart-price start -->
-                                                <li class="item-price" data-animate="animate__fadeInUp">
-                                                    <span class="amount full-price" id="total_price_<?= $item['id'] ?>">
-                                                        <?= number_format($item['tong_tien'], 0, ',', '.') ?> VNĐ
-                                                    </span>
-                                                </li>
-                                                <!-- cart-price end -->
-                                            </ul>
+                                                    </li>
+                                                    <!-- cart-price end -->
+                                                </ul>
 
 
-                                        <?php endforeach ?>
+                                            <?php endforeach ?>
 
-                                    </div>
+                                        </div>
+                                    <?php else: ?>
+                                        Không có sản phẩm nào
+                                    <?php endif ?>
 
                                 </div>
 

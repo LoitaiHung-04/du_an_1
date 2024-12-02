@@ -63,10 +63,7 @@
                                     <li class="profile-li" data-animate="animate__fadeInUp" onclick="showTab('profile')">
                                         <a href="javascript:void(0)">Trang cá nhân</a>
                                     </li>
-                                    <li class="profile-li" data-animate="animate__fadeInUp" onclick="showTab('wishlist')">
-                                        <a href="javascript:void(0)">
-                                            Danh sách yêu thích</a>
-                                    </li>
+                                    
                                     <li class="profile-li" data-animate="animate__fadeInUp" onclick="showTab('password')">
                                         <a href="javascript:void(0)">Đổi mật khẩu</a>
                                     </li>
@@ -96,10 +93,10 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Order #</th>
-                                        <th>Date purchased</th>
-                                        <th>Status</th>
-                                        <th>Total</th>
+                                        <th>Đơn hàng #</th>
+                                        <th>Ngày Mua</th>
+                                        <th>Trạng thái</th>
+                                        <th>Tổng tiền</th>
                                         <th>Thao tác</th>
                                     </tr>
                                 </thead>
@@ -191,10 +188,7 @@
                             <h6>Address</h6>
                             <p>Manage your address details here.</p>
                         </div>
-                        <div id="wishlist" class="tab-pane" style="display: none;">
-                            <h6>Wishlist</h6>
-                            <p>Your saved items go here.</p>
-                        </div>
+                      
                         <div id="password" class="tab-pane" style="display: none;">
                             <div class="profile-form">
                                 <div class="pro-add-title">
