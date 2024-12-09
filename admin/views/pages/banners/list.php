@@ -66,7 +66,7 @@
                                 <div class="card">
                                     <div class="card-header align-items-center d-flex">
                                         <h4 class="card-title mb-0 flex-grow-1">Danh sách Banner</h4>
-                                        <a href="?act=form-add-product" class="btn btn-soft-success material-shadow-none"><i class="ri-add-circle-line align-middle me-1"></i> Thêm sản phẩm</a>
+                                        <a href="?act=add-banner" class="btn btn-soft-success material-shadow-none"><i class="ri-add-circle-line align-middle me-1"></i> Thêm Banner</a>
                                     </div><!-- end card header -->
 
                                     <div class="card-body">

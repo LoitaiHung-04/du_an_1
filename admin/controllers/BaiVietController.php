@@ -69,6 +69,7 @@ class BaivietController
 
     public function update()
     {
+        unset($_SESSION['error']);
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id = $_POST['id'];
             $title = $_POST['title'];

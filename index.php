@@ -60,7 +60,7 @@ match ($act) {
     'form-register' => (new AuthController())->formregister(),
     'logout' => (new AuthController())->logout(), // Đăng xuất
 //
-    'khuyen-mai' => (new PromotionController())->index(), // Đăng xuất
+    // 'khuyen-mai' => (new PromotionController())->index(), // Đăng xuất
 //
    'tai-khoan' => (new ProfileController())->index(),
      // Đăng xuất

@@ -1,8 +1,35 @@
 [
     {
+        "ten_san_pham": "Iphone 12 Pro Max VN\/A",
+        "gia_san_pham": "14000000.00",
+        "so_luong": 100,
+        "hinh_anh": "96_12prmtrang.jpg",
+        "trang_thai": 1,
+        "id": 68,
+        "namedm": "Iphone 12"
+    },
+    {
+        "ten_san_pham": "Iphone 14 Pro Max Ch\u00ednh H\u00e3ng VN\/A",
+        "gia_san_pham": "21000000.00",
+        "so_luong": 100,
+        "hinh_anh": "511_14prmtim.jpg",
+        "trang_thai": 1,
+        "id": 60,
+        "namedm": "Iphone 14"
+    },
+    {
+        "ten_san_pham": "Iphone 12 th\u01b0\u1eddng ch\u00ednh h\u00e3ng VN\/A",
+        "gia_san_pham": "11900000.00",
+        "so_luong": 40,
+        "hinh_anh": "275_ip12blue.jpg",
+        "trang_thai": 1,
+        "id": 58,
+        "namedm": "Iphone 12"
+    },
+    {
         "ten_san_pham": "Iphone 16 Promax ch\u00ednh h\u00e3ng VN\/A",
         "gia_san_pham": "34390000.00",
-        "so_luong": 40,
+        "so_luong": 41,
         "hinh_anh": "544_16_trang.png",
         "trang_thai": 1,
         "id": 56,
@@ -20,7 +47,7 @@
     {
         "ten_san_pham": "Iphone 11 ch\u00ednh h\u00e3ng VN\/A",
         "gia_san_pham": "5500000.00",
-        "so_luong": 30,
+        "so_luong": 29,
         "hinh_anh": "580_11_xanh.jfif",
         "trang_thai": 1,
         "id": 54,
@@ -29,7 +56,7 @@
     {
         "ten_san_pham": "Iphone 13 Ch\u00ednh H\u00e3ng VN.A",
         "gia_san_pham": "12000000.00",
-        "so_luong": 30,
+        "so_luong": 31,
         "hinh_anh": "691_red.jpg",
         "trang_thai": 1,
         "id": 50,
@@ -38,7 +65,7 @@
     {
         "ten_san_pham": "Iphone 16 Ch\u00ednh H\u00e3ng VN\/A",
         "gia_san_pham": "22000000.00",
-        "so_luong": 40,
+        "so_luong": 38,
         "hinh_anh": "26_iphone16xanh.jpg",
         "trang_thai": 1,
         "id": 49,

@@ -92,7 +92,7 @@
                                 <!-- contact us from start -->
                                 <div class="form-warp contact-detail">
                                     <div class="contact-form-list">
-                                        <form method="POST" action="index.php?act=contact-store">
+                                        <form method="POST" action="index.php?act=lien-he">
                                             <ul class="form-fill">
                                                 <li class="form-fill-li Name">
                                                     <label>Họ và tên</label>

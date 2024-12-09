@@ -32,7 +32,7 @@
         <div class="main-content">
             <div class="page-content">
                 <div class="container-fluid">
-                    <h5>Welcome! I particularly like <?= $_SESSION['user_admin']['ho_ten'] ?></h5>
+                    <h5>Chào mừng bạn! <?= $_SESSION['user_admin']['ho_ten'] ?></h5>
 
 
 
@@ -45,20 +45,15 @@
                                     <div class="col-12">
                                         <div class="d-flex align-items-lg-center flex-lg-row flex-column">
                                             <div class="flex-grow-1">
-                                                <h4 class="fs-16 mb-1">Good Morning,
+                                                <h4 class="fs-16 mb-1">Ngày mới tốt lành,
                                                     <?php echo $_SESSION['user_admin']['ho_ten']; ?>!</h4>
-                                                <p class="text-muted mb-0">Here's what's happening with your store
-                                                    today.</p>
+                                                <p class="text-muted mb-0">Đây là những gì đang xảy ra với cửa hàng của bạn
+                                                Hôm nay.</p>
                                             </div>
                                             <div class="mt-3 mt-lg-0">
                                                 <form action="javascript:void(0);">
                                                     <div class="row g-3 mb-0 align-items-center">
-                                                        <div class="col-auto">
-                                                            <button type="button"
-                                                                class="btn btn-soft-success material-shadow-none"><i
-                                                                    class="ri-add-circle-line align-middle me-1"></i>
-                                                                Add Product</button>
-                                                        </div>
+                                                     
                                                         <!--end col-->
                                                         <div class="col-auto">
                                                             <button type="button"
@@ -85,7 +80,7 @@
                                                     <div class="flex-grow-1 overflow-hidden">
                                                         <p
                                                             class="text-uppercase fw-medium text-muted text-truncate mb-0">
-                                                            Total Earnings</p>
+                                                            Tổng thu nhập</p>
                                                     </div>
                                                     <div class="flex-shrink-0">
                                                         <h5 class="text-success fs-14 mb-0">
@@ -100,8 +95,7 @@
                                                                 class="counter-value"
                                                                 data-target="<?= $doanhThu['doanh_thu'] ?>"><?= $doanhThu['doanh_thu'] ?></span>k
                                                         </h4>
-                                                        <a href="#" class="text-decoration-underline">View net
-                                                            earnings</a>
+                                                        <a href="#" class="text-decoration-underline">Xem thu nhập</a>
                                                     </div>
                                                     <div class="avatar-sm flex-shrink-0">
                                                         <span class="avatar-title bg-success-subtle rounded fs-3">
@@ -120,7 +114,7 @@
                                                     <div class="flex-grow-1 overflow-hidden">
                                                         <p
                                                             class="text-uppercase fw-medium text-muted text-truncate mb-0">
-                                                            Customers</p>
+                                                            Khách hàng</p>
                                                     </div>
                                                     <div class="flex-shrink-0">
                                                         <h5 class="text-success fs-14 mb-0">

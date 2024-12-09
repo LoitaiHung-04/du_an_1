@@ -203,10 +203,10 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
                                     <ul class="details-ul">
                                         <li class="info-wrap info-headphones">
                                             <div class="info-wrapper">
-                                                <a href="index.html" class="icon"><i class="feather-headphones"></i></a>
+                                                <a href="?" class="icon"><i class="feather-headphones"></i></a>
                                                 <div class="info-text">
                                                     <span class="label"> Đường dây nóng</span>
-                                                    <a href="tel:+260005002600" class="info-link">+2600 0500 2600</a>
+                                                    <a href="?" class="info-link">+2600 0500 2600</a>
                                                 </div>
                                             </div>
                                         </li>
@@ -338,13 +338,7 @@ $userName = isset($_SESSION['user_client']) ? $_SESSION['user_client'] : null;
                                                     <span class="menu-arrow"><i class="fa fa-angle-down"></i></span>
                                                 </a>
                                             </li>
-                                            <li class="menu-link">
-                                                <a href="?act=khuyen-mai" class="link-title">
-                                                    <span class="sp-link-title">Khuyến mãi</span>
-
-                                                    <span class="menu-arrow"><i class="fa fa-angle-down"></i></span>
-                                                </a>
-                                            </li>
+                                       
 
 
                                         </ul>

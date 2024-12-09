@@ -116,7 +116,7 @@
                                     </div>
                                     <div class="voucher mt-5 ms-1 w-100 mb-3">
                                         <input type="text" id="code_voucher" class="w-75" placeholder="Nhập mã giảm giá ( nếu có )">
-                                        <button class="btn btn-primary " id="btn_voucher" type="button">Áp Mã</button>
+                                        <button class="btn btn-primary " id="btn_voucher" type="button">Áp Mã</button >
                                     </div>
                                     <!-- p-method end -->
                                     <!-- order-summary start -->
@@ -129,7 +129,7 @@
                                             </li>
 
                                         </ul>
-                                        <input type="hidden" name="price" id="price_payment">
+                                        <input type="hidden" name="price" id="price_payment" value="<?= $total[0]['total_quantity'] ?>">
                                         <div class="check-btn" data-animate="animate__fadeInUp">
                                             <button class="btn-style2">Thanh toán</button>
                                         </div>

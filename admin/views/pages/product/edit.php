@@ -124,25 +124,25 @@
                                         <div class="form-group">
                                             <label for="" class="form-label">Tên sản phẩm</label>
                                             <input type="text" class="form-control" name="name" placeholder="Nhập tên.." value="<?= $data['ten_san_pham'] ?>">
-                                            <p class="text-danger"><?= !empty($_SESSION['error']['title']) ? $_SESSION['error']['title'] : '' ?></p>
+                                            <p class="text-danger"><?= !empty($_SESSION['error']['name']) ? $_SESSION['error']['name'] : '' ?></p>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="" class="form-label">Giá sản phẩm</label>
                                             <input type="text" class="form-control" name="giasanpham" placeholder="Nhập giá..." value="<?= $data['gia_san_pham'] ?>">
-                                            <p class="text-danger"><?= !empty($_SESSION['error']['content']) ? $_SESSION['error']['content'] : '' ?></p>
+                                            <p class="text-danger"><?= !empty($_SESSION['error']['price']) ? $_SESSION['error']['price'] : '' ?></p>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="" class="form-label">Ngày Nhập</label>
                                             <input type="date" class="form-control" name="ngay_nhap" value="<?= $data['ngay_nhap'] ?>">
-                                            <p class="text-danger"><?= !empty($_SESSION['error']['content']) ? $_SESSION['error']['content'] : '' ?></p>
+                                           
                                         </div>
 
                                         <div class="form-group">
                                             <label for="" class="form-label">Số lượng</label>
                                             <input type="text" class="form-control" name="soluong" placeholder="Số lượng" value="<?= $data['so_luong'] ?>">
-                                            <p class="text-danger"><?= !empty($_SESSION['error']['content']) ? $_SESSION['error']['content'] : '' ?></p>
+                                            <p class="text-danger"><?= !empty($_SESSION['error']['quantity']) ? $_SESSION['error']['quantity'] : '' ?></p>
                                         </div>
 
                                         <div class="form-group">
@@ -155,7 +155,7 @@
                                                     </option>
                                                 <?php endforeach; ?>
                                             </select>
-                                            <p class="text-danger"><?= !empty($_SESSION['error']['content']) ? $_SESSION['error']['content'] : '' ?></p>
+                                            <p class="text-danger"><?= !empty($_SESSION['error']['category']) ? $_SESSION['error']['category'] : '' ?></p>
                                         </div>
 
                                         <div class="form-group">

@@ -17,9 +17,10 @@
     include "views/layouts/libs_css.php";
     ?>
     <style>
-        #price_km{
+        #price_km {
             display: none;
         }
+
         /* Ẩn tất cả các tab nội dung trừ tab đang được chọn */
         .content-section {
             display: none;
@@ -195,7 +196,7 @@
         <!-- Vertical Overlay-->
         <div class="vertical-overlay"></div>
 
-        
+
         <div class="main-content">
 
             <div class="container" style="margin-top: 100px;">
@@ -218,29 +219,26 @@
                                         <div class="form-group">
                                             <label for="" class="form-label">Tên sản phẩm</label>
                                             <input type="text" class="form-control" name="name" placeholder="Nhập tên..">
-                                            <p class="text-danger"><?= !empty($_SESSION['error']['title']) ? $_SESSION['error']['title'] : ''    ?></p>
+                                            <p class="text-danger"><?= !empty($_SESSION['error']['name']) ? $_SESSION['error']['name'] : ''    ?></p>
                                         </div>
                                         <div class="form-group">
                                             <label for="" class="form-label">Giá sản phẩm</label>
                                             <input type="text" class="form-control" name="giasanpham" placeholder="nhập giá...">
                                             <p class="text-danger">
-                                                <?= !empty($_SESSION['error']['content'])  ? $_SESSION['error']['content'] : ''    ?>
+                                                <?= !empty($_SESSION['error']['price'])  ? $_SESSION['error']['price'] : ''    ?>
                                             </p>
 
                                         </div>
                                         <div class="form-group">
                                             <label for="" class="form-label">Ngày Nhập</label>
                                             <input type="date" class="form-control" name="ngay_nhap">
-                                            <p class="text-danger">
-                                                <?= !empty($_SESSION['error']['content'])  ? $_SESSION['error']['content'] : ''    ?>
-                                            </p>
-
+                                         
                                         </div>
                                         <div class="form-group">
                                             <label for="" class="form-label">Số lượng</label>
                                             <input type="text" class="form-control" name="soluong" placeholder="soluong">
                                             <p class="text-danger">
-                                                <?= !empty($_SESSION['error']['content'])  ? $_SESSION['error']['content'] : ''    ?>
+                                                <?= !empty($_SESSION['error']['quantity'])  ? $_SESSION['error']['quantity'] : ''    ?>
                                             </p>
 
                                         </div>
@@ -256,7 +254,7 @@
                                                 <?php endforeach ?>
                                             </select>
                                             <p class="text-danger">
-                                                <?= !empty($_SESSION['error']['content'])  ? $_SESSION['error']['content'] : ''    ?>
+                                                <?= !empty($_SESSION['error']['category'])  ? $_SESSION['error']['category'] : ''    ?>
                                             </p>
                                         </div>
                                         <div class="form-group">
@@ -266,9 +264,7 @@
                                                 <option value="1">Hiển Thị</option>
                                                 <option value="2">Không Hiển Thị</option>
                                             </select>
-                                            <p class="text-danger">
-                                                <?= !empty($_SESSION['error']['content'])  ? $_SESSION['error']['content'] : ''    ?>
-                                            </p>
+                                       
 
                                         </div>
                                         <div class="form-group">
@@ -302,29 +298,29 @@
                                         <div class="form-group" id="price_km">
                                             <label for="" class="form-label">Giá sản phẩm khuyến mãi</label>
                                             <input type="text" class="form-control" name="giasanpham_km" placeholder="nhập giá...">
-                                           
+
 
                                         </div>
                                         <div class="form-group">
                                             <label for="" class="form-label">Mô tả </label>
                                             <textarea name="mo_ta" id="editor"></textarea>
-
+                                            <p class="text-danger">
+                                                <?= !empty($_SESSION['error']['description'])  ? $_SESSION['error']['description'] : ''    ?>
+                                            </p>
                                         </div>
                                         <div class="form-group">
                                             <label for="" class="form-label">Image</label>
                                             <input type="file" class="form-control" name="image">
-                                            <p class="text-danger"><?= !empty($_SESSION['error']['image']) ? $_SESSION['error']['image'] : ''    ?></p>
 
                                         </div>
                                         <div class="form-group">
                                             <label for="" class="form-label">Image (Thêm nhiều ảnh)</label>
                                             <input type="file" class="form-control" name="images[]" multiple>
-                                            <p class="text-danger"><?= !empty($_SESSION['error']['image']) ? $_SESSION['error']['image'] : ''    ?></p>
 
                                         </div>
                                     </div>
                                     <div id="variant" class="content-section">
-                                        <h1>Thông tin biến thể ( Nếu có )</h1>
+                                        <h1>Thông tin biến thể (Nếu có)</h1>
                                         <div class="color-container">
                                             <div class="title-color">
                                                 <h4 style="font-weight: bold;">Color</h4>
@@ -333,14 +329,11 @@
                                                 <?php foreach ($color as $items): ?>
                                                     <div class="color">
                                                         <input type="checkbox" class="color-option" value="<?= $items['name'] ?>" id="color-<?= $items['id'] ?>">
-                                                        <label for="color-<?= $items['id'] ?>" class="color-attribute" style="background-color:<?= $items['name'] ?>; cursor: pointer; "><?= $items['name'] ?></label>
+                                                        <label for="color-<?= $items['id'] ?>" class="color-attribute" style="background-color:<?= $items['name'] ?>; cursor: pointer;"><?= $items['name'] ?></label>
                                                     </div>
                                                 <?php endforeach ?>
                                             </div>
-
                                         </div>
-
-
                                         <div class="capacity-container">
                                             <div class="title-capacity">
                                                 <h4 style="font-weight: bold;">Capacity</h4>
@@ -354,22 +347,20 @@
                                                         </label>
                                                     </div>
                                                 <?php endforeach ?>
-
                                             </div>
                                         </div>
                                         <button type="button" onclick="generateVariants()" class="btn btn-success">Tạo biến thể</button>
 
-                                        <!-- Bảng hiện thị biến thể -->
+                                        <!-- Bảng hiển thị biến thể -->
                                         <div id="variants-table-container" style="display: none;">
                                             <table id="variants-table" class="table table-bordered">
                                                 <thead>
                                                     <tr>
                                                         <th>Variant</th>
-                                                        <th> Price</th>
+                                                        <th>Price</th>
                                                         <th>SKU</th>
                                                         <th>Quantity</th>
                                                         <th>Action</th>
-
                                                     </tr>
                                                 </thead>
                                                 <tbody></tbody>
@@ -406,8 +397,6 @@
     </script>
     <script>
         function generateVariants() {
-
-
             const colors = Array.from(document.querySelectorAll('.color-option:checked')).map(el => el.value);
             const capacities = Array.from(document.querySelectorAll('.capacity-option:checked')).map(el => el.value);
 
@@ -420,29 +409,37 @@
                 capacities.forEach(capacity => {
                     const row = document.createElement("tr");
 
-                    // Cột biến thể
-                    const variantCell = document.createElement("td");
-                    variantCell.textContent = `${color}-${capacity}`;
-                    row.appendChild(variantCell);
-
-                    // Các cột nhập liệu khác
+                    // Tạo các ô trong bảng
                     row.innerHTML = `
                     <input type="hidden" name="variants[][color]" value="${color}">
                     <input type="hidden" name="variants[][capacity]" value="${capacity}">
-                <td>${color}-${capacity}</td>
-                
-                <td><input type="text" name="variants[][variant_price]" value="0"></td>
-                <td><input type="text" name="variants[][sku]"></td>
-                <td><input type="number" name="variants[][quantity]" value="10"></td>
-                <td><button class="btn btn-danger"><i class='bx bx-trash'></i></button></td>
-            `;
-                    tableBody.appendChild(row);
+                    <td>${color}-${capacity}</td>
+                    <td><input type="text" name="variants[][variant_price]" required value="0"></td>
+                    <td><input type="text" name="variants[][sku]" required></td>
+                    <td><input type="number" name="variants[][quantity]" value="10" required></td>
+                    <td><button type="button" class="btn btn-danger delete-variant"><i class='bx bx-trash'></i></button></td>
+                `;
 
+                    // Gắn sự kiện xóa cho từng nút
+                    row.querySelector(".delete-variant").addEventListener("click", function() {
+                        row.remove(); // Xóa hàng hiện tại
+                        updateTableVisibility();
+                    });
+
+                    tableBody.appendChild(row);
                 });
             });
 
-            // Hiển thị bảng
-            tableContainer.style.display = colors.length && capacities.length ? "block" : "none";
+            // Hiển thị bảng nếu có biến thể
+            updateTableVisibility();
+        }
+
+        function updateTableVisibility() {
+            const tableContainer = document.getElementById("variants-table-container");
+            const tableBody = document.getElementById("variants-table").querySelector("tbody");
+
+            // Hiển thị hoặc ẩn bảng dựa trên số lượng hàng
+            tableContainer.style.display = tableBody.children.length ? "block" : "none";
         }
     </script>
     <!--start back-to-top-->
@@ -471,6 +468,11 @@
     require_once "views/layouts/libs_js.php";
     ?>
     <script>
+        function deletes() {
+            console.log(1);
+
+        }
+
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("content-section");

@@ -1,12 +1,10 @@
-
 <main>
-    <!-- breadcrumb start -->
     <section class="breadcrumb-area">
         <div class="container">
             <div class="col">
                 <div class="row">
                     <div class="breadcrumb-index">
-                        <!-- breadcrumb-list start -->
+
                         <ul class="breadcrumb-ul">
                             <li class="breadcrumb-li">
                                 <a class="breadcrumb-link" href="index.html">Trang chủ</a>
@@ -15,14 +13,12 @@
                                 <span class="breadcrumb-text">Bộ sưu tập</span>
                             </li>
                         </ul>
-                        <!-- breadcrumb-list end -->
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- breadcrumb end -->
-    <!-- collection start -->
     <section class="main-content-wrap bg-color shop-page section-ptb">
         <div class="container">
             <div class="row">
@@ -30,7 +26,7 @@
                     <div class="pro-grli-wrapper left-side-wrap">
                         <div class="pro-grli-wrap product-grid">
                             <div class="collection-img-wrap">
-                                <h6 data-animate="animate__fadeInUp" class="st-title">Bộ sưu tập (23)</h6>
+                                <h6 data-animate="animate__fadeInUp" class="st-title">Bộ sưu tập</h6>
                                 <!-- collection info start -->
                                 <div class="collection-info">
                                     <div class="collection-image" data-animate="animate__fadeInUp">
@@ -50,29 +46,7 @@
                                     <a href="javascript:void(0)" data-grid-view="1" class="list-change-view list-one"><i class="fa-solid fa-list"></i></a>
                                     <!-- shop-item-filter-list end -->
                                 </div>
-                                <!-- product-short start -->
-                                <!-- <div class="product-short">
-                                    <label for="SortBy">Sort by:</label>
-                                    <select class="nice-select" name="sortby" id="SortBy">
-                                        <option value="manual">Featured</option>
-                                        <option value="best-selling">Best Selling</option>
 
-                                    </select>
-                                    <a href="javascript:void(0)" class="short-title">
-                                        <span class="sort-title">Best Selling</span>
-                                        <span class="sort-icon"><i class="bi bi-chevron-down"></i></span>
-                                    </a>
-                                    <a href="javascript:void(0)" class="short-title short-title-lg">
-                                        <span class="sort-title">Best Selling</span>
-                                        <span class="sort-icon"><i class="bi bi-chevron-down"></i></span>
-                                    </a>
-                                    <ul class="pro-ul collapse">
-                                        <li class="pro-li"><a href="javascript:void(0)">Featured</a></li>
-                                        <li class="pro-li selected"><a href="javascript:void(0)">Best Selling</a></li>
-
-                                    </ul>
-                                </div> -->
-                                <!-- product-short end -->
                             </div>
                             <!-- shop-top-bar end -->
                             <!-- Latest-product start -->
@@ -111,27 +85,14 @@
 
 
                                                                         </div>
-                                                                        <!-- <div class="pro-label-retting">
-                                                                            <div class="product-ratting">
-                                                                                <span class="pro-ratting">
-                                                                                    <i class="fa-solid fa-star"></i>
-                                                                                    <i class="fa-solid fa-star"></i>
-                                                                                    <i class="fa-solid fa-star"></i>
-                                                                                    <i class="fa-solid fa-star"></i>
-                                                                                    <i class="fa-solid fa-star"></i>
-                                                                                </span>
-                                                                            </div>
-                                                                            <div class="product-label pro-new-sale">
-                                                                                <span class="product-label-title">Sale<span>22%</span></span>
-                                                                            </div>
-                                                                        </div> -->
+
                                                                     </div>
                                                                 </div>
                                                             </li>
 
                                                         <?php endforeach ?>
                                                     <?php else: ?>
-                                                        <div class="" style="padding: 20px 500px 20px 100px; margin-left:350px;" ><i style="font-size: 200px;" class='bx bx-package'></i></div>
+                                                        <div class="" style="padding: 20px 500px 20px 100px; margin-left:350px;"><i style="font-size: 200px;" class='bx bx-package'></i></div>
                                                     <?php endif ?>
                                                 </ul>
                                             </div>
@@ -146,8 +107,10 @@
                                     </div>
                                 </div>
                             </div>
+
                             <!-- Latest-product end -->
                         </div>
+                
                         <div class="pro-grli-wrap product-sidebar">
                             <div class="pro-grid-block">
                                 <div class="shop-sidebar-inner">

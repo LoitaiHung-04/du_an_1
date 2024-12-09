@@ -223,7 +223,7 @@
                                                     </div>
                                                     <div class="product-price">
                                                         <div>
-                                                            <span class="new-price"> <del><?= number_format($value['gia_san_pham'], 0, ',', '.') ?></del> </span> - 
+                                                            <span class="new-price"> <del><?= number_format($value['gia_san_pham'], 0, ',', '.') ?></del> </span> -
                                                             <span class="new-price" style="color: red;"> <?= number_format($value['gia_khuyen_mai'], 0, ',', '.') ?> VNĐ</span>
 
                                                         </div>

@@ -41,7 +41,7 @@
                                         </span>
                                     </div>
                                     <?php if (count($cart) > 0): ?>
-                                        v= <div class="item-wrap">
+                                         <div class="item-wrap">
                                             <?php foreach ($cart as $item): ?>
 
                                                 <ul class="cart-wrap">
